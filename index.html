@@ -269,14 +269,20 @@
                 <input type="text" id="cognome" name="cognome" required>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                <label for="telefono">Telefono (9 cifre):</label>
-                <input type="tel" id="telefono" name="telefono" pattern="^[0-9]{9}$" required>
+                <label for="telefono">Telefono:</label>
+                <input type="tel" id="telefono" name="telefono" pattern="^[0-10]{10}$" required>
                 <label for="data">Data della prenotazione:</label>
                 <input type="date" id="data" name="data" required>
                 <label for="ora">Ora della prenotazione:</label>
                 <input type="time" id="ora" name="ora" required>
+                    <option value="19:00">19:00</option>
+                    <option value="19:30">19:30</option>
+                    <option value="20:00">20:00</option>
+                    <option value="20:30">20:30</option>
+                    <option value="21:00">21:00</option>
+                    <option value="21:30">21:30</option>
                 <label for="persone">Numero di persone:</label>
-                <input type="number" id="persone" name="persone" required min="1" max="10">
+                <input type="number" id="persone" name="persone" required min="1" max="30">
                 <button type="submit">Prenota Ora</button>
             </form>
         </div>
@@ -288,6 +294,16 @@
     </footer>
 
     <script>
+        document.getElementById('data').addEventListener('input', function() {
+    const dataInput = this;
+    const selectedDate = new Date(dataInput.value);
+    const dayOfWeek = selectedDate.getDay(); 
+
+    // Controlla se il giorno è tra giovedì (4) e domenica (0)
+    if (![4, 5, 6, 0].includes(dayOfWeek)) {
+        alert("Puoi selezionare solo giovedì, venerdì, sabato o domenica.");
+        dataInput.value = ""; // Resetta la selezione
+    }
         function showSection(section) {
             const sections = document.querySelectorAll('.content');
             sections.forEach(sec => {
