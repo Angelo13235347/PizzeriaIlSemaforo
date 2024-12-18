@@ -10,7 +10,7 @@
             font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
+            background-color: #f4f4f4;
             color: #333;
         }
         h1, h2, p {
@@ -24,6 +24,25 @@
             color: #d84b16;
             text-align: center;
             padding-top: 50px;
+        }
+        .nav {
+            background-color: #d84b16;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 0 20px;
+            transition: background-color 0.3s ease;
+        }
+        .nav a:hover {
+            background-color: #c24014;
         }
         .button-group {
             text-align: center;
@@ -112,6 +131,47 @@
             font-size: 0.9em;
             color: #777;
         }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .reviews {
+            margin-top: 50px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .review-item {
+            margin-bottom: 30px;
+        }
+        .review-item p {
+            font-style: italic;
+        }
+        .review-item h3 {
+            color: #d84b16;
+        }
+        .events {
+            padding: 30px;
+            background-color: #fafafa;
+        }
+        .event {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
         .modal {
             display: none;
             position: fixed;
@@ -158,15 +218,25 @@
 </head>
 <body>
 
+    <!-- Navbar -->
+    <div class="nav">
+        <a href="#" onclick="showSection('main')">Home</a>
+        <a href="#" onclick="showSection('chiSiamo')">Chi Siamo</a>
+        <a href="#" onclick="showSection('menù')">Menù</a>
+        <a href="#" onclick="showSection('galleria')">Galleria</a>
+        <a href="#" onclick="showSection('eventi')">Eventi</a>
+        <a href="#" onclick="showSection('prenotaOra')">Prenota Ora</a>
+    </div>
+
     <!-- Sezione principale -->
     <div id="main" class="content active">
         <h1>Benvenuti da Pizzeria Il Semaforo</h1>
+        <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
         <div class="button-group">
             <button onclick="showSection('chiSiamo')">Chi Siamo</button>
             <button onclick="showSection('prenotaOra')">Prenota Ora</button>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1462.4312215232844!2d11.1203234!3d43.8093687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a59b7d8859209%3A0x98788d2f085c6016!2sPizzeria%20Il%20Semaforo!5e0!3m2!1sit!2sit!4v1695151262428!5m2!1sit!2sit" allowfullscreen></iframe>
-        <p>Telefono: 340 304 6310</p>
+        <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen></iframe>
         <div class="social-icons">
             <a href="https://www.instagram.com" target="_blank">
                 <img src="instagram-logo.png" alt="Instagram">
@@ -180,13 +250,57 @@
         </div>
     </div>
 
-    <!-- Sezione "Chi Siamo" -->
+    <!-- Sezione Chi Siamo -->
     <div id="chiSiamo" class="content">
         <h2>La nostra storia</h2>
         <div class="form-container">
             <p><strong>Circa un anno fa, la nostra pizzeria “Il Semaforo” è nata da un sogno condiviso da una famiglia molto unita.</strong></p>
             <p>Provenivamo da un altro settore, ma la nostra passione per la cucina e l’amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura...</p>
             <img src="Pizzeria Il Semaforo.jpg" alt="Pizzeria Il Semaforo" style="width: 100%; border-radius: 10px; margin-top: 20px;">
+        </div>
+        <button onclick="showSection('main')">Torna al menù principale</button>
+    </div>
+
+    <!-- Sezione Menù -->
+    <div id="menù" class="content">
+        <h2>Il nostro menù</h2>
+        <p>Scopri le nostre specialità preparate con ingredienti freschi e di qualità.</p>
+        <ul>
+            <li>Margherita: pomodoro, mozzarella, basilico</li>
+            <li>Diavola: pomodoro, mozzarella, salame piccante</li>
+            <li>Vegetariana: pomodoro, mozzarella, verdure grigliate</li>
+            <li>Quattro Formaggi: mozzarella, gorgonzola, parmigiano, ricotta</li>
+            <li>Speciale Il Semaforo: pomodoro, mozzarella, prosciutto cotto, funghi</li>
+        </ul>
+        <button onclick="showSection('main')">Torna al menù principale</button>
+    </div>
+
+    <!-- Sezione Galleria -->
+    <div id="galleria" class="content">
+        <h2>Galleria Fotografica</h2>
+        <div class="gallery">
+            <img src="pizza1.jpg" alt="Pizza 1">
+            <img src="pizza2.jpg" alt="Pizza 2">
+            <img src="pizza3.jpg" alt="Pizza 3">
+            <img src="pizza4.jpg" alt="Pizza 4">
+        </div>
+        <button onclick="showSection('main')">Torna al menù principale</button>
+    </div>
+
+    <!-- Sezione Eventi -->
+    <div id="eventi" class="content">
+        <h2>I nostri eventi</h2>
+        <div class="events">
+            <div class="event">
+                <h3>Cena di beneficenza</h3>
+                <p>Unisciti a noi per una cena speciale a favore di un'importante causa sociale.</p>
+                <button>Leggi di più</button>
+            </div>
+            <div class="event">
+                <h3>Serata Karaoke</h3>
+                <p>Divertiti con i tuoi amici durante una serata karaoke con pizza e birra!</p>
+                <button>Leggi di più</button>
+            </div>
         </div>
         <button onclick="showSection('main')">Torna al menù principale</button>
     </div>
@@ -198,22 +312,16 @@
             <form id="prenotazione-form">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" required>
-
                 <label for="cognome">Cognome:</label>
                 <input type="text" id="cognome" name="cognome" required>
-
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-
                 <label for="telefono">Telefono (9 cifre):</label>
                 <input type="tel" id="telefono" name="telefono" pattern="\d{9}" maxlength="9" required>
-
                 <label for="data">Seleziona la data (giovedì - domenica):</label>
                 <input type="date" id="data" name="data" required>
-
                 <label for="persone">Numero di persone (max 30):</label>
                 <input type="number" id="persone" name="persone" min="1" max="30" required>
-
                 <label for="orario">Seleziona l'orario (19:00 - 22:00):</label>
                 <select id="orario" name="orario" required>
                     <option value="">Seleziona un orario</option>
@@ -225,7 +333,6 @@
                     <option value="21:30">21:30</option>
                     <option value="22:00">22:00</option>
                 </select>
-
                 <button type="submit">Conferma prenotazione</button>
             </form>
         </div>
