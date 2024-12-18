@@ -12,22 +12,6 @@
             background-color: #f2f2f2;
             color: #333;
         }
-        #recensioni-manuali {
-            display: none; /* Inizialmente nascosto */
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        .review {
-            margin-bottom: 15px;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-        .review:last-child {
-            border-bottom: none;
-        }
         h1 {
             animation: fadeIn 3s ease-in-out;
             font-size: 3em;
@@ -209,13 +193,13 @@
     </style>
 </head>
 <body>
+
     <!-- Sezione "Main" -->
     <div id="main" class="content active">
         <h1>Benvenuti da Pizzeria Il Semaforo</h1>
         <div class="button-group">
             <button onclick="showSection('chiSiamo')">Chi Siamo</button>
             <button onclick="showSection('prenotaOra')">Prenota Ora</button>
-	    <button onclick="toggleRecensioni()">Leggi le recensioni</button>
         </div>
         <p class="map-info">Apri la mappa e vieni a trovarci!</p>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1462.4312215232844!2d11.1203234!3d43.8093687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a59b7d8859209%3A0x98788d2f085c6016!2sPizzeria%20Il%20Semaforo!5e0!3m2!1sit!2sit!4v1695151262428!5m2!1sit!2sit" allowfullscreen></iframe>
@@ -233,27 +217,6 @@
         </div>
     </div>
 
-    <!-- Sezione Recensioni -->
-    <div id="recensioni-manuali">
-        <h3>Recensioni dei nostri clienti</h3>
-        <div class="review">
-            <p><strong>laura marchesin</strong></p>
-            <p>Valutazione: ⭐⭐⭐⭐⭐</p>
-            <p>Abbiamo mangiato benissimo!!! Servizio eccellente e molto carini!! Ci hanno servito subito! Siamo state a cena con amiche: salumi ottimi schiacciata super !! Pizze eccellenti e ci hanno servito velocissimi.Ah dimenticavo....i dolci artigianali sono il top! Dovete assolutamente andare!!</p>
-        </div>
-        <div class="review">
-            <p><strong>Giada Balduinotti</strong></p>
-            <p>Valutazione: ⭐⭐⭐⭐⭐</p>
-            <p>Personale super gentile e disponibile. Abbiamo affittato la stanza fuori, ed era abbastanza grande da accoglierci tutti (circa 50). Era ben tenuta e pulita. Pizza favolosa.</p>
-        </div>
-        <div class="review">
-            <p><strong>Alessandro Galli</strong></p>
-            <p>Valutazione: ⭐⭐⭐⭐⭐</p>
-            <p>Luogo meraviglioso, personale fantastico. Primi buonissimi e pizza top a prezzi onestissimi. Bravi!!!!</p>
-        </div>
-          <a class="back-button" href="#" onclick="showSection('main')">Torna al menù principale</a>
-	 </div>
-	
     <!-- Sezione "Chi Siamo" -->
     <div id="chiSiamo" class="content chi-siamo-content">
         <h2 class="chi-siamo-title">La nostra storia</h2>
@@ -361,19 +324,8 @@
             showModal('confirmationModal');
             document.getElementById('prenotazione-form').reset();
             setTimeout(() => showSection('main'), 3000); // Nascondi la sezione di prenotazione e mostra la sezione principale dopo 3 secondi
-
-        // Funzione per mostrare la sezione recensioni
-        document.getElementById('recensioniButton').addEventListener('click', function() {
-            document.getElementById('recensioni-manuali').style.display = 'block';
-            window.scrollTo(0, document.body.scrollHeight); // Scorrere verso la sezione recensioni
-        }
-
-        // Funzione per tornare alla pagina principale
-        function backToMain() {
-            document.getElementById('recensioni-manuali').style.display = 'none';
-            window.scrollTo(0, 0); // Torna in cima alla pagina
-		 }
-		    });
+        });
     </script>
+
 </body>
 </html>
