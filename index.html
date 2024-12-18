@@ -6,7 +6,7 @@
     <title>Pizzeria Il Semaforo</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        body {
+              body {
             font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 0;
@@ -117,82 +117,48 @@
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
             padding: 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
-        .gallery img {
+
+        .gallery-item {
             width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-        .reviews {
-            margin-top: 50px;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-        .review-item {
-            margin-bottom: 30px;
-        }
-        .review-item p {
-            font-style: italic;
-        }
-        .review-item h3 {
-            color: #d84b16;
-        }
-        .events {
-            padding: 30px;
-            background-color: #fafafa;
-        }
-        .event {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
+            height: 200px;  /* Imposta altezza fissa per tutte le immagini */
+            object-fit: cover; /* Questo manterrà il corretto rapporto d'aspetto */
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        /* Barra laterale mobile */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #c24014;
-            transition: left 0.3s ease;
-            padding-top: 20px;
-            z-index: 1001;
+
+        .gallery-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         }
-        .sidebar a {
-            padding: 15px 25px;
-            text-decoration: none;
-            font-size: 18px;
-            color: white;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-        .sidebar a:hover {
-            background-color: #d84b16;
-        }
-        .open-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            font-size: 30px;
-            color: #d84b16;
-            cursor: pointer;
-            z-index: 1002;
-        }
-        @media screen and (min-width: 768px) {
-            .sidebar {
-                display: none;
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
             }
-            .nav {
-                display: flex;
+            100% {
+                opacity: 1;
             }
         }
+
+        /* Media query per dispositivi mobili */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
 
     <!-- Navbar -->
     <div class="nav">
@@ -274,7 +240,7 @@
         <img src="10.jpg" class="gallery-item">
     </div>
 </div>
-
+    
     <!-- Sezione Eventi -->
     <div id="eventi" class="content">
         <h2>I nostri eventi</h2>
