@@ -112,20 +112,49 @@
             font-size: 0.9em;
             color: #777;
         }
+.gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+    }
+
+    .gallery-item {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    /* Media query per dispositivi mobili */
+    @media (max-width: 768px) {
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         }
-        .gallery img {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
+    }
+
+    @media (max-width: 480px) {
+        .gallery {
+            grid-template-columns: 1fr;
         }
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
+    }
         .reviews {
             margin-top: 50px;
             background-color: #fff;
@@ -325,16 +354,20 @@
         </div>
     </div>
 
-    <!-- Sezione Galleria -->
-    <div id="galleria" class="content">
-        <h2>Galleria Fotografica</h2>
-        <div class="gallery">
-            <img src="pizza1.jpg" alt="Pizza 1">
-            <img src="pizza2.jpg" alt="Pizza 2">
-            <img src="pizza3.jpg" alt="Pizza 3">
-            <img src="pizza4.jpg" alt="Pizza 4">
-        </div>
+<!-- Sezione Galleria --> 
+<div id="galleria" class="content">
+    <h2>Galleria Fotografica</h2>
+    <div class="gallery">
+        <img src="1.JPG" alt="Pizza 1" class="gallery-item">
+        <img src="2.JPG" alt="Pizza 2" class="gallery-item">
+        <img src="3.JPG" alt="Pizza 3" class="gallery-item">
+        <img src="4.JPG" alt="Pizza 4" class="gallery-item">
+        <img src="5.JPG" alt="Pizza 5" class="gallery-item">
+        <img src="6.JPG" alt="Pizza 6" class="gallery-item">
+        <img src="7.JPG" alt="Pizza 7" class="gallery-item">
+        <img src="8.JPG" alt="Pizza 8" class="gallery-item">
     </div>
+</div>
 
     <!-- Sezione Eventi -->
     <div id="eventi" class="content">
