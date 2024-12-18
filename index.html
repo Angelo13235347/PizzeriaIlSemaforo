@@ -6,7 +6,7 @@
     <title>Pizzeria Il Semaforo</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        body {
+              body {
             font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 0;
@@ -112,185 +112,50 @@
             font-size: 0.9em;
             color: #777;
         }
-.gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
-        padding: 20px;
-        opacity: 0;
-        animation: fadeIn 1s forwards;
-    }
-
-    .gallery-item {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .gallery-item:hover {
-        transform: scale(1.1);
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    }
-
-    @keyframes fadeIn {
-        0% {
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
             opacity: 0;
+            animation: fadeIn 1s forwards;
         }
-        100% {
-            opacity: 1;
-        }
-    }
 
-    /* Media query per dispositivi mobili */
-    @media (max-width: 768px) {
-        .gallery {
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        }
-    }
-
-    @media (max-width: 480px) {
-        .gallery {
-            grid-template-columns: 1fr;
-        }
-    }
-        .reviews {
-            margin-top: 50px;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-        .review-item {
-            margin-bottom: 30px;
-        }
-        .review-item p {
-            font-style: italic;
-        }
-        .review-item h3 {
-            color: #d84b16;
-        }
-        .events {
-            padding: 30px;
-            background-color: #fafafa;
-        }
-        .event {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
+        .gallery-item {
             width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .modal-content h2 {
-            color: #d84b16;
-        }
-        .modal-content p {
-            font-size: 18px;
-            color: #555;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .menu-section {
-            background-color: #fff;
-            padding: 20px;
-            margin: 20px 0;
+            height: 200px;  /* Imposta altezza fissa per tutte le immagini */
+            object-fit: cover; /* Questo manterrà il corretto rapporto d'aspetto */
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .menu-section h3 {
-            color: #d84b16;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        .menu-section ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .menu-section li {
-            font-size: 1.2rem;
-            margin: 8px 0;
-        }
-        .menu-section li strong {
-            color: #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        .gallery-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Media query per dispositivi mobili */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            .nav a {
-                font-size: 16px;
-                padding: 10px;
-            }
-            iframe {
-                width: 90%;
-                height: 300px;
-            }
-            .form-container {
-                padding: 20px;
-            }
-            .menu-section h3 {
-                font-size: 1.5rem;
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
         }
 
         @media (max-width: 480px) {
-            .nav {
-                flex-direction: column;
-            }
-            .nav a {
-                padding: 10px;
-            }
-            iframe {
-                width: 100%;
-                height: 250px;
-            }
             .gallery {
                 grid-template-columns: 1fr;
             }
-            footer {
-                font-size: 0.8em;
-            }
-#gallery .gallery-item {
-    width: 200px !important;
-    height: 200px !important;
-    object-fit: cover !important;
-}
-              }
+        }
     </style>
 </head>
 <body>
