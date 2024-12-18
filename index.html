@@ -151,49 +151,47 @@
             }
         }
 
- .menu-section { 
-            background-color: #fff;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .menu-section h3 {
-            color: #d84b16;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        .menu-section ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .menu-section li {
-            font-size: 1.2rem;
-            margin: 8px 0;
-        }
-        .menu-section li strong {
-            color: #333;
-        }
+.menu-section {
+    background-color: #fff;
+    padding: 10px 15px; /* Ridotto per adattarsi meglio al contenuto */
+    margin: 10px auto; /* Centrare e ridurre lo spazio verticale */
+    display: inline-block; /* Adatta il contenitore al contenuto */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Allinea il testo a sinistra */
+}
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            .nav a {
-                font-size: 16px;
-                padding: 10px;
-            }
-            iframe {
-                width: 90%;
-                height: 300px;
-            }
-            .form-container {
-                padding: 20px;
-            }
-            .menu-section h3 {
-                font-size: 1.5rem;
-            }
-        }
+.menu-section h3 {
+    color: #d84b16;
+    font-size: 1.8rem;
+    margin: 5px 0; /* Ridotto per meno spazio */
+}
+
+.menu-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Elimina spazi non necessari */
+}
+
+.menu-section li {
+    font-size: 1.2rem;
+    margin: 5px 0; /* Ridotto per compattezza */
+}
+
+.menu-section li strong {
+    color: #333;
+}
+
+/* Media query per dispositivi mobili */
+@media (max-width: 768px) {
+    .menu-section {
+        padding: 8px 10px; /* Ulteriore riduzione su schermi piccoli */
+    }
+
+    .menu-section h3 {
+        font-size: 1.5rem;
+    }
+}
         
         @media (max-width: 480px) {
             .gallery {
