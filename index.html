@@ -195,6 +195,29 @@
             text-decoration: none;
             cursor: pointer;
         }
+            .menu-section {
+        background-color: #fff;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .menu-section h3 {
+        color: #d84b16;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    .menu-section ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .menu-section li {
+        font-size: 1.2rem;
+        margin: 8px 0;
+    }
+    .menu-section li strong {
+        color: #333;
+    }
     </style>
 </head>
 <body>
@@ -213,7 +236,7 @@
     <div id="main" class="content active">
         <h1>Benvenuti da Pizzeria Il Semaforo</h1>
         <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
-        <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1462.4312215232844!2d11.1203234!3d43.8093687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a59b7d8859209%3A0x98788d2f085c6016!2sPizzeria%20Il%20Semaforo!5e0!3m2!1sit!2sit!4v1695151262428!5m2!1sit!2sit" allowfullscreen></iframe>
         <div class="social-icons">
             <a href="https://www.instagram.com" target="_blank">
                 <img src="instagram-logo.png" alt="Instagram">
@@ -231,24 +254,38 @@
     <div id="chiSiamo" class="content">
         <h2>La nostra storia</h2>
         <div class="form-container">
-            <p><strong>Circa un anno fa, la nostra pizzeria “Il Semaforo” è nata da un sogno condiviso da una famiglia molto unita.</strong></p>
-            <p>Provenivamo da un altro settore, ma la nostra passione per la cucina e l’amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura...</p>
+            <<p><strong>Circa un anno fa, la nostra pizzeria “Il Semaforo” è nata da un sogno condiviso da una famiglia molto unita.</strong></p>
+        <p>Provenivamo da un altro settore, ma la nostra passione per la cucina e l’amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non è stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realtà.</p>
+        <p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l’abbiamo creata.</p>
             <img src="Pizzeria Il Semaforo.jpg" alt="Pizzeria Il Semaforo" style="width: 100%; border-radius: 10px; margin-top: 20px;">
         </div>
     </div>
 
-    <!-- Sezione Menù -->
-    <div id="menù" class="content">
-        <h2>Il nostro menù</h2>
-        <p>Scopri le nostre specialità preparate con ingredienti freschi e di qualità.</p>
+<!-- Sezione Menù -->
+<div id="menù" class="content">
+    <h2>Il nostro menù</h2>
+    <p>Scopri le nostre specialità preparate con ingredienti freschi e di qualità.</p>
+
+    <div class="menu-section">
+        <h3>Menù del Giovedì</h3>
         <ul>
-            <li>Margherita: pomodoro, mozzarella, basilico</li>
-            <li>Diavola: pomodoro, mozzarella, salame piccante</li>
-            <li>Vegetariana: pomodoro, mozzarella, verdure grigliate</li>
-            <li>Quattro Formaggi: mozzarella, gorgonzola, parmigiano, ricotta</li>
-            <li>Speciale Il Semaforo: pomodoro, mozzarella, prosciutto cotto, funghi</li>
+            <li><strong>Antipasti:</strong> Affettati misti e sott'oli accompagnati da covaccino caldo</li>
+            <li><strong>Giropizza</strong></li>
+            <li><strong>Dolce della casa e bevuta piccola</strong></li>
+            <li><strong>Prezzo:</strong> 16€</li>
         </ul>
     </div>
+
+    <div class="menu-section">
+        <h3>Menù dal Venerdì alla Domenica</h3>
+        <ul>
+            <li><strong>Antipasti:</strong> Affettati misti e sott'oli accompagnati da covaccino caldo</li>
+            <li><strong>Giropizza</strong></li>
+            <li><strong>Dolce della casa e bevuta piccola</strong></li>
+            <li><strong>Prezzo:</strong> 18€</li>
+        </ul>
+    </div>
+</div>
 
     <!-- Sezione Galleria -->
     <div id="galleria" class="content">
