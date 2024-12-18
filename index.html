@@ -217,8 +217,12 @@
         </div>
     </div>
 	
-<!-- Sezione "Leggi Recensioni" -->
+  <!-- Pulsante che porta alla sezione recensioni -->
+    <button onclick="showRecensioni()">Leggi le recensioni</button>
+
+    <!-- Sezione Recensioni -->
     <div id="recensioni-manuali">
+        <h3>Recensioni dei nostri clienti</h3>
         <h3>Recensioni dei nostri clienti</h3>
         <div class="review">
             <p><strong>laura marchesin</strong></p>
@@ -346,15 +350,21 @@ Abbiamo affittato la stanza fuori, ed era abbastanza grande da accoglierci tutti
             showModal('confirmationModal');
             document.getElementById('prenotazione-form').reset();
             setTimeout(() => showSection('main'), 3000); // Nascondi la sezione di prenotazione e mostra la sezione principale dopo 3 secondi
-        });
-		function toggleRecensioni() {
-            const recensioni = document.getElementById('recensioni-manuali');
-            if (recensioni.style.display === 'none' || recensioni.style.display === '') {
-                recensioni.style.display = 'block'; // Mostra la sezione
-            } else {
-                recensioni.style.display = 'none'; // Nascondi la sezione
-            }
+    
+ // Funzione per mostrare la sezione recensioni
+        function showRecensioni() {
+            // Nascondi il contenuto principale (se necessario) e mostra le recensioni
+            document.getElementById('recensioni-manuali').style.display = 'block';
+            window.scrollTo(0, document.body.scrollHeight); // Scorrere verso la sezione recensioni
         }
+
+        // Funzione per tornare alla pagina principale
+        function backToMain() {
+            // Nascondi la sezione recensioni e torna alla pagina principale
+            document.getElementById('recensioni-manuali').style.display = 'none';
+            window.scrollTo(0, 0); // Torna in cima alla pagina
+        }
+		    });
     </script>
 
 </body>
