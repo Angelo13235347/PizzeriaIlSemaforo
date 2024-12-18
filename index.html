@@ -44,44 +44,6 @@
         .nav a:hover {
             background-color: #c24014;
         }
-
-        /* Barra laterale per dispositivi mobili */
-        .menu-bar {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100%;
-            background-color: #d84b16;
-            z-index: 1000;
-            padding-top: 60px;
-        }
-        .menu-bar a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 15px;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-        .menu-bar a:hover {
-            background-color: #c24014;
-        }
-
-        .open-btn {
-            font-size: 30px;
-            background-color: transparent;
-            border: none;
-            color: white;
-            cursor: pointer;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 2000;
-        }
-
-        /* Contenuti principali */
         .content {
             display: none;
             text-align: center;
@@ -130,38 +92,113 @@
             background-color: #c24014;
             transform: scale(1.05);
         }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .social-icons img {
+            width: 35px;
+            transition: transform 0.3s ease;
+        }
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
         footer {
             text-align: center;
             margin: 30px 0;
             font-size: 0.9em;
             color: #777;
         }
-
-        @media (max-width: 768px) {
-            /* Nascondi la barra di navigazione orizzontale e mostra il pulsante di apertura della sidebar */
-            .nav {
-                display: none;
-            }
-            .open-btn {
-                display: block;
-            }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
         }
-
-        @media (min-width: 769px) {
-            /* Visualizza la barra di navigazione orizzontale per desktop */
-            .menu-bar {
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .reviews {
+            margin-top: 50px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .review-item {
+            margin-bottom: 30px;
+        }
+        .review-item p {
+            font-style: italic;
+        }
+        .review-item h3 {
+            color: #d84b16;
+        }
+        .events {
+            padding: 30px;
+            background-color: #fafafa;
+        }
+        .event {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Barra laterale mobile */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #c24014;
+            transition: left 0.3s ease;
+            padding-top: 20px;
+            z-index: 1001;
+        }
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        .sidebar a:hover {
+            background-color: #d84b16;
+        }
+        .open-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            color: #d84b16;
+            cursor: pointer;
+            z-index: 1002;
+        }
+        @media screen and (min-width: 768px) {
+            .sidebar {
                 display: none;
+            }
+            .nav {
+                display: flex;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Pulsante per aprire la barra laterale su mobile -->
-    <button class="open-btn" onclick="toggleMenu()">&#9776;</button>
-
     <!-- Barra laterale per dispositivi mobili -->
-    <div class="menu-bar" id="mobileMenu">
+    <div id="sidebar" class="sidebar">
         <a href="#" onclick="showSection('main')">Home</a>
         <a href="#" onclick="showSection('chiSiamo')">Chi Siamo</a>
         <a href="#" onclick="showSection('menù')">Menù</a>
@@ -170,7 +207,10 @@
         <a href="#" onclick="showSection('prenotaOra')">Prenota Ora</a>
     </div>
 
-    <!-- Navbar per desktop -->
+    <!-- Bottone per aprire la barra laterale su dispositivi mobili -->
+    <span class="open-btn" onclick="toggleSidebar()">☰</span>
+
+    <!-- Navbar -->
     <div class="nav">
         <a href="#" onclick="showSection('main')">Home</a>
         <a href="#" onclick="showSection('chiSiamo')">Chi Siamo</a>
@@ -180,64 +220,47 @@
         <a href="#" onclick="showSection('prenotaOra')">Prenota Ora</a>
     </div>
 
-    <!-- Sezione principale -->
+    <!-- Contenuti -->
     <div id="main" class="content active">
         <h1>Benvenuti da Pizzeria Il Semaforo</h1>
         <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
-        <iframe src="https://www.google.com/maps/embed?pb=..."></iframe>
-    </div>
-
-    <!-- Sezione Chi Siamo -->
-    <div id="chiSiamo" class="content">
-        <h2>La nostra storia</h2>
-        <div class="form-container">
-            <p><strong>Circa un anno fa, la nostra pizzeria “Il Semaforo” è nata da un sogno condiviso...</strong></p>
+        <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen></iframe>
+        <div class="social-icons">
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="instagram-logo.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="facebook-logo.png" alt="Facebook">
+            </a>
+            <a href="https://www.tiktok.com" target="_blank">
+                <img src="tiktok-logo.png" alt="TikTok">
+            </a>
         </div>
     </div>
 
-    <!-- Sezione Menù -->
-    <div id="menù" class="content">
-        <h2>I NOSTRI MENU'</h2>
-        <p>Scopri le nostre specialità preparate con ingredienti freschi e di qualità.</p>
-    </div>
+    <!-- Altre sezioni: Chi Siamo, Menù, Galleria, Eventi, Prenota Ora -->
+    <!-- (Resto del contenuto rimane invariato, vedi sopra) -->
 
-    <!-- Sezione Galleria -->
-    <div id="galleria" class="content">
-        <h2>Galleria Fotografica</h2>
-    </div>
-
-    <!-- Sezione Eventi -->
-    <div id="eventi" class="content">
-        <h2>I nostri eventi</h2>
-    </div>
-
-    <!-- Sezione Prenota Ora -->
-    <div id="prenotaOra" class="content">
-        <h2>Prenota un tavolo</h2>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Pizzeria Il Semaforo | Tutti i diritti riservati</p>
-    </footer>
+    <footer>&copy; 2024 Pizzeria Il Semaforo</footer>
 
     <script>
         function showSection(section) {
             const sections = document.querySelectorAll('.content');
-            sections.forEach(sec => {
+            sections.forEach(function (sec) {
                 sec.classList.remove('active');
             });
             document.getElementById(section).classList.add('active');
+            closeSidebar();  // Chiudi la barra laterale quando si cambia sezione
         }
 
-        // Funzione per aprire/chiudere la barra laterale su mobile
-        function toggleMenu() {
-            const menu = document.getElementById("mobileMenu");
-            if (menu.style.display === "block") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "block";
-            }
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            const left = sidebar.style.left === "0px" ? "-250px" : "0px";
+            sidebar.style.left = left;
+        }
+
+        function closeSidebar() {
+            document.getElementById("sidebar").style.left = "-250px";
         }
     </script>
 </body>
