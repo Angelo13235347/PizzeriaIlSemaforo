@@ -12,6 +12,22 @@
             background-color: #f2f2f2;
             color: #333;
         }
+        #recensioni-manuali {
+            display: none; /* Inizialmente nascosto */
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .review {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .review:last-child {
+            border-bottom: none;
+        }
         h1 {
             animation: fadeIn 3s ease-in-out;
             font-size: 3em;
@@ -216,9 +232,6 @@
             </a>
         </div>
     </div>
-	
-  <!-- Pulsante che porta alla sezione recensioni -->
-    <button onclick="showRecensioni()">Leggi le recensioni</button>
 
     <!-- Sezione Recensioni -->
     <div id="recensioni-manuali">
