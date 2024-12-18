@@ -143,50 +143,13 @@
                 opacity: 1;
             }
         }
-.menu-section {
-    background-color: #fff;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-.menu-section h3 {
-    color: #d84b16;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-}
-
-.menu-section ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu-section li {
-    font-size: 1.2rem;
-    margin: 8px 0;
-    display: inline-block; /* Posiziona gli elementi orizzontalmente */
-    width: 30%; /* Imposta una larghezza fissa per ciascun elemento */
-    box-sizing: border-box; /* Assicura che la larghezza tenga conto anche del padding e dei margini */
-    padding: 5px; /* Un po' di spazio tra gli elementi */
-}
-
-.menu-section li strong {
-    color: #333;
-}
-
-/* Media query per schermi più piccoli */
-@media (max-width: 768px) {
-    .menu-section h3 {
-        font-size: 1.5rem;
-    }
-    .menu-section li {
-        width: 100%; /* Gli elementi occupano tutta la larghezza su schermi piccoli */
-        margin-bottom: 10px; /* Maggiore distanza tra gli elementi */
-    }
-}
-
+        /* Media query per dispositivi mobili */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
 
         @media (max-width: 480px) {
             .gallery {
