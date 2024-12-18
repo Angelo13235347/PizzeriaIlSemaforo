@@ -293,8 +293,8 @@
         <p>&copy; 2024 Pizzeria Il Semaforo | Tutti i diritti riservati</p>
     </footer>
 
-    <script>
-        document.getElementById('data').addEventListener('input', function() {
+<script>
+document.getElementById('data').addEventListener('input', function() {
     const dataInput = this;
     const selectedDate = new Date(dataInput.value);
     const dayOfWeek = selectedDate.getDay(); 
@@ -304,13 +304,15 @@
         alert("Puoi selezionare solo giovedì, venerdì, sabato o domenica.");
         dataInput.value = ""; // Resetta la selezione
     }
-        function showSection(section) {
-            const sections = document.querySelectorAll('.content');
-            sections.forEach(sec => {
-                sec.classList.remove('active');
-            });
-            document.getElementById(section).classList.add('active');
-        }
-    </script>
-</body>
+});
+
+// Funzione per mostrare le sezioni
+function showSection(section) {
+    const sections = document.querySelectorAll('.content');
+    sections.forEach(sec => {
+        sec.classList.remove('active');
+    });
+    document.getElementById(section).classList.add('active');
+}
+</script>
 </html>
