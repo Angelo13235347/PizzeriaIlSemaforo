@@ -244,8 +244,7 @@
         <div class="review">
             <p><strong>Giada Balduinotti</strong></p>
             <p>Valutazione: ⭐⭐⭐⭐⭐</p>
-            <p>Personale super gentile e disponibile.
-Abbiamo affittato la stanza fuori, ed era abbastanza grande da accoglierci tutti (circa 50). Era ben tenuta e pulita. Pizza favolosa.</p>
+            <p>Personale super gentile e disponibile. Abbiamo affittato la stanza fuori, ed era abbastanza grande da accoglierci tutti (circa 50). Era ben tenuta e pulita. Pizza favolosa.</p>
         </div>
         <div class="review">
             <p><strong>Alessandro Galli</strong></p>
@@ -363,21 +362,18 @@ Abbiamo affittato la stanza fuori, ed era abbastanza grande da accoglierci tutti
             document.getElementById('prenotazione-form').reset();
             setTimeout(() => showSection('main'), 3000); // Nascondi la sezione di prenotazione e mostra la sezione principale dopo 3 secondi
 
-		        // Funzione per mostrare la sezione recensioni
-        function showRecensioni() {
-            // Nascondi il contenuto principale (se necessario) e mostra le recensioni
+        // Funzione per mostrare la sezione recensioni
+        document.getElementById('recensioniButton').addEventListener('click', function() {
             document.getElementById('recensioni-manuali').style.display = 'block';
             window.scrollTo(0, document.body.scrollHeight); // Scorrere verso la sezione recensioni
         }
 
         // Funzione per tornare alla pagina principale
         function backToMain() {
-            // Nascondi la sezione recensioni e torna alla pagina principale
             document.getElementById('recensioni-manuali').style.display = 'none';
             window.scrollTo(0, 0); // Torna in cima alla pagina
-        }
+		 }
 		    });
     </script>
-
 </body>
 </html>
