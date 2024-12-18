@@ -143,13 +143,6 @@
                 opacity: 1;
             }
         }
-
-        /* Media query per dispositivi mobili */
-        @media (max-width: 768px) {
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-        }
 .menu-section {
     background-color: #fff;
     padding: 20px;
@@ -167,14 +160,16 @@
 .menu-section ul {
     list-style-type: none;
     padding: 0;
-    display: flex; /* Usa Flexbox per disporre gli elementi orizzontalmente */
-    flex-wrap: wrap; /* Consente di andare a capo se necessario */
-    gap: 20px; /* Distanza tra gli elementi */
+    margin: 0;
 }
 
 .menu-section li {
     font-size: 1.2rem;
     margin: 8px 0;
+    display: inline-block; /* Posiziona gli elementi orizzontalmente */
+    width: 30%; /* Imposta una larghezza fissa per ciascun elemento */
+    box-sizing: border-box; /* Assicura che la larghezza tenga conto anche del padding e dei margini */
+    padding: 5px; /* Un po' di spazio tra gli elementi */
 }
 
 .menu-section li strong {
@@ -186,11 +181,12 @@
     .menu-section h3 {
         font-size: 1.5rem;
     }
-    .menu-section ul {
-        flex-direction: column; /* Su schermi più piccoli, gli elementi saranno disposti in colonna */
-        gap: 10px; /* Ridurre lo spazio tra gli elementi */
+    .menu-section li {
+        width: 100%; /* Gli elementi occupano tutta la larghezza su schermi piccoli */
+        margin-bottom: 10px; /* Maggiore distanza tra gli elementi */
     }
 }
+
 
         @media (max-width: 480px) {
             .gallery {
