@@ -299,31 +299,54 @@
             </div>
         </div>
     </div>
-
-    <!-- Sezione Prenota Ora -->
+<!-- Sezione "Prenota Ora" -->
     <div id="prenotaOra" class="content">
         <h2>Prenota un tavolo</h2>
-        <div class="form-container">
-            <form id="prenotazione-form">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-                <label for="cognome">Cognome:</label>
-                <input type="text" id="cognome" name="cognome" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="telefono">Telefono (9 cifre):</label>
-                <input type="tel" id="telefono" name="telefono" pattern="^[0-9]{9}$" required>
-                <label for="data">Data della prenotazione:</label>
-                <input type="date" id="data" name="data" required>
-                <label for="ora">Ora della prenotazione:</label>
-                <input type="time" id="ora" name="ora" required>
-                <label for="persone">Numero di persone:</label>
-                <input type="number" id="persone" name="persone" required min="1" max="10">
-                <button type="submit">Prenota Ora</button>
-            </form>
-        </div>
+        <form id="prenotazione-form">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" name="cognome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefono">Telefono (9 cifre):</label>
+            <input type="tel" id="telefono" name="telefono" pattern="\d{9}" maxlength="9" required>
+
+            <label for="data">Seleziona la data (solo giovedì - domenica):</label>
+            <input type="date" id="data" name="data" required>
+
+            <label for="persone">Numero di persone (max 30):</label>
+            <input type="number" id="persone" name="persone" min="1" max="30" required>
+
+            <label for="orario">Seleziona l'orario (19:00 - 22:00):</label>
+            <select id="orario" name="orario" required>
+                <option value="">Seleziona un orario</option>
+                <option value="19:00">19:00</option>
+                <option value="19:30">19:30</option>
+                <option value="20:00">20:00</option>
+                <option value="20:30">20:30</option>
+                <option value="21:00">21:00</option>
+                <option value="21:30">21:30</option>
+                <option value="22:00">22:00</option>
+            </select>
+
+            <button type="submit">Conferma prenotazione</button>
+        </form>
+        <a class="back-button" href="#" onclick="showSection('main')">Torna al menù principale</a>
     </div>
 
+    <!-- Modal di conferma -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('confirmationModal')">&times;</span>
+            <h2>Perfetto!</h2>
+            <p>La tua prenotazione è stata salvata. Controlla la mail per la conferma!</p>
+        </div>
+    </div>
+    
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Pizzeria Il Semaforo | Tutti i diritti riservati</p>
