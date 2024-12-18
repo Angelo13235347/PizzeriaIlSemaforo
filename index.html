@@ -150,49 +150,48 @@
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
         }
-        .menu-section {
-            background-color: #fff;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .menu-section h3 {
-            color: #d84b16;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        .menu-section ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .menu-section li {
-            font-size: 1.2rem;
-            margin: 8px 0;
-        }
-        .menu-section li strong {
-            color: #333;
-        }
+.menu-section {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            .nav a {
-                font-size: 16px;
-                padding: 10px;
-            }
-            iframe {
-                width: 90%;
-                height: 300px;
-            }
-            .form-container {
-                padding: 20px;
-            }
-            .menu-section h3 {
-                font-size: 1.5rem;
-            }
-        }
+.menu-section h3 {
+    color: #d84b16;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.menu-section ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex; /* Usa Flexbox per disporre gli elementi orizzontalmente */
+    flex-wrap: wrap; /* Consente di andare a capo se necessario */
+    gap: 20px; /* Distanza tra gli elementi */
+}
+
+.menu-section li {
+    font-size: 1.2rem;
+    margin: 8px 0;
+}
+
+.menu-section li strong {
+    color: #333;
+}
+
+/* Media query per schermi più piccoli */
+@media (max-width: 768px) {
+    .menu-section h3 {
+        font-size: 1.5rem;
+    }
+    .menu-section ul {
+        flex-direction: column; /* Su schermi più piccoli, gli elementi saranno disposti in colonna */
+        gap: 10px; /* Ridurre lo spazio tra gli elementi */
+    }
+}
+
         @media (max-width: 480px) {
             .gallery {
                 grid-template-columns: 1fr;
