@@ -336,6 +336,44 @@
     </footer>
 
 <script>
+// Aggiungi fiocchi di neve
+function createSnowflake() {
+    const snowflake = document.createElement("div");
+    snowflake.classList.add("snowflake");
+    snowflake.textContent = "❄";
+    snowflake.style.left = Math.random() * 100 + "vw";
+    snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
+    snowflake.style.opacity = Math.random();
+    document.body.appendChild(snowflake);
+
+    setTimeout(() => {
+        snowflake.remove();
+    }, 5000);
+}
+
+// Intervallo per creare fiocchi di neve
+setInterval(createSnowflake, 200);
+
+// Stile CSS per i fiocchi di neve
+const snowflakeStyle = document.createElement("style");
+snowflakeStyle.textContent = `
+  .snowflake {
+    position: fixed;
+    top: -2em;
+    font-size: 2em;
+    color: white;
+    pointer-events: none;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(100vh);
+    }
+  }
+`;
+document.head.appendChild(snowflakeStyle);
+    
 document.getElementById('data').addEventListener('input', function() {
     const dataInput = this;
     const selectedDate = new Date(dataInput.value);
