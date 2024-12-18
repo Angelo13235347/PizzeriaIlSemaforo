@@ -193,81 +193,6 @@
                 display: flex;
             }
         }
-    </style>
-</head>
-<body>
-
-    <!-- Barra laterale per dispositivi mobili -->
-    <div id="sidebar" class="sidebar">
-        <a href="#" onclick="showSection('main')">Home</a>
-        <a href="#" onclick="showSection('chiSiamo')">Chi Siamo</a>
-        <a href="#" onclick="showSection('menù')">Menù</a>
-        <a href="#" onclick="showSection('galleria')">Galleria</a>
-        <a href="#" onclick="showSection('eventi')">Eventi</a>
-        <a href="#" onclick="showSection('prenotaOra')">Prenota Ora</a>
-    </div>
-
-    <!-- Bottone per aprire la barra laterale su dispositivi mobili -->
-    <span class="open-btn" onclick="toggleSidebar()">☰</span>
-
-    <!-- Navbar -->
-    <div class="nav">
-        <a href="#" onclick="showSection('main')">Home</a>
-        <a href="#" onclick="showSection('chiSiamo')">Chi Siamo</a>
-        <a href="#" onclick="showSection('menù')">Menù</a>
-        <a href="#" onclick="showSection('galleria')">Galleria</a>
-        <a href="#" onclick="showSection('eventi')">Eventi</a>
-        <a href="#" onclick="showSection('prenotaOra')">Prenota Ora</a>
-    </div>
-
-    <!-- Contenuti -->
-    <div id="main" class="content active">
-        <h1>Benvenuti da Pizzeria Il Semaforo</h1>
-        <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
-        <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen></iframe>
-        <div class="social-icons">
-            <a href="https://www.instagram.com" target="_blank">
-                <img src="instagram-logo.png" alt="Instagram">
-            </a>
-            <a href="https://www.facebook.com" target="_blank">
-                <img src="facebook-logo.png" alt="Facebook">
-            </a>
-            <a href="https://www.tiktok.com" target="_blank">
-                <img src="tiktok-logo.png" alt="TikTok">
-            </a>
-        </div>
-    </div>
-
-    <!-- Altre sezioni: Chi Siamo, Menù, Galleria, Eventi, Prenota Ora -->
-    <!-- (Resto del contenuto rimane invariato, vedi sopra) -->
-
-    <footer>&copy; 2024 Pizzeria Il Semaforo</footer>
-
-    <script>
-        function showSection(section) {
-            const sections = document.querySelectorAll('.content');
-            sections.forEach(function (sec) {
-                sec.classList.remove('active');
-            });
-            document.getElementById(section).classList.add('active');
-            closeSidebar();  // Chiudi la barra laterale quando si cambia sezione
-        }
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            const left = sidebar.style.left === "0px" ? "-250px" : "0px";
-            sidebar.style.left = left;
-        }
-
-        function closeSidebar() {
-            document.getElementById("sidebar").style.left = "-250px";
-        }
-    </script>
-</body>
-</html>
-    </style>
-</head>
-<body>
 
     <!-- Navbar -->
     <div class="nav">
@@ -302,36 +227,37 @@
         <h2>La nostra storia</h2>
         <div class="form-container">
             <p><strong>Circa un anno fa, la nostra pizzeria “Il Semaforo” è nata da un sogno condiviso da una famiglia molto unita.</strong></p>
-        <p>Provenivamo da un altro settore, ma la nostra passione per la cucina e l’amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non è stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realtà.</p>
-        <p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l’abbiamo creata.</p>
+            <p>Provenivamo da un altro settore, ma la nostra passione per la cucina e l’amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non è stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realtà.</p>
+            <p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l’abbiamo creata.</p>
             <img src="Pizzeria Il Semaforo.jpg" alt="Pizzeria Il Semaforo" style="width: 100%; border-radius: 10px; margin-top: 20px;">
         </div>
     </div>
 
-<!-- Sezione Menù -->
-<div id="menù" class="content">
-    <h2>I NOSTRI MENU'</h2>
-    <p>Scopri le nostre specialità preparate con ingredienti freschi e di qualità.</p>
-    <div class="menu-section">
-        <h3>Menù del Giovedì</h3>
-        <ul>
-            <li><strong>Antipasti:</strong> Affettati misti e sott'oli accompagnati da covaccino caldo</li>
-            <li><strong>Giropizza</strong></li>
-            <li><strong>Dolce della casa e bevuta piccola</strong></li>
-            <li><strong>Prezzo:</strong> 16€</li>
-        </ul>
+    <!-- Sezione Menù -->
+    <div id="menù" class="content">
+        <h2>I NOSTRI MENU'</h2>
+        <p>Scopri le nostre specialità preparate con ingredienti freschi e di qualità.</p>
+        <div class="menu-section">
+            <h3>Menù del Giovedì</h3>
+            <ul>
+                <li><strong>Antipasti:</strong> Affettati misti e sott'oli accompagnati da covaccino caldo</li>
+                <li><strong>Giropizza</strong></li>
+                <li><strong>Dolce della casa e bevuta piccola</strong></li>
+                <li><strong>Prezzo:</strong> 16€</li>
+            </ul>
+        </div>
+
+        <div class="menu-section">
+            <h3>Menù dal Venerdì alla Domenica</h3>
+            <ul>
+                <li><strong>Antipasti:</strong> Affettati misti e sott'oli accompagnati da covaccino caldo</li>
+                <li><strong>Giropizza</strong></li>
+                <li><strong>Dolce della casa e bevuta piccola</strong></li>
+                <li><strong>Prezzo:</strong> 18€</li>
+            </ul>
+        </div>
     </div>
 
-    <div class="menu-section">
-        <h3>Menù dal Venerdì alla Domenica</h3>
-        <ul>
-            <li><strong>Antipasti:</strong> Affettati misti e sott'oli accompagnati da covaccino caldo</li>
-            <li><strong>Giropizza</strong></li>
-            <li><strong>Dolce della casa e bevuta piccola</strong></li>
-            <li><strong>Prezzo:</strong> 18€</li>
-        </ul>
-    </div>
-</div>
 <!-- Sezione Galleria --> 
 <div id="galleria" class="content">
     <h2>Galleria Fotografica</h2>
@@ -378,78 +304,31 @@
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 <label for="telefono">Telefono (9 cifre):</label>
-                <input type="tel" id="telefono" name="telefono" pattern="\d{9}" maxlength="9" required>
-                <label for="data">Seleziona la data (giovedì - domenica):</label>
+                <input type="tel" id="telefono" name="telefono" pattern="^[0-9]{9}$" required>
+                <label for="data">Data della prenotazione:</label>
                 <input type="date" id="data" name="data" required>
-                <label for="persone">Numero di persone (max 30):</label>
-                <input type="number" id="persone" name="persone" min="1" max="30" required>
-                <label for="orario">Seleziona l'orario (19:00 - 22:00):</label>
-                <select id="orario" name="orario" required>
-                    <option value="">Seleziona un orario</option>
-                    <option value="19:00">19:00</option>
-                    <option value="19:30">19:30</option>
-                    <option value="20:00">20:00</option>
-                    <option value="20:30">20:30</option>
-                    <option value="21:00">21:00</option>
-                    <option value="21:30">21:30</option>
-                    <option value="22:00">22:00</option>
-                </select>
-                <button type="submit">Conferma prenotazione</button>
+                <label for="ora">Ora della prenotazione:</label>
+                <input type="time" id="ora" name="ora" required>
+                <label for="persone">Numero di persone:</label>
+                <input type="number" id="persone" name="persone" required min="1" max="10">
+                <button type="submit">Prenota Ora</button>
             </form>
         </div>
     </div>
 
-    <!-- Modal di conferma -->
-    <div id="confirmationModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('confirmationModal')">&times;</span>
-            <h2>Perfetto!</h2>
-            <p>La tua prenotazione è stata salvata. Controlla la mail per la conferma!</p>
-        </div>
-    </div>
-
-    <!-- Modal di errore -->
-    <div id="errorModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('errorModal')">&times;</span>
-            <h2>Errore</h2>
-            <p>Alcuni campi non rispettano i criteri!</p>
-        </div>
-    </div>
-
-    <footer>&copy; 2024 Pizzeria Il Semaforo</footer>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Pizzeria Il Semaforo | Tutti i diritti riservati</p>
+    </footer>
 
     <script>
         function showSection(section) {
             const sections = document.querySelectorAll('.content');
-            sections.forEach(function (sec) {
+            sections.forEach(sec => {
                 sec.classList.remove('active');
             });
             document.getElementById(section).classList.add('active');
         }
-
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = "flex";
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-        }
-
-        // Gestione del form di prenotazione
-        document.getElementById('prenotazione-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const form = event.target;
-            const data = new FormData(form);
-
-            if (form.checkValidity()) {
-                openModal('confirmationModal');
-                form.reset();
-            } else {
-                openModal('errorModal');
-            }
-        });
     </script>
 </body>
 </html>
