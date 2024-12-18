@@ -44,6 +44,44 @@
         .nav a:hover {
             background-color: #c24014;
         }
+
+        /* Barra laterale per dispositivi mobili */
+        .menu-bar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #d84b16;
+            z-index: 1000;
+            padding-top: 60px;
+        }
+        .menu-bar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 15px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        .menu-bar a:hover {
+            background-color: #c24014;
+        }
+
+        .open-btn {
+            font-size: 30px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+        }
+
+        /* Contenuti principali */
         .content {
             display: none;
             text-align: center;
@@ -92,176 +130,47 @@
             background-color: #c24014;
             transform: scale(1.05);
         }
-        .social-icons {
-            margin-top: 20px;
-        }
-        .social-icons a {
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        .social-icons img {
-            width: 35px;
-            transition: transform 0.3s ease;
-        }
-        .social-icons img:hover {
-            transform: scale(1.1);
-        }
         footer {
             text-align: center;
             margin: 30px 0;
             font-size: 0.9em;
             color: #777;
         }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-        .gallery img {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-        .reviews {
-            margin-top: 50px;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-        .review-item {
-            margin-bottom: 30px;
-        }
-        .review-item p {
-            font-style: italic;
-        }
-        .review-item h3 {
-            color: #d84b16;
-        }
-        .events {
-            padding: 30px;
-            background-color: #fafafa;
-        }
-        .event {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .modal-content h2 {
-            color: #d84b16;
-        }
-        .modal-content p {
-            font-size: 18px;
-            color: #555;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .menu-section {
-            background-color: #fff;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .menu-section h3 {
-            color: #d84b16;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        .menu-section ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .menu-section li {
-            font-size: 1.2rem;
-            margin: 8px 0;
-        }
-        .menu-section li strong {
-            color: #333;
-        }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+            /* Nascondi la barra di navigazione orizzontale e mostra il pulsante di apertura della sidebar */
+            .nav {
+                display: none;
             }
-            .nav a {
-                font-size: 16px;
-                padding: 10px;
-            }
-            iframe {
-                width: 90%;
-                height: 300px;
-            }
-            .form-container {
-                padding: 20px;
-            }
-            .menu-section h3 {
-                font-size: 1.5rem;
+            .open-btn {
+                display: block;
             }
         }
 
-        @media (max-width: 480px) {
-            .nav {
-                flex-direction: column;
-            }
-            .nav a {
-                padding: 10px;
-            }
-            iframe {
-                width: 100%;
-                height: 250px;
-            }
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-            footer {
-                font-size: 0.8em;
+        @media (min-width: 769px) {
+            /* Visualizza la barra di navigazione orizzontale per desktop */
+            .menu-bar {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
+    <!-- Pulsante per aprire la barra laterale su mobile -->
+    <button class="open-btn" onclick="toggleMenu()">&#9776;</button>
+
+    <!-- Barra laterale per dispositivi mobili -->
+    <div class="menu-bar" id="mobileMenu">
+        <a href="#" onclick="showSection('main')">Home</a>
+        <a href="#" onclick="showSection('chiSiamo')">Chi Siamo</a>
+        <a href="#" onclick="showSection('menù')">Menù</a>
+        <a href="#" onclick="showSection('galleria')">Galleria</a>
+        <a href="#" onclick="showSection('eventi')">Eventi</a>
+        <a href="#" onclick="showSection('prenotaOra')">Prenota Ora</a>
+    </div>
+
+    <!-- Navbar per desktop -->
     <div class="nav">
         <a href="#" onclick="showSection('main')">Home</a>
         <a href="#" onclick="showSection('chiSiamo')">Chi Siamo</a>
@@ -275,28 +184,14 @@
     <div id="main" class="content active">
         <h1>Benvenuti da Pizzeria Il Semaforo</h1>
         <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1462.4312215232844!2d11.1203234!3d43.8093687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a59b7d8859209%3A0x98788d2f085c6016!2sPizzeria%20Il%20Semaforo!5e0!3m2!1sit!2sit!4v1695151262428!5m2!1sit!2sit" allowfullscreen></iframe>
-        <div class="social-icons">
-            <a href="https://www.instagram.com" target="_blank">
-                <img src="instagram-logo.png" alt="Instagram">
-            </a>
-            <a href="https://www.facebook.com" target="_blank">
-                <img src="facebook-logo.png" alt="Facebook">
-            </a>
-            <a href="https://www.tiktok.com" target="_blank">
-                <img src="tiktok-logo.png" alt="TikTok">
-            </a>
-        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=..."></iframe>
     </div>
 
     <!-- Sezione Chi Siamo -->
     <div id="chiSiamo" class="content">
         <h2>La nostra storia</h2>
         <div class="form-container">
-            <p><strong>Circa un anno fa, la nostra pizzeria “Il Semaforo” è nata da un sogno condiviso da una famiglia molto unita.</strong></p>
-            <p>Provenivamo da un altro settore, ma la nostra passione per la cucina e l’amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non è stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realtà.</p>
-            <p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l’abbiamo creata.</p>
-            <img src="Pizzeria Il Semaforo.jpg" alt="Pizzeria Il Semaforo" style="width: 100%; border-radius: 10px; margin-top: 20px;">
+            <p><strong>Circa un anno fa, la nostra pizzeria “Il Semaforo” è nata da un sogno condiviso...</strong></p>
         </div>
     </div>
 
@@ -304,77 +199,21 @@
     <div id="menù" class="content">
         <h2>I NOSTRI MENU'</h2>
         <p>Scopri le nostre specialità preparate con ingredienti freschi e di qualità.</p>
-        <div class="menu-section">
-            <h3>Menù del Giovedì</h3>
-            <ul>
-                <li><strong>Antipasti:</strong> Affettati misti e sott'oli accompagnati da covaccino caldo</li>
-                <li><strong>Giropizza</strong></li>
-                <li><strong>Dolce della casa e bevuta piccola</strong></li>
-                <li><strong>Prezzo:</strong> 16€</li>
-            </ul>
-        </div>
-
-        <div class="menu-section">
-            <h3>Menù dal Venerdì alla Domenica</h3>
-            <ul>
-                <li><strong>Antipasti:</strong> Affettati misti e sott'oli accompagnati da covaccino caldo</li>
-                <li><strong>Giropizza</strong></li>
-                <li><strong>Dolce della casa e bevuta piccola</strong></li>
-                <li><strong>Prezzo:</strong> 18€</li>
-            </ul>
-        </div>
     </div>
 
     <!-- Sezione Galleria -->
     <div id="galleria" class="content">
         <h2>Galleria Fotografica</h2>
-        <div class="gallery">
-            <img src="pizza1.jpg" alt="Pizza 1">
-            <img src="pizza2.jpg" alt="Pizza 2">
-            <img src="pizza3.jpg" alt="Pizza 3">
-            <img src="pizza4.jpg" alt="Pizza 4">
-        </div>
     </div>
 
     <!-- Sezione Eventi -->
     <div id="eventi" class="content">
         <h2>I nostri eventi</h2>
-        <div class="events">
-            <div class="event">
-                <h3>Cena di beneficenza</h3>
-                <p>Unisciti a noi per una cena speciale a favore di un'importante causa sociale.</p>
-                <button>Leggi di più</button>
-            </div>
-            <div class="event">
-                <h3>Serata Karaoke</h3>
-                <p>Divertiti con i tuoi amici durante una serata karaoke con pizza e birra!</p>
-                <button>Leggi di più</button>
-            </div>
-        </div>
     </div>
 
     <!-- Sezione Prenota Ora -->
     <div id="prenotaOra" class="content">
         <h2>Prenota un tavolo</h2>
-        <div class="form-container">
-            <form id="prenotazione-form">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-                <label for="cognome">Cognome:</label>
-                <input type="text" id="cognome" name="cognome" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="telefono">Telefono (9 cifre):</label>
-                <input type="tel" id="telefono" name="telefono" pattern="^[0-9]{9}$" required>
-                <label for="data">Data della prenotazione:</label>
-                <input type="date" id="data" name="data" required>
-                <label for="ora">Ora della prenotazione:</label>
-                <input type="time" id="ora" name="ora" required>
-                <label for="persone">Numero di persone:</label>
-                <input type="number" id="persone" name="persone" required min="1" max="10">
-                <button type="submit">Prenota Ora</button>
-            </form>
-        </div>
     </div>
 
     <!-- Footer -->
@@ -389,6 +228,16 @@
                 sec.classList.remove('active');
             });
             document.getElementById(section).classList.add('active');
+        }
+
+        // Funzione per aprire/chiudere la barra laterale su mobile
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
         }
     </script>
 </body>
