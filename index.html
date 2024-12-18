@@ -44,25 +44,6 @@
         .nav a:hover {
             background-color: #c24014;
         }
-        .button-group {
-            text-align: center;
-            margin-top: 20px;
-        }
-        button {
-            padding: 12px 30px;
-            background-color: #d84b16;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        button:hover {
-            background-color: #c24014;
-            transform: scale(1.05);
-        }
         .content {
             display: none;
             text-align: center;
@@ -232,10 +213,6 @@
     <div id="main" class="content active">
         <h1>Benvenuti da Pizzeria Il Semaforo</h1>
         <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
-        <div class="button-group">
-            <button onclick="showSection('chiSiamo')">Chi Siamo</button>
-            <button onclick="showSection('prenotaOra')">Prenota Ora</button>
-        </div>
         <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen></iframe>
         <div class="social-icons">
             <a href="https://www.instagram.com" target="_blank">
@@ -258,7 +235,6 @@
             <p>Provenivamo da un altro settore, ma la nostra passione per la cucina e l’amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura...</p>
             <img src="Pizzeria Il Semaforo.jpg" alt="Pizzeria Il Semaforo" style="width: 100%; border-radius: 10px; margin-top: 20px;">
         </div>
-        <button onclick="showSection('main')">Torna al menù principale</button>
     </div>
 
     <!-- Sezione Menù -->
@@ -272,7 +248,6 @@
             <li>Quattro Formaggi: mozzarella, gorgonzola, parmigiano, ricotta</li>
             <li>Speciale Il Semaforo: pomodoro, mozzarella, prosciutto cotto, funghi</li>
         </ul>
-        <button onclick="showSection('main')">Torna al menù principale</button>
     </div>
 
     <!-- Sezione Galleria -->
@@ -284,7 +259,6 @@
             <img src="pizza3.jpg" alt="Pizza 3">
             <img src="pizza4.jpg" alt="Pizza 4">
         </div>
-        <button onclick="showSection('main')">Torna al menù principale</button>
     </div>
 
     <!-- Sezione Eventi -->
@@ -302,7 +276,6 @@
                 <button>Leggi di più</button>
             </div>
         </div>
-        <button onclick="showSection('main')">Torna al menù principale</button>
     </div>
 
     <!-- Sezione Prenota Ora -->
@@ -336,7 +309,6 @@
                 <button type="submit">Conferma prenotazione</button>
             </form>
         </div>
-        <button onclick="showSection('main')">Torna al menù principale</button>
     </div>
 
     <!-- Modal di conferma -->
@@ -357,46 +329,39 @@
         </div>
     </div>
 
-    <footer>&copy; 2024 Pizzeria Il Semaforo. Tutti i diritti riservati.</footer>
+    <footer>&copy; 2024 Pizzeria Il Semaforo</footer>
 
     <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.content').forEach(section => {
-                section.classList.remove('active');
+        function showSection(section) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(function (sec) {
+                sec.classList.remove('active');
             });
-            document.getElementById(sectionId).classList.add('active');
+            document.getElementById(section).classList.add('active');
         }
 
-        function showModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "flex";
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+            document.getElementById(modalId).style.display = "none";
         }
 
-        document.getElementById('prenotazione-form').addEventListener('submit', function(event) {
+        // Gestione del form di prenotazione
+        document.getElementById('prenotazione-form').addEventListener('submit', function (event) {
             event.preventDefault();
 
-            const telefono = document.getElementById('telefono').value;
-            if (telefono.length !== 9 || isNaN(telefono)) {
-                showModal('errorModal');
-                return;
+            const form = event.target;
+            const data = new FormData(form);
+
+            if (form.checkValidity()) {
+                openModal('confirmationModal');
+                form.reset();
+            } else {
+                openModal('errorModal');
             }
-
-            const data = new Date(document.getElementById('data').value);
-            const giornoSettimana = data.getUTCDay();
-
-            if (giornoSettimana < 4 || giornoSettimana > 7) {
-                showModal('errorModal');
-                return;
-            }
-
-            showModal('confirmationModal');
-            document.getElementById('prenotazione-form').reset();
-            setTimeout(() => showSection('main'), 3000); 
         });
     </script>
-
 </body>
 </html>
