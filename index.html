@@ -321,13 +321,33 @@
                 return;
             }
 
-            const data = new Date(document.getElementById('data').value);
-            const giornoSettimana = data.getUTCDay();
+document.getElementById('submitBtn').addEventListener('click', function() {
+    const inputData = document.getElementById('data').value;
 
-            if (giornoSettimana < 4 || giornoSettimana > 7) {
-                showModal('errorModal');
-                return;
-            }
+    // Verifica se la data è valida
+    const data = new Date(inputData);
+    if (isNaN(data)) {
+        showModal('errorModal', 'La data inserita non è valida.');
+        return;
+    }
+
+    // Verifica l'anno (deve essere >= 2024)
+    const anno = data.getFullYear();
+    if (anno < 2024) {
+        showModal('errorModal', 'L\'anno deve essere maggiore o uguale a 2024.');
+        return;
+    }
+
+    // Verifica il giorno della settimana
+    const giornoSettimana = data.getUTCDay(); // 0=Dom, 1=Lun, ..., 6=Sab
+    if (giornoSettimana < 4 || giornoSettimana > 7) {
+        showModal('errorModal', 'Il giorno della settimana non è valido.');
+        return;
+    }
+
+    // Se tutte le verifiche sono superate
+    console.log('Data valida:', data);
+    showModal('successModal', 'Data inserita correttamente.');
 
             showModal('confirmationModal');
             document.getElementById('prenotazione-form').reset();
