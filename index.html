@@ -385,7 +385,17 @@
             } else {
                 openModal('errorModal');
             }
-        });
+        document.getElementById('data').addEventListener('input', function() {
+    const dataInput = this;
+    const selectedDate = new Date(dataInput.value);
+    const dayOfWeek = selectedDate.getDay(); 
+
+    // Controlla se il giorno è tra giovedì (4) e domenica (0)
+    if (dayOfWeek !== 4 && dayOfWeek !== 5 && dayOfWeek !== 6 && dayOfWeek !== 0) {
+        alert("Puoi selezionare solo giovedì, venerdì, sabato o domenica.");
+        dataInput.value = ""; // Resetta la selezione
+    }
+});
     </script>
 </body>
 </html>
