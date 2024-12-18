@@ -294,6 +294,7 @@
     </footer>
 
 <script>
+<script>
 document.getElementById('data').addEventListener('input', function() {
     const dataInput = this;
     const selectedDate = new Date(dataInput.value);
@@ -301,25 +302,32 @@ document.getElementById('data').addEventListener('input', function() {
 
     // Controlla se il giorno è tra giovedì (4) e domenica (0)
     if (![4, 5, 6, 0].includes(dayOfWeek)) {
-        // Crea il messaggio di errore personalizzato
-        const errorMsg = document.createElement('div');
-        errorMsg.id = 'error-message';
-        errorMsg.style.color = 'red';
-        errorMsg.style.fontWeight = 'bold';
-        errorMsg.innerHTML = "Errore: <br> È possibile selezionare una data dal giovedì alla domenica.";
+        // Mostra un pop-up personalizzato
+        const popup = document.createElement('div');
+        popup.id = 'custom-popup';
+        popup.style.position = 'fixed';
+        popup.style.top = '50%';
+        popup.style.left = '50%';
+        popup.style.transform = 'translate(-50%, -50%)';
+        popup.style.padding = '20px';
+        popup.style.backgroundColor = '#fff';
+        popup.style.color = 'red';
+        popup.style.fontWeight = 'bold';
+        popup.style.boxShadow = '0 0 15px rgba(0,0,0,0.5)';
+        popup.style.zIndex = '1000';
+        popup.innerHTML = `
+            <p>Errore:</p>
+            <p>È possibile selezionare una data dal giovedì alla domenica.</p>
+            <button id="close-popup">Chiudi</button>
+        `;
+        document.body.appendChild(popup);
 
-        // Controlla se il messaggio esiste già
-        if (!document.getElementById('error-message')) {
-            dataInput.insertAdjacentElement('afterend', errorMsg);
-        }
-        
+        // Chiude il pop-up al click del pulsante
+        document.getElementById('close-popup').addEventListener('click', function() {
+            popup.remove();
+        });
+
         dataInput.value = ""; // Resetta la selezione
-    } else {
-        // Rimuove il messaggio di errore se la data è valida
-        const existingError = document.getElementById('error-message');
-        if (existingError) {
-            existingError.remove();
-        }
     }
 });
 
