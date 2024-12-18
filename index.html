@@ -27,6 +27,9 @@
         .button-group {
             text-align: center;
             margin-top: 20px;
+			<button onclick="window.open('https://www.google.com/maps/place/Pizzeria+Il+Semaforo/@43.8093687,11.1203234,15z/data=!4m6!3m5!1s0x132a59b7d8859209:0x98788d2f085c6016!8m2!3d43.8093687!4d11.1203234!16s%2Fg%2F11k8vpsljj', '_blank')">
+    Leggi le Recensioni
+</button>
         }
         button {
             padding: 12px 25px;
@@ -190,6 +193,22 @@
             text-decoration: none;
             cursor: pointer;
         }
+		.review-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.review-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
     </style>
 </head>
 <body>
@@ -285,7 +304,13 @@
             <p>Alcuni campi non rispettano i criteri!</p>
         </div>
     </div>
-
+<div class="button-group">
+    <button onclick="showSection('chiSiamo')">Chi Siamo</button>
+    <button onclick="showSection('prenotaOra')">Prenota Ora</button>
+    <button class="review-button" onclick="window.open('https://www.google.com/maps/place/Pizzeria+Il+Semaforo/@43.8093687,11.1203234,15z/data=!4m6!3m5!1s0x132a59b7d8859209:0x98788d2f085c6016!8m2!3d43.8093687!4d11.1203234!16s%2Fg%2F11k8vpsljj', '_blank')">
+        Leggi le Recensioni
+    </button>
+</div>
     <footer>&copy; 2024 Pizzeria Il Semaforo. Tutti i diritti riservati.</footer>
 
     <script>
