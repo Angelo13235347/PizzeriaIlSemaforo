@@ -341,6 +341,15 @@
         </div>
     </div>
 
+     <!-- Modal di conferma -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('confirmationModal')">&times;</span>
+            <h2>Perfetto!</h2>
+            <p>La tua prenotazione è stata salvata. Controlla la mail per la conferma!</p>
+        </div>
+    </div>
+
     <!-- Modal di errore -->
     <div id="errorModal" class="modal">
         <div class="modal-content">
@@ -349,42 +358,46 @@
             <p>Alcuni campi non rispettano i criteri!</p>
         </div>
     </div>
-    
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Pizzeria Il Semaforo | Tutti i diritti riservati</p>
-    </footer>
-    
-<script>
-        function showSection(section) {
-            const sections = document.querySelectorAll('.content');
-            sections.forEach(function (sec) {
-                sec.classList.remove('active');
+
+    <footer>&copy; 2024 Pizzeria Il Semaforo. Tutti i diritti riservati.</footer>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.content').forEach(section => {
+                section.classList.remove('active');
             });
-            document.getElementById(section).classList.add('active');
+            document.getElementById(sectionId).classList.add('active');
         }
 
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = "flex";
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
+            document.getElementById(modalId).style.display = 'none';
         }
 
-        // Gestione del form di prenotazione
-        document.getElementById('prenotazione-form').addEventListener('submit', function (event) {
+        document.getElementById('prenotazione-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const form = event.target;
-            const data = new FormData(form);
-
-            if (form.checkValidity()) {
-                openModal('confirmationModal');
-                form.reset();
-            } else {
-                openModal('errorModal');
+            const telefono = document.getElementById('telefono').value;
+            if (telefono.length !== 9 || isNaN(telefono)) {
+                showModal('errorModal');
+                return;
             }
+
+            const data = new Date(document.getElementById('data').value);
+            const giornoSettimana = data.getUTCDay();
+
+            if (giornoSettimana < 4 || giornoSettimana > 7) {
+                showModal('errorModal');
+                return;
+            }
+
+            showModal('confirmationModal');
+            document.getElementById('prenotazione-form').reset();
+            setTimeout(() => showSection('main'), 3000); 
+            
         document.getElementById('data').addEventListener('input', function() {
     const dataInput = this;
     const selectedDate = new Date(dataInput.value);
