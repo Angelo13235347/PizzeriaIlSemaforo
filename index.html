@@ -301,8 +301,25 @@ document.getElementById('data').addEventListener('input', function() {
 
     // Controlla se il giorno è tra giovedì (4) e domenica (0)
     if (![4, 5, 6, 0].includes(dayOfWeek)) {
-        alert("Puoi selezionare solo giovedì, venerdì, sabato o domenica.");
+        // Crea il messaggio di errore personalizzato
+        const errorMsg = document.createElement('div');
+        errorMsg.id = 'error-message';
+        errorMsg.style.color = 'red';
+        errorMsg.style.fontWeight = 'bold';
+        errorMsg.innerHTML = "Errore: <br> È possibile selezionare una data dal giovedì alla domenica.";
+
+        // Controlla se il messaggio esiste già
+        if (!document.getElementById('error-message')) {
+            dataInput.insertAdjacentElement('afterend', errorMsg);
+        }
+        
         dataInput.value = ""; // Resetta la selezione
+    } else {
+        // Rimuove il messaggio di errore se la data è valida
+        const existingError = document.getElementById('error-message');
+        if (existingError) {
+            existingError.remove();
+        }
     }
 });
 
