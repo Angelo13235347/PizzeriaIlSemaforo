@@ -294,7 +294,6 @@
     </footer>
 
 <script>
-<script>
 document.getElementById('data').addEventListener('input', function() {
     const dataInput = this;
     const selectedDate = new Date(dataInput.value);
@@ -302,8 +301,8 @@ document.getElementById('data').addEventListener('input', function() {
 
     // Controlla se il giorno è tra giovedì (4) e domenica (0)
     if (![4, 5, 6, 0].includes(dayOfWeek)) {
-        // Mostra un pop-up personalizzato
-        const popup = document.createElement('div');
+        // Crea il pop-up
+        let popup = document.createElement('div');
         popup.id = 'custom-popup';
         popup.style.position = 'fixed';
         popup.style.top = '50%';
@@ -313,6 +312,9 @@ document.getElementById('data').addEventListener('input', function() {
         popup.style.backgroundColor = '#fff';
         popup.style.color = 'red';
         popup.style.fontWeight = 'bold';
+        popup.style.textAlign = 'center';
+        popup.style.border = '2px solid red';
+        popup.style.borderRadius = '8px';
         popup.style.boxShadow = '0 0 15px rgba(0,0,0,0.5)';
         popup.style.zIndex = '1000';
         popup.innerHTML = `
@@ -322,7 +324,7 @@ document.getElementById('data').addEventListener('input', function() {
         `;
         document.body.appendChild(popup);
 
-        // Chiude il pop-up al click del pulsante
+        // Chiude il pop-up
         document.getElementById('close-popup').addEventListener('click', function() {
             popup.remove();
         });
