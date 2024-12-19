@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Pizzeria Il Semaforo</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <style>
@@ -163,12 +163,13 @@ body {
             }
         }
 
-        /* Media query per dispositivi mobili */
-        @media (max-width: 768px) {
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-        }
+/* Media query per dispositivi con schermi piccoli */
+@media (max-width: 768px) {
+    iframe, img {
+        max-width: 100%;
+        height: auto;
+    }
+}
 
 .menu-section {
     background-color: #fff;
@@ -241,6 +242,7 @@ button {
     font-size: 16px;
     cursor: pointer;
 }
+        
     </style>
 </head>
 <body>
