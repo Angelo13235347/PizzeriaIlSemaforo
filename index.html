@@ -217,6 +217,30 @@ body {
                 grid-template-columns: 1fr;
             }
         }
+        .hidden {
+    display: none;
+}
+.popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+}
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%; max-width: 500px;
+}
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -302,22 +326,52 @@ body {
     </div>
 </div>
     
-    <!-- Sezione Eventi -->
-    <div id="eventi" class="content">
-        <h3>I NOSTRI EVENTI</h3>
-        <div class="events">
-            <div class="event">
-                <h2>Cena di beneficenza</h2>
-                <p>Unisciti a noi per una cena speciale a favore di un'importante causa sociale.</p>
-                <button>Leggi di più</button>
-            </div>
-            <div class="event">
-                <h2>Serata Karaoke</h2>
-                <p>Divertiti con i tuoi amici durante una serata karaoke con pizza e birra!</p>
-                <button>Leggi di più</button>
-            </div>
+  <!-- Sezione Eventi --> 
+<div id="eventi" class="content">
+    <h3>I NOSTRI EVENTI</h3>
+    <div class="events">
+        <div class="event">
+            <h2>Pranzo di Natale</h2>
+            <p>Festeggia il 25 dicembre con un delizioso pranzo natalizio in famiglia.</p>
+            <button onclick="apriPopup('natale')">Leggi di più</button>
+        </div>
+        <div class="event">
+            <h2>Cena di Capodanno</h2>
+            <p>Accogli il nuovo anno con una cena ricca di sapori e brindisi di mezzanotte!</p>
+            <button onclick="apriPopup('capodanno')">Leggi di più</button>
         </div>
     </div>
+</div>
+
+<!-- Popup per gli eventi -->
+<div id="popup-natale" class="popup hidden">
+    <div class="popup-content">
+        <h2>Pranzo di Natale</h2>
+        <p>Goditi il nostro speciale pranzo di Natale con un menù ricco di tradizione:</p>
+        <ul>
+            <li>Antipasto misto della casa</li>
+            <li>Lasagne al ragù</li>
+            <li>Arrosto con patate al forno</li>
+            <li>Dolce natalizio e brindisi</li>
+        </ul>
+        <button onclick="chiudiPopup('natale')">Chiudi</button>
+    </div>
+</div>
+
+<div id="popup-capodanno" class="popup hidden">
+    <div class="popup-content">
+        <h2>Cena di Capodanno</h2>
+        <p>Festeggia il nuovo anno con il nostro speciale menù di Capodanno:</p>
+        <ul>
+            <li>Aperitivo di benvenuto</li>
+            <li>Risotto allo champagne</li>
+            <li>Filetto al pepe verde</li>
+            <li>Dolce della casa e spumante</li>
+        </ul>
+        <button onclick="chiudiPopup('capodanno')">Chiudi</button>
+    </div>
+</div>
+    
    <!-- Sezione Prenota Ora -->
     <div id="prenotaOra" class="content">
         <h3>PRENOTA UN TAVOLO</h3>
@@ -439,6 +493,13 @@ function showSection(section) {
         sec.classList.remove('active');
     });
     document.getElementById(section).classList.add('active');
+}
+    function apriPopup(evento) {
+    document.getElementById(`popup-${evento}`).classList.remove("hidden");
+}
+
+function chiudiPopup(evento) {
+    document.getElementById(`popup-${evento}`).classList.add("hidden");
 }
 </script>
 </html>
