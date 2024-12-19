@@ -343,35 +343,23 @@ button {
     </div>
 </div>
 
-<!-- Popup per gli eventi -->
-<div id="popup-natale" class="popup hidden">
-    <div class="popup-content">
-        <h2>Pranzo di Natale</h2>
-        <p>Goditi il nostro speciale pranzo di Natale con un menù ricco di tradizione:</p>
-        <ul>
-            <li>Antipasto misto della casa</li>
-            <li>Lasagne al ragù</li>
-            <li>Arrosto con patate al forno</li>
-            <li>Dolce natalizio e brindisi</li>
-        </ul>
-        <button onclick="chiudiPopup('natale')">Chiudi</button>
+<!-- Sezione Eventi -->
+<div id="eventi" class="content">
+    <h3>I NOSTRI EVENTI</h3>
+    <div class="events">
+        <div class="event">
+            <h2>Pranzo di Natale</h2>
+            <p>Goditi il nostro speciale pranzo di Natale con un menù ricco di tradizione.</p>
+            <button id="leggi-natale">Leggi di più</button>
+        </div>
+        <div class="event">
+            <h2>Cena di Capodanno</h2>
+            <p>Festeggia il nuovo anno con un menù speciale di Capodanno.</p>
+            <button id="leggi-capodanno">Leggi di più</button>
+        </div>
     </div>
 </div>
 
-<div id="popup-capodanno" class="popup hidden">
-    <div class="popup-content">
-        <h2>Cena di Capodanno</h2>
-        <p>Festeggia il nuovo anno con il nostro speciale menù di Capodanno:</p>
-        <ul>
-            <li>Aperitivo di benvenuto</li>
-            <li>Risotto allo champagne</li>
-            <li>Filetto al pepe verde</li>
-            <li>Dolce della casa e spumante</li>
-        </ul>
-        <button onclick="chiudiPopup('capodanno')">Chiudi</button>
-    </div>
-</div>
-    
    <!-- Sezione Prenota Ora -->
     <div id="prenotaOra" class="content">
         <h3>PRENOTA UN TAVOLO</h3>
@@ -494,12 +482,22 @@ function showSection(section) {
     });
     document.getElementById(section).classList.add('active');
 }
-    function apriPopup(evento) {
-    document.getElementById(`popup-${evento}`).classList.remove("hidden");
+// Funzione per aprire il pop-up
+function apriPopup(event) {
+    document.getElementById(`popup-${event}`).classList.remove('hidden');
 }
 
-function chiudiPopup(evento) {
-    document.getElementById(`popup-${evento}`).classList.add("hidden");
+// Funzione per chiudere il pop-up
+function chiudiPopup(event) {
+    document.getElementById(`popup-${event}`).classList.add('hidden');
 }
+
+// Aggiungi i click event ai pulsanti "Leggi di più"
+document.getElementById("leggi-natale").addEventListener("click", function() {
+    apriPopup('natale');
+});
+document.getElementById("leggi-capodanno").addEventListener("click", function() {
+    apriPopup('capodanno');
+});
 </script>
 </html>
