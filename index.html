@@ -247,12 +247,15 @@ button {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    margin-top: 50px; /* Abbassa la sezione recensioni */
 }
+
 .reviews {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 35px;
 }
+
 .review {
     background: white;
     padding: 20px;
@@ -260,23 +263,27 @@ button {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
+
 .review:hover {
     transform: translateY(-5px);
 }
+
 h3 {
     text-align: center;
     color: #d84b16;
     font-size: 2rem;
 }
+
 h4 {
     color: #e76f51;
     margin-bottom: 10px;
 }
+
 p {
     font-size: 1.1rem;
     color: #333;
     line-height: 1.6;
-}  
+}
     </style>
 </head>
 <body>
