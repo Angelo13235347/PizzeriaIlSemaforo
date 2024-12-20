@@ -494,22 +494,5 @@ function showSection(section) {
     });
     document.getElementById(section).classList.add('active');
 }
-// Funzione per aprire il pop-up
-function apriPopup(event) {
-    document.getElementById(`popup-${event}`).classList.remove('hidden');
-}
-
-// Funzione per chiudere il pop-up
-function chiudiPopup(event) {
-    document.getElementById(`popup-${event}`).classList.add('hidden');
-}
-
-// Aggiungi i click event ai pulsanti "Leggi di più"
-document.getElementById("leggi-natale").addEventListener("click", function() {
-    apriPopup('natale');
-});
-document.getElementById("leggi-capodanno").addEventListener("click", function() {
-    apriPopup('capodanno');
-});
 </script>
 </html>
