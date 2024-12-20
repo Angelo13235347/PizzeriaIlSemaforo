@@ -280,75 +280,19 @@ h4 {
     color: #e76f51;
     margin-bottom: 10px;
 }
-          .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
-  }
-
-  .navbar .menu {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-  }
-
-  .navbar .menu li {
-    margin: 0 10px;
-  }
-
-  .navbar .menu a {
-    color: white;
-    text-decoration: none;
-  }
-
-  .navbar .menu-icon {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-  }
-
-  /* Media query per dispositivi mobili */
-  @media (max-width: 768px) {
-    .navbar .menu {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .navbar .menu.active {
-      display: flex;
-    }
-
-    .navbar .menu li {
-      text-align: center;
-      width: 100%;
-      padding: 10px 0;
-    }
-
-    .navbar .menu-icon {
-      display: block;
-    }
-  }
     </style>
 </head>
 <body>
 
-   <!-- Navbar -->
-<nav class="navbar">
-  <div class="logo">Il Semaforo</div>
-  <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-  <ul id="menu" class="menu">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Chi Siamo</a></li>
-    <li><a href="#">Menù</a></li>
-    <li><a href="#">Galleria</a></li>
-    <li><a href="#">Recensioni</a></li>
-    <li><a href="#">Prenota Ora</a></li>
-  </ul>
-</nav>
+    <!-- Navbar -->
+    <div class="nav">
+        <a href="#" onclick="showSection('main')">Home</a>
+        <a href="#" onclick="showSection('chiSiamo')">Chi Siamo</a>
+        <a href="#" onclick="showSection('menù')">Menù</a>
+        <a href="#" onclick="showSection('galleria')">Galleria</a>
+        <a href="#" onclick="showSection('recensioni')">Recensioni</a>
+        <a href="#" onclick="showSection('prenotaOra')">Prenota Ora</a>
+    </div>
 
     <!-- Sezione principale -->
     <div id="main" class="content active">
@@ -574,9 +518,5 @@ function showSection(section) {
     });
     document.getElementById(section).classList.add('active');
 }
-    function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.classList.toggle("active");
-  }
 </script>
 </html>
