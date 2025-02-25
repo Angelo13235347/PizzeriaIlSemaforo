@@ -2,24 +2,23 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Pizzeria Il Semaforo</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <style>
-body {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #2c3e50; /* Sfondo scuro per contrastare con i fiocchi di neve */
-    color: #333; /* Mantieni il colore del testo originale */
-    background-image: url('background-image.jpg'); /* Se vuoi un'immagine di sfondo */
-    background-size: cover;
-    background-position: center;
-}
-        h1, h2, h3, h4 p {
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        h1, h2, h3, h4, p {
             margin: 0;
             padding: 0;
         }
+
         h1 {
             font-family: 'Roboto', sans-serif;
             font-weight: 500;
@@ -28,22 +27,25 @@ body {
             text-align: center;
             padding-top: 30px;
         }
-          h2 {
+
+        h2 {
             font-family: 'Roboto', sans-serif;
-            font-weight: 20;
-            font-size: 1rem;
-            color: #FFFFFF;
+            font-weight: 400;
+            font-size: 1.5rem;
+            color: #555;
             text-align: center;
             padding-top: 15px;
         }
-                  h3 {
+
+        h3 {
             font-family: 'Roboto', sans-serif;
-            font-weight: 15;
+            font-weight: 500;
             font-size: 2rem;
-            color: #FFFFFF;
+            color: #d84b16;
             text-align: center;
             padding-top: 15px;
         }
+
         .nav {
             background-color: #d84b16;
             padding: 15px 0;
@@ -53,6 +55,7 @@ body {
             top: 0;
             z-index: 1000;
         }
+
         .nav a {
             color: white;
             text-decoration: none;
@@ -60,17 +63,21 @@ body {
             padding: 0 20px;
             transition: background-color 0.3s ease;
         }
+
         .nav a:hover {
             background-color: #c24014;
         }
+
         .content {
             display: none;
             text-align: center;
             margin-top: 30px;
         }
+
         .active {
             display: block;
         }
+
         iframe {
             width: 80%;
             height: 400px;
@@ -79,6 +86,7 @@ body {
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             margin: 20px 0;
         }
+
         .form-container {
             background-color: white;
             border-radius: 10px;
@@ -87,6 +95,7 @@ body {
             margin: 0 auto;
             padding: 30px;
         }
+
         input, select {
             width: 100%;
             padding: 15px;
@@ -95,6 +104,7 @@ body {
             border-radius: 5px;
             box-sizing: border-box;
         }
+
         button[type="submit"] {
             width: 100%;
             padding: 15px;
@@ -107,43 +117,48 @@ body {
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
+
         button[type="submit"]:hover {
             background-color: #c24014;
             transform: scale(1.05);
         }
+
         .social-icons {
             margin-top: 20px;
         }
+
         .social-icons a {
             margin: 0 15px;
             text-decoration: none;
         }
+
         .social-icons img {
             width: 35px;
             transition: transform 0.3s ease;
         }
+
         .social-icons img:hover {
             transform: scale(1.1);
         }
+
         footer {
             text-align: center;
             margin: 30px 0;
             font-size: 0.9em;
             color: #777;
         }
+
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
             padding: 20px;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
         }
 
         .gallery-item {
             width: 100%;
-            height: 200px;  /* Imposta altezza fissa per tutte le immagini */
-            object-fit: cover; /* Questo manterrà il corretto rapporto d'aspetto */
+            height: 200px;
+            object-fit: cover;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -154,132 +169,74 @@ body {
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+        .menu-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 600px;
         }
 
-/* Media query per dispositivi con schermi piccoli */
-@media (max-width: 768px) {
-    iframe, img {
-        max-width: 100%;
-        height: auto;
-    }
-}
+        .menu-section h4 {
+            color: #d84b16;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
 
-.menu-section {
-    background-color: #fff;
-    padding: 10px 15px; /* Ridotto per adattarsi meglio al contenuto */
-    margin: 10px auto; /* Centrare e ridurre lo spazio verticale */
-    display: inline-block; /* Adatta il contenitore al contenuto */
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Allinea il testo a sinistra */
-}
+        .menu-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-.menu-section h3 {
-    color: #d84b16;
-    font-size: 1.8rem;
-    margin: 5px 0; /* Ridotto per meno spazio */
-}
+        .menu-section li {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
 
-.menu-section ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0; /* Elimina spazi non necessari */
-}
+        .menu-section li strong {
+            color: #333;
+        }
 
-.menu-section li {
-    font-size: 1.2rem;
-    margin: 5px 0; /* Ridotto per compattezza */
-}
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
 
-.menu-section li strong {
-    color: #333;
-}
+        .review {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
 
-/* Media query per dispositivi mobili */
-@media (max-width: 768px) {
-    .menu-section {
-        padding: 8px 10px; /* Ulteriore riduzione su schermi piccoli */
-    }
+        .review:hover {
+            transform: translateY(-5px);
+        }
 
-    .menu-section h3 {
-        font-size: 1.5rem;
-    }
-}
-        
-        @media (max-width: 480px) {
+        .review h4 {
+            color: #d84b16;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            iframe, img {
+                max-width: 100%;
+                height: auto;
+            }
+
             .gallery {
                 grid-template-columns: 1fr;
             }
+
+            .menu-section {
+                padding: 15px;
+            }
         }
-        .hidden {
-    display: none;
-}
-.popup {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex; justify-content: center; align-items: center;
-    z-index: 1000;
-}
-.popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    width: 80%; max-width: 500px;
-}
-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-#recensioni { 
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px; /* Abbassa la sezione recensioni */
-    background: none; /* Rimuove completamente lo sfondo */
-    border: none; /* Rimuove completamente il bordo */
-    min-height: 400px; /* Imposta un'altezza minima, se necessario */
-}
-
-.reviews {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.review {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: none; /* Rimuove l'ombra */
-    transition: transform 0.3s ease;
-}
-
-.review:hover {
-    transform: translateY(-5px);
-}
-
-h3 {
-    text-align: center;
-    color: #d84b16;
-    font-size: 2rem; /* Impostato come nelle altre sezioni */
-    padding-top: 10px; /* Allinea meglio il padding */
-}
-
-h4 {
-    color: #e76f51;
-    margin-bottom: 10px;
-}
     </style>
 </head>
 <body>
@@ -348,63 +305,63 @@ h4 {
         </div>
     </div>
 
-<!-- Sezione Galleria --> 
-<div id="galleria" class="content">
-    <h3>GALLERIA FOTOGRAFICA</h3>
-    <div class="gallery">
-        <img src="1.jpg" class="gallery-item">
-        <img src="2.jpg" class="gallery-item">
-        <img src="3.jpg" class="gallery-item">
-        <img src="4.jpg" class="gallery-item">
-        <img src="5.jpg" class="gallery-item">
-        <img src="6.jpg" class="gallery-item">
-        <img src="7.jpg" class="gallery-item">
-        <img src="8.jpg" class="gallery-item">
-        <img src="9.jpg" class="gallery-item">
-        <img src="10.jpg" class="gallery-item">
+    <!-- Sezione Galleria -->
+    <div id="galleria" class="content">
+        <h3>GALLERIA FOTOGRAFICA</h3>
+        <div class="gallery">
+            <img src="1.jpg" class="gallery-item">
+            <img src="2.jpg" class="gallery-item">
+            <img src="3.jpg" class="gallery-item">
+            <img src="4.jpg" class="gallery-item">
+            <img src="5.jpg" class="gallery-item">
+            <img src="6.jpg" class="gallery-item">
+            <img src="7.jpg" class="gallery-item">
+            <img src="8.jpg" class="gallery-item">
+            <img src="9.jpg" class="gallery-item">
+            <img src="10.jpg" class="gallery-item">
+        </div>
     </div>
-</div>
-    
-<!-- Sezione Recensioni -->
-<div id="recensioni" class="content">
-    <h3>RECENSIONI DEI NOSTRI CLIENTI</h3>
-    <div class="reviews">
-        <div class="review">
-            <h4>⭐⭐⭐⭐⭐</h4>
-            <p><strong>Giulia Rossi:</strong> "La pizza più buona che abbia mai mangiato! Ingredienti freschi e personale super cordiale."</p>
-        </div>
-        <div class="review">
-            <h4>⭐⭐⭐⭐⭐</h4>
-            <p><strong>Laura Marchesin:</strong> "Abbiamo mangiato benissimo!!! Servizio eccellente e molto carini!! Ci hanno servito subito! Siamo state a cena con amiche: salumi ottimi schiacciata super !! Pizze eccellenti e ci hanno servito velocissimi.Ah dimenticavo....i dolci artigianali sono il top! Dovete assolutamente andare!!"</p>
-        </div>
-        <div class="review">
-            <h4>⭐⭐⭐⭐</h4>
-            <p><strong>Giada Balduinotti:</strong> "Personale super gentile e disponibile. Abbiamo affittato la stanza fuori, ed era abbastanza grande da accoglierci tutti (circa 50). Era ben tenuta e pulita. Pizza favolosa."</p>
-        </div>
-        <div class="review">
-            <h4>⭐⭐⭐⭐⭐</h4>
-            <p><strong>Marco Neri:</strong> "Il giropizza è una genialata! Complimenti a tutto lo staff!"</p>
-        </div>
-        <div class="review">
-            <h4>⭐⭐⭐⭐⭐</h4>
-            <p><strong>Alessandro Galli:</strong> "Luogo meraviglioso, personale fantastico. Primi buonissimi e pizza top a prezzi onestissimi. Bravi!!!!"</p>
-        </div>
-         <div class="review">
-            <h4>⭐⭐⭐⭐</h4>
-            <p><strong>Francesco De Martino:</strong> "Devo dire decisamente migliorato. Menù a prezzo fisso abbondante e buono. Riaggiornata anche la parte interna con nuova illuminazione. Comodo anche per cene di gruppo, con salette dedicate. Nonostante un inconveniente con la prenotazione, hanno rimediato bene."</p>
-        </div>
-         <div class="review">
-            <h4>⭐⭐⭐⭐⭐</h4>
-            <p><strong>Andrea B:</strong> Ambiente accogliente con cucina a vista SUPER pulita, pizza buonissima e molto digeribile. Servizio veloce e coccola il cliente. Consigliatissimo! 
-         </div>       
-         <div class="review">
-            <h4>⭐⭐⭐⭐⭐</h4>
-            <p><strong>Fabiola Galardi:</strong> Antipasto semplice a base di ottima schiacciata e affettati.. mozzarelle e sottoli pizza buona e croccante a volontà bevande dolce e caffè prezzo super
-         </div>    
-    </div>
-</div>
 
-   <!-- Sezione Prenota Ora -->
+    <!-- Sezione Recensioni -->
+    <div id="recensioni" class="content">
+        <h3>RECENSIONI DEI NOSTRI CLIENTI</h3>
+        <div class="reviews">
+            <div class="review">
+                <h4>⭐⭐⭐⭐⭐</h4>
+                <p><strong>Giulia Rossi:</strong> "La pizza più buona che abbia mai mangiato! Ingredienti freschi e personale super cordiale."</p>
+            </div>
+            <div class="review">
+                <h4>⭐⭐⭐⭐⭐</h4>
+                <p><strong>Laura Marchesin:</strong> "Abbiamo mangiato benissimo!!! Servizio eccellente e molto carini!! Ci hanno servito subito! Siamo state a cena con amiche: salumi ottimi schiacciata super !! Pizze eccellenti e ci hanno servito velocissimi.Ah dimenticavo....i dolci artigianali sono il top! Dovete assolutamente andare!!"</p>
+            </div>
+            <div class="review">
+                <h4>⭐⭐⭐⭐</h4>
+                <p><strong>Giada Balduinotti:</strong> "Personale super gentile e disponibile. Abbiamo affittato la stanza fuori, ed era abbastanza grande da accoglierci tutti (circa 50). Era ben tenuta e pulita. Pizza favolosa."</p>
+            </div>
+            <div class="review">
+                <h4>⭐⭐⭐⭐⭐</h4>
+                <p><strong>Marco Neri:</strong> "Il giropizza è una genialata! Complimenti a tutto lo staff!"</p>
+            </div>
+            <div class="review">
+                <h4>⭐⭐⭐⭐⭐</h4>
+                <p><strong>Alessandro Galli:</strong> "Luogo meraviglioso, personale fantastico. Primi buonissimi e pizza top a prezzi onestissimi. Bravi!!!!"</p>
+            </div>
+            <div class="review">
+                <h4>⭐⭐⭐⭐</h4>
+                <p><strong>Francesco De Martino:</strong> "Devo dire decisamente migliorato. Menù a prezzo fisso abbondante e buono. Riaggiornata anche la parte interna con nuova illuminazione. Comodo anche per cene di gruppo, con salette dedicate. Nonostante un inconveniente con la prenotazione, hanno rimediato bene."</p>
+            </div>
+            <div class="review">
+                <h4>⭐⭐⭐⭐⭐</h4>
+                <p><strong>Andrea B:</strong> Ambiente accogliente con cucina a vista SUPER pulita, pizza buonissima e molto digeribile. Servizio veloce e coccola il cliente. Consigliatissimo!</p>
+            </div>
+            <div class="review">
+                <h4>⭐⭐⭐⭐⭐</h4>
+                <p><strong>Fabiola Galardi:</strong> Antipasto semplice a base di ottima schiacciata e affettati.. mozzarelle e sottoli pizza buona e croccante a volontà bevande dolce e caffè prezzo super</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sezione Prenota Ora -->
     <div id="prenotaOra" class="content">
         <h3>PRENOTA UN TAVOLO</h3>
         <div class="form-container">
@@ -440,53 +397,27 @@ h4 {
         <p>&copy; 2024 Pizzeria Il Semaforo | Tutti i diritti riservati</p>
     </footer>
 
-<script>
-document.getElementById('data').addEventListener('input', function() {
-    const dataInput = this;
-    const selectedDate = new Date(dataInput.value);
-    const dayOfWeek = selectedDate.getDay(); 
+    <script>
+        document.getElementById('data').addEventListener('input', function() {
+            const dataInput = this;
+            const selectedDate = new Date(dataInput.value);
+            const dayOfWeek = selectedDate.getDay();
 
-    // Controlla se il giorno è tra giovedì (4) e domenica (0)
-    if (![4, 5, 6, 0].includes(dayOfWeek)) {
-        // Crea il pop-up
-        let popup = document.createElement('div');
-        popup.id = 'custom-popup';
-        popup.style.position = 'fixed';
-        popup.style.top = '50%';
-        popup.style.left = '50%';
-        popup.style.transform = 'translate(-50%, -50%)';
-        popup.style.padding = '20px';
-        popup.style.backgroundColor = '#fff';
-        popup.style.color = 'red';
-        popup.style.fontWeight = 'bold';
-        popup.style.textAlign = 'center';
-        popup.style.border = '2px solid red';
-        popup.style.borderRadius = '8px';
-        popup.style.boxShadow = '0 0 15px rgba(0,0,0,0.5)';
-        popup.style.zIndex = '1000';
-        popup.innerHTML = `
-            <p>Errore:</p>
-            <p>È possibile selezionare una data dal giovedì alla domenica.</p>
-            <button id="close-popup">Chiudi</button>
-        `;
-        document.body.appendChild(popup);
-
-        // Chiude il pop-up
-        document.getElementById('close-popup').addEventListener('click', function() {
-            popup.remove();
+            // Controlla se il giorno è tra giovedì (4) e domenica (0)
+            if (![4, 5, 6, 0].includes(dayOfWeek)) {
+                alert("Errore: È possibile selezionare una data dal giovedì alla domenica.");
+                dataInput.value = ""; // Resetta la selezione
+            }
         });
 
-        dataInput.value = ""; // Resetta la selezione
-    }
-});
-
-// Funzione per mostrare le sezioni
-function showSection(section) {
-    const sections = document.querySelectorAll('.content');
-    sections.forEach(sec => {
-        sec.classList.remove('active');
-    });
-    document.getElementById(section).classList.add('active');
-}
-</script>
+        // Funzione per mostrare le sezioni
+        function showSection(section) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(sec => {
+                sec.classList.remove('active');
+            });
+            document.getElementById(section).classList.add('active');
+        }
+    </script>
+</body>
 </html>
