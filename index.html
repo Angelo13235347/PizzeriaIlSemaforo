@@ -504,15 +504,6 @@ function showSection(section) {
         sec.classList.remove('active');
     });
     document.getElementById(section).classList.add('active');
-    
-    document.addEventListener('DOMContentLoaded', () => {
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.querySelector('.mobile-menu');
-
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('show');
-        });
-    });
 }
 </script>
 </html>
