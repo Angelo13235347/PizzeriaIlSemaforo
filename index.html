@@ -292,23 +292,23 @@ h4 {
 /* Header mobile + hamburger menu */
 .mobile-header {
     display: flex;
+    align-items: center;         /* 🔥 Allinea verticalmente */
     justify-content: space-between;
-    align-items: center;
-    background-color: none;
-    padding: 2px 20px;
+    padding: 10px 20px;
+    background-color: transparent;
     position: sticky;
     top: 0;
     z-index: 1001;
+    height: 80px;                /* 🔁 Altezza fissa = stabilità */
 }
         
 .logo {
-    height: 100px;
+    height: 60px; /* 🔁 Riduci un po’ se necessario */
     object-fit: contain;
-    background-color: transparent;
-    margin: 0 auto;
-    margin-bottom: 5px;
     display: block;
+    margin: 0;     /* 🔥 Rimuove i margini che lo spostano */
 }
+
         
 .hamburger {
     font-size: 30px;
