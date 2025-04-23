@@ -315,16 +315,25 @@ h1 {
     padding-top: 10px; /* ← meno spazio sopra il titolo */
 }
 
-/* Mobile menu */
+/* Mobile menu - animazione elegante */
 .mobile-menu {
     background-color: #d84b16;
     display: flex;
     flex-direction: column;
-    position: fixed; /* ← CAMBIATO: fixed invece di absolute */
-    top: 0;           /* ATTACCATO ALTO SOPRA TUTTO */
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
-    z-index: 1002;    /* Più alto del logo */
+    z-index: 1002;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Quando viene mostrato */
+.mobile-menu.show {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .mobile-menu a {
