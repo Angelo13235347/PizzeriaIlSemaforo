@@ -292,17 +292,35 @@ h4 {
 /* Header mobile + hamburger menu */
 .mobile-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: #d84b16;
-    padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1001;
+    justify-content: space-between;
+    background-color: white;
+    height: 60px;
+    padding: 0 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Ogni colonna del header */
+.header-left,
+.header-center,
+.header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hamburger sempre a sinistra */
+.hamburger {
+    font-size: 1.5rem;
+    cursor: pointer;
+    justify-content: flex-start;
+}
+
+/* Logo */
 .logo {
-    height: 50px;
+    height: 40px;
+    max-width: 150px;
     object-fit: contain;
 }
 
@@ -347,8 +365,13 @@ h4 {
 
 <!-- Header con logo e hamburger -->
 <header class="mobile-header">
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <img src="logo.jpg" alt="Logo Pizzeria Il Semaforo" class="logo">
+    <div class="header-left">
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+    <div class="header-center">
+        <img src="logo.png" alt="Logo Pizzeria Il Semaforo" class="logo">
+    </div>
+    <div class="header-right"><!-- spazio vuoto per bilanciare --></div>
 </header>
 
 <nav class="mobile-menu hidden">
