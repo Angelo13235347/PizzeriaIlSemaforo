@@ -44,25 +44,6 @@ body {
             text-align: center;
             padding-top: 15px;
         }
-        .nav {
-            background-color: #d84b16;
-            padding: 15px 0;
-            display: flex;
-            justify-content: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 0 20px;
-            transition: background-color 0.3s ease;
-        }
-        .nav a:hover {
-            background-color: #c24014;
-        }
         .content {
             display: none;
             text-align: center;
@@ -294,14 +275,15 @@ h4 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #d84b16; /* Imposta colore di sfondo */
+    background-color: none;
     padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1001;
-    height: 80px; /* Fissa altezza header */
-}
 
+    /* CAMBIA QUESTI: */
+    position: relative; /* ← era sticky */
+    top: auto;           /* ← era 0 */
+    z-index: 1;          /* ← era 1001, troppo alto */
+}
+        
 .logo {
     height: 60px; /* Ridotto per non invadere */
     object-fit: contain;
@@ -310,11 +292,10 @@ h4 {
 }
         
 .hamburger {
-    font-size: 26px;
+    font-size: 30px;
     color: white;
     cursor: pointer;
-    line-height: 1; /* allinea meglio verticalmente */
-    margin-top: 4px; /* alza leggermente l'icona */
+    margin-top: -10px; /* ← aggiunto */
 }
 
 /* Mobile menu */
