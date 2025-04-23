@@ -271,18 +271,17 @@ h4 {
     margin-bottom: 10px;
 }
 /* Header mobile + hamburger menu */
-.mobile-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: none;
-    padding: 10px 20px;
-
-    /* CAMBIA QUESTI: */
-    position: relative; /* ← era sticky */
-    top: auto;           /* ← era 0 */
-    z-index: 1;          /* ← era 1001, troppo alto */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #d84c14;
+  position: fixed;
+  top: 0; /* ATTACCATO IN ALTO */
+  left: 0;
+  width: 100%;
+  z-index: 2;
 }
+
         
 .logo {
     height: 90px; /* Ridotto per non invadere */
