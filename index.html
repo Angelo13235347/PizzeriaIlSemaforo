@@ -272,15 +272,25 @@ h4 {
 }
 /* Header mobile + hamburger menu */
 .mobile-menu {
-  display: none;
-  flex-direction: column;
-  background-color: #d84c14;
-  position: fixed;
-  top: 0; /* ATTACCATO IN ALTO */
-  left: 0;
-  width: 100%;
-  z-index: 2;
+    background-color: #d84b16;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1002;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
 }
+
+/* Quando il menu è visibile */
+.mobile-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
         
 .logo {
     height: 90px;
@@ -494,6 +504,15 @@ function showSection(section) {
         sec.classList.remove('active');
     });
     document.getElementById(section).classList.add('active');
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('show');
+        });
+
 }
 </script>
 </html>
