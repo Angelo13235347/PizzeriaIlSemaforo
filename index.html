@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"
     <meta charset="UTF-8">
     <title>Pizzeria Il Semaforo</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #2c3e50;
-            color: #333;
-            background-image: url('background-image.jpg');
-            background-size: cover;
-            background-position: center;
-        }
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2c3e50; /* Sfondo scuro per contrastare con i fiocchi di neve */
+    color: #333; /* Mantieni il colore del testo originale */
+    background-image: url('background-image.jpg'); /* Se vuoi un'immagine di sfondo */
+    background-size: cover;
+    background-position: center;
+}
         h1, h2, h3, h4 p {
             margin: 0;
             padding: 0;
@@ -28,7 +28,7 @@
             text-align: center;
             padding-top: 30px;
         }
-        h2 {
+          h2 {
             font-family: 'Roboto', sans-serif;
             font-weight: 20;
             font-size: 1rem;
@@ -36,7 +36,7 @@
             text-align: center;
             padding-top: 15px;
         }
-        h3 {
+                  h3 {
             font-family: 'Roboto', sans-serif;
             font-weight: 15;
             font-size: 2rem;
@@ -44,18 +44,15 @@
             text-align: center;
             padding-top: 15px;
         }
-
         .nav {
             background-color: #d84b16;
-            padding: 10px 0;
+            padding: 15px 0;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-
         .nav a {
             color: white;
             text-decoration: none;
@@ -63,34 +60,17 @@
             padding: 0 20px;
             transition: background-color 0.3s ease;
         }
-
         .nav a:hover {
             background-color: #c24014;
         }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            margin: 4px 0;
-            background-color: white;
-        }
-
         .content {
             display: none;
             text-align: center;
             margin-top: 30px;
         }
-
         .active {
             display: block;
         }
-
         iframe {
             width: 80%;
             height: 400px;
@@ -99,7 +79,6 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             margin: 20px 0;
         }
-
         .form-container {
             background-color: white;
             border-radius: 10px;
@@ -108,7 +87,6 @@
             margin: 0 auto;
             padding: 30px;
         }
-
         input, select {
             width: 100%;
             padding: 15px;
@@ -117,7 +95,6 @@
             border-radius: 5px;
             box-sizing: border-box;
         }
-
         button[type="submit"] {
             width: 100%;
             padding: 15px;
@@ -130,37 +107,30 @@
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
-
         button[type="submit"]:hover {
             background-color: #c24014;
             transform: scale(1.05);
         }
-
         .social-icons {
             margin-top: 20px;
         }
-
         .social-icons a {
             margin: 0 15px;
             text-decoration: none;
         }
-
         .social-icons img {
             width: 35px;
             transition: transform 0.3s ease;
         }
-
         .social-icons img:hover {
             transform: scale(1.1);
         }
-
         footer {
             text-align: center;
             margin: 30px 0;
             font-size: 0.9em;
             color: #777;
         }
-
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -172,8 +142,8 @@
 
         .gallery-item {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: 200px;  /* Imposta altezza fissa per tutte le immagini */
+            object-fit: cover; /* Questo manterrà il corretto rapporto d'aspetto */
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -193,223 +163,329 @@
             }
         }
 
-        .menu-section {
-            background-color: #fff;
-            padding: 10px 15px;
-            margin: 10px auto;
-            display: inline-block;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: left;
-        }
+/* Media query per dispositivi con schermi piccoli */
+@media (max-width: 768px) {
+    iframe, img {
+        max-width: 100%;
+        height: auto;
+    }
+}
 
-        .menu-section h3 {
-            color: #d84b16;
-            font-size: 1.8rem;
-            margin: 5px 0;
-        }
+.menu-section {
+    background-color: #fff;
+    padding: 10px 15px; /* Ridotto per adattarsi meglio al contenuto */
+    margin: 10px auto; /* Centrare e ridurre lo spazio verticale */
+    display: inline-block; /* Adatta il contenitore al contenuto */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Allinea il testo a sinistra */
+}
 
-        .menu-section ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
+.menu-section h3 {
+    color: #d84b16;
+    font-size: 1.8rem;
+    margin: 5px 0; /* Ridotto per meno spazio */
+}
 
-        .menu-section li {
-            font-size: 1.2rem;
-            margin: 5px 0;
-        }
+.menu-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Elimina spazi non necessari */
+}
 
-        .menu-section li strong {
-            color: #333;
-        }
+.menu-section li {
+    font-size: 1.2rem;
+    margin: 5px 0; /* Ridotto per compattezza */
+}
 
-        @media (max-width: 768px) {
-            iframe, img {
-                max-width: 100%;
-                height: auto;
-            }
+.menu-section li strong {
+    color: #333;
+}
 
-            .hamburger {
-                display: flex;
-            }
+/* Media query per dispositivi mobili */
+@media (max-width: 768px) {
+    .menu-section {
+        padding: 8px 10px; /* Ulteriore riduzione su schermi piccoli */
+    }
 
-            .nav a {
-                display: none;
-            }
-
-            .nav.active a {
-                display: block;
-            }
-
-            .menu-section {
-                padding: 8px 10px;
-            }
-
-            .menu-section h3 {
-                font-size: 1.5rem;
-            }
-        }
-
+    .menu-section h3 {
+        font-size: 1.5rem;
+    }
+}
+        
         @media (max-width: 480px) {
             .gallery {
                 grid-template-columns: 1fr;
             }
         }
-
         .hidden {
-            display: none;
-        }
+    display: none;
+}
+.popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+}
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%; max-width: 500px;
+}
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#recensioni { 
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px; /* Abbassa la sezione recensioni */
+    background: none; /* Rimuove completamente lo sfondo */
+    border: none; /* Rimuove completamente il bordo */
+    min-height: 400px; /* Imposta un'altezza minima, se necessario */
+}
 
-        .popup {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 1000;
-        }
+.reviews {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
 
-        .popup-content {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            width: 80%; max-width: 500px;
-        }
+.review {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: none; /* Rimuove l'ombra */
+    transition: transform 0.3s ease;
+}
 
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+.review:hover {
+    transform: translateY(-5px);
+}
 
-        #recensioni { 
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px; 
-            background: none;
-            border: none;
-            min-height: 400px; 
-        }
+h3 {
+    text-align: center;
+    color: #d84b16;
+    font-size: 2rem; /* Impostato come nelle altre sezioni */
+    padding-top: 10px; /* Allinea meglio il padding */
+}
 
-        .reviews {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .review {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: none;
-            transition: transform 0.3s ease;
-        }
-
-        .review:hover {
-            transform: translateY(-5px);
-        }
-
-        h3 {
-            text-align: center;
-            color: #d84b16;
-            font-size: 2rem; 
-            padding-top: 10px; 
-        }
-
-        h4 {
-            color: #e76f51;
-            margin-bottom: 10px;
-        }
+h4 {
+    color: #e76f51;
+    margin-bottom: 10px;
+}
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
     <div class="nav">
-        <div class="hamburger" onclick="toggleNav()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <a href="#home">Home</a>
-        <a href="#chi-siamo">Chi siamo</a>
-        <a href="#menu">Menù</a>
-        <a href="#galleria">Galleria</a>
-        <a href="#recensioni">Recensioni</a>
+        <a href="#" onclick="showSection('main')">Home</a>
+        <a href="#" onclick="showSection('chiSiamo')">Chi Siamo</a>
+        <a href="#" onclick="showSection('menù')">Menù</a>
+        <a href="#" onclick="showSection('galleria')">Galleria</a>
+        <a href="#" onclick="showSection('recensioni')">Recensioni</a>
     </div>
 
-    <!-- Menu Hamburger -->
-    <div class="hidden" id="nav">
-        <a href="#home">Home</a>
-        <a href="#chi-siamo">Chi siamo</a>
-        <a href="#menu">Menù</a>
-        <a href="#galleria">Galleria</a>
-        <a href="#recensioni">Recensioni</a>
+    <!-- Sezione principale -->
+    <div id="main" class="content active">
+        <h1>Benvenuti da Pizzeria Il Semaforo</h1>
+        <h2>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1462.4312215232844!2d11.1203234!3d43.8093687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a59b7d8859209%3A0x98788d2f085c6016!2sPizzeria%20Il%20Semaforo!5e0!3m2!1sit!2sit!4v1695151262428!5m2!1sit!2sit" allowfullscreen></iframe>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/pizzeriailsemaforo/" target="_blank">
+                <img src="instagram-logo.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="facebook-logo.png" alt="Facebook">
+            </a>
+            <a href="https://www.tiktok.com" target="_blank">
+                <img src="tiktok-logo.png" alt="TikTok">
+            </a>
+        </div>
     </div>
 
-    <script>
-        function toggleNav() {
-            var nav = document.getElementById("nav");
-            nav.classList.toggle("hidden");
-        }
-    </script>
+    <!-- Sezione Chi Siamo -->
+    <div id="chiSiamo" class="content">
+        <h3>LA NOSTRA STORIA</h3>
+        <div class="form-container">
+            <p><strong>Circa un anno fa, la nostra pizzeria “Il Semaforo” è nata da un sogno condiviso da una famiglia molto unita.</strong></p>
+            <p>Provenivamo da un altro settore, ma la nostra passione per la cucina e l’amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non è stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realtà.</p>
+            <p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l’abbiamo creata.</p>
+            <img src="Pizzeria Il Semaforo.jpg" alt="Pizzeria Il Semaforo" style="width: 100%; border-radius: 10px; margin-top: 20px;">
+        </div>
+    </div>
 
-    <!-- Home Section -->
-    <section id="home">
-        <h1>Pizzeria Il Semaforo</h1>
-        <h2>La tradizione italiana nel cuore di Campi Bisenzio</h2>
-    </section>
-
-    <!-- Menù Section -->
-    <section id="menu">
-        <h3>Menù</h3>
+    <!-- Sezione Menù -->
+    <div id="menù" class="content">
+        <h3>I NOSTRI MENU'</h3>
+        <h2>Scopri le nostre specialità preparate con ingredienti freschi e di qualità.</h2>
         <div class="menu-section">
-            <h4>Pizza</h4>
+            <h4>Menù del Giovedì</h4>
             <ul>
-                <li><strong>Margherita:</strong> pomodoro, mozzarella, basilico</li>
-                <li><strong>Diavola:</strong> pomodoro, mozzarella, salame piccante</li>
-                <li><strong>Quattro Stagioni:</strong> pomodoro, mozzarella, prosciutto cotto, funghi, carciofi, olive</li>
+                <li><strong>Antipasti:</strong> Affettati misti e sott'oli accompagnati da covaccino caldo</li>
+                <li><strong>Giropizza</strong></li>
+                <li><strong>Dolce della casa e bevuta piccola</strong></li>
+                <li><strong>Prezzo:</strong> 16€</li>
             </ul>
         </div>
+
         <div class="menu-section">
-            <h4>Pasta</h4>
+            <h4>Menù dal Venerdì alla Domenica</h4>
             <ul>
-                <li><strong>Spaghetti Aglio e Olio:</strong> aglio, olio, peperoncino</li>
-                <li><strong>Lasagna:</strong> ragù, besciamella</li>
+                <li><strong>Antipasti:</strong> Affettati misti e sott'oli accompagnati da covaccino caldo</li>
+                <li><strong>Giropizza</strong></li>
+                <li><strong>Dolce della casa e bevuta piccola</strong></li>
+                <li><strong>Prezzo:</strong> 18€</li>
             </ul>
         </div>
-    </section>
+    </div>
 
-    <!-- Galleria Section -->
-    <section id="galleria">
-        <h3>Galleria</h3>
-        <div class="gallery">
-            <div><img src="image1.jpg" class="gallery-item" alt="Pizza"></div>
-            <div><img src="image2.jpg" class="gallery-item" alt="Interno pizzeria"></div>
+<!-- Sezione Galleria --> 
+<div id="galleria" class="content">
+    <h3>GALLERIA FOTOGRAFICA</h3>
+    <div class="gallery">
+        <img src="1.jpg" class="gallery-item">
+        <img src="2.jpg" class="gallery-item">
+        <img src="3.jpg" class="gallery-item">
+        <img src="4.jpg" class="gallery-item">
+        <img src="5.jpg" class="gallery-item">
+        <img src="6.jpg" class="gallery-item">
+        <img src="7.jpg" class="gallery-item">
+        <img src="8.jpg" class="gallery-item">
+        <img src="9.jpg" class="gallery-item">
+        <img src="10.jpg" class="gallery-item">
+    </div>
+</div>
+    
+<!-- Sezione Recensioni -->
+<div id="recensioni" class="content">
+    <h3>RECENSIONI DEI NOSTRI CLIENTI</h3>
+    <div class="reviews">
+        <div class="review">
+            <h4>⭐⭐⭐⭐⭐</h4>
+            <p><strong>Giulia Rossi:</strong> "La pizza più buona che abbia mai mangiato! Ingredienti freschi e personale super cordiale."</p>
         </div>
-    </section>
-
-    <!-- Recensioni Section -->
-    <section id="recensioni">
-        <h3>Recensioni</h3>
-        <div class="reviews">
-            <div class="review">
-                <h4>Giulia</h4>
-                <p>Pizza fantastica! La migliore di sempre!</p>
-            </div>
-            <div class="review">
-                <h4>Marco</h4>
-                <p>Ambiente accogliente e servizio veloce. Tornerò sicuramente!</p>
-            </div>
+        <div class="review">
+            <h4>⭐⭐⭐⭐⭐</h4>
+            <p><strong>Laura Marchesin:</strong> "Abbiamo mangiato benissimo!!! Servizio eccellente e molto carini!! Ci hanno servito subito! Siamo state a cena con amiche: salumi ottimi schiacciata super !! Pizze eccellenti e ci hanno servito velocissimi.Ah dimenticavo....i dolci artigianali sono il top! Dovete assolutamente andare!!"</p>
         </div>
-    </section>
+        <div class="review">
+            <h4>⭐⭐⭐⭐</h4>
+            <p><strong>Giada Balduinotti:</strong> "Personale super gentile e disponibile. Abbiamo affittato la stanza fuori, ed era abbastanza grande da accoglierci tutti (circa 50). Era ben tenuta e pulita. Pizza favolosa."</p>
+        </div>
+        <div class="review">
+            <h4>⭐⭐⭐⭐⭐</h4>
+            <p><strong>Marco Neri:</strong> "Il giropizza è una genialata! Complimenti a tutto lo staff!"</p>
+        </div>
+        <div class="review">
+            <h4>⭐⭐⭐⭐⭐</h4>
+            <p><strong>Alessandro Galli:</strong> "Luogo meraviglioso, personale fantastico. Primi buonissimi e pizza top a prezzi onestissimi. Bravi!!!!"</p>
+        </div>
+         <div class="review">
+            <h4>⭐⭐⭐⭐</h4>
+            <p><strong>Francesco De Martino:</strong> "Devo dire decisamente migliorato. Menù a prezzo fisso abbondante e buono. Riaggiornata anche la parte interna con nuova illuminazione. Comodo anche per cene di gruppo, con salette dedicate. Nonostante un inconveniente con la prenotazione, hanno rimediato bene."</p>
+        </div>
+         <div class="review">
+            <h4>⭐⭐⭐⭐⭐</h4>
+            <p><strong>Andrea B:</strong> Ambiente accogliente con cucina a vista SUPER pulita, pizza buonissima e molto digeribile. Servizio veloce e coccola il cliente. Consigliatissimo! 
+         </div>       
+         <div class="review">
+            <h4>⭐⭐⭐⭐⭐</h4>
+            <p><strong>Fabiola Galardi:</strong> Antipasto semplice a base di ottima schiacciata e affettati.. mozzarelle e sottoli pizza buona e croccante a volontà bevande dolce e caffè prezzo super
+         </div>    
+    </div>
+</div>
 
+   <!-- Sezione Prenota Ora -->
+    <div id="prenotaOra" class="content">
+        <h3>PRENOTA UN TAVOLO</h3>
+        <div class="form-container">
+            <form id="prenotazione-form">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+                <label for="cognome">Cognome:</label>
+                <input type="text" id="cognome" name="cognome" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="telefono">Telefono:</label>
+                <input type="tel" id="telefono" name="telefono" pattern="\d{10}" maxlength="10" required>
+                <label for="data">Seleziona la data (giovedì - domenica):</label>
+                <input type="date" id="data" name="data" required>
+                <label for="persone">Numero di persone:</label>
+                <input type="number" id="persone" name="persone" min="1" max="30" required>
+                <label for="orario">Seleziona l'orario (19:00 - 21:00):</label>
+                <select id="orario" name="orario" required>
+                    <option value="">Seleziona un orario</option>
+                    <option value="19:00">19:00</option>
+                    <option value="19:30">19:30</option>
+                    <option value="20:00">20:00</option>
+                    <option value="20:30">20:30</option>
+                    <option value="21:00">21:00</option>
+                </select>
+                <button type="submit">Conferma prenotazione</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Pizzeria Il Semaforo</p>
+        <p>&copy; 2024 Pizzeria Il Semaforo | Tutti i diritti riservati</p>
     </footer>
 
-</body>
+<script>
+document.getElementById('data').addEventListener('input', function() {
+    const dataInput = this;
+    const selectedDate = new Date(dataInput.value);
+    const dayOfWeek = selectedDate.getDay(); 
+
+    // Controlla se il giorno è tra giovedì (4) e domenica (0)
+    if (![4, 5, 6, 0].includes(dayOfWeek)) {
+        // Crea il pop-up
+        let popup = document.createElement('div');
+        popup.id = 'custom-popup';
+        popup.style.position = 'fixed';
+        popup.style.top = '50%';
+        popup.style.left = '50%';
+        popup.style.transform = 'translate(-50%, -50%)';
+        popup.style.padding = '20px';
+        popup.style.backgroundColor = '#fff';
+        popup.style.color = 'red';
+        popup.style.fontWeight = 'bold';
+        popup.style.textAlign = 'center';
+        popup.style.border = '2px solid red';
+        popup.style.borderRadius = '8px';
+        popup.style.boxShadow = '0 0 15px rgba(0,0,0,0.5)';
+        popup.style.zIndex = '1000';
+        popup.innerHTML = `
+            <p>Errore:</p>
+            <p>È possibile selezionare una data dal giovedì alla domenica.</p>
+            <button id="close-popup">Chiudi</button>
+        `;
+        document.body.appendChild(popup);
+
+        // Chiude il pop-up
+        document.getElementById('close-popup').addEventListener('click', function() {
+            popup.remove();
+        });
+
+        dataInput.value = ""; // Resetta la selezione
+    }
+});
+
+// Funzione per mostrare le sezioni
+function showSection(section) {
+    const sections = document.querySelectorAll('.content');
+    sections.forEach(sec => {
+        sec.classList.remove('active');
+    });
+    document.getElementById(section).classList.add('active');
+}
+</script>
 </html>
