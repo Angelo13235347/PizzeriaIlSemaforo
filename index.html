@@ -1,333 +1,301 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <title>Pizzeria Il Semaforo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-body {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #2c3e50; /* Sfondo scuro per contrastare con i fiocchi di neve */
-    color: #333; /* Mantieni il colore del testo originale */
-    background-image: url('background-image.jpg'); /* Se vuoi un'immagine di sfondo */
-    background-size: cover;
-    background-position: center;
-}
-        h1, h2, h3, h4 p {
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 500;
-            font-size: 3rem;
-            color: #d84b16;
-            text-align: center;
-            padding-top: 30px;
-        }
-          h2 {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 20;
-            font-size: 1rem;
-            color: #FFFFFF;
-            text-align: center;
-            padding-top: 15px;
-        }
-                  h3 {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 15;
-            font-size: 2rem;
-            color: #FFFFFF;
-            text-align: center;
-            padding-top: 15px;
-        }
-        .content {
-            display: none;
-            text-align: center;
-            margin-top: 30px;
-        }
-        .active {
-            display: block;
-        }
-        iframe {
-            width: 80%;
-            height: 400px;
-            border-radius: 10px;
-            border: none;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-        }
-        .form-container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 30px;
-        }
-        input, select {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        button[type="submit"] {
-            width: 100%;
-            padding: 15px;
-            background-color: #d84b16;
-            color: white;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        button[type="submit"]:hover {
-            background-color: #c24014;
-            transform: scale(1.05);
-        }
-        .social-icons {
-            margin-top: 20px;
-        }
-        .social-icons a {
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        .social-icons img {
-            width: 35px;
-            transition: transform 0.3s ease;
-        }
-        .social-icons img:hover {
-            transform: scale(1.1);
-        }
-        footer {
-            text-align: center;
-            margin: 30px 0;
-            font-size: 0.9em;
-            color: #777;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-        }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Pizzeria Il Semaforo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #2c3e50;
+      color: #333;
+      background-size: cover;
+      background-position: center;
+    }
 
-        .gallery-item {
-            width: 100%;
-            height: 200px;  /* Imposta altezza fissa per tutte le immagini */
-            object-fit: cover; /* Questo manterrà il corretto rapporto d'aspetto */
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    h1, h2, h3, h4, p {
+      margin: 0;
+      padding: 0;
+    }
 
-        .gallery-item:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        }
+    h1 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      font-size: 3rem;
+      color: #d84b16;
+      text-align: center;
+      padding-top: 30px;
+    }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
+    h2 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 20;
+      font-size: 1rem;
+      color: #FFFFFF;
+      text-align: center;
+      padding-top: 15px;
+    }
 
-/* Media query per dispositivi con schermi piccoli */
-@media (max-width: 768px) {
-    iframe, img {
+    h3 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 15;
+      font-size: 2rem;
+      color: #FFFFFF;
+      text-align: center;
+      padding-top: 15px;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #2c3e50;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+      height: 80px;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    .menu-toggle {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 11;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #d84b16;
+      position: absolute;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      z-index: 9;
+    }
+
+    .mobile-menu a {
+      padding: 15px;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .mobile-menu a:hover {
+      background-color: #c24014;
+    }
+
+    .mobile-menu.hidden {
+      display: none;
+    }
+
+    iframe {
+      width: 80%;
+      height: 400px;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      margin: 20px 0;
+    }
+
+    .form-container {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      background-color: #d84b16;
+      color: white;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #c24014;
+      transform: scale(1.05);
+    }
+
+    .social-icons {
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      margin: 0 15px;
+      text-decoration: none;
+    }
+
+    .social-icons img {
+      width: 35px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.1);
+    }
+
+    footer {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 0.9em;
+      color: #777;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    .gallery-item {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      iframe, img {
         max-width: 100%;
         height: auto;
+      }
+
+      .menu-section {
+        padding: 8px 10px;
+      }
+
+      .menu-section h3 {
+        font-size: 1.5rem;
+      }
     }
-}
 
-.content {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
 
-.content.active {
-  opacity: 1;
-}
+    .content {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
 
-.menu-section {
-    background-color: #fff;
-    padding: 10px 15px; /* Ridotto per adattarsi meglio al contenuto */
-    margin: 10px auto; /* Centrare e ridurre lo spazio verticale */
-    display: inline-block; /* Adatta il contenitore al contenuto */
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Allinea il testo a sinistra */
-}
+    .content.active {
+      opacity: 1;
+    }
 
-.menu-section h3 {
-    color: #d84b16;
-    font-size: 1.8rem;
-    margin: 5px 0; /* Ridotto per meno spazio */
-}
-
-.menu-section ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0; /* Elimina spazi non necessari */
-}
-
-.menu-section li {
-    font-size: 1.2rem;
-    margin: 5px 0; /* Ridotto per compattezza */
-}
-
-.menu-section li strong {
-    color: #333;
-}
-
-/* Media query per dispositivi mobili */
-@media (max-width: 768px) {
     .menu-section {
-        padding: 8px 10px; /* Ulteriore riduzione su schermi piccoli */
+      background-color: #fff;
+      padding: 10px 15px;
+      margin: 10px auto;
+      display: inline-block;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: left;
     }
 
     .menu-section h3 {
-        font-size: 1.5rem;
+      color: #d84b16;
+      font-size: 1.8rem;
+      margin: 5px 0;
     }
-}
-        
-        @media (max-width: 480px) {
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-        }
-        .hidden {
-    display: none;
-}
-.popup {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex; justify-content: center; align-items: center;
-    z-index: 1000;
-}
-.popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    width: 80%; max-width: 500px;
-}
-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-#recensioni { 
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px; /* Abbassa la sezione recensioni */
-    background: none; /* Rimuove completamente lo sfondo */
-    border: none; /* Rimuove completamente il bordo */
-    min-height: 400px; /* Imposta un'altezza minima, se necessario */
-}
 
-.reviews {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
+    .menu-section ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
 
-.review {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: none; /* Rimuove l'ombra */
-    transition: transform 0.3s ease;
-}
+    .menu-section li {
+      font-size: 1.2rem;
+      margin: 5px 0;
+    }
 
-.review:hover {
-    transform: translateY(-5px);
-}
+    .menu-section li strong {
+      color: #333;
+    }
 
-h3 {
-    text-align: center;
-    color: #d84b16;
-    font-size: 2rem; /* Impostato come nelle altre sezioni */
-    padding-top: 10px; /* Allinea meglio il padding */
-}
+    #recensioni {
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      background: none;
+      border: none;
+      min-height: 400px;
+    }
 
-h4 {
-    color: #e76f51;
-    margin-bottom: 10px;
-}
-/* Header mobile + hamburger menu */
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  background-color: #d84c14;
-  position: fixed;
-  top: 0; /* ATTACCATO IN ALTO */
-  left: 0;
-  width: 100%;
-  z-index: 2;
-}
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
 
-        
-.logo {
-    height: 90px; /* Ridotto per non invadere */
-    object-fit: contain;
-    background-color: transparent;
-    display: block;
-    margin: 0 auto;
-}
-        
-.hamburger {
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-    margin-top: -10px; /* ← aggiunto */
-}
+    .review {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: none;
+      transition: transform 0.3s ease;
+    }
 
-/* Mobile menu */
-.mobile-menu {
-    background-color: #d84b16;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    width: 100%;
-    top: 80px; /* uguale all’altezza dell’header */
-    left: 0;
-    z-index: 999;
-}
+    .review:hover {
+      transform: translateY(-5px);
+    }
 
-.mobile-menu a {
-    padding: 15px;
-    color: white;
-    text-decoration: none;
-    text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    transition: background-color 0.3s;
-}
-
-.mobile-menu a:hover {
-    background-color: #c24014;
-}
-
-.hidden {
-    display: none;
-}
-
-    </style>
+    h4 {
+      color: #e76f51;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
 
