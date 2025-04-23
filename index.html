@@ -292,35 +292,17 @@ h4 {
 /* Header mobile + hamburger menu */
 .mobile-header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    background-color: white;
-    height: 60px;
-    padding: 0 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* Ogni colonna del header */
-.header-left,
-.header-center,
-.header-right {
-    flex: 1;
-    display: flex;
     align-items: center;
-    justify-content: center;
+    background-color: #d84b16;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
 }
 
-/* Hamburger sempre a sinistra */
-.hamburger {
-    font-size: 1.5rem;
-    cursor: pointer;
-    justify-content: flex-start;
-}
-
-/* Logo */
 .logo {
-    height: 40px;
-    max-width: 150px;
+    height: 50px;
     object-fit: contain;
 }
 
@@ -381,7 +363,6 @@ h4 {
     <a href="#" onclick="navigate('galleria')">Galleria</a>
     <a href="#" onclick="navigate('recensioni')">Recensioni</a>
 </nav>
-
 
     <!-- Sezione principale -->
     <div id="main" class="content active">
