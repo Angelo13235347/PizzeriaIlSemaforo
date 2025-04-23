@@ -283,17 +283,25 @@ h4 {
 }
         
 .logo {
-    height: 130px; /* Ridotto per non invadere */
+    height: 90px;
     object-fit: contain;
+    background-color: transparent;
     display: block;
     margin: 0 auto;
+    margin-bottom: 5px; /* ← ridotto lo spazio sotto al logo */
 }
-        
+
 .hamburger {
     font-size: 30px;
     color: white;
     cursor: pointer;
-    margin-top: -10px; /* ← aggiunto */
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -5px; /* spinge un po’ in su rispetto al logo */
+}
+
+h1 {
+    padding-top: 10px; /* ← meno spazio sopra il titolo */
 }
 
 /* Mobile menu */
