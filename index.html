@@ -291,34 +291,23 @@ h4 {
 }
 /* Header mobile + hamburger menu */
 .mobile-header {
-  display: flex;
-  align-items: center;       /* CENTRA tutto verticalmente */
-  height: 60px;
-  padding: 0 16px;
-  background-color: #fff;
-  position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: none;
+    padding: 2px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
 }
-
-.hamburger-menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  margin-right: 16px;
-  cursor: pointer;
-}
-
-.bar {
-  width: 24px;
-  height: 3px;
-  background-color: black;
-  border-radius: 2px;
-}
-
-/* LOGO */
+        
 .logo {
-  height: 40px;              /* 🔥 importante: altezza fissa */
-  object-fit: contain;       /* eviti deformazioni */
+    height: 100px;
+    object-fit: contain;
+    background-color: transparent;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    display: block;
 }
         
 .hamburger {
