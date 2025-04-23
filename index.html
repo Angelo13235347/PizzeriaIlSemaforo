@@ -294,24 +294,27 @@ h4 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: none;
+    background-color: #d84b16; /* Imposta colore di sfondo */
     padding: 10px 20px;
     position: sticky;
     top: 0;
     z-index: 1001;
+    height: 80px; /* Fissa altezza header */
 }
-        
+
 .logo {
-  height: 100px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto; /* centra il logo */
+    height: 60px; /* Ridotto per non invadere */
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
         
 .hamburger {
-    font-size: 30px;
+    font-size: 26px;
     color: white;
     cursor: pointer;
+    line-height: 1; /* allinea meglio verticalmente */
+    margin-top: 4px; /* alza leggermente l'icona */
 }
 
 /* Mobile menu */
@@ -321,9 +324,9 @@ h4 {
     flex-direction: column;
     position: absolute;
     width: 100%;
-    top: 60px;
+    top: 80px; /* uguale all’altezza dell’header */
     left: 0;
-    z-index: 1000;
+    z-index: 999;
 }
 
 .mobile-menu a {
