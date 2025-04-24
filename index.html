@@ -498,36 +498,34 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
     </footer>
 
 <script>
-function toggleMenu() {
-    const menu = document.querySelector('.mobile-menu');
-    menu.classList.toggle('hidden');
-}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.querySelector(".mobile-menu");
 
-function navigate(sectionId) {
-    toggleMenu(); // chiude il menu
-    showSection(sectionId); // mostra sezione
-}
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener("click", () => {
+            mobileMenu.classList.toggle("active"); // usa solo 'active'
+        });
+    }
 
-function showSection(id) {
-    document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-}
+    // Navigazione
+    window.navigate = function(sectionId) {
+        toggleMenu();
+        showSection(sectionId);
+    };
 
-// Funzione per mostrare le sezioni
-function showSection(section) {
-    const sections = document.querySelectorAll('.content');
-    sections.forEach(sec => {
-        sec.classList.remove('active');
-    });
-    document.getElementById(section).classList.add('active');
-    document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.querySelector(".hamburger");
-  const mobileMenu = document.querySelector(".mobile-menu");
+    // Mostra o nasconde il menu
+    function toggleMenu() {
+        const menu = document.querySelector('.mobile-menu');
+        menu.classList.toggle('active');
+    }
 
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener("click", () => {
-      mobileMenu.classList.toggle("active");
-    });
-}
+    // Mostra una sezione e nasconde le altre
+    function showSection(id) {
+        document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
+});
 </script>
 </html>
