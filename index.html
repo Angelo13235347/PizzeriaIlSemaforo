@@ -560,6 +560,26 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
     </footer>
 
 <script>
+    function toggleMenu() {
+    const menu = document.querySelector('.mobile-menu');
+    menu.classList.toggle('show');
+    menu.classList.toggle('hidden');
+}
+
+function navigate(sectionId) {
+    // Nasconde tutte le sezioni
+    const contents = document.querySelectorAll('.content');
+    contents.forEach(c => c.classList.remove('active'));
+
+    // Mostra solo quella cliccata
+    const target = document.getElementById(sectionId);
+    if (target) {
+        target.classList.add('active');
+    }
+
+    // Chiude il menu mobile dopo aver cliccato
+    toggleMenu();
+}
   function toggleMenu() {
     const menu = document.querySelector('.mobile-menu');
     menu.classList.toggle('show');
