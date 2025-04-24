@@ -325,11 +325,17 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
     background-color: #d84b16;
     display: flex;
     flex-direction: column;
-    position: fixed; /* ← CAMBIATO: fixed invece di absolute */
-    top: 0;           /* ATTACCATO ALTO SOPRA TUTTO */
-    left: 0;
-    width: 100%;
-    z-index: 1002;    /* Più alto del logo */
+    position: fixed;
+    top: 0;
+    right: -250px; /* parte nascosto a destra */
+    width: 250px;
+    height: 100%;
+    z-index: 1002;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+}
+.show-menu {
+    right: 0; /* scorre verso sinistra, visibile */
 }
 
 .mobile-menu a {
