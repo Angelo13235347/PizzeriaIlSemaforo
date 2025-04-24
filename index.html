@@ -291,23 +291,18 @@ h4 {
     margin-bottom: 10px;
 }
 /* Header mobile + hamburger menu */
-.mobile-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: transparent; /* o rgba(0,0,0,0) */
-    height: 80px;
+.header-center {
+    position: relative;
+    width: 100%;
+    text-align: center;
 }
-        
+
 .logo {
-    position: fixed;
-    top: 20px; /* distanza dal bordo superiore */
+    position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 120px; /* o la dimensione del tuo logo */
-    z-index: 999;
-    pointer-events: none; /* così non blocca i clic sotto */
+    transform: translate(-50%, -50%);
+    width: 120px;
 }
    
 .hamburger {
