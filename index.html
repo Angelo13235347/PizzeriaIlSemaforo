@@ -305,15 +305,18 @@ h4 {
 }
         
 .logo {
-    position: fixed;       /* Rimane fisso durante lo scroll */
-    top: 10px;             /* Distanza dal bordo superiore */
-    left: 50%;             /* Centro orizzontale */
-    transform: translateX(-50%);
-    height: 80px;          /* Regola l’altezza come preferisci */
-    object-fit: contain;
-    z-index: 9999;         /* In cima a tutto */
-    pointer-events: none;  /* Non cliccabile, utile se sopra il menu */
+    position: fixed !important;
+    top: 10px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    height: 80px !important;
+    z-index: 9999 !important;
+    object-fit: contain !important;
+    background-color: transparent !important;
+    margin: 0 !important;
+    display: block !important;
 }
+
         
 .hamburger {
     font-size: 30px;
