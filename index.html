@@ -302,11 +302,12 @@ h4 {
         
 .logo {
     position: fixed;
-    top: 10px;
+    top: 20px; /* distanza dal bordo superiore */
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
-    z-index: 1000;
+    width: 120px; /* o la dimensione del tuo logo */
+    z-index: 999;
+    pointer-events: none; /* così non blocca i clic sotto */
 }
    
 .hamburger {
