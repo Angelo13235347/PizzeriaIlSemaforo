@@ -325,20 +325,12 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
     background-color: #d84b16;
     display: flex;
     flex-direction: column;
-    position: fixed;
-    top: 0;
+    position: fixed; /* ← CAMBIATO: fixed invece di absolute */
+    top: 0;           /* ATTACCATO ALTO SOPRA TUTTO */
     left: 0;
-    height: 100vh; /* occupa tutta l'altezza dello schermo */
-    width: 250px;   /* larghezza fissa sulla sinistra */
-    z-index: 1002;
-    transition: transform 0.3s ease;
-    transform: translateX(-100%); /* inizialmente nascosto */
+    width: 100%;
+    z-index: 1002;    /* Più alto del logo */
 }
-
-.mobile-menu.show {
-    transform: translateX(0); /* visibile quando aggiungiamo la classe show */
-}
-
 
 .mobile-menu a {
     padding: 15px;
@@ -560,25 +552,28 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
     </footer>
 
 <script>
-  // Apre o chiude il menu mobile
-  function toggleMenu() {
+function toggleMenu() {
     const menu = document.querySelector('.mobile-menu');
     menu.classList.toggle('hidden');
-  }
+}
 
-  // Naviga tra le sezioni
-  function navigate(sectionId) {
-    // Chiude il menu
-    toggleMenu();
+function navigate(sectionId) {
+    toggleMenu(); // chiude il menu
+    showSection(sectionId); // mostra sezione
+}
 
-    // Mostra solo la sezione richiesta
+function showSection(id) {
+    document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+// Funzione per mostrare le sezioni
+function showSection(section) {
     const sections = document.querySelectorAll('.content');
-    sections.forEach(sec => sec.classList.remove('active'));
-
-    const target = document.getElementById(sectionId);
-    if (target) {
-      target.classList.add('active');
-    }
-  }
+    sections.forEach(sec => {
+        sec.classList.remove('active');
+    });
+    document.getElementById(section).classList.add('active');
+}
 </script>
 </html>
