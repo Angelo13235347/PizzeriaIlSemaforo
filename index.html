@@ -137,7 +137,7 @@ body {
             gap: 20px;
             padding: 20px;
             opacity: 0;
-            animation: fadeIn 1.5s ease-out forwards;
+           animation: fadeIn 1.5s ease-out forwards;
         }
 
         .gallery-item {
@@ -406,49 +406,7 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
     width: 30px;
     height: 30px;
 }
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #222;
-  color: white;
-  padding: 20px 15px;
-  display: none;
-  z-index: 9999;
-  text-align: center;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
-  font-size: 16px;
-}
 
-.cookie-buttons {
-  margin-top: 10px;
-}
-
-.cookie-buttons button {
-  margin: 0 5px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.cookie-buttons button:first-child {
-  background-color: #4caf50;
-  color: white;
-}
-.cookie-buttons button:first-child:hover {
-  background-color: #43a047;
-}
-
-.cookie-buttons button:last-child {
-  background-color: #f44336;
-  color: white;
-}
-.cookie-buttons button:last-child:hover {
-  background-color: #e53935;
-}
     </style>
 </head>
 <body>
@@ -586,15 +544,6 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
             <p><strong>Fabiola Galardi:</strong> Antipasto semplice a base di ottima schiacciata e affettati.. mozzarelle e sottoli pizza buona e croccante a volontà bevande dolce e caffè prezzo super
          </div>    
     </div>
-	</div>
-<div id="cookie-banner" class="cookie-banner">
-  <p>
-    Questo sito utilizza cookie tecnici e, previo consenso, anche di profilazione per migliorare la tua esperienza.
-  </p>
-  <div class="cookie-buttons">
-    <button onclick="acceptCookies()">Accetta</button>
-    <button onclick="rejectCookies()">Rifiuta</button>
-  </div>
 </div>
 
     <!-- Footer -->
@@ -625,22 +574,6 @@ function showSection(section) {
         sec.classList.remove('active');
     });
     document.getElementById(section).classList.add('active');
-	function acceptCookies() {
-  localStorage.setItem("cookieConsent", "accepted");
-  document.getElementById("cookie-banner").style.display = "none";
-}
-
-function rejectCookies() {
-  localStorage.setItem("cookieConsent", "rejected");
-  document.getElementById("cookie-banner").style.display = "none";
-}
-
-window.onload = function () {
-  const consent = localStorage.getItem("cookieConsent");
-  if (!consent) {
-    document.getElementById("cookie-banner").style.display = "block";
-  }
-};
 }
 </script>
 </html>
