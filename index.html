@@ -137,7 +137,7 @@ body {
             gap: 20px;
             padding: 20px;
             opacity: 0;
-            animation: fadeIn 1.5s ease-out forwards;
+            animation: fadeIn 1s forwards;
         }
 
         .gallery-item {
@@ -575,21 +575,5 @@ function showSection(section) {
     });
     document.getElementById(section).classList.add('active');
 }
-<div id="cookie-banner" style="position:fixed; bottom:0; width:100%; background:#333; color:white; text-align:center; padding:10px; z-index:10000;">
-    Questo sito utilizza cookie per migliorare l’esperienza utente. <button onclick="acceptCookies()" style="margin-left:10px; padding:5px 10px;">OK</button>
-</div>
-function acceptCookies() {
-    document.getElementById("cookie-banner").style.display = "none";
-}
-            function acceptCookies() {
-    document.getElementById("cookie-banner").style.display = "none";
-    localStorage.setItem("cookiesAccepted", "true");
-}
-
-window.onload = function() {
-    if (!localStorage.getItem("cookiesAccepted")) {
-        document.getElementById("cookie-banner").style.display = "block";
-    }
-};
 </script>
 </html>
