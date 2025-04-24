@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <style>
 body {
+    padding-top: 80px; /* aumenta se il logo è più alto */
+
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
@@ -303,12 +305,13 @@ h4 {
 }
         
 .logo {
-    height: 100px; /* 🔁 Riduci un po’ se necessario */
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    height: 60px;
     object-fit: contain;
-    display: block;
-    margin: 0;     /* 🔥 Rimuove i margini che lo spostano */
+    z-index: 1002; /* sopra tutto */
 }
-
         
 .hamburger {
     font-size: 30px;
