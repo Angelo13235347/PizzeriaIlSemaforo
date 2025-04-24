@@ -321,22 +321,20 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
 }
 
 /* Mobile menu */
-/* Menu mobile inizialmente nascosto a sinistra */
 .mobile-menu {
     position: fixed;
     top: 0;
-    left: -100%; /* Spostato fuori dallo schermo */
-    width: 80%; /* Larghezza visibile al slide in */
+    left: -100%;
+    width: 80%;
     height: 100vh;
     background-color: #d84b16;
     display: flex;
     flex-direction: column;
-    padding-top: 80px; /* spazio per non sovrapporre header */
+    padding-top: 80px;
     transition: left 0.3s ease-in-out;
     z-index: 1002;
 }
 
-/* Quando attivo, entra in vista */
 .mobile-menu.active {
     left: 0;
 }
