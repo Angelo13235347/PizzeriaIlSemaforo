@@ -348,82 +348,79 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
 .hidden {
     display: none;
 }
-.floating-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1003;
+/* Container del bottone */
+.fab-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
 }
 
-.floating-button-main {
-    background-color: #25D366;
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 60px;
-    font-size: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    cursor: pointer;
-    transition: transform 0.3s;
+/* Bottone principale (+) */
+.fab-button {
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
 }
 
-.floating-button-main:hover {
-    transform: scale(1.1);
+/* Pulsanti secondari (WhatsApp e Telefono) */
+.fab-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
 }
 
-.floating-options {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-bottom: 10px;
-    opacity: 0;
-    transform: translateY(20px);
-    pointer-events: none;
-    transition: all 0.3s ease;
+/* Mostra i pulsanti */
+.fab-container.open .fab-options {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
-.floating-container.open .floating-options {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+/* Singolo pulsante secondario */
+.fab-option {
+  background-color: white;
+  color: #333;
+  border-radius: 30px;
+  padding: 8px 14px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  font-size: 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
 }
-
-.floating-option {
-    background-color: #fff;
-    color: #333;
-    border-radius: 30px;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    white-space: nowrap;
+.fab-option:hover {
+  background-color: #f2f2f2;
 }
-
-.floating-option:hover {
-    background-color: #f0f0f0;
-}
-
     </style>
 </head>
 <body>
-<div class="floating-container" id="contactMenu">
-    <div class="floating-options">
-        <a href="tel:+3403046310" class="floating-option">
-            📞 Chiama
-        </a>
-        <a href="https://wa.me/3403046310" class="floating-option" target="_blank">
-            📱 WhatsApp
-        </a>
-    </div>
-    <div class="floating-button-main" onclick="toggleMenu()">✚</div>
+<div class="fab-container" id="fab">
+  <div class="fab-options">
+    <a href="https://wa.me/391234567890" class="fab-option" target="_blank">
+      📱 WhatsApp
+    </a>
+    <a href="tel:+391234567890" class="fab-option">
+      📞 Chiama
+    </a>
+  </div>
+  <button class="fab-button" onclick="toggleFab()">✚</button>
 </div>
-
 
 <!-- Header con logo e hamburger -->
 <header class="mobile-header">
@@ -560,7 +557,9 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
     </footer>
 
 <script>
-  
+function toggleFab() {
+  document.getElementById('fab').classList.toggle('open');
+}
 function toggleMenu() {
     document.getElementById("contactMenu").classList.toggle("open");
 }
@@ -587,6 +586,8 @@ function showSection(section) {
         sec.classList.remove('active');
     });
     document.getElementById(section).classList.add('active');
+    function toggleFab() {
+  document.getElementById('fab').classList.toggle('open');
 }
 </script>
 </html>
