@@ -323,31 +323,35 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
 /* Mobile menu */
 .mobile-menu {
     background-color: #d84b16;
-    display: flex;
-    flex-direction: column;
-    position: fixed; /* ← CAMBIATO: fixed invece di absolute */
-    top: 0;           /* ATTACCATO ALTO SOPRA TUTTO */
-    left: 0;
-    width: 100%;
-    z-index: 1002;    /* Più alto del logo */
-} 
-        
+    position: fixed;
+    top: 0;
+    left: -250px;  /* Nascondi il menu a sinistra inizialmente */
+    width: 250px;  /* Larghezza del menu */
+    height: 100vh;  /* Altezza a schermo intero */
+    z-index: 1002;
+    transition: left 0.3s ease;  /* Animazione per lo spostamento */
+}
+
+/* Quando il menu è attivo */
+.mobile-menu.active {
+    left: 0;  /* Posiziona il menu a sinistra quando attivo */
+}
+
+/* Link del menu */
 .mobile-menu a {
     padding: 15px;
     color: white;
     text-decoration: none;
-    text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: left;  /* Allinea i link a sinistra */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);  /* Separatore tra i link */
     transition: background-color 0.3s;
 }
 
-.mobile-menu a:hover {
-    background-color: #c24014;
-}
-
+/* Quando il menu è visibile */
 .hidden {
     display: none;
 }
+
         .whatsapp-float {
     position: fixed;
     bottom: 20px;
@@ -552,6 +556,16 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
     </footer>
 
 <script>
+    // Funzione per aprire e chiudere il menu
+function toggleMenu() {
+    const menu = document.querySelector('.mobile-menu');
+    menu.classList.toggle('active');  // Aggiungi o rimuovi la classe "active" per aprire/chiudere
+}
+
+// Aggiungi un event listener all'icona dell'hamburger
+const hamburger = document.querySelector('.hamburger-icon');  // Supponendo che l'icona dell'hamburger abbia la classe "hamburger-icon"
+hamburger.addEventListener('click', toggleMenu);
+    
 function toggleMenu() {
     const menu = document.querySelector('.mobile-menu');
     menu.classList.toggle('hidden');
