@@ -320,18 +320,22 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
     z-index: 2000; /* assicurati che sia cliccabile */
 }
 
-/* Mobile menu */
 .mobile-menu {
     background-color: #d84b16;
-    display: flex;
     flex-direction: column;
-    position: fixed; /* ← CAMBIATO: fixed invece di absolute */
-    top: 0;           /* ATTACCATO ALTO SOPRA TUTTO */
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
-    z-index: 1002;    /* Più alto del logo */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    z-index: 1002;
 }
-
+.mobile-menu.show {
+    max-height: 300px; /* Puoi aumentare se hai più link */
+}
+        
 .mobile-menu a {
     padding: 15px;
     color: white;
@@ -552,6 +556,10 @@ padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
     </footer>
 
 <script>
+    function toggleMenu() {
+    const menu = document.querySelector('.mobile-menu');
+    menu.classList.toggle('show');
+        }
 function toggleMenu() {
     const menu = document.querySelector('.mobile-menu');
     menu.classList.toggle('hidden');
