@@ -1,499 +1,579 @@
-<!DOCTYPE html>
-<html lang="it-IT" data-website-id="1" data-main-object="website.page(4,)">
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <meta name="generator" content="Odoo"/>
-        <meta name="description" content="This is the homepage of the website"/>
-            
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="Home | Pizzeria Il Semaforo"/>
-        <meta property="og:site_name" content="Pizzeria Il Semaforo"/>
-        <meta property="og:url" content="https://pizzeria-il-semaforo3.odoo.com/"/>
-        <meta property="og:image" content="https://pizzeria-il-semaforo3.odoo.com/web/image/website/1/logo?unique=ccbbe29"/>
-        <meta property="og:description" content="This is the homepage of the website"/>
-            
-        <meta name="twitter:card" content="summary_large_image"/>
-        <meta name="twitter:title" content="Home | Pizzeria Il Semaforo"/>
-        <meta name="twitter:image" content="https://pizzeria-il-semaforo3.odoo.com/web/image/website/1/logo/300x300?unique=ccbbe29"/>
-        <meta name="twitter:description" content="This is the homepage of the website"/>
-        
-        <link rel="canonical" href="https://pizzeria-il-semaforo3.odoo.com/"/>
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin=""/>
-        <title>Home | Pizzeria Il Semaforo</title>
-        <link type="image/x-icon" rel="shortcut icon" href="/web/image/website/1/favicon?unique=ccbbe29"/>
-        <link rel="preload" href="/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
-        <link type="text/css" rel="stylesheet" href="/web/assets/1/46d05a8/web.assets_frontend.min.css"/>
-        <script id="web.layout.odooscript" type="text/javascript">
-            var odoo = {
-                csrf_token: "967c8800e53e3bbc3ae8aefa8cea10bef0d193d5o1777364254",
-                debug: "",
-            };
-        </script>
-        <script type="text/javascript">
-            odoo.__session_info__ = {"is_admin": false, "is_system": false, "is_public": true, "is_internal_user": false, "is_website_user": true, "uid": null, "is_frontend": true, "profile_session": null, "profile_collectors": null, "profile_params": null, "show_effect": true, "currencies": {"125": {"symbol": "\u20ac", "position": "after", "digits": [69, 2]}}, "bundle_params": {"lang": "it_IT", "website_id": 1}, "test_mode": false, "websocket_worker_version": "18.0-3", "translationURL": "/website/translations", "cache_hashes": {"translations": "4ee81f24d94f8bf8850ad80c7ef2cc00068219bc"}, "geoip_country_code": "IT", "geoip_phone_code": 39, "lang_url_code": "it"};
-            if (!/(^|;\s)tz=/.test(document.cookie)) {
-                const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                document.cookie = `tz=${userTZ}; path=/`;
+<!DOCTYPE html>  
+<html lang="it">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Pizzeria Il Semaforo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background-color: #2c3e50;
+    color: #333;
+    background-image: url('background-image.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+        h1, h2, h3, h4 p {
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 3rem;
+            color: #d84b16;
+            text-align: center;
+            padding-top: 2px;
+        }
+          h2 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 20;
+            font-size: 1rem;
+            color: #FFFFFF;
+            text-align: center;
+            padding-top: 0px;
+        }
+                  h3 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 15;
+            font-size: 2rem;
+            color: #FFFFFF;
+            text-align: center;
+            padding-top: 15px;
+        }
+        .nav {
+            background-color: #d84b16;
+            padding: 0px 0;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+        .nav a:hover {
+            background-color: #c24014;
+        }
+        .content {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .active {
+            display: block;
+        }
+        iframe {
+            width: 80%;
+            height: 400px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        input, select {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #d84b16;
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #c24014;
+            transform: scale(1.05);
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .social-icons img {
+            width: 35px;
+            transition: transform 0.3s ease;
+        }
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+        footer {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            opacity: 0;
+           animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 200px;  /* Imposta altezza fissa per tutte le immagini */
+            object-fit: cover; /* Questo manterrà il corretto rapporto d'aspetto */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
             }
-        </script>
-        <script type="text/javascript" defer="defer" src="/web/assets/1/279804f/web.assets_frontend_minimal.min.js" onerror="__odooAssetError=1"></script>
-        <script type="text/javascript" defer="defer" data-src="/web/assets/1/d6e149d/web.assets_frontend_lazy.min.js" onerror="__odooAssetError=1"></script>
+            100% {
+                opacity: 1;
+            }
+        }
+
+/* Media query per dispositivi con schermi piccoli */
+@media (max-width: 768px) {
+    iframe, img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.content {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.content.active {
+  opacity: 1;
+}
+
+.menu-section {
+    background-color: #fff;
+    padding: 10px 15px; /* Ridotto per adattarsi meglio al contenuto */
+    margin: 10px auto; /* Centrare e ridurre lo spazio verticale */
+    display: inline-block; /* Adatta il contenitore al contenuto */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Allinea il testo a sinistra */
+}
+
+.menu-section h3 {
+    color: #d84b16;
+    font-size: 1.8rem;
+    margin: 5px 0; /* Ridotto per meno spazio */
+}
+
+.menu-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Elimina spazi non necessari */
+}
+
+.menu-section li {
+    font-size: 1.2rem;
+    margin: 5px 0; /* Ridotto per compattezza */
+}
+
+.menu-section li strong {
+    color: #333;
+}
+
+/* Media query per dispositivi mobili */
+@media (max-width: 768px) {
+    .menu-section {
+        padding: 8px 10px; /* Ulteriore riduzione su schermi piccoli */
+    }
+
+    .menu-section h3 {
+        font-size: 1.5rem;
+    }
+}
         
-        
-    </head>
-    <body>
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        .hidden {
+    display: none;
+}
+.popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+}
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%; max-width: 500px;
+}
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#recensioni { 
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px; /* Abbassa la sezione recensioni */
+    background: none; /* Rimuove completamente lo sfondo */
+    border: none; /* Rimuove completamente il bordo */
+    min-height: 400px; /* Imposta un'altezza minima, se necessario */
+}
 
+.reviews {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
 
+.review {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: none; /* Rimuove l'ombra */
+    transition: transform 0.3s ease;
+}
 
-        <div id="wrapwrap" class="homepage   o_header_overlay">
-            <a class="o_skip_to_content btn btn-primary rounded-0 visually-hidden-focusable position-absolute start-0" href="#wrap">Passa al contenuto</a>
-                <header id="top" data-anchor="true" data-name="Header" data-extra-items-toggle-aria-label="Pulsante articoli extra" class="   o_header_standard" style=" ">
-                    
-                <div class="container py-3 px-0">
-    <nav data-name="Navbar" aria-label="Main" class="navbar navbar-expand-lg navbar-light o_colored_level o_cc o_full_border d-none d-lg-block rounded-pill px-3 shadow-sm ">
-        
+.review:hover {
+    transform: translateY(-5px);
+}
 
-                <div id="o_main_nav" class="o_main_nav container">
-                    
-    <a data-name="Navbar Logo" href="/" class="navbar-brand logo me-4">
-            
-            <span role="img" aria-label="Logo of Pizzeria Il Semaforo" title="Pizzeria Il Semaforo"><img src="/web/image/website/1/logo/Pizzeria%20Il%20Semaforo?unique=ccbbe29" class="img img-fluid" width="95" height="40" alt="Pizzeria Il Semaforo" loading="lazy"/></span>
-        </a>
-    
-                    
-    <ul role="menu" id="top_menu" class="nav navbar-nav top_menu o_menu_loading  me-auto nav-pills">
-        
+h3 {
+    text-align: center;
+    color: #d84b16;
+    font-size: 2rem; /* Impostato come nelle altre sezioni */
+    padding-top: 10px; /* Allinea meglio il padding */
+}
 
-                        
+h4 {
+    color: #e76f51;
+    margin-bottom: 10px;
+}
+/* Header mobile + hamburger menu */
+.header-center {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 0px 10px;
+    height: 80px;
+}
 
-    <li role="presentation" class="nav-item ">
-        <a role="menuitem" href="/" class="nav-link active">
-            <span>Home</span>
-        </a>
-    </li>
+.logo {
+    height: 120px;
+    object-fit: contain;
+    background-color: transparent;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    margin-top: -60px;
+    display: block;
+    pointer-events: auto;
+    z-index: 1001;
+}
+   
+.hamburger {
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+padding-left: 20px;   /* ← Aggiunto spazio dal bordo sinistro */
+    padding-top: 25px;    /* Per centrare meglio verticalmente */
+     position: relative;
+    z-index: 2000; /* assicurati che sia cliccabile */
+}
 
-    <li role="presentation" class="nav-item ">
-        <a role="menuitem" href="/about-us" class="nav-link ">
-            <span>Menù</span>
-        </a>
-    </li>
+/* Mobile menu */
+.mobile-menu {
+    background-color: #d84b16;
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* ← CAMBIATO: fixed invece di absolute */
+    top: 0;           /* ATTACCATO ALTO SOPRA TUTTO */
+    left: 0;
+    width: 100%;
+    z-index: 1002;    /* Più alto del logo */
+}
 
-    <li role="presentation" class="nav-item ">
-        <a role="menuitem" href="/contactus" class="nav-link ">
-            <span>Contattaci</span>
-        </a>
-    </li>
-                    
-    </ul>
-                    
-                    <ul class="navbar-nav align-items-center gap-1 flex-wrap flex-shrink-0 justify-content-end ps-3">
-                        
-                        
-        <li class="">
-                <div class="modal fade css_editable_mode_hidden" id="o_search_modal" aria-hidden="true" tabindex="-1">
-                    <div class="modal-dialog modal-lg pt-5">
-                        <div class="modal-content mt-5">
-    <form method="get" class="o_searchbar_form s_searchbar_input " action="/website/search" data-snippet="s_searchbar_input">
-            <div role="search" class="input-group input-group-lg">
-        <input type="search" name="search" class="search-query form-control oe_search_box border border-end-0 p-3 border-0 bg-light" placeholder="Ricerca..." data-search-type="all" data-limit="5" data-display-image="true" data-display-description="true" data-display-extra-link="true" data-display-detail="true" data-order-by="name asc"/>
-        <button type="submit" aria-label="Cerca" title="Cerca" class="btn oe_search_button border border-start-0 px-4 bg-o-color-4">
-            <i class="oi oi-search"></i>
-        </button>
+.mobile-menu a {
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s;
+}
+
+.mobile-menu a:hover {
+    background-color: #c24014;
+}
+
+.hidden {
+    display: none;
+}
+        .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1003;
+    background-color: #25D366;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float img {
+    width: 35px;
+    height: 35px;
+}
+.call-button,
+.whatsapp-button {
+    position: fixed;
+    right: 20px;
+    z-index: 1000;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.call-button {
+    bottom: 90px; /* Più in alto */
+}
+
+.whatsapp-button {
+    bottom: 20px; /* Più in basso */
+}
+
+.call-button:hover,
+.whatsapp-button:hover {
+    transform: scale(1.1);
+}
+
+.call-button img,
+.whatsapp-button img {
+    width: 30px;
+    height: 30px;
+}
+
+    </style>
+</head>
+<body>
+<a href="https://wa.me/+393403046310?text=Ciao%2C%20vorrei%20prenotare%20un%20tavolo!" 
+   class="whatsapp-float" target="_blank" aria-label="Contattaci su WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+</a>
+    <a href="tel:+393403046310" class="call-button" title="Chiama ora">
+    <img src="telefono-icon.png" alt="Chiama" />
+</a>
+<!-- Header con logo e hamburger -->
+<header class="mobile-header">
+    <div class="header-left">
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
-
-            <input name="order" type="hidden" class="o_search_order_by" value="name asc"/>
-            
-    
-        </form>
-                        </div>
-                    </div>
-                </div>
-                <a data-bs-target="#o_search_modal" data-bs-toggle="modal" role="button" title="Cerca" href="#" class="btn rounded-circle p-1 lh-1 o_navlink_background text-reset o_not_editable">
-                    <i class="oi oi-search fa-stack lh-lg"></i>
-                </a>
-        </li>
-                        
-        <li class="">
-                <div data-name="Text" class="s_text_block ">
-                    <a href="tel:+393885853020" class="nav-link o_nav-link_secondary p-2" aria-describedby="popover934293">
-                        <i class="fa fa-1x fa-fw fa-phone me-1"></i>
-                        <span class="o_force_ltr"><small>+39 3885853020</small></span></a>
-                </div>
-        </li>
-                        
-                        
-        <li data-name="Language Selector" class="o_header_language_selector ">
-        
-        
-        </li>
-                        
-            <li class=" o_no_autohide_item">
-                <a href="/web/login" class="nav-link o_nav_link_btn border px-3">Accedi</a>
-            </li>
-                        
-        <li class="">
-            <div class="oe_structure oe_structure_solo ">
-                <section class="oe_unremovable oe_unmovable s_text_block o_colored_level" data-snippet="s_text_block" data-name="Text">
-                    <div class="container h-100">
-                        <a href="/contactus" class="oe_unremovable btn btn-primary btn_cta d-flex align-items-center h-100 rounded-0" aria-describedby="popover830483">Contattaci</a>
-                    </div>
-                </section>
-            </div>
-        </li>
-                    </ul>
-                </div>
-            
-    </nav>
-    <nav data-name="Navbar" aria-label="Mobile" class="navbar  navbar-light o_colored_level o_cc o_header_mobile d-block d-lg-none shadow-sm o_full_border mx-1 rounded-pill px-3">
-    
-        <div class="o_main_nav container flex-wrap justify-content-between">
-            
-    <a data-name="Navbar Logo" href="/" class="navbar-brand logo ">
-            
-            <span role="img" aria-label="Logo of Pizzeria Il Semaforo" title="Pizzeria Il Semaforo"><img src="/web/image/website/1/logo/Pizzeria%20Il%20Semaforo?unique=ccbbe29" class="img img-fluid" width="95" height="40" alt="Pizzeria Il Semaforo" loading="lazy"/></span>
-        </a>
-    
-            <ul class="o_header_mobile_buttons_wrap navbar-nav flex-row align-items-center gap-2 mb-0">
-                <li class="o_not_editable">
-                    <button class="nav-link btn me-auto p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#top_menu_collapse_mobile" aria-controls="top_menu_collapse_mobile" aria-expanded="false" aria-label="Commuta navigazione">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </li>
-            </ul>
-            <div id="top_menu_collapse_mobile" class="offcanvas offcanvas-end o_navbar_mobile">
-                <div class="offcanvas-header justify-content-end o_not_editable">
-                    <button type="button" class="nav-link btn-close" data-bs-dismiss="offcanvas" aria-label="Chiudi"></button>
-                </div>
-                <div class="offcanvas-body d-flex flex-column justify-content-between h-100 w-100 pt-0">
-                    <ul class="navbar-nav">
-                        
-        <li class="">
-    <form method="get" class="o_searchbar_form s_searchbar_input " action="/website/search" data-snippet="s_searchbar_input">
-            <div role="search" class="input-group mb-3">
-        <input type="search" name="search" class="search-query form-control oe_search_box rounded-start-pill text-bg-light ps-3 border-0 bg-light" placeholder="Ricerca..." data-search-type="all" data-limit="0" data-display-image="true" data-display-description="true" data-display-extra-link="true" data-display-detail="true" data-order-by="name asc"/>
-        <button type="submit" aria-label="Cerca" title="Cerca" class="btn oe_search_button rounded-end-pill bg-o-color-3 pe-3">
-            <i class="oi oi-search"></i>
-        </button>
+    <div class="header-center">
+        <img src="logo.jpg" alt="Logo Pizzeria Il Semaforo" class="logo">
     </div>
+    <div class="header-right"><!-- spazio vuoto per bilanciare --></div>
+</header>
 
-            <input name="order" type="hidden" class="o_search_order_by" value="name asc"/>
-    
-        </form>
-        </li>
-                        
-    <ul role="menu" class="nav navbar-nav top_menu  o_mega_menu_is_offcanvas mx-n3  ">
-        
-    <li role="presentation" class="nav-item border-top  px-0">
-        <a role="menuitem" href="/" class="nav-link p-3 text-wrap active">
-            <span>Home</span>
-        </a>
-    </li>
+<nav class="mobile-menu hidden">
+    <a href="#" onclick="navigate('main')">Home</a>
+    <a href="#" onclick="navigate('chiSiamo')">Chi Siamo</a>
+    <a href="#" onclick="navigate('menù')">Menù</a>
+    <a href="#" onclick="navigate('galleria')">Galleria</a>
+    <a href="#" onclick="navigate('recensioni')">Recensioni</a>
+</nav>
 
-    <li role="presentation" class="nav-item border-top  px-0">
-        <a role="menuitem" href="/about-us" class="nav-link p-3 text-wrap ">
-            <span>Menù</span>
-        </a>
-    </li>
-
-    <li role="presentation" class="nav-item border-top border-bottom px-0">
-        <a role="menuitem" href="/contactus" class="nav-link p-3 text-wrap ">
-            <span>Contattaci</span>
-        </a>
-    </li>
-                        
-    </ul>
-                        
-        <li class="">
-                <div data-name="Text" class="s_text_block mt-2">
-                    <a href="tel:+393885853020" class="nav-link o_nav-link_secondary p-2" aria-describedby="popover934293">
-                        <i class="fa fa-1x fa-fw fa-phone me-1"></i>
-                        <span class="o_force_ltr"><small>+39 3885853020</small></span></a>
-                </div>
-        </li>
-                        
-                    </ul>
-                    <ul class="navbar-nav gap-2 mt-3 w-100">
-                        
-        <li data-name="Language Selector" class="o_header_language_selector ">
-    
-        </li>
-                        
-            <li class=" o_no_autohide_item">
-                <a href="/web/login" class="nav-link o_nav_link_btn w-100 border text-center">Accedi</a>
-            </li>
-                        
-        <li class="">
-            <div class="oe_structure oe_structure_solo ">
-                <section class="oe_unremovable oe_unmovable s_text_block o_colored_level" data-snippet="s_text_block" data-name="Text">
-                    <div class="container h-100">
-                        <a href="/contactus" class="oe_unremovable btn btn-primary btn_cta d-flex align-items-center h-100 rounded-0 w-100" aria-describedby="popover830483">Contattaci</a>
-                    </div>
-                </section>
-            </div>
-        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    
-    </nav>
-        </div>
-    
-        </header>
-                <main>
-                    
-        <div id="wrap" class="oe_structure"><section class="s_cover parallax o_cc o_cc5 pt160 pb192 o_colored_level oe_img_bg o_bg_img_center o_bg_img_origin_border_box" data-scroll-background-ratio="0" style="background-image: url(&#34;/web/image/506-13393526/Pizzeria%20Il%20Semaforo.webp&#34;) !important;" data-oe-shape-data="{&#34;shape&#34;:&#34;web_editor/Origins/02_001&#34;,&#34;flip&#34;:[]}" data-snippet="s_cover" data-name="Copertina" data-mimetype="image/webp" data-original-id="452" data-original-src="/web/image/452-13393526/Pizzeria%20Il%20Semaforo.jpg" data-mimetype-before-conversion="image/jpeg" data-resize-width="1920" data-quality="100">
-        <div class="o_we_bg_filter bg-black-50"></div>
-        <div class="o_we_shape o_web_editor_Origins_02_001 o_header_extra_shape_mapping" style=""></div>
-        <div class="s_allow_columns container">
-        <div class="row">
-            <div class="col col-lg-7 pb128 o_colored_level">
-                <h1>Benvenuti da Pizzeria Il Semaforo</h1><p class="lead">
-                    Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!
-                </p>
-                <p>
-                    <a class="btn btn-primary btn-lg" href="/privacy">Prenota Ora</a>&nbsp;<br/></p></div>
-        </div>
-            </div>
-    </section><section class="s_text_block pb40 o_colored_level pt40" data-snippet="s_text_block" data-name="Testo" id="APRI-LA-MAPPA-E-SCOPRI-DOVE-SIAMO!" data-anchor="true">
-        <div class="s_allow_columns o_container_small">
-            <div class="row"><div class="col-lg-12"><p><strong>Circa un anno fa, la nostra pizzeria “Il Semaforo” è nata da un sogno condiviso da una famiglia molto unita.</strong></p><p>Provenivamo da un altro settore, ma la nostra passione per la cucina e l’amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non è stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realtà.</p><p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l’abbiamo creata.</p><div class="s_hr pt32 pb32" data-snippet="s_hr" data-name="Separatore">
-        <hr class="w-100 mx-auto"/>
-    </div><h3 style="text-align: center;"><strong>APRI LA MAPPA E SCOPRI DOVE SIAMO!</strong></h3><section class="s_map pt56 pb256" data-map-type="m" data-map-zoom="16" data-snippet="s_map" data-map-address="Pizzeria Il Semaforo" data-name="Mappa">
-        <div class="map_container o_not_editable">
-            <div class="css_non_editable_mode_hidden">
-                <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none">
-                    Un indirizzo deve essere specificato per incorporare una mappa
-                </div>
-            </div>
-            <iframe class="s_map_embedded o_not_editable" src="https://maps.google.com/maps?q=Pizzeria%20Il%20Semaforo&amp;t=m&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" aria-label="Mappa"></iframe>
-            <div class="s_map_color_filter"></div>
-        </div>
-    </section></div></div></div>
-    </section><section class="s_quotes_carousel_wrapper" data-vxml="001" data-vcss="002" data-snippet="s_quotes_carousel_minimal" data-name="Citazioni minimal">
-        <div class="s_quotes_carousel carousel o_colored_level pointer-event s_carousel_rounded slide" data-bs-ride="true" data-bs-interval="10000" id="myCarousel1745674119014">
-            
-            <div class="carousel-inner">
-                
-                <div class="carousel-item o_colored_level pt48 active pb24" data-name="Slide" style="">
-                    <blockquote data-name="Blockquote" data-snippet="s_blockquote" class="s_blockquote s_blockquote_with_icon o_animable position-relative d-flex flex-column gap-4 my-4 p-5 fst-normal o_colored_level mx-auto w-100 shadow rounded" data-vcss="001" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px !important; border-radius: 15px !important;">
-                        <div class="s_blockquote_line_elt position-absolute top-0 start-0 bottom-0 bg-o-color-1"></div>
-                        <div class="s_blockquote_wrap_icon position-absolute top-0 start-50 translate-middle w-100">
-                            <i class="s_blockquote_icon fa fa-quote-right fa-3x d-block mx-auto" role="img"></i>
-                        </div>
-                        <p class="s_blockquote_quote my-auto h3-fs" style="text-align:center;">
-"La pizza più buona che abbia mai mangiato! Ingredienti freschi e personale super cordiale."
-
-</p>
-                        <div class="s_blockquote_infos d-flex gap-2 flex-column align-items-center w-100 text-center">
-                            <span class="fa fa-user s_blockquote_avatar rounded-circle"></span>
-                            <div class="s_blockquote_author">
-                                <span class="o_small">
-                                    <strong>
-<strong>Giulia Rossi</strong></strong><br/>
-                                    <br/><span class="text-muted">Cliente</span></span></div>
-                        </div>
-                    </blockquote>
-                </div>
-                
-                <div class="carousel-item pb80 o_colored_level pt32" data-name="Slide" style="">
-                    <blockquote data-name="Blockquote" data-snippet="s_blockquote" class="s_blockquote o_animable position-relative d-flex flex-column gap-4 my-4 p-5 fst-normal o_colored_level mx-auto w-100 s_blockquote_with_icon" data-vcss="001">
-                        <div class="s_blockquote_line_elt position-absolute top-0 start-0 bottom-0 bg-o-color-1"></div>
-                        <div class="s_blockquote_wrap_icon position-absolute top-0 start-50 translate-middle w-100">
-                            <i class="s_blockquote_icon fa fa-quote-right fa-3x d-block mx-auto" role="img"></i>
-                        </div>
-                        <p class="s_blockquote_quote my-auto h3-fs" style="text-align:center;">
-"Personale super gentile e disponibile. Abbiamo affittato la stanza fuori, ed era abbastanza grande da accoglierci tutti (circa 50). Era ben tenuta e pulita. Pizza favolosa."
-
-</p>
-                        <div class="s_blockquote_infos d-flex gap-2 flex-column align-items-center w-100 text-center">
-                            <span class="fa fa-user s_blockquote_avatar rounded-circle"></span>
-                            <div class="s_blockquote_author">
-                                <span class="o_small">
-                                    <strong>
-<strong>Giada Balduinotti</strong>
-
-</strong><br/>
-                                    <br/><span class="text-muted">Cliente</span></span></div>
-                        </div>
-                    </blockquote>
-                </div>
-                
-                <div class="carousel-item pt80 pb80 o_colored_level" data-name="Slide" style="">
-                    <blockquote data-name="Blockquote" data-snippet="s_blockquote" class="s_blockquote s_blockquote_with_icon o_animable position-relative d-flex flex-column gap-4 my-4 p-5 fst-normal o_colored_level mx-auto w-100" data-vcss="001">
-                        <div class="s_blockquote_line_elt position-absolute top-0 start-0 bottom-0 bg-o-color-1"></div>
-                        <div class="s_blockquote_wrap_icon position-absolute top-0 start-50 translate-middle w-100">
-                            <i class="s_blockquote_icon fa fa-quote-right fa-3x d-block mx-auto" role="img"></i>
-                        </div>
-                        <p class="s_blockquote_quote my-auto h3-fs" style="text-align:center;">
-"Il giro pizza è una genialata!&nbsp;Complimenti a tutto lo staff!"
-
-</p><div class="s_blockquote_infos d-flex gap-2 flex-column align-items-center w-100 text-center">
-                            <span class="fa fa-user s_blockquote_avatar rounded-circle"></span>
-                            <div class="s_blockquote_author">
-                                <span class="o_small">
-                                    <strong>
-<strong>Marco Neri</strong>
-
-</strong><br/>
-                                    <br/><span class="text-muted">Cliente</span></span></div>
-                        </div>
-                    </blockquote>
-                </div><div class="carousel-item pt80 pb80 o_colored_level" data-name="Slide" style="min-height: 593.958px;">
-                    <blockquote data-name="Blockquote" data-snippet="s_blockquote" class="s_blockquote s_blockquote_with_icon o_animable position-relative d-flex flex-column gap-4 my-4 p-5 fst-normal o_colored_level mx-auto w-100" data-vcss="001">
-                        <div class="s_blockquote_line_elt position-absolute top-0 start-0 bottom-0 bg-o-color-1"></div>
-                        <div class="s_blockquote_wrap_icon position-absolute top-0 start-50 translate-middle w-100">
-                            <i class="s_blockquote_icon fa fa-quote-right fa-3x d-block mx-auto" role="img"></i>
-                        </div>
-                        <p class="s_blockquote_quote my-auto h3-fs" style="text-align:center;">
-"Luogo meraviglioso, personale fantastico. Primi buonissimi e pizza top a prezzi onestissimi. Bravi!!!!"
-
-&nbsp;<br/></p>
-                        <div class="s_blockquote_infos d-flex gap-2 flex-column align-items-center w-100 text-center">
-                            <span class="fa fa-user s_blockquote_avatar rounded-circle"></span>
-                            <div class="s_blockquote_author">
-                                <span class="o_small">
-                                    <strong>
-<strong>Alessandro Galli</strong>
-
-</strong><br/>
-                                    <br/><span class="text-muted">Cliente</span></span></div>
-                        </div>
-                    </blockquote>
-                </div><div class="carousel-item pt80 pb80 o_colored_level" data-name="Slide" style="min-height: 593.958px;">
-                    <blockquote data-name="Blockquote" data-snippet="s_blockquote" class="s_blockquote s_blockquote_with_icon o_animable position-relative d-flex flex-column gap-4 my-4 p-5 fst-normal o_colored_level mx-auto w-100" data-vcss="001">
-                        <div class="s_blockquote_line_elt position-absolute top-0 start-0 bottom-0 bg-o-color-1"></div>
-                        <div class="s_blockquote_wrap_icon position-absolute top-0 start-50 translate-middle w-100">
-                            <i class="s_blockquote_icon fa fa-quote-right fa-3x d-block mx-auto" role="img"></i>
-                        </div>
-                        <p class="s_blockquote_quote my-auto h3-fs" style="text-align:center;">"
-Ambiente accogliente con cucina a vista SUPER pulita, pizza buonissima e molto digeribile. Servizio veloce e coccola il cliente. Consigliatissimo!
-
-"</p>
-                        <div class="s_blockquote_infos d-flex gap-2 flex-column align-items-center w-100 text-center">
-                            <span class="fa fa-user s_blockquote_avatar rounded-circle"></span>
-                            <div class="s_blockquote_author">
-                                <span class="o_small">
-                                    <strong>
-<strong>Andrea B</strong>
-
-</strong><br/>
-                                    <br/><span class="text-muted">Cliente</span></span></div>
-                        </div>
-                    </blockquote>
-                </div><div class="carousel-item pt80 pb80 o_colored_level" data-name="Slide" style="min-height: 593.958px;">
-                    <blockquote data-name="Blockquote" data-snippet="s_blockquote" class="s_blockquote s_blockquote_with_icon o_animable position-relative d-flex flex-column gap-4 my-4 p-5 fst-normal o_colored_level mx-auto w-100" data-vcss="001">
-                        <div class="s_blockquote_line_elt position-absolute top-0 start-0 bottom-0 bg-o-color-1"></div>
-                        <div class="s_blockquote_wrap_icon position-absolute top-0 start-50 translate-middle w-100">
-                            <i class="s_blockquote_icon fa fa-quote-right fa-3x d-block mx-auto" role="img"></i>
-                        </div>
-                        <p class="s_blockquote_quote my-auto h3-fs" style="text-align:center;">"
-Antipasto semplice a base di ottima schiacciata e affettati.. mozzarelle e sottoli pizza buona e croccante a volontà bevande dolce e caffè prezzo super"</p>
-                        <div class="s_blockquote_infos d-flex gap-2 flex-column align-items-center w-100 text-center">
-                            <span class="fa fa-user s_blockquote_avatar rounded-circle"></span>
-                            <div class="s_blockquote_author">
-                                <span class="o_small">
-                                    <strong>
-<strong>Fabiola Galardi</strong>
-
-</strong><br/>
-                                    <br/><span class="text-muted">Cliente</span></span></div>
-                        </div>
-                    </blockquote>
-                </div>
-            </div>
-            
-            <button class="carousel-control-prev o_not_editable o_we_no_overlay" aria-label="Precedente" title="Precedente" data-bs-target="#myCarousel1745674119014" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Precedente</span>
-            </button>
-            <button class="carousel-control-next o_not_editable o_we_no_overlay" aria-label="Successivo" title="Successivo" data-bs-target="#myCarousel1745674119014" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Successiva</span>
-            </button>
-            
-            <div class="carousel-indicators o_we_no_overlay s_carousel_indicators_dots">
-                <button type="button" aria-label="Indicatore carosello" data-bs-target="#myCarousel1745674119014" class="active" data-bs-slide-to="0" aria-current="true"></button>
-                <button type="button" aria-label="Indicatore carosello" data-bs-target="#myCarousel1745674119014" data-bs-slide-to="1"></button>
-                <button type="button" aria-label="Indicatore carosello" data-bs-target="#myCarousel1745674119014" data-bs-slide-to="2"></button>
-            <button data-bs-target="#myCarousel1745674119014" aria-label="Indicatore carosello" data-bs-slide-to="3"></button> <button data-bs-target="#myCarousel1745674119014" aria-label="Indicatore carosello" data-bs-slide-to="4"></button> <button data-bs-target="#myCarousel1745674119014" aria-label="Indicatore carosello" data-bs-slide-to="5"></button> </div>
-        </div>
-    </section><section class="s_newsletter_block s_newsletter_list o_cc o_cc2 o_colored_level pb40 pt40" data-list-id="1" data-snippet="s_newsletter_block" data-name="Newsletter">
-        <div class="container">
-    <div class="row">
-        <div class="col-lg-6 o_colored_level">
-            <h2 class="h4-fs">Iscriviti alla nostra newsletter</h2>
-            <p class="text-muted">Ricevi le ultime novità, gli articoli del blog e gli aggiornamenti sui prodotti dalla nostra azienda direttamente nella tua casella di posta.</p>
-        </div>
-        <div class="col-lg-5 offset-lg-1 o_colored_level">
-    <div data-vxml="001" data-list-id="0" data-name="Newsletter Form" data-snippet="s_newsletter_subscribe_form" class="s_newsletter_subscribe_form s_newsletter_list js_subscribe">
-        <div class="js_subscribed_wrap d-none">
-            <p class="h4-fs text-center text-success"><i class="fa fa-check-circle-o" role="img"></i> Grazie per esserti registrato!</p>
-        </div>
-        <div class="js_subscribe_wrap">
-            <div class="input-group">
-                <input type="email" name="email" placeholder="Indirizzo e-mail" class="s_newsletter_subscribe_form_input js_subscribe_value form-control "/>
-                <a role="button" href="#" class="js_subscribe_btn o_submit btn btn-primary">Iscriviti</a>
-            </div>
-        </div>
-    </div>
-        </div>
-    </div>
-        </div>
-    </section></div>
-    
-        <div id="o_shared_blocks" class="oe_unremovable"></div>
-                </main>
-                <footer id="bottom" data-anchor="true" data-name="Footer" class="o_footer o_colored_level o_cc ">
-                    <div id="footer" class="oe_structure oe_structure_solo">
-            <section class="s_text_block pt64" data-snippet="s_text_block" data-name="Text">
-                <div class="container s_allow_columns">
-                    <div class="s_social_media text-center mb-4 o_not_editable" data-snippet="s_social_media" data-name="Social Media">
-                        <h5 class="s_social_media_title d-none">Seguici</h5>
-<a href="/website/social/facebook" class="s_social_media_facebook" target="_blank" aria-label="Facebook">
-                            <i class="fa rounded-circle rounded shadow-sm o_editable_media fa-facebook"></i>
-                        </a>
-<a href="/website/social/instagram" class="s_social_media_instagram" target="_blank" aria-label="Instagram">
-                            <i class="fa rounded-circle rounded shadow-sm o_editable_media fa-instagram"></i>
-                        </a>
-<a href="/website/social/tiktok" class="s_social_media_tiktok" target="_blank" aria-label="TikTok">
-                            <i class="fa rounded-circle rounded shadow-sm o_editable_media fa-tiktok"></i>
-                        </a>
-</div>
-                    <p class="text-center mb-1">Pizzeria Il Semaforo -&nbsp;Via Palagetta 50013 Campi Bisenzio</p>
-                    <ul class="list-inline text-center">
-                        <li class="list-inline-item mx-3"><i class="fa fa-1x fa-fw fa-phone me-2"></i><span class="o_force_ltr"><a href="tel:+1 555-555-5556">+3</a>9 3403046310</span></li></ul>
-                </div>
-            </section>
-            
-        </div>
-    <div class="o_footer_copyright o_colored_level o_cc" data-name="Copyright">
-                        <div class="container py-3">
-                            <div class="row">
-                                <div class="col-sm text-center text-sm-start text-muted">
-                                    <span class="o_footer_copyright_name me-2">Copyright 2025 © Pizzeria Il Semaforo</span>
-        
-        
-    </div>
-                                <div class="col-sm text-center text-sm-end o_not_editable">
-        <div class="o_brand_promotion">
-        Fornito da 
-            <a target="_blank" class="badge text-bg-light" href="http://www.odoo.com?utm_source=db&amp;utm_medium=website">
-                <img alt="Odoo" src="/web/static/img/odoo_logo_tiny.png" width="62" height="20" style="width: auto; height: 1em; vertical-align: baseline;" loading="lazy"/>
+    <!-- Sezione principale -->
+    <div id="main" class="content active">
+        <h1>Benvenuti da Pizzeria Il Semaforo</h1>
+        <h2>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1462.4312215232844!2d11.1203234!3d43.8093687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a59b7d8859209%3A0x98788d2f085c6016!2sPizzeria%20Il%20Semaforo!5e0!3m2!1sit!2sit!4v1695151262428!5m2!1sit!2sit" allowfullscreen></iframe>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/pizzeriailsemaforo/" target="_blank">
+                <img src="instagram-logo.png" alt="Instagram">
             </a>
-        - 
-                Crea un <a target="_blank" href="http://www.odoo.com/app/website?utm_source=db&amp;utm_medium=website">sito web gratuito</a>
-            
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="facebook-logo.png" alt="Facebook">
+            </a>
+            <a href="https://www.tiktok.com" target="_blank">
+                <img src="tiktok-logo.png" alt="TikTok">
+            </a>
+        </div>
     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        
-        </body>
+
+    <!-- Sezione Chi Siamo -->
+    <div id="chiSiamo" class="content">
+        <h3>LA NOSTRA STORIA</h3>
+        <div class="form-container">
+            <p><strong>Circa un anno fa, la nostra pizzeria “Il Semaforo” è nata da un sogno condiviso da una famiglia molto unita.</strong></p>
+            <p>Provenivamo da un altro settore, ma la nostra passione per la cucina e l’amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non è stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realtà.</p>
+            <p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l’abbiamo creata.</p>
+            <img src="Pizzeria Il Semaforo.jpg" alt="Pizzeria Il Semaforo" style="width: 100%; border-radius: 10px; margin-top: 20px;">
+        </div>
+    </div>
+
+    <!-- Sezione Menù -->
+    <div id="menù" class="content">
+        <h3>I NOSTRI MENU'</h3>
+        <h2>Scopri le nostre specialità preparate con ingredienti freschi e di qualità.</h2>
+        <div class="menu-section">
+            <h4>Menù del Giovedì</h4>
+            <ul>
+                <li><strong>Antipasti:</strong> Affettati misti e sott'oli accompagnati da covaccino caldo</li>
+                <li><strong>Giropizza</strong></li>
+                <li><strong>Dolce della casa e bevuta piccola</strong></li>
+                <li><strong>Prezzo:</strong> 16€</li>
+            </ul>
+        </div>
+
+        <div class="menu-section">
+            <h4>Menù dal Venerdì alla Domenica</h4>
+            <ul>
+                <li><strong>Antipasti:</strong> Affettati misti e sott'oli accompagnati da covaccino caldo</li>
+                <li><strong>Giropizza</strong></li>
+                <li><strong>Dolce della casa e bevuta piccola</strong></li>
+                <li><strong>Prezzo:</strong> 18€</li>
+            </ul>
+        </div>
+    </div>
+
+<!-- Sezione Galleria --> 
+<div id="galleria" class="content">
+    <h3>GALLERIA FOTOGRAFICA</h3>
+    <div class="gallery">
+        <img src="1.jpg" class="gallery-item">
+        <img src="2.jpg" class="gallery-item">
+        <img src="3.jpg" class="gallery-item">
+        <img src="4.jpg" class="gallery-item">
+        <img src="5.jpg" class="gallery-item">
+        <img src="6.jpg" class="gallery-item">
+        <img src="7.jpg" class="gallery-item">
+        <img src="8.jpg" class="gallery-item">
+        <img src="9.jpg" class="gallery-item">
+        <img src="10.jpg" class="gallery-item">
+    </div>
+</div>
+    
+<!-- Sezione Recensioni -->
+<div id="recensioni" class="content">
+    <h3>RECENSIONI DEI NOSTRI CLIENTI</h3>
+    <div class="reviews">
+        <div class="review">
+            <h4>⭐⭐⭐⭐⭐</h4>
+            <p><strong>Giulia Rossi:</strong> "La pizza più buona che abbia mai mangiato! Ingredienti freschi e personale super cordiale."</p>
+        </div>
+        <div class="review">
+            <h4>⭐⭐⭐⭐⭐</h4>
+            <p><strong>Laura Marchesin:</strong> "Abbiamo mangiato benissimo!!! Servizio eccellente e molto carini!! Ci hanno servito subito! Siamo state a cena con amiche: salumi ottimi schiacciata super !! Pizze eccellenti e ci hanno servito velocissimi.Ah dimenticavo....i dolci artigianali sono il top! Dovete assolutamente andare!!"</p>
+        </div>
+        <div class="review">
+            <h4>⭐⭐⭐⭐</h4>
+            <p><strong>Giada Balduinotti:</strong> "Personale super gentile e disponibile. Abbiamo affittato la stanza fuori, ed era abbastanza grande da accoglierci tutti (circa 50). Era ben tenuta e pulita. Pizza favolosa."</p>
+        </div>
+        <div class="review">
+            <h4>⭐⭐⭐⭐⭐</h4>
+            <p><strong>Marco Neri:</strong> "Il giropizza è una genialata! Complimenti a tutto lo staff!"</p>
+        </div>
+        <div class="review">
+            <h4>⭐⭐⭐⭐⭐</h4>
+            <p><strong>Alessandro Galli:</strong> "Luogo meraviglioso, personale fantastico. Primi buonissimi e pizza top a prezzi onestissimi. Bravi!!!!"</p>
+        </div>
+         <div class="review">
+            <h4>⭐⭐⭐⭐</h4>
+            <p><strong>Francesco De Martino:</strong> "Devo dire decisamente migliorato. Menù a prezzo fisso abbondante e buono. Riaggiornata anche la parte interna con nuova illuminazione. Comodo anche per cene di gruppo, con salette dedicate. Nonostante un inconveniente con la prenotazione, hanno rimediato bene."</p>
+        </div>
+         <div class="review">
+            <h4>⭐⭐⭐⭐⭐</h4>
+            <p><strong>Andrea B:</strong> Ambiente accogliente con cucina a vista SUPER pulita, pizza buonissima e molto digeribile. Servizio veloce e coccola il cliente. Consigliatissimo! 
+         </div>       
+         <div class="review">
+            <h4>⭐⭐⭐⭐⭐</h4>
+            <p><strong>Fabiola Galardi:</strong> Antipasto semplice a base di ottima schiacciata e affettati.. mozzarelle e sottoli pizza buona e croccante a volontà bevande dolce e caffè prezzo super
+         </div>    
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Pizzeria Il Semaforo | Tutti i diritti riservati</p>
+    </footer>
+
+<script>
+function toggleMenu() {
+    const menu = document.querySelector('.mobile-menu');
+    menu.classList.toggle('hidden');
+}
+
+function navigate(sectionId) {
+    toggleMenu(); // chiude il menu
+    showSection(sectionId); // mostra sezione
+}
+
+function showSection(id) {
+    document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+// Funzione per mostrare le sezioni
+function showSection(section) {
+    const sections = document.querySelectorAll('.content');
+    sections.forEach(sec => {
+        sec.classList.remove('active');
+    });
+    document.getElementById(section).classList.add('active');
+}
+</script>
 </html>
