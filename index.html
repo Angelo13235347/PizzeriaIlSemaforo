@@ -1,13 +1,18 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pizzeria Il Semaforo</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet"/>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- FontAwesome per le icone -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- SwiperJS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet">
 
   <style>
     body { font-family: 'Helvetica Neue', sans-serif; }
@@ -53,13 +58,6 @@
     .navbar-brand img {
       height: 50px;
     }
-
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-      border-radius: 10px;
-    }
   </style>
 </head>
 <body>
@@ -68,7 +66,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img src="logo.jpg" alt="Logo Pizzeria Il Semaforo" />
+      <img src="logo.jpg" alt="Logo Pizzeria Il Semaforo" class="logo">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
@@ -76,7 +74,6 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="galleria.html">Galleria</a></li>
       </ul>
     </div>
   </div>
@@ -87,15 +84,16 @@
   <div class="container">
     <h1>Benvenuti da Pizzeria Il Semaforo</h1>
     <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
-    <a href="galleria.html" class="btn btn-primary mt-4">Galleria</a>
+    <a href="#" class="btn btn-primary mt-4">La nostra storia</a>
   </div>
 </header>
 
 <!-- Chi Siamo -->
 <section class="py-5">
   <div class="container">
-    <h3><strong>Circa un anno fa, la nostra pizzeria "Il Semaforo" è nata da un sogno condiviso da una famiglia molto unita.</strong></h3>
-    <p class="mt-3">Provenivamo da un altro settore, ma la nostra passione per la cucina e l'amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura...</p>
+    <h3><strong>Circa un anno fa, la nostra pizzeria "Il Semaforo" &egrave; nata da un sogno condiviso da una famiglia molto unita.</strong></h3>
+    <p class="mt-3">Provenivamo da un altro settore, ma la nostra passione per la cucina e l'amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non &egrave; stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realt&agrave;.</p>
+    <p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l'abbiamo creata.</p>
   </div>
 </section>
 
@@ -106,10 +104,18 @@
   <div class="container text-center">
     <h2>APRI LA MAPPA E SCOPRI DOVE SIAMO!</h2>
     <div class="mt-4">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1462.4312215232844!2d11.1203234!3d43.8093687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a59b7d8859209%3A0x98788d2f085c6016!2sPizzeria%20Il%20Semaforo!5e0!3m2!1sit!2sit!4v1695151262428!5m2!1sit!2sit" allowfullscreen="" loading="lazy"></iframe>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1462.4312215232844!2d11.1203234!3d43.8093687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a59b7d8859209%3A0x98788d2f085c6016!2sPizzeria%20Il%20Semaforo!5e0!3m2!1sit!2sit!4v1695151262428!5m2!1sit!2sit" 
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy">
+      </iframe>
     </div>
   </div>
 </section>
+
 
 <!-- Testimonianze -->
 <section class="py-5">
@@ -118,16 +124,45 @@
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
 
-        <!-- Esempi di testimonianze -->
+        <!-- Testimonianza 1 -->
         <div class="swiper-slide testimonial text-center">
           <i class="fas fa-quote-left fa-2x mb-3"></i>
-          <p class="lead">"La pizza più buona che abbia mai mangiato!"</p>
-          <p><strong>Giulia Rossi</strong><br><small>Cliente</small></p>
+          <p class="lead">"La pizza più buona che abbia mai mangiato!<br>Ingredienti freschi e personale super cordiale."</p>
+          <div class="mt-3">
+            <p><strong>Giulia Rossi</strong><br><small>Cliente</small></p>
+          </div>
         </div>
 
-        <!-- Altre testimonianze come sopra -->
+        <!-- Testimonianza 2 -->
+        <div class="swiper-slide testimonial text-center">
+          <i class="fas fa-quote-left fa-2x mb-3"></i>
+          <p class="lead">"Servizio eccellente e pizze spettacolari!<br>Un punto di riferimento a Campi Bisenzio."</p>
+          <div class="mt-3">
+            <p><strong>Marco Bianchi</strong><br><small>Cliente abituale</small></p>
+          </div>
+        </div>
+
+        <!-- Testimonianza 3 -->
+        <div class="swiper-slide testimonial text-center">
+          <i class="fas fa-quote-left fa-2x mb-3"></i>
+          <p class="lead">"Locale accogliente e personale gentilissimo.<br>La pizza è davvero top!"</p>
+          <div class="mt-3">
+            <p><strong>Laura Verdi</strong><br><small>Cliente</small></p>
+          </div>
+        </div>
+
+        <!-- Testimonianza 4 -->
+        <div class="swiper-slide testimonial text-center">
+          <i class="fas fa-quote-left fa-2x mb-3"></i>
+          <p class="lead">"Ottimi ingredienti e grande attenzione ai dettagli.<br>Consigliatissimo!"</p>
+          <div class="mt-3">
+            <p><strong>Francesco Neri</strong><br><small>Cliente affezionato</small></p>
+          </div>
+        </div>
 
       </div>
+
+      <!-- Bottoni freccia -->
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
@@ -138,6 +173,7 @@
 <section class="py-5 bg-light">
   <div class="container">
     <h4>Iscriviti alla nostra newsletter</h4>
+    <p>Ricevi le ultime novit&agrave;, gli articoli del blog e gli aggiornamenti sui prodotti dalla nostra azienda direttamente nella tua casella di posta.</p>
     <form class="row g-2">
       <div class="col-md-9">
         <input type="email" class="form-control" placeholder="Indirizzo e-mail" required>
@@ -157,12 +193,16 @@
       <a href="#"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-tiktok"></i></a>
     </div>
-    <p>Pizzeria Il Semaforo - Via Palagetta 50013 Campi Bisenzio<br><i class="fas fa-phone"></i> +39 3403046310</p>
+    <p>Pizzeria Il Semaforo - Via Palagetta 50013 Campi Bisenzio<br>
+      <i class="fas fa-phone"></i> +39 3403046310</p>
     <p>Copyright 2025 &copy; Pizzeria Il Semaforo</p>
   </div>
 </footer>
 
+<!-- Bootstrap Bundle JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- SwiperJS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script>
   const swiper = new Swiper('.mySwiper', {
@@ -178,49 +218,5 @@
   });
 </script>
 
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Galleria - Pizzeria Il Semaforo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <style>
-    body { font-family: Arial, sans-serif; padding-top: 60px; }
-    img { width: 100%; height: auto; border-radius: 10px; }
-  </style>
-</head>
-<body>
-
-<div class="container">
-  <h1 class="text-center mb-4">Galleria fotografica</h1>
-  <div class="row g-4">
-    <!-- Le immagini sono caricate da GitHub (sostituisci il tuo link se diverso) -->
-    <!-- Esempio di URL GitHub: https://raw.githubusercontent.com/NOME-UTENTE/NOME-REPO/main/1.jpg -->
-    <!-- Sotto usiamo 1.jpg fino a 10.jpg -->
-    <!-- SOSTITUISCI QUI "tuo-nome-utente" e "tuo-repo" con i tuoi -->
-    <!-- Esempio: https://raw.githubusercontent.com/pizzeriagithub/semaforo/main/1.jpg -->
-    <!-- Modifica questo link con il tuo vero repo -->
-    <!-- ---------------- -->
-
-    <!-- Inizio ciclo immagini -->
-    <!-- Puoi generarlo anche automaticamente se ne hai di più -->
-    <!-- Qui carichiamo 1.jpg fino a 10.jpg -->
-    <script>
-      const container = document.querySelector('.row');
-      const baseUrl = 'https://angelo13235347.github.io/PizzeriaIlSemaforo/#';
-      for (let i = 1; i <= 10; i++) {
-        const col = document.createElement('div');
-        col.className = 'col-md-4';
-        col.innerHTML = `<img src="${baseUrl}${i}.jpg" alt="Foto ${i}" class="img-fluid shadow-sm">`;
-        container.appendChild(col);
-      }
-    </script>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
