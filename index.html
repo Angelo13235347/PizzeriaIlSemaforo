@@ -238,6 +238,29 @@
       delay: 5000,
       disableOnInteraction: false,
     }
+  const btnGalleria = document.getElementById('btnGalleria');
+  const btnTornaHome = document.getElementById('btnTornaHome');
+  const galleria = document.getElementById('galleria');
+  const tuttoIlCorpo = document.querySelector('body').children;
+
+  btnGalleria.addEventListener('click', function (e) {
+    e.preventDefault();
+    for (let i = 0; i < tuttoIlCorpo.length; i++) {
+      if (tuttoIlCorpo[i].id !== 'galleria' && tuttoIlCorpo[i].tagName !== 'SCRIPT') {
+        tuttoIlCorpo[i].style.display = 'none';
+      }
+    }
+    galleria.style.display = 'block';
+  });
+
+  btnTornaHome.addEventListener('click', function (e) {
+    e.preventDefault();
+    for (let i = 0; i < tuttoIlCorpo.length; i++) {
+      if (tuttoIlCorpo[i].id !== 'galleria') {
+        tuttoIlCorpo[i].style.display = '';
+      }
+    }
+    galleria.style.display = 'none';
   });
 </script>
 
