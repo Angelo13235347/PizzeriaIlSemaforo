@@ -1,58 +1,35 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pizzeria Il Semaforo - Tradizione e innovazione culinaria a Campi Bisenzio">
-  <meta name="keywords" content="pizzeria, Campi Bisenzio, pizza, ristorante, menu, delivery">
-  <meta name="author" content="Pizzeria Il Semaforo">
-  
-  <title>Pizzeria Il Semaforo | Pizza tradizionale a Campi Bisenzio</title>
+  <title>Pizzeria Il Semaforo</title>
 
-  <!-- Preload delle risorse critiche -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"></noscript>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  
-  <!-- Font ottimizzati -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- FontAwesome per le icone -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <!-- SwiperJS CSS con caricamento differito -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"></noscript>
+  <!-- SwiperJS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- jsPDF con caricamento differito -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <!-- jsPDF per il download PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <style>
-    :root {
-      --primary-color: #dc3545;
-      --secondary-color: #212529;
-      --accent-color: #f8f9fa;
-      --text-color: #333;
-      --light-text: #fff;
-    }
-    
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
-      color: var(--text-color);
-      background-color: var(--accent-color);
-      overflow-x: hidden;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #f8f9fa;
     }
 
     header {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Pizzeria%20Il%20Semaforo.jpg') center/cover no-repeat;
-      color: var(--light-text);
+      background: url('Pizzeria%20Il%20Semaforo.jpg') center/cover no-repeat;
+      color: white;
       text-align: center;
-      padding: 180px 20px;
+      padding: 150px 20px;
       position: relative;
-      margin-bottom: 40px;
     }
 
     header::after {
@@ -62,194 +39,121 @@
       left: 0;
       width: 100%;
       height: 80px;
-      background: var(--accent-color);
+      background: white;
       clip-path: polygon(0 0, 100% 100%, 0 100%);
-      z-index: 1;
     }
 
     .testimonial {
-      background: var(--accent-color);
+      background: #f8f9fa;
       padding: 40px;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
-    }
-
-    .testimonial:hover {
-      transform: translateY(-5px);
     }
 
     footer {
-      background: var(--secondary-color);
-      color: var(--light-text);
-      padding: 50px 0 30px;
+      background: #212529;
+      color: white;
+      padding: 40px 0;
       text-align: center;
-      position: relative;
-    }
-
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: var(--primary-color);
     }
 
     .social-icons a {
-      color: var(--light-text);
-      margin: 0 12px;
-      font-size: 22px;
-      transition: color 0.3s, transform 0.3s;
-    }
-
-    .social-icons a:hover {
-      color: var(--primary-color);
-      transform: translateY(-3px);
-    }
-
-    .navbar {
-      padding: 15px 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      background-color: rgba(255,255,255,0.98) !important;
-      backdrop-filter: blur(5px);
+      color: white;
+      margin: 0 10px;
+      font-size: 24px;
     }
 
     .navbar-brand img {
-      height: 55px;
-      transition: transform 0.3s;
-    }
-
-    .navbar-brand img:hover {
-      transform: scale(1.05);
-    }
-
-    .nav-link {
-      font-weight: 500;
-      padding: 8px 15px !important;
-      margin: 0 5px;
-      border-radius: 5px;
-      transition: all 0.3s;
-    }
-
-    .nav-link:hover {
-      color: var(--primary-color) !important;
-      background-color: rgba(220, 53, 69, 0.1);
+      height: 50px;
     }
 
     .galleria-img {
       width: 100%;
       height: 250px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 10px;
       margin-bottom: 20px;
-      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-      box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+      transition: transform 0.3s;
     }
 
     .galleria-img:hover {
       transform: scale(1.03);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
     .divider-line {
-      width: 80%;
+      width: 100%;
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
-      margin: 40px auto;
+      background-color: #ddd;
+      margin: 30px 0;
     }
 
     .btn-galleria {
-      background-color: var(--primary-color);
-      color: var(--light-text);
-      padding: 12px 35px;
+      background-color: #dc3545;
+      color: white;
+      padding: 10px 30px;
       border-radius: 30px;
-      font-weight: 600;
-      margin-top: 25px;
+      font-weight: bold;
+      margin-top: 20px;
       border: none;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      letter-spacing: 0.5px;
-      box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+      transition: all 0.3s;
     }
 
     .btn-galleria:hover {
       background-color: #c82333;
       transform: translateY(-3px);
-      box-shadow: 0 8px 15px rgba(220, 53, 69, 0.4);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     /* Stili per la galleria */
     #galleria {
       display: none;
-      padding: 60px 0;
-      background-color: var(--accent-color);
+      padding: 40px 0;
     }
 
     .galleria-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 15px;
     }
 
     .galleria-title {
       text-align: center;
-      margin-bottom: 40px;
-      color: var(--primary-color);
-      position: relative;
-      padding-bottom: 15px;
-    }
-
-    .galleria-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background-color: var(--primary-color);
+      margin-bottom: 30px;
+      color: #dc3545;
     }
 
     .galleria-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 25px;
+      gap: 20px;
     }
 
     .galleria-item {
       overflow: hidden;
       border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s;
-    }
-
-    .galleria-item:hover {
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .galleria-item img {
       width: 100%;
       height: 300px;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.3s;
     }
 
     .galleria-item img:hover {
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
 
     .btn-back {
       display: block;
-      margin: 40px auto 0;
+      margin: 30px auto;
       background-color: #6c757d;
-      color: var(--light-text);
-      padding: 12px 35px;
+      color: white;
+      padding: 10px 30px;
       border-radius: 30px;
-      font-weight: 600;
+      font-weight: bold;
       border: none;
       transition: all 0.3s;
-      letter-spacing: 0.5px;
     }
 
     .btn-back:hover {
@@ -261,94 +165,70 @@
     /* Stili per il menu fisso */
     .menu-section {
       background-color: #fff;
-      padding: 50px 0;
+      padding: 40px 0;
       text-align: center;
     }
     
     .menu-card {
-      background-color: var(--accent-color);
+      background-color: #f8f9fa;
       border-radius: 15px;
-      padding: 35px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      max-width: 650px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 600px;
       margin: 0 auto;
-      transition: transform 0.3s;
-    }
-
-    .menu-card:hover {
-      transform: translateY(-5px);
     }
     
     .menu-title {
-      color: var(--primary-color);
+      color: #dc3545;
       margin-bottom: 30px;
-      font-weight: 700;
-      font-size: 2rem;
+      font-weight: bold;
     }
     
     .menu-price {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      margin: 25px 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #dc3545;
+      margin: 20px 0;
     }
     
     .menu-includes {
       text-align: left;
-      margin: 25px 0;
-      padding-left: 20px;
+      margin: 20px 0;
     }
     
     .menu-includes li {
-      margin-bottom: 12px;
-      position: relative;
-    }
-
-    .menu-includes li::before {
-      content: '•';
-      color: var(--primary-color);
-      font-weight: bold;
-      display: inline-block;
-      width: 1em;
-      margin-left: -1em;
+      margin-bottom: 10px;
     }
     
     /* Stili per gli orari animati */
     .orari-section {
-      background-color: var(--accent-color);
-      padding: 50px 0;
+      background-color: #f8f9fa;
+      padding: 40px 0;
       text-align: center;
     }
     
     .orari-title {
-      color: var(--primary-color);
-      margin-bottom: 35px;
-      font-weight: 700;
-      font-size: 2rem;
+      color: #dc3545;
+      margin-bottom: 30px;
+      font-weight: bold;
     }
     
     .orari-box {
       background-color: #fff;
       border-radius: 15px;
-      padding: 35px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      max-width: 550px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 500px;
       margin: 0 auto;
       position: relative;
       overflow: hidden;
-      transition: transform 0.3s;
-    }
-
-    .orari-box:hover {
-      transform: translateY(-5px);
     }
     
     .orari-text {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin: 0;
       position: relative;
       z-index: 2;
-      font-weight: 500;
     }
     
     .orari-animazione {
@@ -376,262 +256,129 @@
     .menu-dropdown-content {
       display: none;
       position: absolute;
-      background-color: #fff;
-      min-width: 220px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      z-index: 100;
-      border-radius: 8px;
+      background-color: #f9f9f9;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
       right: 0;
-      overflow: hidden;
     }
     
     .menu-dropdown-content a {
-      color: var(--text-color);
-      padding: 12px 20px;
+      color: black;
+      padding: 12px 16px;
       text-decoration: none;
       display: block;
-      transition: all 0.3s;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
     
     .menu-dropdown-content a:hover {
-      background-color: rgba(220, 53, 69, 0.1);
-      color: var(--primary-color);
-      padding-left: 25px;
+      background-color: #f1f1f1;
+      border-radius: 5px;
     }
     
     .menu-dropdown:hover .menu-dropdown-content {
       display: block;
-      animation: fadeIn 0.3s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     
     /* Stili per il pulsante PDF */
     .btn-pdf {
-      background-color: var(--primary-color);
-      color: var(--light-text);
-      padding: 12px 25px;
+      background-color: #dc3545;
+      color: white;
+      padding: 10px 20px;
       border-radius: 30px;
-      font-weight: 600;
+      font-weight: bold;
       border: none;
       transition: all 0.3s;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      margin-top: 30px;
-      letter-spacing: 0.5px;
-      box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+      gap: 8px;
+      margin-top: 20px;
     }
     
     .btn-pdf:hover {
       background-color: #c82333;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 15px rgba(220, 53, 69, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     
     /* Stili per la pagina del menu */
     #menu-page {
       display: none;
-      padding: 60px 0;
-      background-color: var(--accent-color);
+      padding: 40px 0;
     }
     
     .menu-page-container {
-      max-width: 850px;
+      max-width: 800px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 15px;
     }
     
     .menu-page-title {
       text-align: center;
-      margin-bottom: 40px;
-      color: var(--primary-color);
-      font-weight: 700;
-      font-size: 2.2rem;
-      position: relative;
-      padding-bottom: 15px;
-    }
-
-    .menu-page-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 3px;
-      background-color: var(--primary-color);
+      margin-bottom: 30px;
+      color: #dc3545;
     }
     
     .menu-page-content {
       background-color: white;
       border-radius: 15px;
-      padding: 40px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-
-    .menu-page-content:hover {
-      transform: translateY(-5px);
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     
     .menu-category {
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
     
     .menu-category-title {
-      color: var(--primary-color);
-      border-bottom: 2px solid var(--primary-color);
-      padding-bottom: 12px;
-      margin-bottom: 25px;
-      font-weight: 600;
-      font-size: 1.5rem;
+      color: #dc3545;
+      border-bottom: 2px solid #dc3545;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
     }
     
     .menu-item {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 18px;
-      align-items: center;
+      margin-bottom: 15px;
     }
     
     .menu-item-name {
-      font-weight: 600;
-      font-size: 1.1rem;
+      font-weight: bold;
     }
     
     .menu-item-price {
-      color: var(--primary-color);
-      font-weight: 700;
-      font-size: 1.1rem;
+      color: #dc3545;
+      font-weight: bold;
     }
     
     .menu-item-description {
-      font-size: 0.95em;
+      font-size: 0.9em;
       color: #666;
-      margin-top: 8px;
-      line-height: 1.5;
-      font-style: italic;
-    }
-
-    /* Miglioramenti per la mappa */
-    .map-container {
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      transition: transform 0.3s;
-      margin: 30px 0;
-    }
-
-    .map-container:hover {
-      transform: translateY(-5px);
-    }
-
-    iframe {
-      border: none;
-      display: block;
-    }
-
-    /* Animazioni */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .animate-fadeInUp {
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      header {
-        padding: 120px 20px;
-      }
-      
-      .navbar-brand img {
-        height: 45px;
-      }
-      
-      .menu-page-content,
-      .orari-box,
-      .menu-card {
-        padding: 25px;
-      }
-      
-      .galleria-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Preloader */
-    #preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--light-text);
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: opacity 0.5s, visibility 0.5s;
-    }
-
-    #preloader.fade-out {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader {
-      width: 50px;
-      height: 50px;
-      border: 5px solid rgba(220, 53, 69, 0.2);
-      border-radius: 50%;
-      border-top-color: var(--primary-color);
-      animation: spin 1s ease-in-out infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
 
-<!-- Preloader -->
-<div id="preloader">
-  <div class="loader"></div>
-</div>
-
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" href="#" onclick="showMainPage()">
+    <a class="navbar-brand" href="#">
       <img src="logo.jpg" alt="Logo Pizzeria Il Semaforo" class="logo">
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link active" href="#" onclick="showMainPage()">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showMainPage()">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#" onclick="showGalleria()">Galleria</a></li>
         <li class="nav-item menu-dropdown">
-          <a class="nav-link" href="#"><span>Menù</span> <i class="fas fa-chevron-down ms-1"></i></a>
+          <a class="nav-link" href="#">Menù <i class="fas fa-chevron-down"></i></a>
           <div class="menu-dropdown-content">
-            <a href="#" onclick="showMenuPage()"><i class="fas fa-book-open me-2"></i>Visualizza Menù</a>
-            <a href="#" onclick="downloadPDF()"><i class="fas fa-file-pdf me-2"></i>Scarica PDF</a>
+            <a href="#" onclick="showMenuPage()">Visualizza Menù</a>
+            <a href="#" onclick="downloadPDF()">Scarica PDF</a>
           </div>
         </li>
       </ul>
@@ -642,21 +389,19 @@
 <!-- Pagina principale -->
 <div id="main-page">
   <!-- Hero -->
-  <header class="animate-fadeInUp">
+  <header>
     <div class="container">
-      <h1 class="display-4 mb-3">Benvenuti da Pizzeria Il Semaforo</h1>
-      <p class="lead">Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
-      <button class="btn-galleria" onclick="showGalleria()">
-        <i class="fas fa-camera me-2"></i>Galleria
-      </button>
+      <h1>Benvenuti da Pizzeria Il Semaforo</h1>
+      <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
+      <button class="btn-galleria" onclick="showGalleria()">Galleria</button>
     </div>
   </header>
 
   <!-- Chi Siamo -->
-  <section class="py-5">
-    <div class="container animate-fadeInUp">
-      <h2 class="mb-4"><strong>Circa un anno fa, la nostra pizzeria "Il Semaforo" è nata da un sogno condiviso da una famiglia molto unita.</strong></h2>
-      <p class="mb-3">Provenivamo da un altro settore, ma la nostra passione per la cucina e l'amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non è stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realtà.</p>
+  <section class="py-4">
+    <div class="container">
+      <h3><strong>Circa un anno fa, la nostra pizzeria "Il Semaforo" &egrave; nata da un sogno condiviso da una famiglia molto unita.</strong></h3>
+      <p class="mt-3">Provenivamo da un altro settore, ma la nostra passione per la cucina e l'amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non &egrave; stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realt&agrave;.</p>
       <p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l'abbiamo creata.</p>
     </div>
   </section>
@@ -666,7 +411,7 @@
 
   <!-- Orari di Apertura Animati -->
   <section class="orari-section">
-    <div class="container animate-fadeInUp">
+    <div class="container">
       <h2 class="orari-title">I NOSTRI ORARI</h2>
       <div class="orari-box">
         <div class="orari-animazione"></div>
@@ -682,18 +427,17 @@
   <div class="divider-line"></div>
 
   <!-- Mappa -->
-  <section class="py-5">
-    <div class="container text-center animate-fadeInUp">
-      <h2 class="mb-4">APRI LA MAPPA E SCOPRI DOVE SIAMO!</h2>
-      <div class="map-container">
+  <section class="py-4">
+    <div class="container text-center">
+      <h2>APRI LA MAPPA E SCOPRI DOVE SIAMO!</h2>
+      <div class="mt-4">
         <iframe 
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1462.4312215232844!2d11.1203234!3d43.8093687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a59b7d8859209%3A0x98788d2f085c6016!2sPizzeria%20Il%20Semaforo!5e0!3m2!1sit!2sit!4v1695151262428!5m2!1sit!2sit" 
           width="100%" 
           height="450" 
           style="border:0;" 
           allowfullscreen="" 
-          loading="lazy"
-          title="Mappa della posizione della Pizzeria Il Semaforo">
+          loading="lazy">
         </iframe>
       </div>
     </div>
@@ -703,73 +447,45 @@
   <div class="divider-line"></div>
 
   <!-- Testimonianze -->
-  <section class="py-5">
-    <div class="container animate-fadeInUp">
-      <h2 class="text-center mb-5">Cosa dicono di noi</h2>
+  <section class="py-4">
+    <div class="container">
+      <h2 class="text-center mb-4">Cosa dicono di noi</h2>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
 
           <!-- Testimonianza 1 -->
           <div class="swiper-slide testimonial text-center">
-            <i class="fas fa-quote-left fa-2x mb-3 text-primary"></i>
+            <i class="fas fa-quote-left fa-2x mb-3"></i>
             <p class="lead">"La pizza più buona che abbia mai mangiato!<br>Ingredienti freschi e personale super cordiale."</p>
-            <div class="mt-4">
-              <p><strong>Giulia Rossi</strong><br><small class="text-muted">Cliente</small></p>
-              <div class="rating">
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-              </div>
+            <div class="mt-3">
+              <p><strong>Giulia Rossi</strong><br><small>Cliente</small></p>
             </div>
           </div>
 
           <!-- Testimonianza 2 -->
           <div class="swiper-slide testimonial text-center">
-            <i class="fas fa-quote-left fa-2x mb-3 text-primary"></i>
+            <i class="fas fa-quote-left fa-2x mb-3"></i>
             <p class="lead">"Servizio eccellente e pizze spettacolari!<br>Un punto di riferimento a Campi Bisenzio."</p>
-            <div class="mt-4">
-              <p><strong>Marco Bianchi</strong><br><small class="text-muted">Cliente abituale</small></p>
-              <div class="rating">
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star-half-alt text-warning"></i>
-              </div>
+            <div class="mt-3">
+              <p><strong>Marco Bianchi</strong><br><small>Cliente abituale</small></p>
             </div>
           </div>
 
           <!-- Testimonianza 3 -->
           <div class="swiper-slide testimonial text-center">
-            <i class="fas fa-quote-left fa-2x mb-3 text-primary"></i>
+            <i class="fas fa-quote-left fa-2x mb-3"></i>
             <p class="lead">"Locale accogliente e personale gentilissimo.<br>La pizza è davvero top!"</p>
-            <div class="mt-4">
-              <p><strong>Laura Verdi</strong><br><small class="text-muted">Cliente</small></p>
-              <div class="rating">
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-              </div>
+            <div class="mt-3">
+              <p><strong>Laura Verdi</strong><br><small>Cliente</small></p>
             </div>
           </div>
 
           <!-- Testimonianza 4 -->
           <div class="swiper-slide testimonial text-center">
-            <i class="fas fa-quote-left fa-2x mb-3 text-primary"></i>
+            <i class="fas fa-quote-left fa-2x mb-3"></i>
             <p class="lead">"Ottimi ingredienti e grande attenzione ai dettagli.<br>Consigliatissimo!"</p>
-            <div class="mt-4">
-              <p><strong>Francesco Neri</strong><br><small class="text-muted">Cliente affezionato</small></p>
-              <div class="rating">
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-                <i class="fas fa-star text-warning"></i>
-              </div>
+            <div class="mt-3">
+              <p><strong>Francesco Neri</strong><br><small>Cliente affezionato</small></p>
             </div>
           </div>
 
@@ -778,9 +494,6 @@
         <!-- Bottoni freccia -->
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-        
-        <!-- Pagination -->
-        <div class="swiper-pagination"></div>
       </div>
     </div>
   </section>
@@ -788,50 +501,48 @@
 
 <!-- Galleria -->
 <div id="galleria">
-  <div class="galleria-container animate-fadeInUp">
+  <div class="galleria-container">
     <h2 class="galleria-title">La nostra galleria</h2>
     <div class="galleria-grid">
       <!-- Immagini della galleria da 1.jpg a 10.jpg -->
       <div class="galleria-item">
-        <img src="1.jpg" alt="Pizza tradizionale della Pizzeria Il Semaforo" loading="lazy">
+        <img src="1.jpg" alt="Immagine galleria 1">
       </div>
       <div class="galleria-item">
-        <img src="2.jpg" alt="Interno accogliente della Pizzeria Il Semaforo" loading="lazy">
+        <img src="2.jpg" alt="Immagine galleria 2">
       </div>
       <div class="galleria-item">
-        <img src="3.jpg" alt="Forno a legna della Pizzeria Il Semaforo" loading="lazy">
+        <img src="3.jpg" alt="Immagine galleria 3">
       </div>
       <div class="galleria-item">
-        <img src="4.jpg" alt="Antipasto della casa della Pizzeria Il Semaforo" loading="lazy">
+        <img src="4.jpg" alt="Immagine galleria 4">
       </div>
       <div class="galleria-item">
-        <img src="5.jpg" alt="Pizza margherita della Pizzeria Il Semaforo" loading="lazy">
+        <img src="5.jpg" alt="Immagine galleria 5">
       </div>
       <div class="galleria-item">
-        <img src="6.jpg" alt="Dolci fatti in casa della Pizzeria Il Semaforo" loading="lazy">
+        <img src="6.jpg" alt="Immagine galleria 6">
       </div>
       <div class="galleria-item">
-        <img src="7.jpg" alt="Tavolo apparecchiato nella Pizzeria Il Semaforo" loading="lazy">
+        <img src="7.jpg" alt="Immagine galleria 7">
       </div>
       <div class="galleria-item">
-        <img src="8.jpg" alt="Pizza speciale della Pizzeria Il Semaforo" loading="lazy">
+        <img src="8.jpg" alt="Immagine galleria 8">
       </div>
       <div class="galleria-item">
-        <img src="9.jpg" alt="Ingredienti freschi della Pizzeria Il Semaforo" loading="lazy">
+        <img src="9.jpg" alt="Immagine galleria 9">
       </div>
       <div class="galleria-item">
-        <img src="10.jpg" alt="Esterno della Pizzeria Il Semaforo" loading="lazy">
+        <img src="10.jpg" alt="Immagine galleria 10">
       </div>
     </div>
-    <button class="btn-back" onclick="showMainPage()">
-      <i class="fas fa-arrow-left me-2"></i>Torna alla Home
-    </button>
+    <button class="btn-back" onclick="showMainPage()">Torna alla Home</button>
   </div>
 </div>
 
 <!-- Pagina del menu -->
 <div id="menu-page">
-  <div class="menu-page-container animate-fadeInUp">
+  <div class="menu-page-container">
     <h2 class="menu-page-title">Il Nostro Menù Completo</h2>
     <div class="menu-page-content">
       <div class="menu-category">
@@ -840,16 +551,15 @@
           <div class="menu-item-name">Antipasto della Casa</div>
         </div>
         <div class="menu-item-description">Selezione di salumi, schiacciata calda e verdure sott'olio</div>
-      </div>
-      
+          </div>
+        
       <div class="menu-category">
         <h3 class="menu-category-title">GIRO PIZZA</h3>
         <div class="menu-item">
           <div class="menu-item-name">Tutti i gusti di pizza</div>
-        </div>
+          </div>
         <div class="menu-item-description">Richiedi i tuoi gusti e provali tutti insieme!</div>
-      </div>
-      
+          </div>
       <div class="menu-category">
         <h3 class="menu-category-title">DOLCI</h3>
         <div class="menu-item">
@@ -860,15 +570,15 @@
           <div class="menu-item-name">Panna Cotta</div>
         </div>
 
-        <div class="menu-item">
+                <div class="menu-item">
           <div class="menu-item-name">Torta al Cioccolato</div>
         </div>
 
-        <div class="menu-item">
+                        <div class="menu-item">
           <div class="menu-item-name">Torta di mele</div>
         </div>
 
-        <div class="menu-item">
+                        <div class="menu-item">
           <div class="menu-item-name">Cheese Cake</div>
         </div>
         
@@ -876,7 +586,7 @@
           <div class="menu-item-name">Torta della Nonna</div>
         </div>
 
-        <div class="menu-item">
+                                <div class="menu-item">
           <div class="menu-item-name">Sorbetto al limone</div>
         </div>
       </div>
@@ -886,16 +596,11 @@
         <div class="menu-item">
           <div class="menu-item-name">Seleziona la tua bevanda piccola compresa nel menù</div>
         </div>
-      </div>
       
-      <div class="text-center">
-        <button class="btn-pdf" onclick="downloadPDF()">
-          <i class="fas fa-file-pdf"></i> Scarica Menù PDF
-        </button>
-        <button class="btn-back" onclick="showMainPage()">
-          <i class="fas fa-arrow-left me-2"></i>Torna alla Home
-        </button>
-      </div>
+      <button class="btn-pdf" onclick="downloadPDF()" style="margin-top: 30px;">
+        <i class="fas fa-file-pdf"></i> Scarica Menù PDF
+      </button>
+      <button class="btn-back" onclick="showMainPage()" style="margin-top: 15px;">Torna alla Home</button>
     </div>
   </div>
 </div>
