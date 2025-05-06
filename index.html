@@ -578,89 +578,51 @@
         <h3 class="menu-category-title">ANTIPASTI</h3>
         <div class="menu-item">
           <div class="menu-item-name">Antipasto della Casa</div>
-          <div class="menu-item-price">€8.50</div>
-        </div>
-        <div class="menu-item-description">Selezione di salumi, formaggi, bruschette e verdure sott'olio</div>
-        
-        <div class="menu-item">
-          <div class="menu-item-name">Bruschette Miste</div>
-          <div class="menu-item-price">€6.00</div>
-        </div>
-        <div class="menu-item-description">Bruschette con pomodoro, funghi e crema di olive</div>
-      </div>
-      
+        <div class="menu-item-description">Selezione di salumi, schiacciata calda, e verdure sott'olio</div>
+    
       <div class="menu-category">
-        <h3 class="menu-category-title">PIZZE CLASSICHE</h3>
+        <h3 class="menu-category-title">GIRO PIZZA NO STOP</h3>
         <div class="menu-item">
-          <div class="menu-item-name">Margherita</div>
-          <div class="menu-item-price">€6.50</div>
-        </div>
-        <div class="menu-item-description">Pomodoro, mozzarella, basilico</div>
-        
-        <div class="menu-item">
-          <div class="menu-item-name">Diavola</div>
-          <div class="menu-item-price">€8.00</div>
-        </div>
-        <div class="menu-item-description">Pomodoro, mozzarella, salame piccante</div>
-        
-        <div class="menu-item">
-          <div class="menu-item-name">Quattro Stagioni</div>
-          <div class="menu-item-price">€8.50</div>
-        </div>
-        <div class="menu-item-description">Pomodoro, mozzarella, prosciutto, funghi, carciofi, olive</div>
-      </div>
-      
-      <div class="menu-category">
-        <h3 class="menu-category-title">PIZZE SPECIALI</h3>
-        <div class="menu-item">
-          <div class="menu-item-name">Semaforo</div>
-          <div class="menu-item-price">€10.00</div>
-        </div>
-        <div class="menu-item-description">Pomodoro, mozzarella di bufala, prosciutto crudo, rucola, grana</div>
-        
-        <div class="menu-item">
-          <div class="menu-item-name">Vegetariana</div>
-          <div class="menu-item-price">€9.50</div>
-        </div>
-        <div class="menu-item-description">Pomodoro, mozzarella, melanzane, zucchine, peperoni grigliati</div>
-      </div>
-      
+          <div class="menu-item-name">Seleziona la tua pizza</div>
+        <div class="menu-item-description">Scegli i tuoi gusti e riceveli tutti insieme</div>
+
       <div class="menu-category">
         <h3 class="menu-category-title">DOLCI</h3>
         <div class="menu-item">
-          <div class="menu-item-name">Tiramisù</div>
-          <div class="menu-item-price">€4.50</div>
+          <div class="menu-item-name">Tiramisù </div>
         </div>
         
         <div class="menu-item">
           <div class="menu-item-name">Panna Cotta</div>
-          <div class="menu-item-price">€4.00</div>
         </div>
         
         <div class="menu-item">
           <div class="menu-item-name">Torta della Nonna</div>
-          <div class="menu-item-price">€4.50</div>
         </div>
       </div>
-      
+
+      <div class="menu-item">
+          <div class="menu-item-name">Torta al Cioccolato</div>
+        </div>
+
+                <div class="menu-item">
+          <div class="menu-item-name">Sorbetto al limone</div>
+        </div>
+
+      <div class="menu-item">
+          <div class="menu-item-name">Torta di mele</div>
+        </div>
+
+      <div class="menu-item">
+          <div class="menu-item-name">Cheese Cake</div>
+        </div>
+
       <div class="menu-category">
         <h3 class="menu-category-title">BEVANDE</h3>
         <div class="menu-item">
-          <div class="menu-item-name">Acqua (0.5L)</div>
-          <div class="menu-item-price">€1.50</div>
+          <div class="menu-item-name">Scegli la tua bevuta piccola compresa nel menù</div>
         </div>
-        
-        <div class="menu-item">
-          <div class="menu-item-name">Birra (0.33L)</div>
-          <div class="menu-item-price">€3.50</div>
-        </div>
-        
-        <div class="menu-item">
-          <div class="menu-item-name">Vino della Casa (0.75L)</div>
-          <div class="menu-item-price">€8.00</div>
-        </div>
-      </div>
-      
+
       <button class="btn-pdf" onclick="downloadPDF()" style="margin-top: 30px;">
         <i class="fas fa-file-pdf"></i> Scarica Menù PDF
       </button>
@@ -759,73 +721,73 @@
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
     doc.text('Antipasto della Casa', 20, y);
-    doc.text('€8.50', 180, y, null, null, 'right');
-    y += 7;
-    doc.setFontSize(10);
-    doc.text('Selezione di salumi, formaggi, bruschette e verdure sott\'olio', 25, y);
+    doc.text('Selezione di salumi, schiacciata calda, e verdure sott'olio', 25, y);
     y += 10;
-    
-    doc.setFontSize(12);
-    doc.text('Bruschette Miste', 20, y);
-    doc.text('€6.00', 180, y, null, null, 'right');
-    y += 7;
-    doc.setFontSize(10);
-    doc.text('Bruschette con pomodoro, funghi e crema di olive', 25, y);
-    y += 15;
     
     // Pizze Classiche
     doc.setFontSize(16);
     doc.setTextColor(220, 53, 69);
-    doc.text('PIZZE CLASSICHE', 20, y);
+    doc.text('GIRO PIZZA NO STOP', 20, y);
     y += 10;
     
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
-    doc.text('Margherita', 20, y);
-    doc.text('€6.50', 180, y, null, null, 'right');
-    y += 7;
+    doc.text('Seleziona la tua pizza', 20, y);
     doc.setFontSize(10);
-    doc.text('Pomodoro, mozzarella, basilico', 25, y);
+    doc.text('Scegli i tuoi gusti e riceveli tutti insieme', 25, y);
     y += 10;
     
-    doc.setFontSize(12);
-    doc.text('Diavola', 20, y);
-    doc.text('€8.00', 180, y, null, null, 'right');
-    y += 7;
-    doc.setFontSize(10);
-    doc.text('Pomodoro, mozzarella, salame piccante', 25, y);
-    y += 10;
-    
-    doc.setFontSize(12);
-    doc.text('Quattro Stagioni', 20, y);
-    doc.text('€8.50', 180, y, null, null, 'right');
-    y += 7;
-    doc.setFontSize(10);
-    doc.text('Pomodoro, mozzarella, prosciutto, funghi, carciofi, olive', 25, y);
-    y += 15;
-    
-    // Pizze Speciali
+    // Dolci
     doc.setFontSize(16);
     doc.setTextColor(220, 53, 69);
-    doc.text('PIZZE SPECIALI', 20, y);
+    doc.text('DOLCI', 20, y);
     y += 10;
     
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
-    doc.text('Semaforo', 20, y);
-    doc.text('€10.00', 180, y, null, null, 'right');
-    y += 7;
+    doc.text('Tiramisù', 20, y);
     doc.setFontSize(10);
-    doc.text('Pomodoro, mozzarella di bufala, prosciutto crudo, rucola, grana', 25, y);
+
+        doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Panna Cotta', 20, y);
+    doc.setFontSize(10);
+
+        doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Torta della nonna', 20, y);
+    doc.setFontSize(10);
+
+            doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Torta al cioccolato', 20, y);
+    doc.setFontSize(10);
+
+                doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Sorbetto al limone', 20, y);
+    doc.setFontSize(10);
+
+                doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Torta di mele', 20, y);
+    doc.setFontSize(10);
+
+                doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Cheese Cake', 20, y);
+    doc.setFontSize(10);
+
+  // Bevande
+    doc.setFontSize(16);
+    doc.setTextColor(220, 53, 69);
+    doc.text('BEVANDE', 20, y);
     y += 10;
-    
+
     doc.setFontSize(12);
-    doc.text('Vegetariana', 20, y);
-    doc.text('€9.50', 180, y, null, null, 'right');
-    y += 7;
+    doc.setTextColor(0, 0, 0);
+    doc.text('Scegli la tua bevuta piccola compresa nel menù', 20, y);
     doc.setFontSize(10);
-    doc.text('Pomodoro, mozzarella, melanzane, zucchine, peperoni grigliati', 25, y);
-    y += 15;
     
     // Footer
     doc.setFontSize(10);
