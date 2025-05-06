@@ -25,9 +25,6 @@
     body {
       font-family: 'Montserrat', sans-serif;
       background-color: #f8f9fa;
-      position: relative;
-      min-height: 100vh;
-      padding-bottom: 120px; /* Spazio per il footer */
     }
 
     header {
@@ -83,9 +80,6 @@
       color: white;
       padding: 40px 0;
       text-align: center;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
     }
 
     .social-icons a {
@@ -393,7 +387,7 @@
     /* Pulsante WhatsApp */
     .whatsapp-button {
       position: fixed;
-      bottom: 100px;
+      bottom: 30px;
       right: 30px;
       background-color: #25D366;
       color: white;
@@ -458,8 +452,8 @@
   <!-- Chi Siamo -->
   <section class="py-4">
     <div class="container">
-      <h3><strong>Circa un anno fa, la nostra pizzeria "Il Semaforo" è nata da un sogno condiviso da una famiglia molto unita.</strong></h3>
-      <p class="mt-3">Provenivamo da un altro settore, ma la nostra passione per la cucina e l'amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non è stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realtà.</p>
+      <h3><strong>Circa un anno fa, la nostra pizzeria "Il Semaforo" &egrave; nata da un sogno condiviso da una famiglia molto unita.</strong></h3>
+      <p class="mt-3">Provenivamo da un altro settore, ma la nostra passione per la cucina e l'amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non &egrave; stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realt&agrave;.</p>
       <p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l'abbiamo creata.</p>
     </div>
   </section>
@@ -722,103 +716,103 @@
     window.scrollTo(0, 0);
   }
   
-  // Funzione per scaricare il PDF
-  function downloadPDF() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-      
-      // Titolo
-      doc.setFontSize(20);
-      doc.setTextColor(220, 53, 69);
-      doc.text('Pizzeria Il Semaforo - Menù', 105, 20, null, null, 'center');
-      
-      // Informazioni
-      doc.setFontSize(12);
-      doc.setTextColor(0, 0, 0);
-      doc.text('Via Palagetta 50013 Campi Bisenzio', 105, 40, null, null, 'center');
-      doc.text('Tel: +39 3403046310', 105, 45, null, null, 'center');
-      doc.text('Aperti dal Giovedì alla Domenica, dalle 19:00 alle 23:00', 105, 50, null, null, 'center');
-      
-      // Linea divisoria
-      doc.setDrawColor(220, 53, 69);
-      doc.line(20, 55, 190, 55);
-      
-      // Sezioni del menù
-      let y = 65;
-      
-      // ANTIPASTI
-      doc.setFontSize(16);
-      doc.setTextColor(220, 53, 69);
-      doc.text('ANTIPASTI', 20, y);
-      y += 10;
-      
-      doc.setFontSize(12);
-      doc.setTextColor(0, 0, 0);
-      doc.text('Antipasto della Casa', 20, y);
-      y += 7;
-      doc.setFontSize(10);
-      doc.text('Selezione di salumi, schiacciata calda e verdure sott\'olio', 25, y);
-      y += 15;
-      
-      // GIRO PIZZA
-      doc.setFontSize(16);
-      doc.setTextColor(220, 53, 69);
-      doc.text('GIRO PIZZA', 20, y);
-      y += 10;
-      
-      doc.setFontSize(12);
-      doc.setTextColor(0, 0, 0);
-      doc.text('Tutti i gusti di pizza', 20, y);
-      y += 7;
-      doc.setFontSize(10);
-      doc.text('Richiedi i tuoi gusti e provali tutti insieme!', 25, y);
-      y += 15;
-      
-      // DOLCI
-      doc.setFontSize(16);
-      doc.setTextColor(220, 53, 69);
-      doc.text('DOLCI', 20, y);
-      y += 10;
-      
-      doc.setFontSize(12);
-      doc.setTextColor(0, 0, 0);
-      
-      const dolci = [
-          'Tiramisù',
-          'Panna Cotta',
-          'Torta al Cioccolato',
-          'Torta di mele',
-          'Cheese Cake',
-          'Torta della Nonna',
-          'Sorbetto al limone'
-      ];
-      
-      dolci.forEach(dolce => {
-          doc.text(dolce, 20, y);
-          y += 7;
-      });
-      
-      y += 5;
-      
-      // BEVANDE
-      doc.setFontSize(16);
-      doc.setTextColor(220, 53, 69);
-      doc.text('BEVANDE', 20, y);
-      y += 10;
-      
-      doc.setFontSize(12);
-      doc.setTextColor(0, 0, 0);
-      doc.text('Seleziona la tua bevanda piccola compresa nel menù', 20, y);
-      y += 10;
-      
-      // Footer
-      doc.setFontSize(10);
-      doc.setTextColor(100, 100, 100);
-      doc.text('www.pizzeriailsemaforo.it - info@pizzeriailsemaforo.it', 105, 280, null, null, 'center');
-      
-      // Salva il PDF
-      doc.save('Menu_Pizzeria_Il_Semaforo.pdf');
-  }
+// Funzione per scaricare il PDF
+function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Titolo
+    doc.setFontSize(20);
+    doc.setTextColor(220, 53, 69);
+    doc.text('Pizzeria Il Semaforo - Menù', 105, 20, null, null, 'center');
+    
+    // Informazioni
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Via Palagetta 50013 Campi Bisenzio', 105, 40, null, null, 'center');
+    doc.text('Tel: +39 3403046310', 105, 45, null, null, 'center');
+    doc.text('Aperti dal Giovedì alla Domenica, dalle 19:00 alle 23:00', 105, 50, null, null, 'center');
+    
+    // Linea divisoria
+    doc.setDrawColor(220, 53, 69);
+    doc.line(20, 55, 190, 55);
+    
+    // Sezioni del menù
+    let y = 65;
+    
+    // ANTIPASTI
+    doc.setFontSize(16);
+    doc.setTextColor(220, 53, 69);
+    doc.text('ANTIPASTI', 20, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Antipasto della Casa', 20, y);
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Selezione di salumi, schiacciata calda e verdure sott\'olio', 25, y);
+    y += 15;
+    
+    // GIRO PIZZA
+    doc.setFontSize(16);
+    doc.setTextColor(220, 53, 69);
+    doc.text('GIRO PIZZA', 20, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Tutti i gusti di pizza', 20, y);
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Richiedi i tuoi gusti e provali tutti insieme!', 25, y);
+    y += 15;
+    
+    // DOLCI
+    doc.setFontSize(16);
+    doc.setTextColor(220, 53, 69);
+    doc.text('DOLCI', 20, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    
+    const dolci = [
+        'Tiramisù',
+        'Panna Cotta',
+        'Torta al Cioccolato',
+        'Torta di mele',
+        'Cheese Cake',
+        'Torta della Nonna',
+        'Sorbetto al limone'
+    ];
+    
+    dolci.forEach(dolce => {
+        doc.text(dolce, 20, y);
+        y += 7;
+    });
+    
+    y += 5;
+    
+    // BEVANDE
+    doc.setFontSize(16);
+    doc.setTextColor(220, 53, 69);
+    doc.text('BEVANDE', 20, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Seleziona la tua bevanda piccola compresa nel menù', 20, y);
+    y += 10;
+    
+    // Footer
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text('www.pizzeriailsemaforo.it - info@pizzeriailsemaforo.it', 105, 280, null, null, 'center');
+    
+    // Salva il PDF
+    doc.save('Menu_Pizzeria_Il_Semaforo.pdf');
+}
 </script>
 
 </body>
