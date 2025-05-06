@@ -98,6 +98,65 @@
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
+
+    /* Stili per la galleria */
+    #galleria {
+      display: none;
+      padding: 40px 0;
+    }
+
+    .galleria-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .galleria-title {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #dc3545;
+    }
+
+    .galleria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .galleria-item {
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .galleria-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .galleria-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-back {
+      display: block;
+      margin: 30px auto;
+      background-color: #6c757d;
+      color: white;
+      padding: 10px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      border: none;
+      transition: all 0.3s;
+    }
+
+    .btn-back:hover {
+      background-color: #5a6268;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
 <body>
@@ -113,105 +172,149 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="galleria.html">Galleria</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showMainPage()">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showGalleria()">Galleria</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Hero -->
-<header>
-  <div class="container">
-    <h1>Benvenuti da Pizzeria Il Semaforo</h1>
-    <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
-    <a href="galleria.html" class="btn-galleria">Galleria</a>
-  </div>
-</header>
-
-<!-- Chi Siamo -->
-<section class="py-5">
-  <div class="container">
-    <h3><strong>Circa un anno fa, la nostra pizzeria "Il Semaforo" &egrave; nata da un sogno condiviso da una famiglia molto unita.</strong></h3>
-    <p class="mt-3">Provenivamo da un altro settore, ma la nostra passione per la cucina e l'amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non &egrave; stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realt&agrave;.</p>
-    <p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l'abbiamo creata.</p>
-  </div>
-</section>
-
-<!-- Linea divisoria -->
-<div class="divider-line"></div>
-
-<!-- Mappa -->
-<section class="py-5">
-  <div class="container text-center">
-    <h2>APRI LA MAPPA E SCOPRI DOVE SIAMO!</h2>
-    <div class="mt-4">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1462.4312215232844!2d11.1203234!3d43.8093687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a59b7d8859209%3A0x98788d2f085c6016!2sPizzeria%20Il%20Semaforo!5e0!3m2!1sit!2sit!4v1695151262428!5m2!1sit!2sit" 
-        width="100%" 
-        height="450" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy">
-      </iframe>
+<!-- Pagina principale -->
+<div id="main-page">
+  <!-- Hero -->
+  <header>
+    <div class="container">
+      <h1>Benvenuti da Pizzeria Il Semaforo</h1>
+      <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
+      <button class="btn-galleria" onclick="showGalleria()">Galleria</button>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- Linea divisoria -->
-<div class="divider-line"></div>
+  <!-- Chi Siamo -->
+  <section class="py-5">
+    <div class="container">
+      <h3><strong>Circa un anno fa, la nostra pizzeria "Il Semaforo" &egrave; nata da un sogno condiviso da una famiglia molto unita.</strong></h3>
+      <p class="mt-3">Provenivamo da un altro settore, ma la nostra passione per la cucina e l'amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non &egrave; stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realt&agrave;.</p>
+      <p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l'abbiamo creata.</p>
+    </div>
+  </section>
 
-<!-- Testimonianze -->
-<section class="py-5">
-  <div class="container">
-    <h2 class="text-center mb-5">Cosa dicono di noi</h2>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
+  <!-- Linea divisoria -->
+  <div class="divider-line"></div>
 
-        <!-- Testimonianza 1 -->
-        <div class="swiper-slide testimonial text-center">
-          <i class="fas fa-quote-left fa-2x mb-3"></i>
-          <p class="lead">"La pizza più buona che abbia mai mangiato!<br>Ingredienti freschi e personale super cordiale."</p>
-          <div class="mt-3">
-            <p><strong>Giulia Rossi</strong><br><small>Cliente</small></p>
-          </div>
-        </div>
-
-        <!-- Testimonianza 2 -->
-        <div class="swiper-slide testimonial text-center">
-          <i class="fas fa-quote-left fa-2x mb-3"></i>
-          <p class="lead">"Servizio eccellente e pizze spettacolari!<br>Un punto di riferimento a Campi Bisenzio."</p>
-          <div class="mt-3">
-            <p><strong>Marco Bianchi</strong><br><small>Cliente abituale</small></p>
-          </div>
-        </div>
-
-        <!-- Testimonianza 3 -->
-        <div class="swiper-slide testimonial text-center">
-          <i class="fas fa-quote-left fa-2x mb-3"></i>
-          <p class="lead">"Locale accogliente e personale gentilissimo.<br>La pizza è davvero top!"</p>
-          <div class="mt-3">
-            <p><strong>Laura Verdi</strong><br><small>Cliente</small></p>
-          </div>
-        </div>
-
-        <!-- Testimonianza 4 -->
-        <div class="swiper-slide testimonial text-center">
-          <i class="fas fa-quote-left fa-2x mb-3"></i>
-          <p class="lead">"Ottimi ingredienti e grande attenzione ai dettagli.<br>Consigliatissimo!"</p>
-          <div class="mt-3">
-            <p><strong>Francesco Neri</strong><br><small>Cliente affezionato</small></p>
-          </div>
-        </div>
-
+  <!-- Mappa -->
+  <section class="py-5">
+    <div class="container text-center">
+      <h2>APRI LA MAPPA E SCOPRI DOVE SIAMO!</h2>
+      <div class="mt-4">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1462.4312215232844!2d11.1203234!3d43.8093687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a59b7d8859209%3A0x98788d2f085c6016!2sPizzeria%20Il%20Semaforo!5e0!3m2!1sit!2sit!4v1695151262428!5m2!1sit!2sit" 
+          width="100%" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
       </div>
-
-      <!-- Bottoni freccia -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
     </div>
+  </section>
+
+  <!-- Linea divisoria -->
+  <div class="divider-line"></div>
+
+  <!-- Testimonianze -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Cosa dicono di noi</h2>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+          <!-- Testimonianza 1 -->
+          <div class="swiper-slide testimonial text-center">
+            <i class="fas fa-quote-left fa-2x mb-3"></i>
+            <p class="lead">"La pizza più buona che abbia mai mangiato!<br>Ingredienti freschi e personale super cordiale."</p>
+            <div class="mt-3">
+              <p><strong>Giulia Rossi</strong><br><small>Cliente</small></p>
+            </div>
+          </div>
+
+          <!-- Testimonianza 2 -->
+          <div class="swiper-slide testimonial text-center">
+            <i class="fas fa-quote-left fa-2x mb-3"></i>
+            <p class="lead">"Servizio eccellente e pizze spettacolari!<br>Un punto di riferimento a Campi Bisenzio."</p>
+            <div class="mt-3">
+              <p><strong>Marco Bianchi</strong><br><small>Cliente abituale</small></p>
+            </div>
+          </div>
+
+          <!-- Testimonianza 3 -->
+          <div class="swiper-slide testimonial text-center">
+            <i class="fas fa-quote-left fa-2x mb-3"></i>
+            <p class="lead">"Locale accogliente e personale gentilissimo.<br>La pizza è davvero top!"</p>
+            <div class="mt-3">
+              <p><strong>Laura Verdi</strong><br><small>Cliente</small></p>
+            </div>
+          </div>
+
+          <!-- Testimonianza 4 -->
+          <div class="swiper-slide testimonial text-center">
+            <i class="fas fa-quote-left fa-2x mb-3"></i>
+            <p class="lead">"Ottimi ingredienti e grande attenzione ai dettagli.<br>Consigliatissimo!"</p>
+            <div class="mt-3">
+              <p><strong>Francesco Neri</strong><br><small>Cliente affezionato</small></p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottoni freccia -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Galleria -->
+<div id="galleria">
+  <div class="galleria-container">
+    <h2 class="galleria-title">La nostra galleria</h2>
+    <div class="galleria-grid">
+      <!-- Immagini della galleria da 1.jpg a 10.jpg -->
+      <div class="galleria-item">
+        <img src="1.jpg" alt="Immagine galleria 1">
+      </div>
+      <div class="galleria-item">
+        <img src="2.jpg" alt="Immagine galleria 2">
+      </div>
+      <div class="galleria-item">
+        <img src="3.jpg" alt="Immagine galleria 3">
+      </div>
+      <div class="galleria-item">
+        <img src="4.jpg" alt="Immagine galleria 4">
+      </div>
+      <div class="galleria-item">
+        <img src="5.jpg" alt="Immagine galleria 5">
+      </div>
+      <div class="galleria-item">
+        <img src="6.jpg" alt="Immagine galleria 6">
+      </div>
+      <div class="galleria-item">
+        <img src="7.jpg" alt="Immagine galleria 7">
+      </div>
+      <div class="galleria-item">
+        <img src="8.jpg" alt="Immagine galleria 8">
+      </div>
+      <div class="galleria-item">
+        <img src="9.jpg" alt="Immagine galleria 9">
+      </div>
+      <div class="galleria-item">
+        <img src="10.jpg" alt="Immagine galleria 10">
+      </div>
+    </div>
+    <button class="btn-back" onclick="showMainPage()">Torna alla Home</button>
   </div>
-</section>
+</div>
 
 <!-- Footer -->
 <footer>
@@ -244,6 +347,19 @@
       disableOnInteraction: false,
     }
   });
+
+  // Funzioni per mostrare/nascondere galleria e pagina principale
+  function showGalleria() {
+    document.getElementById('main-page').style.display = 'none';
+    document.getElementById('galleria').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+
+  function showMainPage() {
+    document.getElementById('galleria').style.display = 'none';
+    document.getElementById('main-page').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
 </script>
 
 </body>
