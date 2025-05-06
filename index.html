@@ -1,320 +1,390 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pizzeria Il Semaforo - Tradizione e innovazione culinaria a Campi Bisenzio. Scopri la nostra storia e il nostro menù.">
-  <meta name="keywords" content="pizzeria, Campi Bisenzio, pizza, ristorante, menù, Il Semaforo">
-  <title>Pizzeria Il Semaforo | Campi Bisenzio | Pizza Tradizionale</title>
-  
-  <!-- Preload delle risorse critiche -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <title>Pizzeria Il Semaforo</title>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Structured data for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": "Pizzeria Il Semaforo",
-    "image": "https://www.example.com/logo.jpg",
-    "@id": "",
-    "url": "https://www.example.com",
-    "telephone": "+393403046310",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Via Palagetta",
-      "addressLocality": "Campi Bisenzio",
-      "postalCode": "50013",
-      "addressCountry": "IT"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "43.8093687",
-      "longitude": "11.1203234"
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
-      ],
-      "opens": "19:00",
-      "closes": "23:00"
-    },
-    "servesCuisine": "Italian",
-    "priceRange": "$$"
-  }
-  </script>
+  <!-- FontAwesome per le icone -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- SwiperJS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- jsPDF per il download PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <style>
-    :root {
-      --primary-color: #dc3545;
-      --primary-hover: #c82333;
-      --secondary-color: #6c757d;
-      --secondary-hover: #5a6268;
-      --text-color: #212529;
-      --light-bg: #f8f9fa;
-      --white: #ffffff;
-      --transition: all 0.3s ease;
-    }
-
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
-      color: var(--text-color);
-      background-color: var(--light-bg);
-      overflow-x: hidden;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #f8f9fa;
     }
 
-    /* Header migliorato */
     header {
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('Pizzeria%20Il%20Semaforo.jpg') center/cover no-repeat;
-      color: var(--white);
+      background: url('Pizzeria%20Il%20Semaforo.jpg') center/cover no-repeat;
+      color: white;
       text-align: center;
-      padding: 180px 20px;
+      padding: 150px 20px;
       position: relative;
-      margin-bottom: 40px;
     }
 
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: white;
+      clip-path: polygon(0 0, 100% 100%, 0 100%);
     }
 
-    header p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    .testimonial {
+      background: #f8f9fa;
+      padding: 40px;
+      border-radius: 10px;
     }
 
-    /* Navbar migliorata */
-    .navbar {
-      transition: var(--transition);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      padding: 15px 0;
+    footer {
+      background: #212529;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
     }
 
-    .navbar.scrolled {
-      background-color: var(--white) !important;
-      padding: 10px 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 24px;
     }
 
     .navbar-brand img {
       height: 50px;
-      transition: var(--transition);
     }
 
-    .navbar.scrolled .navbar-brand img {
-      height: 40px;
-    }
-
-    .nav-link {
-      font-weight: 500;
-      padding: 8px 15px !important;
-      transition: var(--transition);
-      position: relative;
-    }
-
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: var(--primary-color);
-      bottom: 0;
-      left: 0;
-      transition: var(--transition);
-    }
-
-    .nav-link:hover:after,
-    .nav-link.active:after {
+    .galleria-img {
       width: 100%;
-    }
-
-    /* Sezioni principali */
-    section {
-      padding: 60px 0;
-      position: relative;
-    }
-
-    section h2 {
-      font-weight: 700;
-      margin-bottom: 40px;
-      color: var(--primary-color);
-      position: relative;
-      display: inline-block;
-    }
-
-    section h2:after {
-      content: '';
-      position: absolute;
-      width: 50%;
-      height: 3px;
-      background: var(--primary-color);
-      bottom: -10px;
-      left: 0;
-    }
-
-    /* Testimonianze */
-    .testimonial {
-      background: var(--white);
-      padding: 30px;
+      height: 250px;
+      object-fit: cover;
       border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: var(--transition);
-      height: 100%;
+      margin-bottom: 20px;
+      transition: transform 0.3s;
     }
 
-    .testimonial:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    .galleria-img:hover {
+      transform: scale(1.03);
     }
 
-    /* Footer migliorato */
-    footer {
-      background: var(--text-color);
-      color: var(--white);
-      padding: 60px 0 30px;
-      position: relative;
-    }
-
-    footer:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
+    .divider-line {
       width: 100%;
-      height: 10px;
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      height: 1px;
+      background-color: #ddd;
+      margin: 30px 0;
     }
 
-    .social-icons a {
-      color: var(--white);
-      margin: 0 12px;
-      font-size: 22px;
-      transition: var(--transition);
-      display: inline-block;
+    .btn-galleria {
+      background-color: #dc3545;
+      color: white;
+      padding: 10px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      margin-top: 20px;
+      border: none;
+      transition: all 0.3s;
     }
 
-    .social-icons a:hover {
-      color: var(--primary-color);
+    .btn-galleria:hover {
+      background-color: #c82333;
       transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
-    /* Bottoni */
-    .btn-galleria, .btn-pdf, .btn-back {
-      transition: var(--transition);
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      font-size: 0.9rem;
+    /* Stili per la galleria */
+    #galleria {
+      display: none;
+      padding: 40px 0;
     }
 
-    .btn-galleria, .btn-pdf {
-      background-color: var(--primary-color);
-      color: var(--white);
+    .galleria-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
     }
 
-    .btn-galleria:hover, .btn-pdf:hover {
-      background-color: var(--primary-hover);
-      color: var(--white);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+    .galleria-title {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #dc3545;
+    }
+
+    .galleria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .galleria-item {
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .galleria-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .galleria-item img:hover {
+      transform: scale(1.05);
     }
 
     .btn-back {
-      background-color: var(--secondary-color);
-      color: var(--white);
+      display: block;
+      margin: 30px auto;
+      background-color: #6c757d;
+      color: white;
+      padding: 10px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      border: none;
+      transition: all 0.3s;
     }
 
     .btn-back:hover {
-      background-color: var(--secondary-hover);
-      color: var(--white);
+      background-color: #5a6268;
       transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
-
-    /* Animazioni */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    
+    /* Stili per il menu fisso */
+    .menu-section {
+      background-color: #fff;
+      padding: 40px 0;
+      text-align: center;
     }
-
-    .fade-in {
-      animation: fadeIn 0.8s ease forwards;
+    
+    .menu-card {
+      background-color: #f8f9fa;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 0 auto;
     }
-
-    /* Media queries per la responsività */
-    @media (max-width: 992px) {
-      header {
-        padding: 120px 20px;
-      }
-      
-      header h1 {
-        font-size: 2.2rem;
-      }
+    
+    .menu-title {
+      color: #dc3545;
+      margin-bottom: 30px;
+      font-weight: bold;
     }
-
-    @media (max-width: 768px) {
-      section {
-        padding: 40px 0;
-      }
-      
-      header {
-        padding: 100px 20px;
-      }
-      
-      header h1 {
-        font-size: 1.8rem;
-      }
-      
-      .navbar-brand img {
-        height: 40px;
-      }
+    
+    .menu-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #dc3545;
+      margin: 20px 0;
+    }
+    
+    .menu-includes {
+      text-align: left;
+      margin: 20px 0;
+    }
+    
+    .menu-includes li {
+      margin-bottom: 10px;
+    }
+    
+    /* Stili per gli orari animati */
+    .orari-section {
+      background-color: #f8f9fa;
+      padding: 40px 0;
+      text-align: center;
+    }
+    
+    .orari-title {
+      color: #dc3545;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+    
+    .orari-box {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .orari-text {
+      font-size: 1.2rem;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .orari-animazione {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(90deg, transparent, rgba(220, 53, 69, 0.1), transparent);
+      animation: orariScorrimento 3s infinite;
+      z-index: 1;
+    }
+    
+    @keyframes orariScorrimento {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    /* Stili per il menu a tendina */
+    .menu-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .menu-dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+      right: 0;
+    }
+    
+    .menu-dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .menu-dropdown-content a:hover {
+      background-color: #f1f1f1;
+      border-radius: 5px;
+    }
+    
+    .menu-dropdown:hover .menu-dropdown-content {
+      display: block;
+    }
+    
+    /* Stili per il pulsante PDF */
+    .btn-pdf {
+      background-color: #dc3545;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      border: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    
+    .btn-pdf:hover {
+      background-color: #c82333;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    /* Stili per la pagina del menu */
+    #menu-page {
+      display: none;
+      padding: 40px 0;
+    }
+    
+    .menu-page-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .menu-page-title {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #dc3545;
+    }
+    
+    .menu-page-content {
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .menu-category {
+      margin-bottom: 30px;
+    }
+    
+    .menu-category-title {
+      color: #dc3545;
+      border-bottom: 2px solid #dc3545;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    
+    .menu-item-name {
+      font-weight: bold;
+    }
+    
+    .menu-item-price {
+      color: #dc3545;
+      font-weight: bold;
+    }
+    
+    .menu-item-description {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 5px;
     }
   </style>
 </head>
-
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="logo.jpg" alt="Logo Pizzeria Il Semaforo" class="logo">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#" onclick="showMainPage()">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" onclick="showGalleria()">Galleria</a></li>
-          <li class="nav-item menu-dropdown">
-            <a class="nav-link" href="#">Menù <i class="fas fa-chevron-down ms-1"></i></a>
-            <div class="menu-dropdown-content">
-              <a href="#" onclick="showMenuPage()">Visualizza Menù</a>
-              <a href="#" onclick="downloadPDF()">Scarica PDF</a>
-            </div>
-          </li>
-        </ul>
-      </div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="logo.jpg" alt="Logo Pizzeria Il Semaforo" class="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showMainPage()">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showGalleria()">Galleria</a></li>
+        <li class="nav-item menu-dropdown">
+          <a class="nav-link" href="#">Menù <i class="fas fa-chevron-down"></i></a>
+          <div class="menu-dropdown-content">
+            <a href="#" onclick="showMenuPage()">Visualizza Menù</a>
+            <a href="#" onclick="downloadPDF()">Scarica PDF</a>
+          </div>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
 <!-- Pagina principale -->
 <div id="main-page">
@@ -555,26 +625,6 @@
 <!-- SwiperJS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script>
-    // Aggiungi classe scrolled alla navbar allo scroll
-  window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
-
-  // Animazioni al caricamento della pagina
-  document.addEventListener('DOMContentLoaded', function() {
-    const elements = document.querySelectorAll('section, header, footer');
-    elements.forEach((el, index) => {
-      setTimeout(() => {
-        el.classList.add('fade-in');
-      }, index * 200);
-    });
-  });
-  
   const swiper = new Swiper('.mySwiper', {
     navigation: {
       nextEl: '.swiper-button-next',
