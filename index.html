@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+vorrei il pulsante whatsapp e il footer anche nella schermata principale<!DOCTYPE html> 
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -25,9 +25,6 @@
     body {
       font-family: 'Montserrat', sans-serif;
       background-color: #f8f9fa;
-      position: relative;
-      min-height: 100vh;
-      padding-bottom: 200px; /* Spazio per il footer */
     }
 
     header {
@@ -83,9 +80,6 @@
       color: white;
       padding: 40px 0;
       text-align: center;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
     }
 
     .social-icons a {
@@ -139,7 +133,6 @@
     #galleria {
       display: none;
       padding: 40px 0;
-      min-height: calc(100vh - 200px); /* Altezza minima meno footer */
     }
 
     .galleria-container {
@@ -338,7 +331,6 @@
     #menu-page {
       display: none;
       padding: 40px 0;
-      min-height: calc(100vh - 200px); /* Altezza minima meno footer */
     }
     
     .menu-page-container {
@@ -395,7 +387,7 @@
     /* Pulsante WhatsApp */
     .whatsapp-button {
       position: fixed;
-      bottom: 80px; /* Spostato sopra per non sovrapporsi al footer */
+      bottom: 30px;
       right: 30px;
       background-color: #25D366;
       color: white;
