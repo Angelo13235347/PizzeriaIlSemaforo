@@ -67,6 +67,12 @@
       height: 250px;
       object-fit: cover;
       border-radius: 10px;
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+
+    .galleria-img:hover {
+      transform: scale(1.03);
     }
 
     .divider-line {
@@ -74,6 +80,23 @@
       height: 1px;
       background-color: #ddd;
       margin: 60px 0;
+    }
+
+    .btn-galleria {
+      background-color: #dc3545;
+      color: white;
+      padding: 10px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      margin-top: 20px;
+      border: none;
+      transition: all 0.3s;
+    }
+
+    .btn-galleria:hover {
+      background-color: #c82333;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -91,6 +114,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="galleria.html">Galleria</a></li>
       </ul>
     </div>
   </div>
@@ -101,6 +125,7 @@
   <div class="container">
     <h1>Benvenuti da Pizzeria Il Semaforo</h1>
     <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
+    <a href="galleria.html" class="btn-galleria">Galleria</a>
   </div>
 </header>
 
