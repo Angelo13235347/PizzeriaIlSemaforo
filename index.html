@@ -14,6 +14,10 @@
   <!-- SwiperJS CSS -->
   <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet">
 
+  <!-- jsPDF per il download PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
   <style>
     body {
       font-family: 'Helvetica Neue', sans-serif;
@@ -79,7 +83,7 @@
       width: 100%;
       height: 1px;
       background-color: #ddd;
-      margin: 60px 0;
+      margin: 30px 0;
     }
 
     .btn-galleria {
@@ -161,7 +165,7 @@
     /* Stili per il menu fisso */
     .menu-section {
       background-color: #fff;
-      padding: 60px 0;
+      padding: 40px 0;
       text-align: center;
     }
     
@@ -199,7 +203,7 @@
     /* Stili per gli orari animati */
     .orari-section {
       background-color: #f8f9fa;
-      padding: 60px 0;
+      padding: 40px 0;
       text-align: center;
     }
     
@@ -242,6 +246,117 @@
       0% { transform: translateX(-100%); }
       100% { transform: translateX(100%); }
     }
+    
+    /* Stili per il menu a tendina */
+    .menu-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .menu-dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+      right: 0;
+    }
+    
+    .menu-dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .menu-dropdown-content a:hover {
+      background-color: #f1f1f1;
+      border-radius: 5px;
+    }
+    
+    .menu-dropdown:hover .menu-dropdown-content {
+      display: block;
+    }
+    
+    /* Stili per il pulsante PDF */
+    .btn-pdf {
+      background-color: #dc3545;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      border: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    
+    .btn-pdf:hover {
+      background-color: #c82333;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    /* Stili per la pagina del menu */
+    #menu-page {
+      display: none;
+      padding: 40px 0;
+    }
+    
+    .menu-page-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .menu-page-title {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #dc3545;
+    }
+    
+    .menu-page-content {
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .menu-category {
+      margin-bottom: 30px;
+    }
+    
+    .menu-category-title {
+      color: #dc3545;
+      border-bottom: 2px solid #dc3545;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    
+    .menu-item-name {
+      font-weight: bold;
+    }
+    
+    .menu-item-price {
+      color: #dc3545;
+      font-weight: bold;
+    }
+    
+    .menu-item-description {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -259,6 +374,13 @@
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#" onclick="showMainPage()">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#" onclick="showGalleria()">Galleria</a></li>
+        <li class="nav-item menu-dropdown">
+          <a class="nav-link" href="#">Menù <i class="fas fa-chevron-down"></i></a>
+          <div class="menu-dropdown-content">
+            <a href="#" onclick="showMenuPage()">Visualizza Menù</a>
+            <a href="#" onclick="downloadPDF()">Scarica PDF</a>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
@@ -276,7 +398,7 @@
   </header>
 
   <!-- Chi Siamo -->
-  <section class="py-5">
+  <section class="py-4">
     <div class="container">
       <h3><strong>Circa un anno fa, la nostra pizzeria "Il Semaforo" &egrave; nata da un sogno condiviso da una famiglia molto unita.</strong></h3>
       <p class="mt-3">Provenivamo da un altro settore, ma la nostra passione per la cucina e l'amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non &egrave; stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realt&agrave;.</p>
@@ -306,6 +428,9 @@
             <li>Bevuta piccola</li>
           </ul>
         </div>
+        <button class="btn-pdf" onclick="downloadPDF()">
+          <i class="fas fa-file-pdf"></i> Scarica Menù PDF
+        </button>
       </div>
     </div>
   </section>
@@ -331,7 +456,7 @@
   <div class="divider-line"></div>
 
   <!-- Mappa -->
-  <section class="py-5">
+  <section class="py-4">
     <div class="container text-center">
       <h2>APRI LA MAPPA E SCOPRI DOVE SIAMO!</h2>
       <div class="mt-4">
@@ -351,9 +476,9 @@
   <div class="divider-line"></div>
 
   <!-- Testimonianze -->
-  <section class="py-5">
+  <section class="py-4">
     <div class="container">
-      <h2 class="text-center mb-5">Cosa dicono di noi</h2>
+      <h2 class="text-center mb-4">Cosa dicono di noi</h2>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
 
@@ -444,6 +569,106 @@
   </div>
 </div>
 
+<!-- Pagina del menu -->
+<div id="menu-page">
+  <div class="menu-page-container">
+    <h2 class="menu-page-title">Il Nostro Menù Completo</h2>
+    <div class="menu-page-content">
+      <div class="menu-category">
+        <h3 class="menu-category-title">ANTIPASTI</h3>
+        <div class="menu-item">
+          <div class="menu-item-name">Antipasto della Casa</div>
+          <div class="menu-item-price">€8.50</div>
+        </div>
+        <div class="menu-item-description">Selezione di salumi, formaggi, bruschette e verdure sott'olio</div>
+        
+        <div class="menu-item">
+          <div class="menu-item-name">Bruschette Miste</div>
+          <div class="menu-item-price">€6.00</div>
+        </div>
+        <div class="menu-item-description">Bruschette con pomodoro, funghi e crema di olive</div>
+      </div>
+      
+      <div class="menu-category">
+        <h3 class="menu-category-title">PIZZE CLASSICHE</h3>
+        <div class="menu-item">
+          <div class="menu-item-name">Margherita</div>
+          <div class="menu-item-price">€6.50</div>
+        </div>
+        <div class="menu-item-description">Pomodoro, mozzarella, basilico</div>
+        
+        <div class="menu-item">
+          <div class="menu-item-name">Diavola</div>
+          <div class="menu-item-price">€8.00</div>
+        </div>
+        <div class="menu-item-description">Pomodoro, mozzarella, salame piccante</div>
+        
+        <div class="menu-item">
+          <div class="menu-item-name">Quattro Stagioni</div>
+          <div class="menu-item-price">€8.50</div>
+        </div>
+        <div class="menu-item-description">Pomodoro, mozzarella, prosciutto, funghi, carciofi, olive</div>
+      </div>
+      
+      <div class="menu-category">
+        <h3 class="menu-category-title">PIZZE SPECIALI</h3>
+        <div class="menu-item">
+          <div class="menu-item-name">Semaforo</div>
+          <div class="menu-item-price">€10.00</div>
+        </div>
+        <div class="menu-item-description">Pomodoro, mozzarella di bufala, prosciutto crudo, rucola, grana</div>
+        
+        <div class="menu-item">
+          <div class="menu-item-name">Vegetariana</div>
+          <div class="menu-item-price">€9.50</div>
+        </div>
+        <div class="menu-item-description">Pomodoro, mozzarella, melanzane, zucchine, peperoni grigliati</div>
+      </div>
+      
+      <div class="menu-category">
+        <h3 class="menu-category-title">DOLCI</h3>
+        <div class="menu-item">
+          <div class="menu-item-name">Tiramisù</div>
+          <div class="menu-item-price">€4.50</div>
+        </div>
+        
+        <div class="menu-item">
+          <div class="menu-item-name">Panna Cotta</div>
+          <div class="menu-item-price">€4.00</div>
+        </div>
+        
+        <div class="menu-item">
+          <div class="menu-item-name">Torta della Nonna</div>
+          <div class="menu-item-price">€4.50</div>
+        </div>
+      </div>
+      
+      <div class="menu-category">
+        <h3 class="menu-category-title">BEVANDE</h3>
+        <div class="menu-item">
+          <div class="menu-item-name">Acqua (0.5L)</div>
+          <div class="menu-item-price">€1.50</div>
+        </div>
+        
+        <div class="menu-item">
+          <div class="menu-item-name">Birra (0.33L)</div>
+          <div class="menu-item-price">€3.50</div>
+        </div>
+        
+        <div class="menu-item">
+          <div class="menu-item-name">Vino della Casa (0.75L)</div>
+          <div class="menu-item-price">€8.00</div>
+        </div>
+      </div>
+      
+      <button class="btn-pdf" onclick="downloadPDF()" style="margin-top: 30px;">
+        <i class="fas fa-file-pdf"></i> Scarica Menù PDF
+      </button>
+      <button class="btn-back" onclick="showMainPage()" style="margin-top: 15px;">Torna alla Home</button>
+    </div>
+  </div>
+</div>
+
 <!-- Footer -->
 <footer>
   <div class="container">
@@ -476,17 +701,139 @@
     }
   });
 
-  // Funzioni per mostrare/nascondere galleria e pagina principale
+  // Funzioni per mostrare/nascondere pagine
   function showGalleria() {
     document.getElementById('main-page').style.display = 'none';
+    document.getElementById('menu-page').style.display = 'none';
     document.getElementById('galleria').style.display = 'block';
     window.scrollTo(0, 0);
   }
 
   function showMainPage() {
     document.getElementById('galleria').style.display = 'none';
+    document.getElementById('menu-page').style.display = 'none';
     document.getElementById('main-page').style.display = 'block';
     window.scrollTo(0, 0);
+  }
+  
+  function showMenuPage() {
+    document.getElementById('main-page').style.display = 'none';
+    document.getElementById('galleria').style.display = 'none';
+    document.getElementById('menu-page').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+  
+  // Funzione per scaricare il PDF
+  function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Titolo
+    doc.setFontSize(20);
+    doc.setTextColor(220, 53, 69);
+    doc.text('Pizzeria Il Semaforo - Menù', 105, 20, null, null, 'center');
+    
+    // Logo (se disponibile)
+    // doc.addImage('logo.jpg', 'JPEG', 85, 30, 40, 40);
+    
+    // Informazioni
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Via Palagetta 50013 Campi Bisenzio', 105, 40, null, null, 'center');
+    doc.text('Tel: +39 3403046310', 105, 45, null, null, 'center');
+    doc.text('Aperti dal Giovedì alla Domenica, dalle 19:00 alle 23:00', 105, 50, null, null, 'center');
+    
+    // Linea divisoria
+    doc.setDrawColor(220, 53, 69);
+    doc.line(20, 55, 190, 55);
+    
+    // Sezioni del menù
+    let y = 65;
+    
+    // Antipasti
+    doc.setFontSize(16);
+    doc.setTextColor(220, 53, 69);
+    doc.text('ANTIPASTI', 20, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Antipasto della Casa', 20, y);
+    doc.text('€8.50', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Selezione di salumi, formaggi, bruschette e verdure sott\'olio', 25, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.text('Bruschette Miste', 20, y);
+    doc.text('€6.00', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Bruschette con pomodoro, funghi e crema di olive', 25, y);
+    y += 15;
+    
+    // Pizze Classiche
+    doc.setFontSize(16);
+    doc.setTextColor(220, 53, 69);
+    doc.text('PIZZE CLASSICHE', 20, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Margherita', 20, y);
+    doc.text('€6.50', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Pomodoro, mozzarella, basilico', 25, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.text('Diavola', 20, y);
+    doc.text('€8.00', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Pomodoro, mozzarella, salame piccante', 25, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.text('Quattro Stagioni', 20, y);
+    doc.text('€8.50', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Pomodoro, mozzarella, prosciutto, funghi, carciofi, olive', 25, y);
+    y += 15;
+    
+    // Pizze Speciali
+    doc.setFontSize(16);
+    doc.setTextColor(220, 53, 69);
+    doc.text('PIZZE SPECIALI', 20, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Semaforo', 20, y);
+    doc.text('€10.00', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Pomodoro, mozzarella di bufala, prosciutto crudo, rucola, grana', 25, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.text('Vegetariana', 20, y);
+    doc.text('€9.50', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Pomodoro, mozzarella, melanzane, zucchine, peperoni grigliati', 25, y);
+    y += 15;
+    
+    // Footer
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text('www.pizzeriailsemaforo.it - info@pizzeriailsemaforo.it', 105, 280, null, null, 'center');
+    
+    // Salva il PDF
+    doc.save('Menu_Pizzeria_Il_Semaforo.pdf');
   }
 </script>
 
