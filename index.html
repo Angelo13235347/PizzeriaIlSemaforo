@@ -648,6 +648,7 @@
         <div class="menu-item">
           <div class="menu-item-name">Seleziona la tua bevanda piccola compresa nel menù</div>
         </div>
+      </div>
       
       <button class="btn-pdf" onclick="downloadPDF()" style="margin-top: 30px;">
         <i class="fas fa-file-pdf"></i> Scarica Menù PDF
@@ -716,8 +717,8 @@
     window.scrollTo(0, 0);
   }
   
-// Funzione per scaricare il PDF
-function downloadPDF() {
+  // Funzione per scaricare il PDF
+  function downloadPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     
@@ -778,18 +779,18 @@ function downloadPDF() {
     doc.setTextColor(0, 0, 0);
     
     const dolci = [
-        'Tiramisù',
-        'Panna Cotta',
-        'Torta al Cioccolato',
-        'Torta di mele',
-        'Cheese Cake',
-        'Torta della Nonna',
-        'Sorbetto al limone'
+      'Tiramisù',
+      'Panna Cotta',
+      'Torta al Cioccolato',
+      'Torta di mele',
+      'Cheese Cake',
+      'Torta della Nonna',
+      'Sorbetto al limone'
     ];
     
     dolci.forEach(dolce => {
-        doc.text(dolce, 20, y);
-        y += 7;
+      doc.text(dolce, 20, y);
+      y += 7;
     });
     
     y += 5;
@@ -812,7 +813,7 @@ function downloadPDF() {
     
     // Salva il PDF
     doc.save('Menu_Pizzeria_Il_Semaforo.pdf');
-}
+  }
 </script>
 
 </body>
