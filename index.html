@@ -449,6 +449,522 @@
     </div>
   </header>
 
+<!-- Aggiungi questo stile nell'head -->
+<style>
+  /* Sezione giochi */
+  .games-section {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 15px;
+    width: 250px;
+    display: none;
+  }
+  
+  .games-toggle {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  .games-toggle:hover {
+    background-color: #c82333;
+  }
+  
+  .games-title {
+    color: #dc3545;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 5px;
+  }
+  
+  .game-item {
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+  
+  .game-item:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .game-item i {
+    margin-right: 8px;
+    color: #dc3545;
+  }
+  
+  /* Stili per i giochi */
+  .game-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1001;
+    width: 80%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .game-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #dc3545;
+  }
+  
+  /* Memory game styles */
+  .memory-game {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .memory-card {
+    height: 80px;
+    background-color: #dc3545;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+  }
+  
+  .memory-card.flipped {
+    transform: rotateY(180deg);
+    background-color: #f8f9fa;
+    color: #dc3545;
+  }
+  
+  /* Pizza builder styles */
+  .pizza-builder {
+    text-align: center;
+  }
+  
+  .pizza-base {
+    width: 200px;
+    height: 200px;
+    background-color: #f5e1a4;
+    border-radius: 50%;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .topping {
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  .toppings-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .topping-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  .topping-option:hover {
+    border-color: #dc3545;
+  }
+  
+  /* Pizza coloring styles */
+  .pizza-coloring {
+    text-align: center;
+  }
+  
+  .pizza-outline {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  .colors-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #ddd;
+  }
+  
+  .color-option:hover {
+    border-color: #333;
+  }
+</style>
+
+<!-- Aggiungi questo HTML prima del footer -->
+<button class="games-toggle" onclick="toggleGamesSection()">
+  <i class="fas fa-gamepad"></i>
+</button>
+
+<div class="games-section" id="gamesSection">
+  <h3 class="games-title">Giochi di Pizza per Bambini</h3>
+  
+  <div class="game-item" onclick="openGame('memoryGame')">
+    <i class="fas fa-brain"></i> Memory della Pizza
+  </div>
+  
+  <div class="game-item" onclick="openGame('pizzaBuilder')">
+    <i class="fas fa-pizza-slice"></i> Crea la tua Pizza
+  </div>
+  
+  <div class="game-item" onclick="openGame('pizzaColoring')">
+    <i class="fas fa-palette"></i> Coloriamo la Pizza
+  </div>
+</div>
+
+<!-- Memory Game -->
+<div class="game-container" id="memoryGame">
+  <button class="game-close" onclick="closeGame('memoryGame')">&times;</button>
+  <h3>Memory della Pizza</h3>
+  <p>Trova tutte le coppie di ingredienti per pizza!</p>
+  <div class="memory-game" id="memoryGameBoard"></div>
+  <button onclick="resetMemoryGame()" style="margin-top: 20px; background-color: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 5px;">Ricomincia</button>
+</div>
+
+<!-- Pizza Builder -->
+<div class="game-container" id="pizzaBuilder">
+  <button class="game-close" onclick="closeGame('pizzaBuilder')">&times;</button>
+  <h3>Crea la tua Pizza</h3>
+  <p>Aggiungi gli ingredienti che preferisci alla tua pizza!</p>
+  <div class="pizza-builder">
+    <div class="pizza-base" id="pizzaBase"></div>
+    <div class="toppings-selector">
+      <div class="topping-option" style="background-color: #ff0000;" onclick="addTopping('pomodoro')" title="Pomodoro"></div>
+      <div class="topping-option" style="background-color: #ffff00;" onclick="addTopping('mozzarella')" title="Mozzarella"></div>
+      <div class="topping-option" style="background-color: #8b4513;" onclick="addTopping('funghi')" title="Funghi"></div>
+      <div class="topping-option" style="background-color: #ff6347;" onclick="addTopping('prosciutto')" title="Prosciutto"></div>
+      <div class="topping-option" style="background-color: #228b22;" onclick="addTopping('basilico')" title="Basilico"></div>
+      <div class="topping-option" style="background-color: #a0522d;" onclick="addTopping('salsiccia')" title="Salsiccia"></div>
+      <div class="topping-option" style="background-color: #ff69b4;" onclick="addTopping('cipolla')" title="Cipolla"></div>
+      <div class="topping-option" style="background-color: #ffa500;" onclick="addTopping('peperoni')" title="Peperoni"></div>
+    </div>
+    <button onclick="clearPizza()" style="margin-top: 20px; background-color: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 5px;">Pulisci Pizza</button>
+  </div>
+</div>
+
+<!-- Pizza Coloring -->
+<div class="game-container" id="pizzaColoring">
+  <button class="game-close" onclick="closeGame('pizzaColoring')">&times;</button>
+  <h3>Coloriamo la Pizza</h3>
+  <p>Scegli i colori e dipingi la tua pizza!</p>
+  <div class="pizza-coloring">
+    <div class="pizza-outline" id="pizzaCanvas" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'><circle cx=\'100\' cy=\'100\' r=\'90\' fill=\'%23f5e1a4\' stroke=\'%23000\' stroke-width=\'2\'/><circle cx=\'100\' cy=\'100\' r=\'80\' fill=\'%23f5e1a4\' stroke=\'%23000\' stroke-width=\'1\'/><path d=\'M100,20 Q120,50 100,80 Q80,50 100,20\' fill=\'%23ff6347\'/><path d=\'M100,120 Q130,100 100,80 Q70,100 100,120\' fill=\'%23ff6347\'/><path d=\'M100,120 Q80,150 100,180 Q120,150 100,120\' fill=\'%23ff6347\'/><path d=\'M100,120 Q70,100 20,100 Q50,120 100,120\' fill=\'%23ff6347\'/><path d=\'M100,120 Q120,150 180,150 Q150,120 100,120\' fill=\'%23ff6347\'/></svg>')"></div>
+    <div class="colors-palette">
+      <div class="color-option" style="background-color: #ff0000;" onclick="selectColor('#ff0000')"></div>
+      <div class="color-option" style="background-color: #ffff00;" onclick="selectColor('#ffff00')"></div>
+      <div class="color-option" style="background-color: #00ff00;" onclick="selectColor('#00ff00')"></div>
+      <div class="color-option" style="background-color: #0000ff;" onclick="selectColor('#0000ff')"></div>
+      <div class="color-option" style="background-color: #ff00ff;" onclick="selectColor('#ff00ff')"></div>
+      <div class="color-option" style="background-color: #00ffff;" onclick="selectColor('#00ffff')"></div>
+      <div class="color-option" style="background-color: #ffffff;" onclick="selectColor('#ffffff')"></div>
+      <div class="color-option" style="background-color: #000000;" onclick="selectColor('#000000')"></div>
+    </div>
+    <button onclick="resetColoring()" style="margin-top: 20px; background-color: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 5px;">Ricomincia</button>
+  </div>
+</div>
+
+<!-- Aggiungi questo script prima del tag di chiusura </body> -->
+<script>
+  // Gestione sezione giochi
+  function toggleGamesSection() {
+    const gamesSection = document.getElementById('gamesSection');
+    gamesSection.style.display = gamesSection.style.display === 'block' ? 'none' : 'block';
+  }
+  
+  function openGame(gameId) {
+    document.getElementById(gameId).style.display = 'block';
+    document.getElementById('gamesSection').style.display = 'none';
+    
+    // Inizializza il gioco se necessario
+    if (gameId === 'memoryGame' && !memoryGameInitialized) {
+      initMemoryGame();
+    }
+  }
+  
+  function closeGame(gameId) {
+    document.getElementById(gameId).style.display = 'none';
+  }
+  
+  // Memory Game
+  let memoryGameInitialized = false;
+  let flippedCards = [];
+  let matchedPairs = 0;
+  const pizzaIngredients = ['🍅', '🧀', '🍄', '🥓', '🌿', '🌶️', '🧅', '🍖'];
+  
+  function initMemoryGame() {
+    const gameBoard = document.getElementById('memoryGameBoard');
+    gameBoard.innerHTML = '';
+    
+    // Duplica gli ingredienti per le coppie
+    const cards = [...pizzaIngredients, ...pizzaIngredients];
+    
+    // Mescola le carte
+    cards.sort(() => Math.random() - 0.5);
+    
+    // Crea le carte
+    cards.forEach((ingredient, index) => {
+      const card = document.createElement('div');
+      card.className = 'memory-card';
+      card.dataset.index = index;
+      card.dataset.ingredient = ingredient;
+      card.innerHTML = '<span style="visibility: hidden;">' + ingredient + '</span>';
+      card.addEventListener('click', flipCard);
+      gameBoard.appendChild(card);
+    });
+    
+    memoryGameInitialized = true;
+    flippedCards = [];
+    matchedPairs = 0;
+  }
+  
+  function flipCard() {
+    // Se la carta è già girata o abbiamo già 2 carte girate, non fare nulla
+    if (this.classList.contains('flipped') || flippedCards.length === 2) {
+      return;
+    }
+    
+    // Gira la carta
+    this.classList.add('flipped');
+    this.querySelector('span').style.visibility = 'visible';
+    flippedCards.push(this);
+    
+    // Se abbiamo due carte girate, controlla se sono uguali
+    if (flippedCards.length === 2) {
+      setTimeout(checkForMatch, 500);
+    }
+  }
+  
+  function checkForMatch() {
+    const [card1, card2] = flippedCards;
+    
+    if (card1.dataset.ingredient === card2.dataset.ingredient) {
+      // Coppia trovata
+      card1.removeEventListener('click', flipCard);
+      card2.removeEventListener('click', flipCard);
+      matchedPairs++;
+      
+      // Controlla se il gioco è finito
+      if (matchedPairs === pizzaIngredients.length) {
+        setTimeout(() => {
+          alert('Complimenti! Hai trovato tutte le coppie!');
+        }, 300);
+      }
+    } else {
+      // Non è una coppia, rigira le carte
+      card1.classList.remove('flipped');
+      card2.classList.remove('flipped');
+      card1.querySelector('span').style.visibility = 'hidden';
+      card2.querySelector('span').style.visibility = 'hidden';
+    }
+    
+    flippedCards = [];
+  }
+  
+  function resetMemoryGame() {
+    initMemoryGame();
+  }
+  
+  // Pizza Builder
+  function addTopping(type) {
+    const pizzaBase = document.getElementById('pizzaBase');
+    const topping = document.createElement('div');
+    topping.className = 'topping';
+    
+    // Posizione casuale sulla pizza
+    const x = Math.random() * 140 + 30;
+    const y = Math.random() * 140 + 30;
+    const size = Math.random() * 20 + 10;
+    
+    topping.style.width = size + 'px';
+    topping.style.height = size + 'px';
+    topping.style.left = x + 'px';
+    topping.style.top = y + 'px';
+    
+    // Stile in base all'ingrediente
+    switch(type) {
+      case 'pomodoro':
+        topping.style.backgroundColor = '#ff0000';
+        break;
+      case 'mozzarella':
+        topping.style.backgroundColor = '#ffff00';
+        break;
+      case 'funghi':
+        topping.style.backgroundColor = '#8b4513';
+        break;
+      case 'prosciutto':
+        topping.style.backgroundColor = '#ff6347';
+        break;
+      case 'basilico':
+        topping.style.backgroundColor = '#228b22';
+        topping.style.borderRadius = '0';
+        topping.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        topping.style.width = (size / 2) + 'px';
+        topping.style.height = size + 'px';
+        break;
+      case 'salsiccia':
+        topping.style.backgroundColor = '#a0522d';
+        topping.style.borderRadius = '50% 50% 50% 50% / 60% 60% 40% 40%';
+        break;
+      case 'cipolla':
+        topping.style.backgroundColor = '#ff69b4';
+        topping.style.borderRadius = '0';
+        break;
+      case 'peperoni':
+        topping.style.backgroundColor = '#ffa500';
+        topping.style.borderRadius = '50% 50% 50% 50% / 60% 60% 40% 40%';
+        break;
+    }
+    
+    pizzaBase.appendChild(topping);
+  }
+  
+  function clearPizza() {
+    const pizzaBase = document.getElementById('pizzaBase');
+    while (pizzaBase.firstChild) {
+      pizzaBase.removeChild(pizzaBase.firstChild);
+    }
+  }
+  
+  // Pizza Coloring
+  let selectedColor = '#ff0000';
+  let isDrawing = false;
+  
+  function selectColor(color) {
+    selectedColor = color;
+  }
+  
+  function setupColoring() {
+    const pizzaCanvas = document.getElementById('pizzaCanvas');
+    
+    pizzaCanvas.addEventListener('mousedown', startDrawing);
+    pizzaCanvas.addEventListener('mousemove', draw);
+    pizzaCanvas.addEventListener('mouseup', stopDrawing);
+    pizzaCanvas.addEventListener('mouseleave', stopDrawing);
+    
+    pizzaCanvas.addEventListener('touchstart', handleTouchStart);
+    pizzaCanvas.addEventListener('touchmove', handleTouchMove);
+    pizzaCanvas.addEventListener('touchend', handleTouchEnd);
+  }
+  
+  function startDrawing(e) {
+    isDrawing = true;
+    draw(e);
+  }
+  
+  function draw(e) {
+    if (!isDrawing) return;
+    
+    const pizzaCanvas = document.getElementById('pizzaCanvas');
+    const rect = pizzaCanvas.getBoundingClientRect();
+    let x, y;
+    
+    if (e.type.includes('touch')) {
+      x = e.touches[0].clientX - rect.left;
+      y = e.touches[0].clientY - rect.top;
+    } else {
+      x = e.clientX - rect.left;
+      y = e.clientY - rect.top;
+    }
+    
+    const dot = document.createElement('div');
+    dot.style.position = 'absolute';
+    dot.style.width = '10px';
+    dot.style.height = '10px';
+    dot.style.backgroundColor = selectedColor;
+    dot.style.borderRadius = '50%';
+    dot.style.left = (x - 5) + 'px';
+    dot.style.top = (y - 5) + 'px';
+    dot.style.pointerEvents = 'none';
+    
+    pizzaCanvas.appendChild(dot);
+  }
+  
+  function stopDrawing() {
+    isDrawing = false;
+  }
+  
+  function resetColoring() {
+    const pizzaCanvas = document.getElementById('pizzaCanvas');
+    while (pizzaCanvas.children.length > 0) {
+      pizzaCanvas.removeChild(pizzaCanvas.firstChild);
+    }
+  }
+  
+  // Touch events for mobile
+  function handleTouchStart(e) {
+    e.preventDefault();
+    startDrawing(e);
+  }
+  
+  function handleTouchMove(e) {
+    e.preventDefault();
+    draw(e);
+  }
+  
+  function handleTouchEnd(e) {
+    e.preventDefault();
+    stopDrawing();
+  }
+  
+  // Inizializza il coloring al caricamento
+  window.addEventListener('DOMContentLoaded', setupColoring);
+</script>
+  
   <!-- Chi Siamo -->
   <section class="py-4">
     <div class="container">
