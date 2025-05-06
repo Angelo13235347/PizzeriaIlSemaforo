@@ -157,6 +157,91 @@
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
+    
+    /* Stili per il menu fisso */
+    .menu-section {
+      background-color: #fff;
+      padding: 60px 0;
+      text-align: center;
+    }
+    
+    .menu-card {
+      background-color: #f8f9fa;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .menu-title {
+      color: #dc3545;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+    
+    .menu-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #dc3545;
+      margin: 20px 0;
+    }
+    
+    .menu-includes {
+      text-align: left;
+      margin: 20px 0;
+    }
+    
+    .menu-includes li {
+      margin-bottom: 10px;
+    }
+    
+    /* Stili per gli orari animati */
+    .orari-section {
+      background-color: #f8f9fa;
+      padding: 60px 0;
+      text-align: center;
+    }
+    
+    .orari-title {
+      color: #dc3545;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+    
+    .orari-box {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .orari-text {
+      font-size: 1.2rem;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .orari-animazione {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(90deg, transparent, rgba(220, 53, 69, 0.1), transparent);
+      animation: orariScorrimento 3s infinite;
+      z-index: 1;
+    }
+    
+    @keyframes orariScorrimento {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
   </style>
 </head>
 <body>
@@ -196,6 +281,49 @@
       <h3><strong>Circa un anno fa, la nostra pizzeria "Il Semaforo" &egrave; nata da un sogno condiviso da una famiglia molto unita.</strong></h3>
       <p class="mt-3">Provenivamo da un altro settore, ma la nostra passione per la cucina e l'amore per la tradizione ci hanno spinti a intraprendere questa nuova avventura. Non &egrave; stato un percorso facile; ci sono stati sacrifici, lunghe giornate di lavoro e momenti di grande impegno da parte di tutti noi, dai ragazzi ai cuochi. Tuttavia, con determinazione e tanto lavoro, siamo riusciti a trasformare il nostro sogno in realt&agrave;.</p>
       <p>Oggi, possiamo raccontare con orgoglio il nostro viaggio e accogliervi nella nostra pizzeria con lo stesso entusiasmo con cui l'abbiamo creata.</p>
+    </div>
+  </section>
+
+  <!-- Linea divisoria -->
+  <div class="divider-line"></div>
+
+  <!-- Menu Fisso -->
+  <section class="menu-section">
+    <div class="container">
+      <h2 class="menu-title">IL NOSTRO MENÙ FISSO</h2>
+      <div class="menu-card">
+        <h3>DAL GIOVEDÌ ALLA DOMENICA</h3>
+        
+        <div class="menu-price">GIOVEDÌ - €16</div>
+        <div class="menu-price">VENERDÌ, SABATO, DOMENICA - €18</div>
+        
+        <div class="menu-includes">
+          <h4>IL MENÙ COMPRENDE:</h4>
+          <ul>
+            <li>Antipasto con sott'oli, schiacciata calda e salumi misti</li>
+            <li>Giro pizza no stop</li>
+            <li>Dolce della casa</li>
+            <li>Bevuta piccola</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Linea divisoria -->
+  <div class="divider-line"></div>
+
+  <!-- Orari di Apertura Animati -->
+  <section class="orari-section">
+    <div class="container">
+      <h2 class="orari-title">I NOSTRI ORARI</h2>
+      <div class="orari-box">
+        <div class="orari-animazione"></div>
+        <p class="orari-text">
+          <strong>APERTI DAL GIOVEDÌ ALLA DOMENICA</strong><br>
+          DALLE 19:00 ALLE 23:00
+        </p>
+      </div>
     </div>
   </section>
 
