@@ -449,26 +449,20 @@
     </div>
   </header>
 
+<!-- Aggiungi questo stile nell'head -->
 <style>
-  /* Sezione giochi - Stile migliorato */
+  /* Sezione giochi */
   .games-section {
     position: fixed;
     top: 100px;
     right: 20px;
     z-index: 1000;
-    background-color: #fff9f9;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.2);
-    padding: 20px;
-    width: 280px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 15px;
+    width: 250px;
     display: none;
-    border: 3px solid #ffccd5;
-    animation: fadeIn 0.3s ease;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
   }
   
   .games-toggle {
@@ -476,69 +470,51 @@
     top: 100px;
     right: 20px;
     z-index: 1000;
-    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    background-color: #dc3545;
     color: white;
     border: none;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
-  }
-  
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
   
   .games-toggle:hover {
-    background: linear-gradient(135deg, #ff5252, #ff7676);
-    transform: rotate(15deg);
+    background-color: #c82333;
   }
   
   .games-title {
-    color: #ff6b6b;
-    font-size: 1.4rem;
-    margin-bottom: 15px;
+    color: #dc3545;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
     text-align: center;
-    border-bottom: 3px dashed #ffccd5;
-    padding-bottom: 10px;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 5px;
   }
   
   .game-item {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     cursor: pointer;
-    padding: 10px 12px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    background-color: #fff;
-    border: 2px solid #ffccd5;
-    display: flex;
-    align-items: center;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
   }
   
   .game-item:hover {
-    background-color: #fff0f0;
-    transform: translateX(5px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #f8f9fa;
   }
   
   .game-item i {
-    margin-right: 10px;
-    color: #ff6b6b;
-    font-size: 1.2rem;
+    margin-right: 8px;
+    color: #dc3545;
   }
   
-  /* Stili per i giochi - Migliorati */
+  /* Stili per i giochi */
   .game-container {
     display: none;
     position: fixed;
@@ -546,433 +522,447 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     z-index: 1001;
-    width: 85%;
-    max-width: 550px;
-    max-height: 85vh;
+    width: 80%;
+    max-width: 500px;
+    max-height: 80vh;
     overflow-y: auto;
-    border: 3px solid #ffccd5;
-    animation: popIn 0.4s ease;
-  }
-  
-  @keyframes popIn {
-    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
   }
   
   .game-close {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #ff6b6b;
+    top: 10px;
+    right: 10px;
+    background: none;
     border: none;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
+    color: #dc3545;
   }
   
-  .game-close:hover {
-    background: #ff5252;
-    transform: rotate(90deg);
-  }
-  
-  .game-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 2px dashed #ffccd5;
-  }
-  
-  .game-stats {
-    display: flex;
-    gap: 15px;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    color: #ff6b6b;
-  }
-  
-  /* Memory game styles - Migliorato */
+  /* Memory game styles */
   .memory-game {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin: 20px auto;
-    max-width: 450px;
+    gap: 10px;
+    margin-top: 20px;
   }
   
   .memory-card {
-    height: 90px;
-    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-    border-radius: 12px;
+    height: 80px;
+    background-color: #dc3545;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 30px;
+    font-size: 24px;
     cursor: pointer;
     perspective: 1000px;
     transform-style: preserve-3d;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  .memory-card::before {
-    content: '🍕';
-    position: absolute;
-    font-size: 24px;
-    color: rgba(255,255,255,0.7);
+    transition: transform 0.5s;
   }
   
   .memory-card.flipped {
     transform: rotateY(180deg);
-    background: white;
-    color: #ff6b6b;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    background-color: #f8f9fa;
+    color: #dc3545;
   }
   
-  .memory-card.matched {
-    animation: bounce 0.5s ease;
-    background: linear-gradient(135deg, #4caf50, #8bc34a);
-  }
-  
-  @keyframes bounce {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
-  
-  /* Pizza builder styles - Migliorato */
+  /* Pizza builder styles */
   .pizza-builder {
     text-align: center;
   }
   
   .pizza-base {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     background-color: #f5e1a4;
     border-radius: 50%;
     margin: 20px auto;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    border: 3px solid #e0b354;
   }
   
   .topping {
     position: absolute;
     border-radius: 50%;
-    cursor: move;
-    transition: transform 0.2s ease;
-    z-index: 1;
-  }
-  
-  .topping:hover {
-    transform: scale(1.1);
-    z-index: 2;
   }
   
   .toppings-selector {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-    margin: 25px 0;
-    padding: 15px;
-    background-color: #fff9f9;
-    border-radius: 15px;
-    border: 2px dashed #ffccd5;
-  }
-  
-  .topping-option {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 3px solid transparent;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-  }
-  
-  .topping-option:hover {
-    border-color: #ff6b6b;
-    transform: translateY(-5px);
-  }
-  
-  .builder-controls {
-    display: flex;
     gap: 10px;
     justify-content: center;
     margin-top: 20px;
   }
   
-  /* Pizza coloring styles - Migliorato */
+  .topping-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  .topping-option:hover {
+    border-color: #dc3545;
+  }
+  
+  /* Pizza coloring styles */
   .pizza-coloring {
     text-align: center;
   }
   
   .pizza-outline {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     margin: 20px auto;
     background-size: contain;
     background-repeat: no-repeat;
-    position: relative;
-    cursor: crosshair;
-    touch-action: none;
-    background-color: #f5e1a4;
-    border-radius: 50%;
-    border: 3px solid #e0b354;
   }
   
-  .coloring-tools {
+  .colors-palette {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
     justify-content: center;
-    margin: 25px 0;
+    margin-top: 20px;
   }
   
   .color-option {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     cursor: pointer;
-    border: 3px solid #ddd;
-    transition: all 0.3s ease;
+    border: 2px solid #ddd;
   }
   
-  .color-option:hover, .color-option.selected {
+  .color-option:hover {
     border-color: #333;
-    transform: scale(1.1);
-  }
-  
-  .brush-size {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 15px 0;
-  }
-  
-  .brush-size button {
-    background-color: #ff6b6b;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  /* Stickers */
-  .stickers-container {
-    margin-top: 15px;
-  }
-  
-  .sticker {
-    font-size: 24px;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .sticker:hover {
-    transform: scale(1.2);
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .games-section {
-      width: 90%;
-      right: 5%;
-      top: 80px;
-    }
-    
-    .games-toggle {
-      top: 20px;
-      right: 20px;
-    }
-    
-    .game-container {
-      width: 95%;
-      padding: 15px;
-    }
-    
-    .memory-game {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .memory-card {
-      height: 70px;
-      font-size: 24px;
-    }
-    
-    .pizza-base, .pizza-outline {
-      width: 200px;
-      height: 200px;
-    }
   }
 </style>
 
-<!-- HTML Migliorato -->
-<button class="games-toggle" onclick="toggleGamesSection()" aria-label="Apri giochi">
+<!-- Aggiungi questo HTML prima del footer -->
+<button class="games-toggle" onclick="toggleGamesSection()">
   <i class="fas fa-gamepad"></i>
 </button>
 
 <div class="games-section" id="gamesSection">
-  <h3 class="games-title">🎮 Giochi di Pizza Divertenti! 🍕</h3>
+  <h3 class="games-title">Giochi di Pizza per Bambini</h3>
   
   <div class="game-item" onclick="openGame('memoryGame')">
     <i class="fas fa-brain"></i> Memory della Pizza
-    <span class="badge">Nuovo!</span>
   </div>
   
   <div class="game-item" onclick="openGame('pizzaBuilder')">
     <i class="fas fa-pizza-slice"></i> Crea la tua Pizza
-    <span class="badge">Divertente!</span>
   </div>
   
   <div class="game-item" onclick="openGame('pizzaColoring')">
     <i class="fas fa-palette"></i> Coloriamo la Pizza
-    <span class="badge">Creativo!</span>
-  </div>
-  
-  <div class="game-info">
-    <p>Scegli un gioco e divertiti con la pizza!</p>
   </div>
 </div>
 
-<!-- Memory Game Migliorato -->
+<!-- Memory Game -->
 <div class="game-container" id="memoryGame">
-  <button class="game-close" onclick="closeGame('memoryGame')" aria-label="Chiudi">&times;</button>
-  <div class="game-header">
-    <h3>🧠 Memory della Pizza 🍕</h3>
-    <div class="game-stats">
-      <span id="moves">Mosse: 0</span>
-      <span id="timer">Tempo: 0:00</span>
-    </div>
-  </div>
-  <p>Trova tutte le coppie di ingredienti per pizza! Scegli la difficoltà:</p>
-  
-  <div class="difficulty-selector">
-    <button onclick="setDifficulty('easy')" class="difficulty-btn easy">Facile (4x4)</button>
-    <button onclick="setDifficulty('medium')" class="difficulty-btn medium">Medio (4x4)</button>
-    <button onclick="setDifficulty('hard')" class="difficulty-btn hard">Difficile (6x6)</button>
-  </div>
-  
+  <button class="game-close" onclick="closeGame('memoryGame')">&times;</button>
+  <h3>Memory della Pizza</h3>
+  <p>Trova tutte le coppie di ingredienti per pizza!</p>
   <div class="memory-game" id="memoryGameBoard"></div>
-  
-  <div class="game-controls">
-    <button onclick="resetMemoryGame()" class="game-btn reset">🔄 Ricomincia</button>
-    <button onclick="hint()" class="game-btn hint">💡 Aiuto</button>
-  </div>
+  <button onclick="resetMemoryGame()" style="margin-top: 20px; background-color: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 5px;">Ricomincia</button>
 </div>
 
-<!-- Pizza Builder Migliorato -->
+<!-- Pizza Builder -->
 <div class="game-container" id="pizzaBuilder">
-  <button class="game-close" onclick="closeGame('pizzaBuilder')" aria-label="Chiudi">&times;</button>
-  <div class="game-header">
-    <h3>🍕 Crea la tua Pizza Fantastica! 🎨</h3>
-    <div class="game-stats">
-      <span id="topping-count">Ingredienti: 0</span>
-    </div>
-  </div>
-  <p>Trascina gli ingredienti sulla pizza o clicca per aggiungerli casualmente!</p>
-  
+  <button class="game-close" onclick="closeGame('pizzaBuilder')">&times;</button>
+  <h3>Crea la tua Pizza</h3>
+  <p>Aggiungi gli ingredienti che preferisci alla tua pizza!</p>
   <div class="pizza-builder">
     <div class="pizza-base" id="pizzaBase"></div>
-    
-    <h4>Scegli gli ingredienti:</h4>
     <div class="toppings-selector">
-      <div class="topping-option" onclick="addTopping('pomodoro')" title="Pomodoro">🍅</div>
-      <div class="topping-option" onclick="addTopping('mozzarella')" title="Mozzarella">🧀</div>
-      <div class="topping-option" onclick="addTopping('funghi')" title="Funghi">🍄</div>
-      <div class="topping-option" onclick="addTopping('prosciutto')" title="Prosciutto">🥓</div>
-      <div class="topping-option" onclick="addTopping('basilico')" title="Basilico">🌿</div>
-      <div class="topping-option" onclick="addTopping('peperoni')" title="Peperoni">🌶️</div>
-      <div class="topping-option" onclick="addTopping('cipolla')" title="Cipolla">🧅</div>
-      <div class="topping-option" onclick="addTopping('salsiccia')" title="Salsiccia">🍖</div>
-      <div class="topping-option" onclick="addTopping('olive')" title="Olive">⚫</div>
-      <div class="topping-option" onclick="addTopping('uovo')" title="Uovo">🥚</div>
+      <div class="topping-option" style="background-color: #ff0000;" onclick="addTopping('pomodoro')" title="Pomodoro"></div>
+      <div class="topping-option" style="background-color: #ffff00;" onclick="addTopping('mozzarella')" title="Mozzarella"></div>
+      <div class="topping-option" style="background-color: #8b4513;" onclick="addTopping('funghi')" title="Funghi"></div>
+      <div class="topping-option" style="background-color: #ff6347;" onclick="addTopping('prosciutto')" title="Prosciutto"></div>
+      <div class="topping-option" style="background-color: #228b22;" onclick="addTopping('basilico')" title="Basilico"></div>
+      <div class="topping-option" style="background-color: #a0522d;" onclick="addTopping('salsiccia')" title="Salsiccia"></div>
+      <div class="topping-option" style="background-color: #ff69b4;" onclick="addTopping('cipolla')" title="Cipolla"></div>
+      <div class="topping-option" style="background-color: #ffa500;" onclick="addTopping('peperoni')" title="Peperoni"></div>
     </div>
-    
-    <div class="builder-controls">
-      <button onclick="clearPizza()" class="game-btn reset">🧹 Pulisci Pizza</button>
-      <button onclick="savePizza()" class="game-btn save">💾 Salva Pizza</button>
-      <button onclick="randomPizza()" class="game-btn random">🎲 Pizza Casuale</button>
-    </div>
+    <button onclick="clearPizza()" style="margin-top: 20px; background-color: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 5px;">Pulisci Pizza</button>
   </div>
 </div>
 
-<!-- Pizza Coloring Migliorato -->
+<!-- Pizza Coloring -->
 <div class="game-container" id="pizzaColoring">
-  <button class="game-close" onclick="closeGame('pizzaColoring')" aria-label="Chiudi">&times;</button>
-  <div class="game-header">
-    <h3>🎨 Coloriamo la Pizza! ✏️</h3>
-    <div class="game-stats">
-      <span id="brush-size">Pennello: Medio</span>
-    </div>
-  </div>
-  <p>Scegli un colore e dipingi la tua pizza! Puoi anche aggiungere stickers!</p>
-  
+  <button class="game-close" onclick="closeGame('pizzaColoring')">&times;</button>
+  <h3>Coloriamo la Pizza</h3>
+  <p>Scegli i colori e dipingi la tua pizza!</p>
   <div class="pizza-coloring">
-    <div class="pizza-outline" id="pizzaCanvas"></div>
-    
-    <div class="coloring-tools">
-      <div class="brush-size">
-        <span>Dimensione pennello:</span>
-        <button onclick="setBrushSize(5)">Piccolo</button>
-        <button onclick="setBrushSize(10)" class="selected">Medio</button>
-        <button onclick="setBrushSize(20)">Grande</button>
-      </div>
-      
-      <h4>Palette colori:</h4>
-      <div class="colors-palette">
-        <div class="color-option selected" style="background-color: #ff0000;" onclick="selectColor('#ff0000')"></div>
-        <div class="color-option" style="background-color: #ffff00;" onclick="selectColor('#ffff00')"></div>
-        <div class="color-option" style="background-color: #00ff00;" onclick="selectColor('#00ff00')"></div>
-        <div class="color-option" style="background-color: #0000ff;" onclick="selectColor('#0000ff')"></div>
-        <div class="color-option" style="background-color: #ff00ff;" onclick="selectColor('#ff00ff')"></div>
-        <div class="color-option" style="background-color: #00ffff;" onclick="selectColor('#00ffff')"></div>
-        <div class="color-option" style="background-color: #ffffff;" onclick="selectColor('#ffffff')"></div>
-        <div class="color-option" style="background-color: #000000;" onclick="selectColor('#000000')"></div>
-        <div class="color-option" style="background-color: #ff9900;" onclick="selectColor('#ff9900')"></div>
-        <div class="color-option" style="background-color: #9900ff;" onclick="selectColor('#9900ff')"></div>
-      </div>
-      
-      <div class="stickers-container">
-        <h4>Aggiungi stickers:</h4>
-        <span class="sticker" onclick="addSticker('❤️')">❤️</span>
-        <span class="sticker" onclick="addSticker('⭐')">⭐</span>
-        <span class="sticker" onclick="addSticker('🎉')">🎉</span>
-        <span class="sticker" onclick="addSticker('🌈')">🌈</span>
-        <span class="sticker" onclick="addSticker('😊')">😊</span>
-      </div>
+    <div class="pizza-outline" id="pizzaCanvas" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'><circle cx=\'100\' cy=\'100\' r=\'90\' fill=\'%23f5e1a4\' stroke=\'%23000\' stroke-width=\'2\'/><circle cx=\'100\' cy=\'100\' r=\'80\' fill=\'%23f5e1a4\' stroke=\'%23000\' stroke-width=\'1\'/><path d=\'M100,20 Q120,50 100,80 Q80,50 100,20\' fill=\'%23ff6347\'/><path d=\'M100,120 Q130,100 100,80 Q70,100 100,120\' fill=\'%23ff6347\'/><path d=\'M100,120 Q80,150 100,180 Q120,150 100,120\' fill=\'%23ff6347\'/><path d=\'M100,120 Q70,100 20,100 Q50,120 100,120\' fill=\'%23ff6347\'/><path d=\'M100,120 Q120,150 180,150 Q150,120 100,120\' fill=\'%23ff6347\'/></svg>')"></div>
+    <div class="colors-palette">
+      <div class="color-option" style="background-color: #ff0000;" onclick="selectColor('#ff0000')"></div>
+      <div class="color-option" style="background-color: #ffff00;" onclick="selectColor('#ffff00')"></div>
+      <div class="color-option" style="background-color: #00ff00;" onclick="selectColor('#00ff00')"></div>
+      <div class="color-option" style="background-color: #0000ff;" onclick="selectColor('#0000ff')"></div>
+      <div class="color-option" style="background-color: #ff00ff;" onclick="selectColor('#ff00ff')"></div>
+      <div class="color-option" style="background-color: #00ffff;" onclick="selectColor('#00ffff')"></div>
+      <div class="color-option" style="background-color: #ffffff;" onclick="selectColor('#ffffff')"></div>
+      <div class="color-option" style="background-color: #000000;" onclick="selectColor('#000000')"></div>
     </div>
-    
-    <div class="game-controls">
-      <button onclick="resetColoring()" class="game-btn reset">🧹 Ricomincia</button>
-      <button onclick="saveDrawing()" class="game-btn save">💾 Salva Disegno</button>
-    </div>
+    <button onclick="resetColoring()" style="margin-top: 20px; background-color: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 5px;">Ricomincia</button>
   </div>
 </div>
 
+<!-- Aggiungi questo script prima del tag di chiusura </body> -->
 <script>
-  // Codice JavaScript migliorato
-  // [Qui andrebbe tutto il codice JavaScript migliorato che ho preparato]
-  // Per brevità non l'ho incluso tutto, ma contiene tutte le nuove funzionalità
+  // Gestione sezione giochi
+  function toggleGamesSection() {
+    const gamesSection = document.getElementById('gamesSection');
+    gamesSection.style.display = gamesSection.style.display === 'block' ? 'none' : 'block';
+  }
+  
+  function openGame(gameId) {
+    document.getElementById(gameId).style.display = 'block';
+    document.getElementById('gamesSection').style.display = 'none';
+    
+    // Inizializza il gioco se necessario
+    if (gameId === 'memoryGame' && !memoryGameInitialized) {
+      initMemoryGame();
+    }
+  }
+  
+  function closeGame(gameId) {
+    document.getElementById(gameId).style.display = 'none';
+  }
+  
+  // Memory Game
+  let memoryGameInitialized = false;
+  let flippedCards = [];
+  let matchedPairs = 0;
+  const pizzaIngredients = ['🍅', '🧀', '🍄', '🥓', '🌿', '🌶️', '🧅', '🍖'];
+  
+  function initMemoryGame() {
+    const gameBoard = document.getElementById('memoryGameBoard');
+    gameBoard.innerHTML = '';
+    
+    // Duplica gli ingredienti per le coppie
+    const cards = [...pizzaIngredients, ...pizzaIngredients];
+    
+    // Mescola le carte
+    cards.sort(() => Math.random() - 0.5);
+    
+    // Crea le carte
+    cards.forEach((ingredient, index) => {
+      const card = document.createElement('div');
+      card.className = 'memory-card';
+      card.dataset.index = index;
+      card.dataset.ingredient = ingredient;
+      card.innerHTML = '<span style="visibility: hidden;">' + ingredient + '</span>';
+      card.addEventListener('click', flipCard);
+      gameBoard.appendChild(card);
+    });
+    
+    memoryGameInitialized = true;
+    flippedCards = [];
+    matchedPairs = 0;
+  }
+  
+  function flipCard() {
+    // Se la carta è già girata o abbiamo già 2 carte girate, non fare nulla
+    if (this.classList.contains('flipped') || flippedCards.length === 2) {
+      return;
+    }
+    
+    // Gira la carta
+    this.classList.add('flipped');
+    this.querySelector('span').style.visibility = 'visible';
+    flippedCards.push(this);
+    
+    // Se abbiamo due carte girate, controlla se sono uguali
+    if (flippedCards.length === 2) {
+      setTimeout(checkForMatch, 500);
+    }
+  }
+  
+  function checkForMatch() {
+    const [card1, card2] = flippedCards;
+    
+    if (card1.dataset.ingredient === card2.dataset.ingredient) {
+      // Coppia trovata
+      card1.removeEventListener('click', flipCard);
+      card2.removeEventListener('click', flipCard);
+      matchedPairs++;
+      
+      // Controlla se il gioco è finito
+      if (matchedPairs === pizzaIngredients.length) {
+        setTimeout(() => {
+          alert('Complimenti! Hai trovato tutte le coppie!');
+        }, 300);
+      }
+    } else {
+      // Non è una coppia, rigira le carte
+      card1.classList.remove('flipped');
+      card2.classList.remove('flipped');
+      card1.querySelector('span').style.visibility = 'hidden';
+      card2.querySelector('span').style.visibility = 'hidden';
+    }
+    
+    flippedCards = [];
+  }
+  
+  function resetMemoryGame() {
+    initMemoryGame();
+  }
+  
+  // Pizza Builder
+  function addTopping(type) {
+    const pizzaBase = document.getElementById('pizzaBase');
+    const topping = document.createElement('div');
+    topping.className = 'topping';
+    
+    // Posizione casuale sulla pizza
+    const x = Math.random() * 140 + 30;
+    const y = Math.random() * 140 + 30;
+    const size = Math.random() * 20 + 10;
+    
+    topping.style.width = size + 'px';
+    topping.style.height = size + 'px';
+    topping.style.left = x + 'px';
+    topping.style.top = y + 'px';
+    
+    // Stile in base all'ingrediente
+    switch(type) {
+      case 'pomodoro':
+        topping.style.backgroundColor = '#ff0000';
+        break;
+      case 'mozzarella':
+        topping.style.backgroundColor = '#ffff00';
+        break;
+      case 'funghi':
+        topping.style.backgroundColor = '#8b4513';
+        break;
+      case 'prosciutto':
+        topping.style.backgroundColor = '#ff6347';
+        break;
+      case 'basilico':
+        topping.style.backgroundColor = '#228b22';
+        topping.style.borderRadius = '0';
+        topping.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        topping.style.width = (size / 2) + 'px';
+        topping.style.height = size + 'px';
+        break;
+      case 'salsiccia':
+        topping.style.backgroundColor = '#a0522d';
+        topping.style.borderRadius = '50% 50% 50% 50% / 60% 60% 40% 40%';
+        break;
+      case 'cipolla':
+        topping.style.backgroundColor = '#ff69b4';
+        topping.style.borderRadius = '0';
+        break;
+      case 'peperoni':
+        topping.style.backgroundColor = '#ffa500';
+        topping.style.borderRadius = '50% 50% 50% 50% / 60% 60% 40% 40%';
+        break;
+    }
+    
+    pizzaBase.appendChild(topping);
+  }
+  
+  function clearPizza() {
+    const pizzaBase = document.getElementById('pizzaBase');
+    while (pizzaBase.firstChild) {
+      pizzaBase.removeChild(pizzaBase.firstChild);
+    }
+  }
+  
+  // Pizza Coloring
+  let selectedColor = '#ff0000';
+  let isDrawing = false;
+  
+  function selectColor(color) {
+    selectedColor = color;
+  }
+  
+  function setupColoring() {
+    const pizzaCanvas = document.getElementById('pizzaCanvas');
+    
+    pizzaCanvas.addEventListener('mousedown', startDrawing);
+    pizzaCanvas.addEventListener('mousemove', draw);
+    pizzaCanvas.addEventListener('mouseup', stopDrawing);
+    pizzaCanvas.addEventListener('mouseleave', stopDrawing);
+    
+    pizzaCanvas.addEventListener('touchstart', handleTouchStart);
+    pizzaCanvas.addEventListener('touchmove', handleTouchMove);
+    pizzaCanvas.addEventListener('touchend', handleTouchEnd);
+  }
+  
+  function startDrawing(e) {
+    isDrawing = true;
+    draw(e);
+  }
+  
+  function draw(e) {
+    if (!isDrawing) return;
+    
+    const pizzaCanvas = document.getElementById('pizzaCanvas');
+    const rect = pizzaCanvas.getBoundingClientRect();
+    let x, y;
+    
+    if (e.type.includes('touch')) {
+      x = e.touches[0].clientX - rect.left;
+      y = e.touches[0].clientY - rect.top;
+    } else {
+      x = e.clientX - rect.left;
+      y = e.clientY - rect.top;
+    }
+    
+    const dot = document.createElement('div');
+    dot.style.position = 'absolute';
+    dot.style.width = '10px';
+    dot.style.height = '10px';
+    dot.style.backgroundColor = selectedColor;
+    dot.style.borderRadius = '50%';
+    dot.style.left = (x - 5) + 'px';
+    dot.style.top = (y - 5) + 'px';
+    dot.style.pointerEvents = 'none';
+    
+    pizzaCanvas.appendChild(dot);
+  }
+  
+  function stopDrawing() {
+    isDrawing = false;
+  }
+  
+  function resetColoring() {
+    const pizzaCanvas = document.getElementById('pizzaCanvas');
+    while (pizzaCanvas.children.length > 0) {
+      pizzaCanvas.removeChild(pizzaCanvas.firstChild);
+    }
+  }
+  
+  // Touch events for mobile
+  function handleTouchStart(e) {
+    e.preventDefault();
+    startDrawing(e);
+  }
+  
+  function handleTouchMove(e) {
+    e.preventDefault();
+    draw(e);
+  }
+  
+  function handleTouchEnd(e) {
+    e.preventDefault();
+    stopDrawing();
+  }
+  
+  // Inizializza il coloring al caricamento
+  window.addEventListener('DOMContentLoaded', setupColoring);
 </script>
   
   <!-- Chi Siamo -->
