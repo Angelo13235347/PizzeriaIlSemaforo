@@ -14,22 +14,29 @@
   <!-- SwiperJS CSS -->
   <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
   <!-- jsPDF per il download PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <style>
     body {
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background-color: #f8f9fa;
     }
 
     header {
-      background: url('Pizzeria%20Il%20Semaforo.jpg') center/cover no-repeat;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Pizzeria%20Il%20Semaforo.jpg') center/cover no-repeat;
       color: white;
       text-align: center;
       padding: 150px 20px;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
     }
 
     header::after {
@@ -41,6 +48,25 @@
       height: 80px;
       background: white;
       clip-path: polygon(0 0, 100% 100%, 0 100%);
+    }
+
+    .hero-content {
+      max-width: 800px;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+    
+    header p {
+      font-size: 1.5rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      margin-bottom: 30px;
     }
 
     .testimonial {
@@ -390,8 +416,8 @@
 <div id="main-page">
   <!-- Hero -->
   <header>
-    <div class="container">
-      <h1>Benvenuti da Pizzeria Il Semaforo</h1>
+    <div class="hero-content">
+      <h1>Pizzeria Il Semaforo</h1>
       <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
       <button class="btn-galleria" onclick="showGalleria()">Galleria</button>
     </div>
