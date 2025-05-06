@@ -659,7 +659,7 @@
     window.scrollTo(0, 0);
   }
   
-  // Funzione per scaricare il PDF
+ // Funzione per scaricare il PDF
   function downloadPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
@@ -695,64 +695,185 @@
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
     doc.text('Antipasto della Casa', 20, y);
+    doc.text('€8.50', 180, y, null, null, 'right');
+    y += 7;
     doc.setFontSize(10);
-    doc.text('Selezione di salumi, schiacciata calda e verdure sott'olio', 25, y);
+    doc.text('Selezione di salumi, formaggi, bruschette e verdure sott\'olio', 25, y);
     y += 10;
+    
+    doc.setFontSize(12);
+    doc.text('Bruschette Miste', 20, y);
+    doc.text('€6.00', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Bruschette con pomodoro, funghi e crema di olive', 25, y);
+    y += 15;
     
     // Pizze Classiche
     doc.setFontSize(16);
     doc.setTextColor(220, 53, 69);
-    doc.text('GIRO PIZZA', 20, y);
+    doc.text('PIZZE CLASSICHE', 20, y);
     y += 10;
     
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
-    doc.text('Tutti i gusti di pizza', 20, y);
+    doc.text('Margherita', 20, y);
+    doc.text('€6.50', 180, y, null, null, 'right');
+    y += 7;
     doc.setFontSize(10);
-    doc.text('Richiedi i tuoi gusti e provali tutti insieme!', 25, y);
+    doc.text('Pomodoro, mozzarella, basilico', 25, y);
     y += 10;
-
+    
+    doc.setFontSize(12);
+    doc.text('Diavola', 20, y);
+    doc.text('€8.00', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Pomodoro, mozzarella, salame piccante', 25, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.text('Quattro Stagioni', 20, y);
+    doc.text('€8.50', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Pomodoro, mozzarella, prosciutto, funghi, carciofi, olive', 25, y);
+    y += 15;
+    
     // Pizze Speciali
     doc.setFontSize(16);
     doc.setTextColor(220, 53, 69);
-    doc.text('DOLCI', 20, y);
+    doc.text('PIZZE SPECIALI', 20, y);
     y += 10;
     
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
-    doc.text('Tiramisù', 20, y);
+    doc.text('Semaforo', 20, y);
+    doc.text('€10.00', 180, y, null, null, 'right');
+    y += 7;
     doc.setFontSize(10);
-
+    doc.text('Pomodoro, mozzarella di bufala, prosciutto crudo, rucola, grana', 25, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.text('Vegetariana', 20, y);
+    doc.text('€9.50', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Pomodoro, mozzarella, melanzane, zucchine, peperoni grigliati', 25, y);
+    y += 15;
+    
+    // Footer
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text('www.pizzeriailsemaforo.it - info@pizzeriailsemaforo.it', 105, 280, null, null, 'center');
+    
+    // Salva il PDF
+    doc.save('Menu_Pizzeria_Il_Semaforo.pdf');
+  }// Funzione per scaricare il PDF
+  function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Titolo
+    doc.setFontSize(20);
+    doc.setTextColor(220, 53, 69);
+    doc.text('Pizzeria Il Semaforo - Menù', 105, 20, null, null, 'center');
+    
+    // Logo (se disponibile)
+    // doc.addImage('logo.jpg', 'JPEG', 85, 30, 40, 40);
+    
+    // Informazioni
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
-    doc.text('Panna Cotta', 20, y);
-    doc.setFontSize(10);
-
+    doc.text('Via Palagetta 50013 Campi Bisenzio', 105, 40, null, null, 'center');
+    doc.text('Tel: +39 3403046310', 105, 45, null, null, 'center');
+    doc.text('Aperti dal Giovedì alla Domenica, dalle 19:00 alle 23:00', 105, 50, null, null, 'center');
+    
+    // Linea divisoria
+    doc.setDrawColor(220, 53, 69);
+    doc.line(20, 55, 190, 55);
+    
+    // Sezioni del menù
+    let y = 65;
+    
+    // Antipasti
+    doc.setFontSize(16);
+    doc.setTextColor(220, 53, 69);
+    doc.text('ANTIPASTI', 20, y);
+    y += 10;
+    
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
-    doc.text('Torta al Cioccolato', 20, y);
+    doc.text('Antipasto della Casa', 20, y);
+    doc.text('€8.50', 180, y, null, null, 'right');
+    y += 7;
     doc.setFontSize(10);
-
+    doc.text('Selezione di salumi, formaggi, bruschette e verdure sott\'olio', 25, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.text('Bruschette Miste', 20, y);
+    doc.text('€6.00', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Bruschette con pomodoro, funghi e crema di olive', 25, y);
+    y += 15;
+    
+    // Pizze Classiche
+    doc.setFontSize(16);
+    doc.setTextColor(220, 53, 69);
+    doc.text('PIZZE CLASSICHE', 20, y);
+    y += 10;
+    
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
-    doc.text('Torta di mele', 20, y);
+    doc.text('Margherita', 20, y);
+    doc.text('€6.50', 180, y, null, null, 'right');
+    y += 7;
     doc.setFontSize(10);
-
+    doc.text('Pomodoro, mozzarella, basilico', 25, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.text('Diavola', 20, y);
+    doc.text('€8.00', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Pomodoro, mozzarella, salame piccante', 25, y);
+    y += 10;
+    
+    doc.setFontSize(12);
+    doc.text('Quattro Stagioni', 20, y);
+    doc.text('€8.50', 180, y, null, null, 'right');
+    y += 7;
+    doc.setFontSize(10);
+    doc.text('Pomodoro, mozzarella, prosciutto, funghi, carciofi, olive', 25, y);
+    y += 15;
+    
+    // Pizze Speciali
+    doc.setFontSize(16);
+    doc.setTextColor(220, 53, 69);
+    doc.text('PIZZE SPECIALI', 20, y);
+    y += 10;
+    
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
-    doc.text('Cheese Cake', 20, y);
+    doc.text('Semaforo', 20, y);
+    doc.text('€10.00', 180, y, null, null, 'right');
+    y += 7;
     doc.setFontSize(10);
-
+    doc.text('Pomodoro, mozzarella di bufala, prosciutto crudo, rucola, grana', 25, y);
+    y += 10;
+    
     doc.setFontSize(12);
-    doc.setTextColor(0, 0, 0);
-    doc.text('Torta della Nonna', 20, y);
+    doc.text('Vegetariana', 20, y);
+    doc.text('€9.50', 180, y, null, null, 'right');
+    y += 7;
     doc.setFontSize(10);
-
-    doc.setFontSize(12);
-    doc.setTextColor(0, 0, 0);
-    doc.text('Sorbetto al limone', 20, y);
-    doc.setFontSize(10);
-
+    doc.text('Pomodoro, mozzarella, melanzane, zucchine, peperoni grigliati', 25, y);
+    y += 15;
+    
     // Footer
     doc.setFontSize(10);
     doc.setTextColor(100, 100, 100);
