@@ -717,103 +717,136 @@
     window.scrollTo(0, 0);
   }
   
-  // Funzione per scaricare il PDF
-  function downloadPDF() {
+function downloadPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     
-    // Titolo
-    doc.setFontSize(20);
-    doc.setTextColor(220, 53, 69);
-    doc.text('Pizzeria Il Semaforo - Menù', 105, 20, null, null, 'center');
+    // Colori personalizzati
+    const primaryColor = [220, 53, 69]; // Rosso
+    const secondaryColor = [40, 40, 40]; // Nero scuro
+    const accentColor = [100, 100, 100]; // Grigio
     
-    // Informazioni
+    // Logo/Intestazione
+    doc.setFillColor(...primaryColor);
+    doc.rect(0, 0, 210, 30, 'F');
+    doc.setFontSize(24);
+    doc.setTextColor(255, 255, 255);
+    doc.setFont('helvetica', 'bold');
+    doc.text('PIZZERIA IL SEMAFORO', 105, 20, null, null, 'center');
+    
+    // Informazioni ristorante
+    doc.setFontSize(10);
+    doc.setTextColor(...secondaryColor);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Via Palagetta 50013 Campi Bisenzio • Tel: +39 3403046310', 105, 35, null, null, 'center');
+    doc.text('Aperti dal Giovedì alla Domenica, dalle 19:00 alle 23:00', 105, 40, null, null, 'center');
+    
+    // Box prezzi speciali
+    doc.setFillColor(245, 245, 245);
+    doc.roundedRect(20, 45, 170, 15, 3, 3, 'F');
     doc.setFontSize(12);
+    doc.setTextColor(...primaryColor);
+    doc.setFont('helvetica', 'bold');
+    doc.text('PROMOZIONE MENÙ COMPLETO:', 30, 55);
     doc.setTextColor(0, 0, 0);
-    doc.text('Via Palagetta 50013 Campi Bisenzio', 105, 40, null, null, 'center');
-    doc.text('Tel: +39 3403046310', 105, 45, null, null, 'center');
-    doc.text('Aperti dal Giovedì alla Domenica, dalle 19:00 alle 23:00', 105, 50, null, null, 'center');
-    
-    // Linea divisoria
-    doc.setDrawColor(220, 53, 69);
-    doc.line(20, 55, 190, 55);
+    doc.text('Giovedì €16 • Venerdì-Domenica €18', 120, 55);
     
     // Sezioni del menù
-    let y = 65;
+    let y = 75;
+    
+    const createSection = (title, items) => {
+        // Titolo sezione
+        doc.setFontSize(16);
+        doc.setTextColor(...primaryColor);
+        doc.setFont('helvetica', 'bold');
+        doc.text(title.toUpperCase(), 20, y);
+        y += 8;
+        
+        // Linea divisoria
+        doc.setDrawColor(...primaryColor);
+        doc.line(20, y, 60, y);
+        y += 10;
+        
+        // Contenuti
+        doc.setFontSize(12);
+        doc.setTextColor(...secondaryColor);
+        doc.setFont('helvetica', 'normal');
+        
+        items.forEach(item => {
+            if (typeof item === 'string') {
+                doc.text('• ' + item, 25, y);
+                y += 7;
+            } else {
+                // Elemento con descrizione
+                doc.setFont('helvetica', 'bold');
+                doc.text(item.name, 25, y);
+                y += 7;
+                
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'italic');
+                doc.text(item.description, 30, y);
+                y += 7;
+                
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'normal');
+                y += 3; // Spazio extra
+            }
+        });
+        
+        y += 10; // Spazio tra sezioni
+    };
     
     // ANTIPASTI
-    doc.setFontSize(16);
-    doc.setTextColor(220, 53, 69);
-    doc.text('ANTIPASTI', 20, y);
-    y += 10;
-    
-    doc.setFontSize(12);
-    doc.setTextColor(0, 0, 0);
-    doc.text('Antipasto della Casa', 20, y);
-    y += 7;
-    doc.setFontSize(10);
-    doc.text('Selezione di salumi, schiacciata calda e verdure sott\'olio', 25, y);
-    y += 15;
+    createSection('Antipasti', [
+        {
+            name: 'Antipasto della Casa',
+            description: 'Selezione di salumi, schiacciata calda e verdure sott\'olio'
+        }
+    ]);
     
     // GIRO PIZZA
-    doc.setFontSize(16);
-    doc.setTextColor(220, 53, 69);
-    doc.text('GIRO PIZZA', 20, y);
-    y += 10;
-    
-    doc.setFontSize(12);
-    doc.setTextColor(0, 0, 0);
-    doc.text('Tutti i gusti di pizza', 20, y);
-    y += 7;
-    doc.setFontSize(10);
-    doc.text('Richiedi i tuoi gusti e provali tutti insieme!', 25, y);
-    y += 15;
+    createSection('Giro Pizza', [
+        {
+            name: 'Tutti i gusti di pizza',
+            description: 'Richiedi i tuoi gusti preferiti e provali tutti insieme!'
+        }
+    ]);
     
     // DOLCI
-    doc.setFontSize(16);
-    doc.setTextColor(220, 53, 69);
-    doc.text('DOLCI', 20, y);
-    y += 10;
-    
-    doc.setFontSize(12);
-    doc.setTextColor(0, 0, 0);
-    
-    const dolci = [
-      'Tiramisù',
-      'Panna Cotta',
-      'Torta al Cioccolato',
-      'Torta di mele',
-      'Cheese Cake',
-      'Torta della Nonna',
-      'Sorbetto al limone'
-    ];
-    
-    dolci.forEach(dolce => {
-      doc.text(dolce, 20, y);
-      y += 7;
-    });
-    
-    y += 5;
+    createSection('Dolci', [
+        'Tiramisù',
+        'Panna Cotta',
+        'Torta al Cioccolato',
+        'Torta di mele',
+        'Cheese Cake',
+        'Torta della Nonna',
+        'Sorbetto al limone'
+    ]);
     
     // BEVANDE
-    doc.setFontSize(16);
-    doc.setTextColor(220, 53, 69);
-    doc.text('BEVANDE', 20, y);
-    y += 10;
+    createSection('Bevande', [
+        'Bibite in lattina',
+        'Acqua minerale',
+        'Birra piccola',
+        'Vino della casa (calice)'
+    ]);
     
-    doc.setFontSize(12);
-    doc.setTextColor(0, 0, 0);
-    doc.text('Seleziona la tua bevanda piccola compresa nel menù', 20, y);
-    y += 10;
+    // Nota bevande
+    doc.setFontSize(10);
+    doc.setTextColor(...accentColor);
+    doc.text('* Bevande piccole incluse nel menù. Bibite grandi, birre speciali e vini premium a parte.', 20, y);
+    y += 20;
     
     // Footer
+    doc.setFillColor(...primaryColor);
+    doc.rect(0, 280, 210, 20, 'F');
     doc.setFontSize(10);
-    doc.setTextColor(100, 100, 100);
-    doc.text('Per maggiori informazioni chiama al 340 304 6310', 105, 280, null, null, 'center');
+    doc.setTextColor(255, 255, 255);
+    doc.text('Prenotazioni: 340 304 6310 • Seguici su Facebook e Instagram', 105, 288, null, null, 'center');
     
     // Salva il PDF
     doc.save('Menu_Pizzeria_Il_Semaforo.pdf');
-  }
+}
 </script>
 
 </body>
