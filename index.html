@@ -716,78 +716,78 @@
     document.getElementById('menu-page').style.display = 'block';
     window.scrollTo(0, 0);
   }
-  
-function downloadPDF() {
+
+  function downloadPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     
-    // Nuova palette di colori sobria ed elegante
-    const primaryColor = [70, 70, 70]; // Grigio scuro elegante
-    const secondaryColor = [120, 120, 120]; // Grigio medio
-    const accentColor = [160, 160, 160]; // Grigio chiaro per contrasto
+    // Nuova palette di colori più accesa ma equilibrata
+    const primaryColor = [50, 90, 150]; // Blu intenso
+    const secondaryColor = [200, 80, 60]; // Rosso terracotta
+    const accentColor = [230, 160, 50]; // Oro chiaro
     
-    // Intestazione minimalista
+    // Intestazione con colore più vivace
     doc.setFillColor(...primaryColor);
     doc.rect(0, 0, 210, 40, 'F');
     
-    // Logo/Nome pizzeria con stile sobrio
+    // Logo/Nome pizzeria con contrasto migliore
     doc.setFontSize(28);
     doc.setTextColor(255, 255, 255);
     doc.setFont('helvetica', 'bold');
     doc.text('PIZZERIA IL SEMAFORO', 105, 25, null, null, 'center');
     
-    // Sottotitolo discreto
+    // Sottotitolo con colore più caldo
     doc.setFontSize(12);
-    doc.setTextColor(220, 220, 220);
+    doc.setTextColor(240, 240, 180); // Giallo chiaro per contrasto
     doc.setFont('helvetica', 'italic');
     doc.text('Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!', 105, 32, null, null, 'center');
     
-    // Informazioni ristorante con stile pulito
+    // Informazioni ristorante più leggibili
     doc.setFontSize(9);
-    doc.setTextColor(255, 255, 255);
+    doc.setTextColor(240, 240, 240);
     doc.setFont('helvetica', 'normal');
     doc.text('Via Palagetta 50013 Campi Bisenzio (FI)', 105, 45, null, null, 'center');
     doc.text('Tel: +39 340 304 6310 • Seguici anche sui social', 105, 50, null, null, 'center');
     doc.text('Orario: Gio-Dom 19:00-23:00', 105, 55, null, null, 'center');
     
-    // Linea decorativa sottile
+    // Linea decorativa con colore accent
     doc.setDrawColor(...accentColor);
-    doc.setLineWidth(0.3);
+    doc.setLineWidth(0.5); // Leggermente più spessa
     doc.line(50, 58, 160, 58);
     
-    // Box prezzi minimalista
-    doc.setFillColor(245, 245, 245);
+    // Box prezzi con colori più vivaci
+    doc.setFillColor(250, 245, 235); // Beige chiaro
     doc.roundedRect(20, 63, 170, 12, 2, 2, 'F');
-    doc.setDrawColor(...secondaryColor);
+    doc.setDrawColor(...secondaryColor); // Bordo rosso terracotta
     doc.roundedRect(20, 63, 170, 12, 2, 2, 'D');
     
     doc.setFontSize(12);
-    doc.setTextColor(...primaryColor);
+    doc.setTextColor(...primaryColor); // Testo blu
     doc.setFont('helvetica', 'bold');
     doc.text('MENÙ FISSO COMPLETO', 30, 70);
     
-    doc.setTextColor(...secondaryColor);
+    doc.setTextColor(...secondaryColor); // Prezzi in rosso terracotta
     doc.setFont('helvetica', 'bold');
     doc.text('GIO €16 • VEN-DOM €18', 120, 70);
     
-    // Sezioni del menù con stile pulito
+    // Sezioni del menù con colori più accesi
     let y = 85;
     
     const createSection = (title, items) => {
-        // Titolo sezione sobrio
+        // Titolo sezione con colore primario
         doc.setFontSize(16);
         doc.setTextColor(...primaryColor);
         doc.setFont('helvetica', 'bold');
         doc.text(title.toUpperCase(), 20, y);
         
-        // Linea sottile
+        // Linea sottile con colore accent
         doc.setDrawColor(...accentColor);
         doc.line(20, y+2, 50, y+2);
         y += 10;
         
-        // Contenuti puliti
+        // Contenuti con migliore contrasto
         doc.setFontSize(12);
-        doc.setTextColor(70, 70, 70);
+        doc.setTextColor(60, 60, 60); // Grigio più scuro
         
         items.forEach(item => {
             if (typeof item === 'string') {
@@ -795,16 +795,16 @@ function downloadPDF() {
                 doc.text('• ' + item, 25, y);
                 y += 7;
             } else {
-                // Nome piatto
+                // Nome piatto con colore secondario
                 doc.setFont('helvetica', 'bold');
-                doc.setTextColor(...primaryColor);
+                doc.setTextColor(...secondaryColor);
                 doc.text(item.name, 25, y);
                 y += 7;
                 
-                // Descrizione
+                // Descrizione con contrasto migliorato
                 doc.setFontSize(10);
                 doc.setFont('helvetica', 'normal');
-                doc.setTextColor(100, 100, 100);
+                doc.setTextColor(80, 80, 80);
                 doc.text(item.description, 30, y, { maxWidth: 160 });
                 y += 7;
                 
@@ -848,27 +848,28 @@ function downloadPDF() {
         'Bevanda piccola inclusa (33cl): acqua, bibita o birra'
     ]);
     
-    // Nota bevande discreta
+    // Nota bevande con colore più visibile
     doc.setFontSize(9);
-    doc.setTextColor(120, 120, 120);
+    doc.setTextColor(...secondaryColor);
     doc.setFont('helvetica', 'italic');
     doc.text('*Le bevande extra non sono incluse nel menù fisso e verranno addebitate separatamente.', 20, y);
     y += 15;
     
-    // Footer minimalista
+    // Footer con colore primario
     doc.setFillColor(...primaryColor);
     doc.rect(0, 280, 210, 20, 'F');
     
+    // Testo footer con contrasto migliorato
     doc.setFontSize(10);
-    doc.setTextColor(220, 220, 220);
+    doc.setTextColor(255, 255, 255);
     doc.setFont('helvetica', 'bold');
     doc.text('PRENOTAZIONI: 340 304 6310', 50, 288);
     
-    doc.setTextColor(200, 200, 200);
+    doc.setTextColor(240, 240, 180); // Giallo chiaro
     doc.setFont('helvetica', 'normal');
     doc.text('Seguici su @pizzeriailsemaforo', 150, 288);
     
-    // Linea finale sottile
+    // Linea finale con colore accent
     doc.setDrawColor(...accentColor);
     doc.line(0, 280, 210, 280);
     
