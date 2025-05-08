@@ -747,12 +747,12 @@ function downloadPDF() {
     doc.setFontSize(12);
     doc.setTextColor(...primaryColor);
     doc.setFont('helvetica', 'bold');
-    doc.text('PROMOZIONE MENÙ COMPLETO:', 30, 55);
+    doc.text('MENÙ COMPLETO:', 30, 55);
     doc.setTextColor(0, 0, 0);
     doc.text('Giovedì €16 • Venerdì-Domenica €18', 120, 55);
     
     // Sezioni del menù
-    let y = 75;
+    let y = 70; // Inizio leggermente più in alto
     
     const createSection = (title, items) => {
         // Titolo sezione
@@ -760,12 +760,12 @@ function downloadPDF() {
         doc.setTextColor(...primaryColor);
         doc.setFont('helvetica', 'bold');
         doc.text(title.toUpperCase(), 20, y);
-        y += 8;
+        y += 7; // Ridotto da 8 a 7
         
         // Linea divisoria
         doc.setDrawColor(...primaryColor);
         doc.line(20, y, 60, y);
-        y += 10;
+        y += 8; // Ridotto da 10 a 8
         
         // Contenuti
         doc.setFontSize(12);
@@ -775,25 +775,25 @@ function downloadPDF() {
         items.forEach(item => {
             if (typeof item === 'string') {
                 doc.text('• ' + item, 25, y);
-                y += 7;
+                y += 6; // Ridotto da 7 a 6
             } else {
                 // Elemento con descrizione
                 doc.setFont('helvetica', 'bold');
                 doc.text(item.name, 25, y);
-                y += 7;
+                y += 6; // Ridotto da 7 a 6
                 
                 doc.setFontSize(10);
                 doc.setFont('helvetica', 'italic');
                 doc.text(item.description, 30, y);
-                y += 7;
+                y += 6; // Ridotto da 7 a 6
                 
                 doc.setFontSize(12);
                 doc.setFont('helvetica', 'normal');
-                y += 3; // Spazio extra
+                y += 2; // Ridotto da 3 a 2
             }
         });
         
-        y += 10; // Spazio tra sezioni
+        y += 7; // Ridotto da 10 a 7 (Spazio tra sezioni)
     };
     
     // ANTIPASTI
@@ -832,7 +832,7 @@ function downloadPDF() {
     doc.setFontSize(10);
     doc.setTextColor(...accentColor);
     doc.text('*Tutte le bevute extra sono al di fuori del menù fisso.', 20, y);
-    y += 20;
+    y += 15; // Ridotto da 20 a 15
     
     // Footer
     doc.setFillColor(...primaryColor);
