@@ -732,11 +732,6 @@
   doc.setFont('helvetica', 'bold');
   doc.text('Pizzeria Il Semaforo - Menù', 105, 20, { align: 'center' });
   
-  // Linea divisoria titolo - Rosso
-  doc.setDrawColor(220, 53, 69); // #DC3545
-  doc.setLineWidth(0.5);
-  doc.line(30, 25, 180, 25);
-  
   // Informazioni - Nero
   doc.setFontSize(12);
   doc.setTextColor(0, 0, 0); // Nero
@@ -744,11 +739,6 @@
   doc.text('Via Palagetta 50013 Campi Bisenzio', 105, 35, { align: 'center' });
   doc.text('Tel: +39 3403046310', 105, 40, { align: 'center' });
   doc.text('Aperti dal Giovedì alla Domenica, dalle 19:00 alle 23:00', 105, 45, { align: 'center' });
-  
-  // Linea divisoria - Rosso
-  doc.setDrawColor(220, 53, 69); // #DC3545
-  doc.setLineWidth(0.5);
-  doc.line(20, 50, 190, 50);
   
   // Sezioni del menù
   let y = 60;
@@ -762,7 +752,7 @@
   // Linea divisoria sezione - Rosso (150mm di lunghezza)
   doc.setDrawColor(220, 53, 69);
   doc.line(20, y + 2, 170, y + 2);
-  y += 12;
+  y += 1;
   
   // Descrizione - Nero (dimensione aumentata a 12)
   doc.setFontSize(12);
