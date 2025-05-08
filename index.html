@@ -825,16 +825,13 @@ function downloadPDF() {
     
     // BEVANDE
     createSection('Bevande', [
-        'Bibite in lattina',
-        'Acqua minerale',
-        'Birra piccola',
-        'Vino della casa (calice)'
+        'Seleziona la tua bevanda piccola inclusa nel menù',
     ]);
     
     // Nota bevande
     doc.setFontSize(10);
     doc.setTextColor(...accentColor);
-    doc.text('* Bevande piccole incluse nel menù. Bibite grandi, birre speciali e vini premium a parte.', 20, y);
+    doc.text('*Tutte le bevute extra sono al di fuori del menù fisso.', 20, y);
     y += 20;
     
     // Footer
