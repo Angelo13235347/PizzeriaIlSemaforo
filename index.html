@@ -615,19 +615,19 @@
       <div class="menu-category">
         <h3 class="menu-category-title">DOLCI</h3>
         <div class="menu-item">
-          <div class="menu-item-name">Tiramisù</div>
+          <div class="menu-item-description">Tiramisù</div>
         </div>
         
         <div class="menu-item">
-          <div class="menu-item-name">Panna Cotta</div>
+          <div class="menu-item-description">Panna Cotta</div>
         </div>
 
                 <div class="menu-item">
-          <div class="menu-item-name">Torta al Cioccolato</div>
+          <div class="menu-item-description">Torta al Cioccolato</div>
         </div>
 
                         <div class="menu-item">
-          <div class="menu-item-name">Torta di mele</div>
+          <div class="menu-item-description">Torta di mele</div>
         </div>
 
                         <div class="menu-item">
@@ -635,19 +635,25 @@
         </div>
         
         <div class="menu-item">
-          <div class="menu-item-name">Torta della Nonna</div>
+          <div class="menu-item-description">Torta della Nonna</div>
         </div>
 
                                 <div class="menu-item">
-          <div class="menu-item-name">Sorbetto al limone</div>
+          <div class="menu-item-description">Sorbetto al limone</div>
         </div>
       </div>
       
       <div class="menu-category">
         <h3 class="menu-category-title">BEVANDE</h3>
         <div class="menu-item">
-          <div class="menu-item-name">Seleziona la tua bevanda piccola compresa nel menù</div>
-        </div>
+          <div class="menu-item-description">Bevanda piccola inclusa (33cl): acqua, bibita o birra</div>
+        </div>  
+    // Nota bevande con colore più visibile
+    doc.setFontSize(9);
+    doc.setTextColor(...secondaryColor);
+    doc.setFont('helvetica', 'italic');
+    doc.text('*Le bevande extra non sono incluse nel menù fisso e verranno addebitate separatamente.', 20, y);
+    y += 15;
       </div>
       
       <button class="btn-pdf" onclick="downloadPDF()" style="margin-top: 30px;">
