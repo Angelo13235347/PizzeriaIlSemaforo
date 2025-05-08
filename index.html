@@ -740,14 +740,14 @@ function downloadPDF() {
     doc.setFontSize(12);
     doc.setTextColor(255, 255, 255, 0.9);
     doc.setFont('helvetica', 'italic');
-    doc.text('Dal 1985 la vera pizza fiorentina', 105, 32, null, null, 'center');
+    doc.text('Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!', 105, 32, null, null, 'center');
     
     // Informazioni ristorante con stile minimale
     doc.setFontSize(9);
     doc.setTextColor(...secondaryColor);
     doc.setFont('helvetica', 'normal');
     doc.text('Via Palagetta 50013 Campi Bisenzio (FI)', 105, 45, null, null, 'center');
-    doc.text('Tel: +39 340 304 6310 • www.pizzeriailsemaforo.com', 105, 50, null, null, 'center');
+    doc.text('Tel: +39 340 304 6310 • Seguici anche sui social', 105, 50, null, null, 'center');
     doc.text('Orario: Gio-Dom 19:00-23:00', 105, 55, null, null, 'center');
     
     // Linea decorativa
@@ -820,7 +820,7 @@ function downloadPDF() {
     createSection('Antipasti', [
         {
             name: 'ANTIPASTO DELLA CASA',
-            description: 'Una selezione dei migliori salumi toscani accompagnati da schiacciata calda appena sfornata e verdure sott\'olio della nostra produzione'
+            description: 'Una selezione dei migliori salumi toscani accompagnati da schiacciata calda appena sfornata e verdure sott\'olio'
         }
     ]);
     
@@ -828,16 +828,16 @@ function downloadPDF() {
     createSection('Giro Pizza', [
         {
             name: 'TUTTI I GUSTI DI PIZZA',
-            description: 'Un viaggio attraverso i sapori della nostra tradizione. Richiedi al cameriere i gusti del giorno e crea la tua selezione personalizzata'
+            description: 'Un viaggio attraverso i sapori della nostra tradizione. Richiedi al cameriere i gusti e crea la tua selezione personalizzata'
         }
     ]);
     
     // DOLCI con presentazione elegante
     createSection('Dolci', [
         'TIRAMISÙ CLASSICO',
-        'PANNA COTTA CON FRUTTI DI BOSCO',
+        'PANNA COTTA,
         'TORTA AL CIOCCOLATO FONDENTE',
-        'TORTA DI MELE DELLA NONNA',
+        'TORTA DI MELE',
         'CHEESE CAKE ARTIGIANALE',
         'TORTA DELLA NONNA CON PINOLI',
         'SORBETTO AL LIMONE FATTO IN CASA'
