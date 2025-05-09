@@ -570,6 +570,48 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+    /* Aggiungi questo al tuo CSS */
+.btn-google {
+  background-color: #4285F4;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.btn-google:hover {
+  background-color: #357ABD;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.divider-text {
+  padding: 0 10px;
+  color: #777;
+}
+    
   </style>
 </head>
 <body>
@@ -613,6 +655,16 @@
       <div class="auth-tab" onclick="switchAuthTab('register')">Registrati</div>
     </div>
     
+<div style="text-align: center; margin: 20px 0;">
+      <button onclick="signInWithGoogle()" style="background: #4285F4; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer;">
+        <i class="fab fa-google"></i> Accedi con Google
+      </button>
+      <div style="margin: 15px 0; text-align: center; position: relative;">
+        <span style="background: white; padding: 0 10px; position: relative; z-index: 2;">oppure</span>
+        <div style="height: 1px; background: #ddd; position: absolute; top: 50%; left: 0; right: 0; z-index: 1;"></div>
+      </div>
+    </div>
+    
     <div id="login-form" class="auth-form active">
       <h3>Accedi al tuo account</h3>
       <input type="email" id="login-email" placeholder="Email" required>
@@ -633,7 +685,6 @@
     </div>
   </div>
 </div>
-
 <!-- Pagina principale -->
 <div id="main-page">
   <!-- Hero -->
@@ -954,6 +1005,8 @@
     }
   });
 
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  
   // Funzioni per mostrare/nascondere pagine
   function showGalleria() {
     document.getElementById('main-page').style.display = 'none';
@@ -1095,7 +1148,8 @@ function updateAuthUI() {
   if (user) {
     // Utente loggato
     authStatusElement.innerHTML = `
-      <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'Utente')}&background=dc3545&color=fff" class="user-avatar">
+      <img src="${user.photoURL || 'https://ui-avatars.com/api/?name='+encodeURIComponent(user.displayName || 'Utente')+'&background=dc3545&color=fff'}" 
+           class="user-avatar">
       <span>${user.displayName || 'Utente'}</span>
       <button onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i></button>
     `;
@@ -1105,11 +1159,30 @@ function updateAuthUI() {
   } else {
     // Utente non loggato
     authStatusElement.innerHTML = `
-      <button class="nav-link" onclick="showAuthModal('login')">Accedi / Registrati</button>
+      <button class="btn-accedi" onclick="signInWithGoogle()">
+        <i class="fab fa-google"></i> Accedi con Google
+      </button>
+      <button class="nav-link" onclick="showAuthModal('login')">Email / Password</button>
     `;
     riservatoSection.style.display = 'none';
   }
 }
+
+function signInWithGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  
+  auth.signInWithPopup(provider)
+    .then((result) => {
+      // Accesso riuscito
+      updateAuthUI();
+      closeAuthModal();
+    }).catch((error) => {
+      // Gestione degli errori
+      console.error("Errore durante l'accesso con Google:", error);
+      alert("Si è verificato un errore durante l'accesso con Google: " + error.message);
+    });
+}
+      
   // Gestione dello stato di autenticazione
   auth.onAuthStateChanged((user) => {
     updateAuthUI();
