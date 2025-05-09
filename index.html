@@ -874,32 +874,39 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 <script>
- // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
+
+// Importa le funzioni di cui hai bisogno dagli SDK di cui hai bisogno
+importa { initializeApp } da "firebase/app" ;   
+// TODO: aggiungi gli SDK per i prodotti Firebase che desideri utilizzare
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBQSHJ2nc28gCaUaW4lSwgnDxu8Di_a0PE",
-  authDomain: "pizzeria-ecdb1.firebaseapp.com",
-  databaseURL: "https://pizzeria-ecdb1-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "pizzeria-ecdb1",
-  storageBucket: "pizzeria-ecdb1.firebasestorage.app",
-  messagingSenderId: "158160186180",
-  appId: "1:158160186180:web:f3040c3e8c88d950c18511"
+  
+  // Configurazione Firebase (sostituisci con i tuoi dati)
+const firebaseConfig = { 
+  chiave API : "AIzaSyBQSHJ2nc28gCaUaW4lSwgnDxu8Di_a0PE" , 
+  authDomain : "pizzeria-ecdb1.firebaseapp.com" , 
+  URL del database : "https://pizzeria-ecdb1-default-rtdb.europe-west1.firebasedatabase.app" , 
+  projectId : "pizzeria-ecdb1" , 
+  storageBucket : "pizzeria-ecdb1.firebasestorage.app" , 
+  messagingSenderId : "158160186180" , 
+  ID applicazione : "1:158160186180:web:f3040c3e8c88d950c18511" 
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-  // Funzioni per mostrare/nascondere pagine
-  function showGalleria() {
-    document.getElementById('main-page').style.display = 'none';
-    document.getElementById('menu-page').style.display = 'none';
-    document.getElementById('galleria').style.display = 'block';
-    window.scrollTo(0, 0);
-  }
+// Inizializza Firebase
+const app = initializeApp ( firebaseConfig );
 
+  // Inizializza Swiper
+  const swiper = new Swiper('.mySwiper', {
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    }
+  });
   function showMainPage() {
     document.getElementById('galleria').style.display = 'none';
     document.getElementById('menu-page').style.display = 'none';
