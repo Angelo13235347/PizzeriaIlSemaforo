@@ -553,65 +553,88 @@
       max-width: 800px;
       margin: 0 auto;
     }
-/* Aggiungi questo al tuo CSS */
-.btn-accedi {
-  background-color: #28a745;
-  color: white;
-  padding: 8px 20px;
-  border-radius: 30px;
-  font-weight: bold;
-  border: none;
-  transition: all 0.3s;
-  margin-left: 10px;
-}
-
-.btn-accedi:hover {
-  background-color: #218838;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-    /* Aggiungi questo al tuo CSS */
-.btn-google {
-  background-color: #4285F4;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 4px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-.btn-google:hover {
-  background-color: #357ABD;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  margin: 20px 0;
-}
-
-.divider::before, .divider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid #ddd;
-}
-
-.divider-text {
-  padding: 0 10px;
-  color: #777;
-}
     
+    /* Stili per i pulsanti di autenticazione */
+    .btn-accedi {
+      background-color: #28a745;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      border: none;
+      transition: all 0.3s;
+      margin-left: 10px;
+    }
+
+    .btn-accedi:hover {
+      background-color: #218838;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Stili per i provider di autenticazione */
+    .auth-providers {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .btn-auth-provider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s;
+      width: 100%;
+    }
+    
+    .btn-auth-provider:hover {
+      background: #f8f9fa;
+    }
+    
+    .btn-google {
+      color: #4285F4;
+      border-color: #4285F4;
+    }
+    
+    .btn-phone {
+      color: #34B7F1;
+      border-color: #34B7F1;
+    }
+    
+    .phone-verification {
+      display: none;
+      margin-top: 15px;
+    }
+    
+    .phone-verification.active {
+      display: block;
+    }
+    
+    .phone-input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .phone-input-group input {
+      flex: 1;
+    }
+    
+    .phone-input-group button {
+      width: auto;
+    }
+    
+    .verification-code-group {
+      display: none;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -655,16 +678,6 @@
       <div class="auth-tab" onclick="switchAuthTab('register')">Registrati</div>
     </div>
     
-<div style="text-align: center; margin: 20px 0;">
-      <button onclick="signInWithGoogle()" style="background: #4285F4; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer;">
-        <i class="fab fa-google"></i> Accedi con Google
-      </button>
-      <div style="margin: 15px 0; text-align: center; position: relative;">
-        <span style="background: white; padding: 0 10px; position: relative; z-index: 2;">oppure</span>
-        <div style="height: 1px; background: #ddd; position: absolute; top: 50%; left: 0; right: 0; z-index: 1;"></div>
-      </div>
-    </div>
-    
     <div id="login-form" class="auth-form active">
       <h3>Accedi al tuo account</h3>
       <input type="email" id="login-email" placeholder="Email" required>
@@ -672,6 +685,26 @@
       <button onclick="loginUser()">Accedi</button>
       <div id="login-error" class="auth-error"></div>
       <div id="login-success" class="auth-success"></div>
+      
+      <div class="auth-providers">
+        <button class="btn-auth-provider btn-google" onclick="signInWithGoogle()">
+          <i class="fab fa-google"></i> Accedi con Google
+        </button>
+        <button class="btn-auth-provider btn-phone" onclick="showPhoneVerification('login')">
+          <i class="fas fa-mobile-alt"></i> Accedi con Telefono
+        </button>
+      </div>
+      
+      <div id="phone-verification-login" class="phone-verification">
+        <div class="phone-input-group">
+          <input type="tel" id="phone-number-login" placeholder="+39 123456789" required>
+          <button onclick="sendVerificationCode('login')">Invia codice</button>
+        </div>
+        <div id="code-verification-login" class="verification-code-group">
+          <input type="text" id="verification-code-login" placeholder="Codice di verifica" required>
+          <button onclick="verifyPhoneNumber('login')">Verifica</button>
+        </div>
+      </div>
     </div>
     
     <div id="register-form" class="auth-form">
@@ -682,9 +715,30 @@
       <button onclick="registerUser()">Registrati</button>
       <div id="register-error" class="auth-error"></div>
       <div id="register-success" class="auth-success"></div>
+      
+      <div class="auth-providers">
+        <button class="btn-auth-provider btn-google" onclick="signInWithGoogle()">
+          <i class="fab fa-google"></i> Registrati con Google
+        </button>
+        <button class="btn-auth-provider btn-phone" onclick="showPhoneVerification('register')">
+          <i class="fas fa-mobile-alt"></i> Registrati con Telefono
+        </button>
+      </div>
+      
+      <div id="phone-verification-register" class="phone-verification">
+        <div class="phone-input-group">
+          <input type="tel" id="phone-number-register" placeholder="+39 123456789" required>
+          <button onclick="sendVerificationCode('register')">Invia codice</button>
+        </div>
+        <div id="code-verification-register" class="verification-code-group">
+          <input type="text" id="verification-code-register" placeholder="Codice di verifica" required>
+          <button onclick="verifyPhoneNumber('register')">Verifica</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
 <!-- Pagina principale -->
 <div id="main-page">
   <!-- Hero -->
@@ -708,52 +762,52 @@
   <!-- Linea divisoria -->
   <div class="divider-line"></div>
 
-<!-- Sostituisci la sezione riservata con questo codice -->
-<section class="riservato-section" id="riservato-section">
-  <div class="container">
-    <div class="riservato-content">
-      <h2>Area Riservata</h2>
-      <div id="user-info"></div>
-      
-      <!-- Pulsanti per accedere/uscire -->
-      <div class="d-flex justify-content-center gap-3 mt-4">
-        <button class="btn btn-danger" onclick="logoutUser()">
-          <i class="fas fa-sign-out-alt"></i> Esci
-        </button>
-        <button class="btn-accedi" onclick="showEventiSpeciali()">
-          <i class="fas fa-star"></i> Eventi Speciali
-        </button>
-      </div>
-      
-      <!-- Sezione eventi speciali (inizialmente nascosta) -->
-      <div id="eventi-speciali" style="display: none; margin-top: 30px;">
-        <h3 class="text-center mb-4" style="color: #dc3545;">Offerte Esclusive</h3>
+  <!-- Sezione riservata -->
+  <section class="riservato-section" id="riservato-section">
+    <div class="container">
+      <div class="riservato-content">
+        <h2>Area Riservata</h2>
+        <div id="user-info"></div>
         
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">OFERTE SPECIALI</h5>
-            <p class="card-text">PRESTO DISPONIBILE</p>
-            <small class="text-muted">Valida fino al 30/11/2023</small>
-          </div>
+        <!-- Pulsanti per accedere/uscire -->
+        <div class="d-flex justify-content-center gap-3 mt-4">
+          <button class="btn btn-danger" onclick="logoutUser()">
+            <i class="fas fa-sign-out-alt"></i> Esci
+          </button>
+          <button class="btn-accedi" onclick="showEventiSpeciali()">
+            <i class="fas fa-star"></i> Eventi Speciali
+          </button>
         </div>
         
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">SERATA MUSICA</h5>
-            <p class="card-text">PRESTO DISPONBILE</p>
+        <!-- Sezione eventi speciali (inizialmente nascosta) -->
+        <div id="eventi-speciali" style="display: none; margin-top: 30px;">
+          <h3 class="text-center mb-4" style="color: #dc3545;">Offerte Esclusive</h3>
+          
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">OFERTE SPECIALI</h5>
+              <p class="card-text">PRESTO DISPONIBILE</p>
+              <small class="text-muted">Valida fino al 30/11/2023</small>
+            </div>
           </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Festa del Compleanno</h5>
-            <p class="card-text">PRESTO DISPONIBILE</p>
+          
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">SERATA MUSICA</h5>
+              <p class="card-text">PRESTO DISPONBILE</p>
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Festa del Compleanno</h5>
+              <p class="card-text">PRESTO DISPONIBILE</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Linea divisoria -->
   <div class="divider-line"></div>
@@ -977,7 +1031,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 <script>
-  // Configurazione Firebase (sostituisci con i tuoi dati)
+  // Configurazione Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyBQSHJ2nc28gCaUaW4lSwgnDxu8Di_a0PE",
     authDomain: "pizzeria-ecdb1.firebaseapp.com",
@@ -991,6 +1045,10 @@
   // Inizializza Firebase
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
+  
+  // Variabile globale per il recaptcha e la verifica del telefono
+  let appVerifier;
+  let confirmationResult;
 
   // Inizializza Swiper
   const swiper = new Swiper('.mySwiper', {
@@ -1005,8 +1063,6 @@
     }
   });
 
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-  
   // Funzioni per mostrare/nascondere pagine
   function showGalleria() {
     document.getElementById('main-page').style.display = 'none';
@@ -1035,18 +1091,25 @@
     switchAuthTab(tab);
   }
 
-function showEventiSpeciali() {
-  const eventiSection = document.getElementById('eventi-speciali');
-  if (eventiSection.style.display === 'none') {
-    eventiSection.style.display = 'block';
-  } else {
-    eventiSection.style.display = 'none';
+  function showEventiSpeciali() {
+    const eventiSection = document.getElementById('eventi-speciali');
+    if (eventiSection.style.display === 'none') {
+      eventiSection.style.display = 'block';
+    } else {
+      eventiSection.style.display = 'none';
+    }
   }
-}
   
   function closeAuthModal() {
     document.getElementById('auth-modal').style.display = 'none';
     clearAuthErrors();
+    // Resetta i form di verifica del telefono
+    document.querySelectorAll('.phone-verification').forEach(el => {
+      el.classList.remove('active');
+    });
+    document.querySelectorAll('.verification-code-group').forEach(el => {
+      el.style.display = 'none';
+    });
   }
 
   function switchAuthTab(tab) {
@@ -1140,48 +1203,100 @@ function showEventiSpeciali() {
       });
   }
 
-function updateAuthUI() {
-  const user = auth.currentUser;
-  const authStatusElement = document.getElementById('auth-status');
-  const riservatoSection = document.getElementById('riservato-section');
-  
-  if (user) {
-    // Utente loggato
-    authStatusElement.innerHTML = `
-      <img src="${user.photoURL || 'https://ui-avatars.com/api/?name='+encodeURIComponent(user.displayName || 'Utente')+'&background=dc3545&color=fff'}" 
-           class="user-avatar">
-      <span>${user.displayName || 'Utente'}</span>
-      <button onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i></button>
-    `;
-    riservatoSection.style.display = 'block';
-    // Nascondi la sezione eventi quando l'utente fa logout/login
-    document.getElementById('eventi-speciali').style.display = 'none';
-  } else {
-    // Utente non loggato
-    authStatusElement.innerHTML = `
-      <button class="btn-accedi" onclick="signInWithGoogle()">
-        <i class="fab fa-google"></i> Accedi con Google
-      </button>
-      <button class="nav-link" onclick="showAuthModal('login')">Email / Password</button>
-    `;
-    riservatoSection.style.display = 'none';
+  function updateAuthUI() {
+    const user = auth.currentUser;
+    const authStatusElement = document.getElementById('auth-status');
+    const riservatoSection = document.getElementById('riservato-section');
+    
+    if (user) {
+      // Utente loggato
+      authStatusElement.innerHTML = `
+        <img src="${user.photoURL || 'https://ui-avatars.com/api/?name='+encodeURIComponent(user.displayName || 'Utente')+'&background=dc3545&color=fff'}" 
+             class="user-avatar">
+        <span>${user.displayName || 'Utente'}</span>
+        <button onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i></button>
+      `;
+      riservatoSection.style.display = 'block';
+      // Nascondi la sezione eventi quando l'utente fa logout/login
+      document.getElementById('eventi-speciali').style.display = 'none';
+    } else {
+      // Utente non loggato
+      authStatusElement.innerHTML = `
+        <button class="nav-link" onclick="showAuthModal('login')">Accedi / Registrati</button>
+      `;
+      riservatoSection.style.display = 'none';
+    }
   }
-}
 
-function signInWithGoogle() {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  
-  auth.signInWithPopup(provider)
-    .then((result) => {
-      // Accesso riuscito
-      updateAuthUI();
-      closeAuthModal();
-    }).catch((error) => {
-      // Gestione degli errori
-      console.error("Errore durante l'accesso con Google:", error);
-      alert("Si è verificato un errore durante l'accesso con Google: " + error.message);
-    });
-}
+  // Autenticazione con Google
+  function signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    
+    auth.signInWithPopup(provider)
+      .then((result) => {
+        // Utente autenticato con successo
+        updateAuthUI();
+        closeAuthModal();
+      }).catch((error) => {
+        console.error("Errore durante l'accesso con Google:", error);
+        alert("Si è verificato un errore durante l'accesso con Google: " + error.message);
+      });
+  }
+
+  // Autenticazione con telefono
+  function showPhoneVerification(context) {
+    const phoneVerification = document.getElementById(`phone-verification-${context}`);
+    phoneVerification.classList.toggle('active');
+    
+    // Inizializza recaptcha solo se non è già stato fatto
+    if (!appVerifier) {
+      appVerifier = new firebase.auth.RecaptchaVerifier(`phone-verification-${context}`, {
+        'size': 'invisible',
+        'callback': () => {
+          // Recaptcha risolto, puoi procedere
+        }
+      });
+    }
+  }
+
+  function sendVerificationCode(context) {
+    const phoneNumber = document.getElementById(`phone-number-${context}`).value;
+    
+    if (!phoneNumber) {
+      alert('Inserisci un numero di telefono valido');
+      return;
+    }
+
+    auth.signInWithPhoneNumber(phoneNumber, appVerifier)
+      .then((result) => {
+        confirmationResult = result;
+        document.getElementById(`code-verification-${context}`).style.display = 'block';
+      })
+      .catch((error) => {
+        console.error("Errore durante l'invio del codice:", error);
+        alert("Errore: " + error.message);
+      });
+  }
+
+  function verifyPhoneNumber(context) {
+    const code = document.getElementById(`verification-code-${context}`).value;
+    
+    if (!code) {
+      alert('Inserisci il codice di verifica');
+      return;
+    }
+
+    confirmationResult.confirm(code)
+      .then((result) => {
+        // Utente autenticato con successo
+        updateAuthUI();
+        closeAuthModal();
+      })
+      .catch((error) => {
+        console.error("Errore durante la verifica del codice:", error);
+        alert("Codice non valido: " + error.message);
+      });
+  }
       
   // Gestione dello stato di autenticazione
   auth.onAuthStateChanged((user) => {
@@ -1271,8 +1386,6 @@ function signInWithGoogle() {
   window.onload = function() {
     showMainPage();
   };
-
-
 </script>
 
 </body>
