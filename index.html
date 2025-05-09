@@ -553,6 +553,23 @@
       max-width: 800px;
       margin: 0 auto;
     }
+/* Aggiungi questo al tuo CSS */
+.btn-accedi {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  border: none;
+  transition: all 0.3s;
+  margin-left: 10px;
+}
+
+.btn-accedi:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
   </style>
 </head>
 <body>
@@ -640,17 +657,52 @@
   <!-- Linea divisoria -->
   <div class="divider-line"></div>
 
-  <!-- Sezione riservata (visibile solo agli utenti loggati) -->
-  <section class="riservato-section" id="riservato-section">
-    <div class="container">
-      <div class="riservato-content">
-        <h2>Area Riservata</h2>
-        <p>Benvenuto nella tua area riservata! Qui potrai accedere a contenuti speciali e offerte esclusive.</p>
-        <div id="user-info"></div>
-        <button class="btn btn-danger mt-3" onclick="logoutUser()">Esci</button>
+<!-- Sostituisci la sezione riservata con questo codice -->
+<section class="riservato-section" id="riservato-section">
+  <div class="container">
+    <div class="riservato-content">
+      <h2>Area Riservata</h2>
+      <div id="user-info"></div>
+      
+      <!-- Pulsanti per accedere/uscire -->
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <button class="btn btn-danger" onclick="logoutUser()">
+          <i class="fas fa-sign-out-alt"></i> Esci
+        </button>
+        <button class="btn-accedi" onclick="showEventiSpeciali()">
+          <i class="fas fa-star"></i> Eventi Speciali
+        </button>
+      </div>
+      
+      <!-- Sezione eventi speciali (inizialmente nascosta) -->
+      <div id="eventi-speciali" style="display: none; margin-top: 30px;">
+        <h3 class="text-center mb-4" style="color: #dc3545;">Offerte Esclusive</h3>
+        
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Pizza del Mese</h5>
+            <p class="card-text">Prova la nostra speciale "Pizza del Mese" con ingredienti stagionali a soli €10!</p>
+            <small class="text-muted">Valida fino al 30/11/2023</small>
+          </div>
+        </div>
+        
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Happy Hour</h5>
+            <p class="card-text">Tutti i giovedì dalle 19:00 alle 20:30, birra artigianale a metà prezzo!</p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Festa del Compleanno</h5>
+            <p class="card-text">Prenota il tuo compleanno da noi e ricevi una bottiglia di vino in omaggio!</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Linea divisoria -->
   <div class="divider-line"></div>
@@ -930,6 +982,15 @@
     switchAuthTab(tab);
   }
 
+function showEventiSpeciali() {
+  const eventiSection = document.getElementById('eventi-speciali');
+  if (eventiSection.style.display === 'none') {
+    eventiSection.style.display = 'block';
+  } else {
+    eventiSection.style.display = 'none';
+  }
+}
+  
   function closeAuthModal() {
     document.getElementById('auth-modal').style.display = 'none';
     clearAuthErrors();
@@ -1026,28 +1087,29 @@
       });
   }
 
-  function updateAuthUI() {
-    const user = auth.currentUser;
-    const authStatusElement = document.getElementById('auth-status');
-    const riservatoSection = document.getElementById('riservato-section');
-    
-    if (user) {
-      // Utente loggato
-      authStatusElement.innerHTML = `
-        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'Utente')}&background=dc3545&color=fff" class="user-avatar">
-        <span>${user.displayName || 'Utente'}</span>
-        <button onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i></button>
-      `;
-      riservatoSection.style.display = 'block';
-    } else {
-      // Utente non loggato
-      authStatusElement.innerHTML = `
-        <button class="nav-link" onclick="showAuthModal('login')">Accedi / Registrati</button>
-      `;
-      riservatoSection.style.display = 'none';
-    }
+function updateAuthUI() {
+  const user = auth.currentUser;
+  const authStatusElement = document.getElementById('auth-status');
+  const riservatoSection = document.getElementById('riservato-section');
+  
+  if (user) {
+    // Utente loggato
+    authStatusElement.innerHTML = `
+      <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'Utente')}&background=dc3545&color=fff" class="user-avatar">
+      <span>${user.displayName || 'Utente'}</span>
+      <button onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i></button>
+    `;
+    riservatoSection.style.display = 'block';
+    // Nascondi la sezione eventi quando l'utente fa logout/login
+    document.getElementById('eventi-speciali').style.display = 'none';
+  } else {
+    // Utente non loggato
+    authStatusElement.innerHTML = `
+      <button class="nav-link" onclick="showAuthModal('login')">Accedi / Registrati</button>
+    `;
+    riservatoSection.style.display = 'none';
   }
-
+}
   // Gestione dello stato di autenticazione
   auth.onAuthStateChanged((user) => {
     updateAuthUI();
@@ -1136,6 +1198,8 @@
   window.onload = function() {
     showMainPage();
   };
+
+
 </script>
 
 </body>
