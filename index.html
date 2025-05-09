@@ -874,26 +874,21 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 <script>
-
-// Importa le funzioni di cui hai bisogno dagli SDK di cui hai bisogno
-importa { initializeApp } da "firebase/app" ;   
-// TODO: aggiungi gli SDK per i prodotti Firebase che desideri utilizzare
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-  
+<script>
   // Configurazione Firebase (sostituisci con i tuoi dati)
-const firebaseConfig = { 
-  chiave API : "AIzaSyBQSHJ2nc28gCaUaW4lSwgnDxu8Di_a0PE" , 
-  authDomain : "pizzeria-ecdb1.firebaseapp.com" , 
-  URL del database : "https://pizzeria-ecdb1-default-rtdb.europe-west1.firebasedatabase.app" , 
-  projectId : "pizzeria-ecdb1" , 
-  storageBucket : "pizzeria-ecdb1.firebasestorage.app" , 
-  messagingSenderId : "158160186180" , 
-  ID applicazione : "1:158160186180:web:f3040c3e8c88d950c18511" 
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyBQSHJ2nc28gCaUaW4lSwgnDxu8Di_a0PE",
+    authDomain: "pizzeria-ecdb1.firebaseapp.com",
+    databaseURL: "https://pizzeria-ecdb1-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "pizzeria-ecdb1",
+    storageBucket: "pizzeria-ecdb1.appspot.com",
+    messagingSenderId: "158160186180",
+    appId: "1:158160186180:web:f3040c3e8c88d950c18511"
+  };
 
-// Inizializza Firebase
-const app = initializeApp ( firebaseConfig );
+  // Inizializza Firebase
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
 
   // Inizializza Swiper
   const swiper = new Swiper('.mySwiper', {
@@ -907,6 +902,15 @@ const app = initializeApp ( firebaseConfig );
       disableOnInteraction: false,
     }
   });
+
+  // Funzioni per mostrare/nascondere pagine
+  function showGalleria() {
+    document.getElementById('main-page').style.display = 'none';
+    document.getElementById('menu-page').style.display = 'none';
+    document.getElementById('galleria').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+
   function showMainPage() {
     document.getElementById('galleria').style.display = 'none';
     document.getElementById('menu-page').style.display = 'none';
@@ -1031,7 +1035,7 @@ const app = initializeApp ( firebaseConfig );
     if (user) {
       // Utente loggato
       authStatusElement.innerHTML = `
-        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'Utente')}&background=dc3545&color=fff" class="user-avatar" onclick="showUserMenu()">
+        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'Utente')}&background=dc3545&color=fff" class="user-avatar">
         <span>${user.displayName || 'Utente'}</span>
         <button onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i></button>
       `;
