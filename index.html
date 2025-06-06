@@ -21,10 +21,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
@@ -413,163 +409,6 @@
       transform: scale(1.1);
       box-shadow: 0 6px 12px rgba(0,0,0,0.3);
     }
-
-    /* Stili per il modal di autenticazione */
-    .auth-modal {
-      display: none;
-      position: fixed;
-      z-index: 1001;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-    }
-
-    .auth-modal-content {
-      background-color: #fff;
-      margin: 10% auto;
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 400px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-
-    .auth-tabs {
-      display: flex;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .auth-tab {
-      padding: 10px 20px;
-      cursor: pointer;
-      border-bottom: 3px solid transparent;
-    }
-
-    .auth-tab.active {
-      border-bottom: 3px solid #dc3545;
-      font-weight: bold;
-    }
-
-    .auth-form {
-      display: none;
-    }
-
-    .auth-form.active {
-      display: block;
-    }
-
-    .auth-form input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-
-    .auth-form button {
-      width: 100%;
-      padding: 10px;
-      background-color: #dc3545;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .auth-form button:hover {
-      background-color: #c82333;
-    }
-
-    .auth-error {
-      color: #dc3545;
-      margin-top: 10px;
-      font-size: 14px;
-    }
-
-    .auth-success {
-      color: #28a745;
-      margin-top: 10px;
-      font-size: 14px;
-    }
-
-    .close-auth-modal {
-      float: right;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    /* Stili per lo stato di autenticazione */
-    .auth-status {
-      display: flex;
-      align-items: center;
-      margin-left: 20px;
-    }
-
-    .auth-status img {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    .auth-status span {
-      margin-right: 10px;
-    }
-
-    .auth-status button {
-      background: none;
-      border: none;
-      color: #dc3545;
-      cursor: pointer;
-    }
-
-    .user-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      cursor: pointer;
-    }
-
-    /* Stili per la sezione riservata */
-    .riservato-section {
-      display: none;
-      padding: 40px 0;
-      text-align: center;
-    }
-
-    .riservato-section h2 {
-      color: #dc3545;
-      margin-bottom: 20px;
-    }
-
-    .riservato-content {
-      background-color: white;
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-/* Aggiungi questo al tuo CSS */
-.btn-accedi {
-  background-color: #28a745;
-  color: white;
-  padding: 8px 20px;
-  border-radius: 30px;
-  font-weight: bold;
-  border: none;
-  transition: all 0.3s;
-  margin-left: 10px;
-}
-
-.btn-accedi:hover {
-  background-color: #218838;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
   </style>
 </head>
 <body>
@@ -594,45 +433,10 @@
             <a href="#" onclick="downloadPDF()">Scarica PDF</a>
           </div>
         </li>
-        <li class="nav-item" id="auth-nav-item">
-          <div class="auth-status" id="auth-status">
-            <button class="nav-link" onclick="showAuthModal('login')">Accedi / Registrati</button>
-          </div>
-        </li>
       </ul>
     </div>
   </div>
 </nav>
-
-<!-- Modal di autenticazione -->
-<div id="auth-modal" class="auth-modal">
-  <div class="auth-modal-content">
-    <span class="close-auth-modal" onclick="closeAuthModal()">&times;</span>
-    <div class="auth-tabs">
-      <div class="auth-tab active" onclick="switchAuthTab('login')">Accedi</div>
-      <div class="auth-tab" onclick="switchAuthTab('register')">Registrati</div>
-    </div>
-    
-    <div id="login-form" class="auth-form active">
-      <h3>Accedi al tuo account</h3>
-      <input type="email" id="login-email" placeholder="Email" required>
-      <input type="password" id="login-password" placeholder="Password" required>
-      <button onclick="loginUser()">Accedi</button>
-      <div id="login-error" class="auth-error"></div>
-      <div id="login-success" class="auth-success"></div>
-    </div>
-    
-    <div id="register-form" class="auth-form">
-      <h3>Crea un nuovo account</h3>
-      <input type="text" id="register-name" placeholder="Nome" required>
-      <input type="email" id="register-email" placeholder="Email" required>
-      <input type="password" id="register-password" placeholder="Password (min. 6 caratteri)" required>
-      <button onclick="registerUser()">Registrati</button>
-      <div id="register-error" class="auth-error"></div>
-      <div id="register-success" class="auth-success"></div>
-    </div>
-  </div>
-</div>
 
 <!-- Pagina principale -->
 <div id="main-page">
@@ -656,53 +460,6 @@
 
   <!-- Linea divisoria -->
   <div class="divider-line"></div>
-
-<!-- Sostituisci la sezione riservata con questo codice -->
-<section class="riservato-section" id="riservato-section">
-  <div class="container">
-    <div class="riservato-content">
-      <h2>Area Riservata</h2>
-      <div id="user-info"></div>
-      
-      <!-- Pulsanti per accedere/uscire -->
-      <div class="d-flex justify-content-center gap-3 mt-4">
-        <button class="btn btn-danger" onclick="logoutUser()">
-          <i class="fas fa-sign-out-alt"></i> Esci
-        </button>
-        <button class="btn-accedi" onclick="showEventiSpeciali()">
-          <i class="fas fa-star"></i> Eventi Speciali
-        </button>
-      </div>
-      
-      <!-- Sezione eventi speciali (inizialmente nascosta) -->
-      <div id="eventi-speciali" style="display: none; margin-top: 30px;">
-        <h3 class="text-center mb-4" style="color: #dc3545;">Offerte Esclusive</h3>
-        
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">OFERTE SPECIALI</h5>
-            <p class="card-text">PRESTO DISPONIBILE</p>
-            <small class="text-muted">Valida fino al 30/11/2023</small>
-          </div>
-        </div>
-        
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">SERATA MUSICA</h5>
-            <p class="card-text">PRESTO DISPONBILE</p>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Festa del Compleanno</h5>
-            <p class="card-text">PRESTO DISPONIBILE</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
   <!-- Linea divisoria -->
   <div class="divider-line"></div>
@@ -926,21 +683,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 <script>
-  // Configurazione Firebase (sostituisci con i tuoi dati)
-  const firebaseConfig = {
-    apiKey: "AIzaSyBQSHJ2nc28gCaUaW4lSwgnDxu8Di_a0PE",
-    authDomain: "pizzeria-ecdb1.firebaseapp.com",
-    databaseURL: "https://pizzeria-ecdb1-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "pizzeria-ecdb1",
-    storageBucket: "pizzeria-ecdb1.appspot.com",
-    messagingSenderId: "158160186180",
-    appId: "1:158160186180:web:f3040c3e8c88d950c18511"
-  };
-
-  // Inizializza Firebase
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-
   // Inizializza Swiper
   const swiper = new Swiper('.mySwiper', {
     navigation: {
@@ -975,145 +717,6 @@
     document.getElementById('menu-page').style.display = 'block';
     window.scrollTo(0, 0);
   }
-
-  // Funzioni per l'autenticazione
-  function showAuthModal(tab) {
-    document.getElementById('auth-modal').style.display = 'block';
-    switchAuthTab(tab);
-  }
-
-function showEventiSpeciali() {
-  const eventiSection = document.getElementById('eventi-speciali');
-  if (eventiSection.style.display === 'none') {
-    eventiSection.style.display = 'block';
-  } else {
-    eventiSection.style.display = 'none';
-  }
-}
-  
-  function closeAuthModal() {
-    document.getElementById('auth-modal').style.display = 'none';
-    clearAuthErrors();
-  }
-
-  function switchAuthTab(tab) {
-    // Nascondi tutti i form
-    document.querySelectorAll('.auth-form').forEach(form => {
-      form.classList.remove('active');
-    });
-    
-    // Rimuovi active da tutte le tab
-    document.querySelectorAll('.auth-tab').forEach(tabElement => {
-      tabElement.classList.remove('active');
-    });
-    
-    // Mostra il form corretto e attiva la tab
-    if (tab === 'login') {
-      document.getElementById('login-form').classList.add('active');
-      document.querySelectorAll('.auth-tab')[0].classList.add('active');
-    } else {
-      document.getElementById('register-form').classList.add('active');
-      document.querySelectorAll('.auth-tab')[1].classList.add('active');
-    }
-    
-    clearAuthErrors();
-  }
-
-  function clearAuthErrors() {
-    document.getElementById('login-error').textContent = '';
-    document.getElementById('register-error').textContent = '';
-    document.getElementById('login-success').textContent = '';
-    document.getElementById('register-success').textContent = '';
-  }
-
-  function registerUser() {
-    const name = document.getElementById('register-name').value;
-    const email = document.getElementById('register-email').value;
-    const password = document.getElementById('register-password').value;
-    const errorElement = document.getElementById('register-error');
-    const successElement = document.getElementById('register-success');
-    
-    if (password.length < 6) {
-      errorElement.textContent = 'La password deve contenere almeno 6 caratteri';
-      return;
-    }
-    
-    auth.createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Registrazione riuscita
-        const user = userCredential.user;
-        return user.updateProfile({
-          displayName: name
-        });
-      })
-      .then(() => {
-        successElement.textContent = 'Registrazione completata con successo!';
-        errorElement.textContent = '';
-        updateAuthUI();
-        setTimeout(closeAuthModal, 2000);
-      })
-      .catch((error) => {
-        errorElement.textContent = error.message;
-        successElement.textContent = '';
-      });
-  }
-
-  function loginUser() {
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-    const errorElement = document.getElementById('login-error');
-    const successElement = document.getElementById('login-success');
-    
-    auth.signInWithEmailAndPassword(email, password)
-      .then(() => {
-        successElement.textContent = 'Accesso effettuato con successo!';
-        errorElement.textContent = '';
-        updateAuthUI();
-        setTimeout(closeAuthModal, 2000);
-      })
-      .catch((error) => {
-        errorElement.textContent = error.message;
-        successElement.textContent = '';
-      });
-  }
-
-  function logoutUser() {
-    auth.signOut()
-      .then(() => {
-        updateAuthUI();
-      })
-      .catch((error) => {
-        console.error('Errore durante il logout:', error);
-      });
-  }
-
-function updateAuthUI() {
-  const user = auth.currentUser;
-  const authStatusElement = document.getElementById('auth-status');
-  const riservatoSection = document.getElementById('riservato-section');
-  
-  if (user) {
-    // Utente loggato
-    authStatusElement.innerHTML = `
-      <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'Utente')}&background=dc3545&color=fff" class="user-avatar">
-      <span>${user.displayName || 'Utente'}</span>
-      <button onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i></button>
-    `;
-    riservatoSection.style.display = 'block';
-    // Nascondi la sezione eventi quando l'utente fa logout/login
-    document.getElementById('eventi-speciali').style.display = 'none';
-  } else {
-    // Utente non loggato
-    authStatusElement.innerHTML = `
-      <button class="nav-link" onclick="showAuthModal('login')">Accedi / Registrati</button>
-    `;
-    riservatoSection.style.display = 'none';
-  }
-}
-  // Gestione dello stato di autenticazione
-  auth.onAuthStateChanged((user) => {
-    updateAuthUI();
-  });
 
   // Funzione per generare il PDF del menu
   function downloadPDF() {
@@ -1198,8 +801,6 @@ function updateAuthUI() {
   window.onload = function() {
     showMainPage();
   };
-
-
 </script>
 
 </body>
