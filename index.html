@@ -17,6 +17,9 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
   <!-- jsPDF per il download PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -26,9 +29,84 @@
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
   <style>
+    /* Cookie Banner */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 20px;
+      z-index: 9999;
+      transform: translateY(100%);
+      transition: transform 0.5s ease-out;
+    }
+    
+    .cookie-banner.show {
+      transform: translateY(0);
+    }
+    
+    .cookie-banner p {
+      margin-bottom: 15px;
+    }
+    
+    .cookie-banner-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .cookie-btn {
+      padding: 8px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .cookie-btn-accept {
+      background: #dc3545;
+      color: white;
+      border: none;
+    }
+    
+    .cookie-btn-accept:hover {
+      background: #c82333;
+      transform: translateY(-2px);
+    }
+    
+    .cookie-btn-reject {
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+    }
+    
+    .cookie-btn-reject:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+    
+    .cookie-btn-settings {
+      background: transparent;
+      color: #dc3545;
+      border: none;
+    }
+    
+    .cookie-btn-settings:hover {
+      text-decoration: underline;
+      transform: translateY(-2px);
+    }
+
+    /* Main Styles */
     body {
       font-family: 'Montserrat', sans-serif;
       background-color: #f8f9fa;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    body.loaded {
+      opacity: 1;
     }
 
     header {
@@ -41,6 +119,14 @@
       align-items: center;
       justify-content: center;
       min-height: 70vh;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+    
+    header.animate {
+      transform: translateY(0);
+      opacity: 1;
     }
 
     header::after {
@@ -77,6 +163,12 @@
       background: #f8f9fa;
       padding: 40px;
       border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .testimonial:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
     footer {
@@ -90,10 +182,21 @@
       color: white;
       margin: 0 10px;
       font-size: 24px;
+      transition: transform 0.3s, color 0.3s;
+    }
+    
+    .social-icons a:hover {
+      color: #dc3545;
+      transform: translateY(-3px);
     }
 
     .navbar-brand img {
       height: 50px;
+      transition: transform 0.3s;
+    }
+    
+    .navbar-brand:hover img {
+      transform: rotate(10deg);
     }
 
     .galleria-img {
@@ -102,11 +205,12 @@
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: 20px;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .galleria-img:hover {
       transform: scale(1.03);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
 
     .divider-line {
@@ -114,6 +218,15 @@
       height: 1px;
       background-color: #ddd;
       margin: 30px 0;
+      opacity: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: opacity 0.5s, transform 1s;
+    }
+    
+    .divider-line.animate {
+      opacity: 1;
+      transform: scaleX(1);
     }
 
     .btn-galleria {
@@ -125,12 +238,17 @@
       margin-top: 20px;
       border: none;
       transition: all 0.3s;
+      transform: translateY(0);
     }
 
     .btn-galleria:hover {
       background-color: #c82333;
       transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn-galleria:active {
+      transform: translateY(1px);
     }
 
     /* Stili per la galleria */
@@ -149,6 +267,18 @@
       text-align: center;
       margin-bottom: 30px;
       color: #dc3545;
+      position: relative;
+    }
+    
+    .galleria-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: #dc3545;
     }
 
     .galleria-grid {
@@ -161,17 +291,22 @@
       overflow: hidden;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    
+    .galleria-item:hover {
+      transform: translateY(-5px);
     }
 
     .galleria-item img {
       width: 100%;
       height: 300px;
       object-fit: cover;
-      transition: transform 0.3s;
+      transition: transform 0.5s;
     }
 
     .galleria-item img:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     .btn-back {
@@ -206,12 +341,29 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       max-width: 600px;
       margin: 0 auto;
+      transition: transform 0.3s;
+    }
+    
+    .menu-card:hover {
+      transform: translateY(-5px);
     }
     
     .menu-title {
       color: #dc3545;
       margin-bottom: 30px;
       font-weight: bold;
+      position: relative;
+    }
+    
+    .menu-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: #dc3545;
     }
     
     .menu-price {
@@ -219,6 +371,13 @@
       font-weight: bold;
       color: #dc3545;
       margin: 20px 0;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
     
     .menu-includes {
@@ -228,6 +387,16 @@
     
     .menu-includes li {
       margin-bottom: 10px;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .menu-includes li::before {
+      content: '•';
+      color: #dc3545;
+      position: absolute;
+      left: 0;
+      font-size: 1.2em;
     }
     
     /* Stili per gli orari animati */
@@ -252,6 +421,11 @@
       margin: 0 auto;
       position: relative;
       overflow: hidden;
+      transition: transform 0.3s;
+    }
+    
+    .orari-box:hover {
+      transform: translateY(-5px);
     }
     
     .orari-text {
@@ -292,6 +466,12 @@
       z-index: 1;
       border-radius: 5px;
       right: 0;
+      animation: fadeIn 0.3s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     .menu-dropdown-content a {
@@ -299,6 +479,7 @@
       padding: 12px 16px;
       text-decoration: none;
       display: block;
+      transition: background-color 0.2s;
     }
     
     .menu-dropdown-content a:hover {
@@ -347,6 +528,18 @@
       text-align: center;
       margin-bottom: 30px;
       color: #dc3545;
+      position: relative;
+    }
+    
+    .menu-page-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: #dc3545;
     }
     
     .menu-page-content {
@@ -354,6 +547,11 @@
       border-radius: 15px;
       padding: 30px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    
+    .menu-page-content:hover {
+      transform: translateY(-5px);
     }
     
     .menu-category {
@@ -365,12 +563,28 @@
       border-bottom: 2px solid #dc3545;
       padding-bottom: 10px;
       margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .menu-category-title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: #dc3545;
     }
     
     .menu-item {
       display: flex;
       justify-content: space-between;
       margin-bottom: 15px;
+      transition: transform 0.3s;
+    }
+    
+    .menu-item:hover {
+      transform: translateX(5px);
     }
     
     .menu-item-name {
@@ -406,12 +620,14 @@
       z-index: 1000;
       transition: all 0.3s;
       text-decoration: none;
+      animation: pulse 2s infinite;
     }
 
     .whatsapp-button:hover {
       background-color: #128C7E;
       transform: scale(1.1);
       box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      animation: none;
     }
 
     /* Stili per il modal di autenticazione */
@@ -424,6 +640,12 @@
       width: 100%;
       height: 100%;
       background-color: rgba(0,0,0,0.5);
+      animation: fadeInModal 0.3s;
+    }
+    
+    @keyframes fadeInModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     .auth-modal-content {
@@ -433,6 +655,12 @@
       border-radius: 10px;
       max-width: 400px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transform: translateY(-20px);
+      transition: transform 0.3s;
+    }
+    
+    .auth-modal.show .auth-modal-content {
+      transform: translateY(0);
     }
 
     .auth-tabs {
@@ -445,11 +673,17 @@
       padding: 10px 20px;
       cursor: pointer;
       border-bottom: 3px solid transparent;
+      transition: all 0.3s;
+    }
+    
+    .auth-tab:hover {
+      color: #dc3545;
     }
 
     .auth-tab.active {
       border-bottom: 3px solid #dc3545;
       font-weight: bold;
+      color: #dc3545;
     }
 
     .auth-form {
@@ -458,6 +692,12 @@
 
     .auth-form.active {
       display: block;
+      animation: fadeInForm 0.5s;
+    }
+    
+    @keyframes fadeInForm {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .auth-form input {
@@ -466,6 +706,13 @@
       margin-bottom: 15px;
       border: 1px solid #ddd;
       border-radius: 5px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .auth-form input:focus {
+      border-color: #dc3545;
+      box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+      outline: none;
     }
 
     .auth-form button {
@@ -476,28 +723,47 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: all 0.3s;
     }
-
+    
     .auth-form button:hover {
       background-color: #c82333;
+      transform: translateY(-2px);
+    }
+    
+    .auth-form button:active {
+      transform: translateY(1px);
     }
 
     .auth-error {
       color: #dc3545;
       margin-top: 10px;
       font-size: 14px;
+      animation: shake 0.5s;
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
     }
 
     .auth-success {
       color: #28a745;
       margin-top: 10px;
       font-size: 14px;
+      animation: fadeIn 0.5s;
     }
 
     .close-auth-modal {
       float: right;
       font-size: 24px;
       cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .close-auth-modal:hover {
+      color: #dc3545;
     }
 
     /* Stili per lo stato di autenticazione */
@@ -512,6 +778,11 @@
       height: 30px;
       border-radius: 50%;
       margin-right: 10px;
+      transition: transform 0.3s;
+    }
+    
+    .auth-status img:hover {
+      transform: scale(1.1);
     }
 
     .auth-status span {
@@ -523,6 +794,11 @@
       border: none;
       color: #dc3545;
       cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .auth-status button:hover {
+      color: #c82333;
     }
 
     .user-avatar {
@@ -531,6 +807,11 @@
       border-radius: 50%;
       object-fit: cover;
       cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    .user-avatar:hover {
+      transform: scale(1.1);
     }
 
     /* Stili per la sezione eventi */
@@ -549,6 +830,18 @@
     .eventi-title {
       color: #dc3545;
       margin-bottom: 30px;
+      position: relative;
+    }
+    
+    .eventi-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: #dc3545;
     }
 
     .eventi-content {
@@ -556,6 +849,11 @@
       border-radius: 15px;
       padding: 30px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    
+    .eventi-content:hover {
+      transform: translateY(-5px);
     }
 
     .evento-card {
@@ -564,6 +862,12 @@
       padding: 20px;
       margin-bottom: 20px;
       text-align: left;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .evento-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
 
     .evento-title {
@@ -575,6 +879,7 @@
     .evento-date {
       font-weight: bold;
       margin-bottom: 10px;
+      color: #6c757d;
     }
 
     /* Stili per il messaggio di autenticazione richiesta */
@@ -584,6 +889,7 @@
       background-color: #f8f9fa;
       border-radius: 10px;
       margin-bottom: 20px;
+      animation: pulse 2s infinite;
     }
 
     .auth-required p {
@@ -606,9 +912,120 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
+    
+    /* Loading Animation */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #dc3545;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+    
+    .loading-logo {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 20px;
+      animation: bounce 1.5s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #dc3545;
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #c82333;
+    }
+    
+    /* Hover effects for nav items */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s;
+    }
+    
+    .nav-link:hover {
+      color: #dc3545 !important;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #dc3545;
+      transition: width 0.3s;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Map hover effect */
+    iframe {
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 10px;
+    }
+    
+    iframe:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
 <body>
+
+<!-- Loading Screen -->
+<div class="loading-screen" id="loading-screen">
+  <img src="logo1.jpg" alt="Logo Pizzeria Il Semaforo" class="loading-logo">
+  <div class="loading-spinner"></div>
+</div>
+
+<!-- Cookie Banner -->
+<div class="cookie-banner" id="cookie-banner">
+  <p>Utilizziamo i cookie per migliorare la tua esperienza sul nostro sito. Accetta i cookie per accedere a tutti i contenuti.</p>
+  <div class="cookie-banner-buttons">
+    <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accetta tutti</button>
+    <button class="cookie-btn cookie-btn-reject" onclick="rejectCookies()">Rifiuta</button>
+    <button class="cookie-btn cookie-btn-settings" onclick="showCookieSettings()">Impostazioni</button>
+  </div>
+</div>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -905,7 +1322,7 @@
         <div class="evento-card">
           <h3 class="evento-title">O'Rama Risto Music</h3>
           <div class="evento-date">Sabato 21 Giugno 2025 - Ore 19:30</div>
-          <p>Inizia l’estate nel modo migliore! Preparati a una notte indimenticabile con DjAgo: ritmi infuocati, drink ghiacciati, buffet gustoso e tanta voglia di ballare sotto le stelle. L’estate comincia qui — e tu non puoi mancare!</p>
+          <p>Inizia l'estate nel modo migliore! Preparati a una notte indimenticabile con DjAgo: ritmi infuocati, drink ghiacciati, buffet gustoso e tanta voglia di ballare sotto le stelle. L'estate comincia qui — e tu non puoi mancare!</p>
         </div>
         
         <div class="evento-card">
@@ -978,6 +1395,29 @@
     }
   });
 
+  // Cookie functions
+  function checkCookies() {
+    if (!localStorage.getItem('cookiesAccepted')) {
+      setTimeout(() => {
+        document.getElementById('cookie-banner').classList.add('show');
+      }, 2000);
+    }
+  }
+  
+  function acceptCookies() {
+    localStorage.setItem('cookiesAccepted', 'true');
+    document.getElementById('cookie-banner').classList.remove('show');
+  }
+  
+  function rejectCookies() {
+    localStorage.setItem('cookiesRejected', 'true');
+    document.getElementById('cookie-banner').classList.remove('show');
+  }
+  
+  function showCookieSettings() {
+    alert('Impostazioni cookie: Attualmente utilizziamo solo cookie essenziali per il funzionamento del sito.');
+  }
+
   // Funzioni per mostrare/nascondere pagine
   function showGalleria() {
     document.getElementById('main-page').style.display = 'none';
@@ -985,6 +1425,18 @@
     document.getElementById('eventi-page').style.display = 'none';
     document.getElementById('galleria').style.display = 'block';
     window.scrollTo(0, 0);
+    
+    // Animazione elementi galleria
+    const items = document.querySelectorAll('.galleria-item');
+    items.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        item.style.transition = 'opacity 0.5s, transform 0.5s';
+        item.style.opacity = '1';
+        item.style.transform = 'translateY(0)';
+      }, 100 + index * 100);
+    });
   }
 
   function showMainPage() {
@@ -993,6 +1445,17 @@
     document.getElementById('eventi-page').style.display = 'none';
     document.getElementById('main-page').style.display = 'block';
     window.scrollTo(0, 0);
+    
+    // Animazione header
+    document.querySelector('header').classList.add('animate');
+    
+    // Animazione divider lines
+    setTimeout(() => {
+      const dividers = document.querySelectorAll('.divider-line');
+      dividers.forEach(divider => {
+        divider.classList.add('animate');
+      });
+    }, 500);
   }
   
   function showMenuPage() {
@@ -1001,6 +1464,18 @@
     document.getElementById('eventi-page').style.display = 'none';
     document.getElementById('menu-page').style.display = 'block';
     window.scrollTo(0, 0);
+    
+    // Animazione elementi menu
+    const items = document.querySelectorAll('.menu-item');
+    items.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(-20px)';
+      setTimeout(() => {
+        item.style.transition = 'opacity 0.3s, transform 0.3s';
+        item.style.opacity = '1';
+        item.style.transform = 'translateX(0)';
+      }, 100 + index * 50);
+    });
   }
 
   function showEventiPage() {
@@ -1015,6 +1490,18 @@
     if (user) {
       document.getElementById('auth-required-message').style.display = 'none';
       document.getElementById('eventi-content').style.display = 'block';
+      
+      // Animazione eventi
+      const cards = document.querySelectorAll('.evento-card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          card.style.transition = 'opacity 0.5s, transform 0.5s';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100 + index * 150);
+      });
     } else {
       document.getElementById('auth-required-message').style.display = 'block';
       document.getElementById('eventi-content').style.display = 'none';
@@ -1024,11 +1511,17 @@
   // Funzioni per l'autenticazione
   function showAuthModal(tab) {
     document.getElementById('auth-modal').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('auth-modal').classList.add('show');
+    }, 10);
     switchAuthTab(tab);
   }
   
   function closeAuthModal() {
-    document.getElementById('auth-modal').style.display = 'none';
+    document.getElementById('auth-modal').classList.remove('show');
+    setTimeout(() => {
+      document.getElementById('auth-modal').style.display = 'none';
+    }, 300);
     clearAuthErrors();
   }
 
@@ -1277,7 +1770,21 @@ function registerUser() {
 
   // Mostra la pagina principale all'avvio
   window.onload = function() {
-    showMainPage();
+    // Simula caricamento
+    setTimeout(() => {
+      document.getElementById('loading-screen').style.opacity = '0';
+      document.getElementById('loading-screen').style.visibility = 'hidden';
+      document.body.classList.add('loaded');
+      showMainPage();
+      checkCookies();
+    }, 1500);
+  };
+  
+  // Chiudi il modal se si clicca fuori
+  window.onclick = function(event) {
+    if (event.target == document.getElementById('auth-modal')) {
+      closeAuthModal();
+    }
   };
 </script>
 
