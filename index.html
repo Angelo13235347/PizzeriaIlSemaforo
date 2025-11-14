@@ -1007,6 +1007,116 @@
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
+
+    /* NUOVI STILI PER PRENOTAZIONI */
+    #prenotazioni-page {
+      display: none;
+      padding: 40px 0;
+    }
+
+    .prenotazioni-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .prenotazioni-title {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #dc3545;
+      position: relative;
+    }
+    
+    .prenotazioni-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: #dc3545;
+    }
+
+    .prenotazioni-content {
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    
+    .prenotazioni-content:hover {
+      transform: translateY(-5px);
+    }
+
+    .prenotazioni-info {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-left: 4px solid #dc3545;
+    }
+
+    .prenotazioni-form .form-group {
+      margin-bottom: 20px;
+    }
+
+    .prenotazioni-form label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .prenotazioni-form .form-control {
+      padding: 12px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      transition: all 0.3s;
+      width: 100%;
+    }
+
+    .prenotazioni-form .form-control:focus {
+      border-color: #dc3545;
+      box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+    }
+
+    .prenotazioni-success {
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      display: none;
+      text-align: center;
+    }
+
+    .prenotazioni-error {
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .prenotazioni-loading {
+      display: none;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .prenotazioni-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #dc3545;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
   </style>
 </head>
 <body>
@@ -1047,6 +1157,7 @@
             <a href="#" onclick="downloadPDF()">Scarica PDF</a>
           </div>
         </li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showPrenotazioniPage()">Prenotazioni</a></li>
         <li class="nav-item"><a class="nav-link" href="#" onclick="showEventiPage()">Eventi</a></li>
         <li class="nav-item" id="auth-nav-item">
           <div class="auth-status" id="auth-status">
@@ -1308,6 +1419,139 @@
   </div>
 </div>
 
+<!-- Pagina delle prenotazioni (NUOVA) -->
+<div id="prenotazioni-page">
+  <div class="prenotazioni-container">
+    <h2 class="prenotazioni-title">Prenota il tuo tavolo</h2>
+    <div class="prenotazioni-content">
+      <div class="prenotazioni-info">
+        <h5><i class="fas fa-info-circle me-2"></i>Informazioni prenotazioni</h5>
+        <p class="mb-0">Puoi prenotare un tavolo compilando il modulo sottostante. Riceverai una conferma via WhatsApp. Per urgenze, chiamaci al <strong>+39 3403046310</strong>.</p>
+      </div>
+      
+      <form id="prenotazioni-form" class="prenotazioni-form">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="prenotazione-nome" class="required">Nome</label>
+              <input type="text" class="form-control" id="prenotazione-nome" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="prenotazione-cognome" class="required">Cognome</label>
+              <input type="text" class="form-control" id="prenotazione-cognome" required>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="prenotazione-email">Email</label>
+              <input type="email" class="form-control" id="prenotazione-email">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="prenotazione-telefono" class="required">Telefono</label>
+              <input type="tel" class="form-control" id="prenotazione-telefono" required>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="prenotazione-data" class="required">Data</label>
+              <input type="date" class="form-control" id="prenotazione-data" required min="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="prenotazione-ora" class="required">Ora</label>
+              <select class="form-control" id="prenotazione-ora" required>
+                <option value="">Seleziona un'orario</option>
+                <option value="19:00">19:00</option>
+                <option value="19:30">19:30</option>
+                <option value="20:00">20:00</option>
+                <option value="20:30">20:30</option>
+                <option value="21:00">21:00</option>
+                <option value="21:30">21:30</option>
+                <option value="22:00">22:00</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="prenotazione-persone" class="required">Numero di persone</label>
+              <select class="form-control" id="prenotazione-persone" required>
+                <option value="">Seleziona</option>
+                <option value="1">1 persona</option>
+                <option value="2">2 persone</option>
+                <option value="3">3 persone</option>
+                <option value="4">4 persone</option>
+                <option value="5">5 persone</option>
+                <option value="6">6 persone</option>
+                <option value="7">7 persone</option>
+                <option value="8">8 persone</option>
+                <option value="9">9+ persone</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="prenotazione-tavolo">Preferenza tavolo</label>
+              <select class="form-control" id="prenotazione-tavolo">
+                <option value="">Nessuna preferenza</option>
+                <option value="interno">Interno</option>
+                <option value="esterno">Esterno</option>
+                <option value="vista">Vista cucina</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="prenotazione-note">Note aggiuntive</label>
+          <textarea class="form-control" id="prenotazione-note" rows="3" placeholder="Allergie, richieste speciali, ecc."></textarea>
+        </div>
+        
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="prenotazione-privacy" required>
+          <label class="form-check-label" for="prenotazione-privacy">
+            Acconsento al trattamento dei miei dati personali per la prenotazione *
+          </label>
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-lg w-100">
+          <i class="fas fa-calendar-check me-2"></i>Prenota ora
+        </button>
+      </form>
+      
+      <div class="prenotazioni-loading" id="prenotazioni-loading">
+        <div class="prenotazioni-spinner"></div>
+        <p class="mt-2">Invio prenotazione in corso...</p>
+      </div>
+      
+      <div class="prenotazioni-success" id="prenotazioni-success">
+        <i class="fas fa-check-circle me-2"></i>
+        <strong>Prenotazione inviata con successo!</strong> Riceverai una conferma a breve via WhatsApp.
+      </div>
+      
+      <div class="prenotazioni-error" id="prenotazioni-error">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        <strong>Errore nell'invio della prenotazione.</strong> Riprova più tardi o chiamaci al +39 3403046310.
+      </div>
+      
+      <button class="btn-back" onclick="showMainPage()" style="margin-top: 20px;">Torna alla Home</button>
+    </div>
+  </div>
+</div>
+
 <!-- Pagina degli eventi -->
 <div id="eventi-page">
   <div class="eventi-container">
@@ -1422,6 +1666,7 @@
   function showGalleria() {
     document.getElementById('main-page').style.display = 'none';
     document.getElementById('menu-page').style.display = 'none';
+    document.getElementById('prenotazioni-page').style.display = 'none';
     document.getElementById('eventi-page').style.display = 'none';
     document.getElementById('galleria').style.display = 'block';
     window.scrollTo(0, 0);
@@ -1442,6 +1687,7 @@
   function showMainPage() {
     document.getElementById('galleria').style.display = 'none';
     document.getElementById('menu-page').style.display = 'none';
+    document.getElementById('prenotazioni-page').style.display = 'none';
     document.getElementById('eventi-page').style.display = 'none';
     document.getElementById('main-page').style.display = 'block';
     window.scrollTo(0, 0);
@@ -1461,6 +1707,7 @@
   function showMenuPage() {
     document.getElementById('main-page').style.display = 'none';
     document.getElementById('galleria').style.display = 'none';
+    document.getElementById('prenotazioni-page').style.display = 'none';
     document.getElementById('eventi-page').style.display = 'none';
     document.getElementById('menu-page').style.display = 'block';
     window.scrollTo(0, 0);
@@ -1478,10 +1725,30 @@
     });
   }
 
+  // NUOVA FUNZIONE: Mostra pagina prenotazioni
+  function showPrenotazioniPage() {
+    document.getElementById('main-page').style.display = 'none';
+    document.getElementById('galleria').style.display = 'none';
+    document.getElementById('menu-page').style.display = 'none';
+    document.getElementById('eventi-page').style.display = 'none';
+    document.getElementById('prenotazioni-page').style.display = 'block';
+    window.scrollTo(0, 0);
+    
+    // Imposta la data minima come oggi
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('prenotazione-data').min = today;
+    
+    // Imposta la data di default a domani
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    document.getElementById('prenotazione-data').value = tomorrow.toISOString().split('T')[0];
+  }
+
   function showEventiPage() {
     document.getElementById('main-page').style.display = 'none';
     document.getElementById('galleria').style.display = 'none';
     document.getElementById('menu-page').style.display = 'none';
+    document.getElementById('prenotazioni-page').style.display = 'none';
     document.getElementById('eventi-page').style.display = 'block';
     window.scrollTo(0, 0);
     
@@ -1766,6 +2033,79 @@ function registerUser() {
     
     // Salva il PDF
     doc.save('menu_pizzeria_il_semaforo.pdf');
+  }
+
+  // NUOVE FUNZIONI PER PRENOTAZIONI
+  document.getElementById('prenotazioni-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Mostra loading
+    document.getElementById('prenotazioni-loading').style.display = 'block';
+    document.getElementById('prenotazioni-success').style.display = 'none';
+    document.getElementById('prenotazioni-error').style.display = 'none';
+    
+    // Raccogli dati
+    const prenotazione = {
+      nome: document.getElementById('prenotazione-nome').value,
+      cognome: document.getElementById('prenotazione-cognome').value,
+      email: document.getElementById('prenotazione-email').value,
+      telefono: document.getElementById('prenotazione-telefono').value,
+      data: document.getElementById('prenotazione-data').value,
+      ora: document.getElementById('prenotazione-ora').value,
+      persone: document.getElementById('prenotazione-persone').value,
+      tavolo: document.getElementById('prenotazione-tavolo').value,
+      note: document.getElementById('prenotazione-note').value,
+      dataInvio: new Date().toISOString()
+    };
+    
+    // Invia dati
+    inviaPrenotazione(prenotazione);
+  });
+  
+  function inviaPrenotazione(prenotazione) {
+    // Salva nel localStorage come backup
+    salvaPrenotazioneLocale(prenotazione);
+    
+    // Invia notifica WhatsApp
+    inviaNotificaWhatsApp(prenotazione);
+    
+    // Simula invio (sostituire con chiamata API reale)
+    setTimeout(() => {
+      document.getElementById('prenotazioni-loading').style.display = 'none';
+      document.getElementById('prenotazioni-success').style.display = 'block';
+      document.getElementById('prenotazioni-form').reset();
+      
+      // Reimposta la data a domani
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      document.getElementById('prenotazione-data').value = tomorrow.toISOString().split('T')[0];
+    }, 2000);
+  }
+  
+  function salvaPrenotazioneLocale(prenotazione) {
+    let prenotazioni = JSON.parse(localStorage.getItem('prenotazioniPizzeria') || '[]');
+    prenotazioni.push(prenotazione);
+    localStorage.setItem('prenotazioniPizzeria', JSON.stringify(prenotazioni));
+  }
+  
+  function inviaNotificaWhatsApp(prenotazione) {
+    const telefonoRistorante = '393403046310';
+    const messaggio = `Nuova prenotazione:%0A%0A*${prenotazione.nome} ${prenotazione.cognome}*%0A📅 ${formattaData(prenotazione.data)} alle ${prenotazione.ora}%0A👥 ${prenotazione.persone} persone%0A📞 ${prenotazione.telefono}%0A📧 ${prenotazione.email || 'Non fornita'}${prenotazione.tavolo ? '%0A📍 ' + prenotazione.tavolo : ''}${prenotazione.note ? '%0A📝 ' + prenotazione.note : ''}%0A%0A⏰ ${new Date().toLocaleString('it-IT')}`;
+    
+    const whatsappURL = `https://wa.me/${telefonoRistorante}?text=${messaggio}`;
+    
+    // Apri in una nuova finestra
+    window.open(whatsappURL, '_blank');
+  }
+  
+  function formattaData(dataString) {
+    const data = new Date(dataString);
+    return data.toLocaleDateString('it-IT', { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
   }
 
   // Mostra la pagina principale all'avvio
