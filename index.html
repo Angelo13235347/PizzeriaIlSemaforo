@@ -27,6 +27,7 @@
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
   <style>
     /* Cookie Banner */
@@ -229,7 +230,7 @@
       transform: scaleX(1);
     }
 
-    .btn-galleria {
+    .btn-prenotazioni {
       background-color: #dc3545;
       color: white;
       padding: 10px 30px;
@@ -241,13 +242,13 @@
       transform: translateY(0);
     }
 
-    .btn-galleria:hover {
+    .btn-prenotazioni:hover {
       background-color: #c82333;
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     
-    .btn-galleria:active {
+    .btn-prenotazioni:active {
       transform: translateY(1px);
     }
 
@@ -1007,6 +1008,137 @@
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
+    
+    /* Stili per la sezione prenotazioni */
+    #prenotazioni-page {
+      display: none;
+      padding: 40px 0;
+    }
+
+    .prenotazioni-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .prenotazioni-title {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #dc3545;
+      position: relative;
+    }
+    
+    .prenotazioni-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: #dc3545;
+    }
+
+    .prenotazioni-content {
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    
+    .prenotazioni-content:hover {
+      transform: translateY(-5px);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .form-control:focus {
+      border-color: #dc3545;
+      box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+      outline: none;
+    }
+
+    .btn-invia-prenotazione {
+      background-color: #dc3545;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      border: none;
+      transition: all 0.3s;
+      display: block;
+      margin: 30px auto 0;
+    }
+    
+    .btn-invia-prenotazione:hover {
+      background-color: #c82333;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn-invia-prenotazione:active {
+      transform: translateY(1px);
+    }
+
+    .prenotazione-success {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 30px;
+      border-radius: 10px;
+      margin-top: 20px;
+      text-align: center;
+      display: none;
+      border: 1px solid #c3e6cb;
+      animation: fadeIn 0.5s;
+    }
+
+    .prenotazione-success i {
+      font-size: 3rem;
+      color: #28a745;
+      margin-bottom: 15px;
+    }
+
+    .prenotazione-success h3 {
+      color: #155724;
+      margin-bottom: 15px;
+    }
+
+    .prenotazione-error {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .giorno-non-valido {
+      background-color: #fff3cd;
+      color: #856404;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+      text-align: center;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -1048,6 +1180,7 @@
           </div>
         </li>
         <li class="nav-item"><a class="nav-link" href="#" onclick="showEventiPage()">Eventi</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showPrenotazioniPage()">Prenotazioni</a></li>
         <li class="nav-item" id="auth-nav-item">
           <div class="auth-status" id="auth-status">
             <button class="nav-link" onclick="showAuthModal('login')">Accedi / Registrati</button>
@@ -1095,7 +1228,7 @@
     <div class="hero-content">
       <h1>Pizzeria Il Semaforo</h1>
       <p>Un angolo di tradizione e innovazione culinaria nel cuore di Campi Bisenzio!</p>
-      <button class="btn-galleria" onclick="showGalleria()">Galleria</button>
+      <button class="btn-prenotazioni" onclick="showPrenotazioniPage()">Prenota Ora</button>
     </div>
   </header>
 
@@ -1341,6 +1474,74 @@
   </div>
 </div>
 
+<!-- Pagina delle prenotazioni -->
+<div id="prenotazioni-page">
+  <div class="prenotazioni-container">
+    <h2 class="prenotazioni-title">Prenota il tuo tavolo</h2>
+    <div class="prenotazioni-content">
+      <form id="prenotazione-form">
+        <div class="form-group">
+          <label class="form-label" for="cognome">Cognome *</label>
+          <input type="text" id="cognome" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="nome">Nome *</label>
+          <input type="text" id="nome" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="email">Email *</label>
+          <input type="email" id="email" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="telefono">Telefono *</label>
+          <input type="tel" id="telefono" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="data">Data *</label>
+          <input type="date" id="data" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="ora">Ora *</label>
+          <input type="time" id="ora" class="form-control" min="19:00" max="22:30" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="persone">Numero di persone *</label>
+          <input type="number" id="persone" class="form-control" min="1" max="50" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="note">Note aggiuntive</label>
+          <textarea id="note" class="form-control" rows="4" placeholder="Allergie, richieste speciali, ecc."></textarea>
+        </div>
+        
+        <button type="submit" class="btn-invia-prenotazione">Invia Prenotazione</button>
+      </form>
+      
+      <div id="giorno-non-valido" class="giorno-non-valido">
+        <i class="fas fa-exclamation-triangle"></i> Siamo aperti solo dal Giovedì alla Domenica. Seleziona un giorno valido per la prenotazione.
+      </div>
+      
+      <div id="prenotazione-success" class="prenotazione-success">
+        <i class="fas fa-check-circle"></i>
+        <h3>Prenotazione Inviata!</h3>
+        <p>La tua prenotazione è stata inviata correttamente. Ti contatteremo presto per confermare.</p>
+      </div>
+      
+      <div id="prenotazione-error" class="prenotazione-error">
+        <i class="fas fa-exclamation-circle"></i> Si è verificato un errore durante l'invio della prenotazione. Riprova più tardi.
+      </div>
+      
+      <button class="btn-back" onclick="showMainPage()">Torna alla Home</button>
+    </div>
+  </div>
+</div>
+
 <!-- Footer -->
 <footer>
   <div class="container">
@@ -1381,6 +1582,7 @@
   // Inizializza Firebase
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
+  const db = firebase.firestore();
 
   // Inizializza Swiper
   const swiper = new Swiper('.mySwiper', {
@@ -1423,6 +1625,7 @@
     document.getElementById('main-page').style.display = 'none';
     document.getElementById('menu-page').style.display = 'none';
     document.getElementById('eventi-page').style.display = 'none';
+    document.getElementById('prenotazioni-page').style.display = 'none';
     document.getElementById('galleria').style.display = 'block';
     window.scrollTo(0, 0);
     
@@ -1443,6 +1646,7 @@
     document.getElementById('galleria').style.display = 'none';
     document.getElementById('menu-page').style.display = 'none';
     document.getElementById('eventi-page').style.display = 'none';
+    document.getElementById('prenotazioni-page').style.display = 'none';
     document.getElementById('main-page').style.display = 'block';
     window.scrollTo(0, 0);
     
@@ -1462,6 +1666,7 @@
     document.getElementById('main-page').style.display = 'none';
     document.getElementById('galleria').style.display = 'none';
     document.getElementById('eventi-page').style.display = 'none';
+    document.getElementById('prenotazioni-page').style.display = 'none';
     document.getElementById('menu-page').style.display = 'block';
     window.scrollTo(0, 0);
     
@@ -1482,6 +1687,7 @@
     document.getElementById('main-page').style.display = 'none';
     document.getElementById('galleria').style.display = 'none';
     document.getElementById('menu-page').style.display = 'none';
+    document.getElementById('prenotazioni-page').style.display = 'none';
     document.getElementById('eventi-page').style.display = 'block';
     window.scrollTo(0, 0);
     
@@ -1506,6 +1712,31 @@
       document.getElementById('auth-required-message').style.display = 'block';
       document.getElementById('eventi-content').style.display = 'none';
     }
+  }
+
+  function showPrenotazioniPage() {
+    document.getElementById('main-page').style.display = 'none';
+    document.getElementById('galleria').style.display = 'none';
+    document.getElementById('menu-page').style.display = 'none';
+    document.getElementById('eventi-page').style.display = 'none';
+    document.getElementById('prenotazioni-page').style.display = 'block';
+    window.scrollTo(0, 0);
+    
+    // Imposta la data minima a oggi
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('data').min = today;
+    
+    // Animazione form
+    const formGroups = document.querySelectorAll('.form-group');
+    formGroups.forEach((group, index) => {
+      group.style.opacity = '0';
+      group.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        group.style.transition = 'opacity 0.5s, transform 0.5s';
+        group.style.opacity = '1';
+        group.style.transform = 'translateY(0)';
+      }, 100 + index * 100);
+    });
   }
 
   // Funzioni per l'autenticazione
@@ -1767,6 +1998,72 @@ function registerUser() {
     // Salva il PDF
     doc.save('menu_pizzeria_il_semaforo.pdf');
   }
+
+  // Funzione per verificare se un giorno è valido (da giovedì a domenica)
+  function isGiornoValido(data) {
+    const giorno = new Date(data).getDay();
+    // 0 = Domenica, 4 = Giovedì, 5 = Venerdì, 6 = Sabato
+    return giorno === 0 || giorno === 4 || giorno === 5 || giorno === 6;
+  }
+
+  // Gestione del form di prenotazione
+  document.getElementById('prenotazione-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Nascondi tutti i messaggi
+    document.getElementById('giorno-non-valido').style.display = 'none';
+    document.getElementById('prenotazione-success').style.display = 'none';
+    document.getElementById('prenotazione-error').style.display = 'none';
+    
+    // Recupera i dati dal form
+    const cognome = document.getElementById('cognome').value;
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const telefono = document.getElementById('telefono').value;
+    const data = document.getElementById('data').value;
+    const ora = document.getElementById('ora').value;
+    const persone = document.getElementById('persone').value;
+    const note = document.getElementById('note').value;
+    
+    // Verifica che il giorno sia valido
+    if (!isGiornoValido(data)) {
+      document.getElementById('giorno-non-valido').style.display = 'block';
+      return;
+    }
+    
+    // Salva la prenotazione su Firestore
+    db.collection('prenotazioni').add({
+      cognome: cognome,
+      nome: nome,
+      email: email,
+      telefono: telefono,
+      data: data,
+      ora: ora,
+      persone: persone,
+      note: note,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      status: 'pending'
+    })
+    .then(() => {
+      // Prepara il messaggio per WhatsApp
+      const dataItaliana = new Date(data).toLocaleDateString('it-IT');
+      const messaggioWhatsApp = `Nuova Prenotazione%0A%0A📋 Dettagli:%0A👤 Cliente: ${cognome} ${nome}%0A📧 Email: ${email}%0A📞 Telefono: ${telefono}%0A📅 Data: ${dataItaliana}%0A⏰ Ora: ${ora}%0A👥 Persone: ${persone}%0A📝 Note: ${note || 'Nessuna'}`;
+      
+      // Apri WhatsApp con il messaggio precompilato
+      window.open(`https://wa.me/393403046310?text=${messaggioWhatsApp}`, '_blank');
+      
+      // Mostra messaggio di successo
+      document.getElementById('prenotazione-success').style.display = 'block';
+      
+      // Resetta il form
+      document.getElementById('prenotazione-form').reset();
+    })
+    .catch((error) => {
+      // Mostra messaggio di errore
+      document.getElementById('prenotazione-error').style.display = 'block';
+      console.error('Errore durante il salvataggio della prenotazione:', error);
+    });
+  });
 
   // Mostra la pagina principale all'avvio
   window.onload = function() {
